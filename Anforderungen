@@ -1,0 +1,30 @@
+Super-Car (Autovermietung)
+Funktionale Anforderungen
+·        Nutzer können sich anmelden (Authentifizierung und Autorisierung)
+·        Nutzer können Autos suchen, finden und mieten
+·        Nutzer können Fahrtenbuch für gemietete Autos führen
+·        Nutzer können Probleme melden
+·        Nutzer können Rechnungen einsehen
+·        Admin kann neue Fahrzeuge anlegen, inkl. Metainformationen zum Kategorisieren, Suchen und Finden
+·        Mitarbeiter kann Nutzer sperren
+·        Mitarbeiter können Nutzer zur Leihe freischalten
+Nicht-funktionale Anforderungen
+·        JSF 2.2 unter Verwendung von HTML 5 und CSS (Untersuchung der Möglichkeiten von JSF 2.2)
+·        Jax-RS zur Bereitstellung einer RESTfull API (optional: HATEOS)
+·        Authentifizierung + Autorisierung über Eigenentwicklung (optional über JAAS, Java EE Security 1.0 oder Keycloak)
+·        Java EE 8 CDI, JPA, JTA, Bean Validation, EJB
+·        Organisatorische Vorgaben:
+o   Umfang der Arbeit:         20..25 Seiten. Verwenden Sie die in OSCA eingestellte Dokumentenvorlage KBSE_schrift_Ausarbeitung_Template.docx.
+o   Struktur: Einführung, Grundlagen, Umsetzung, Fazit + Ausblick
+o   Die Anteile des jeweiligen Studierenden sollen erkennbar sein
+o   Abzugeben:        Schriftl. Ausarbeitung + Umsetzung (inkl. Anleitung für verwendete Ressourcen)
+o   Abgabetermin:  13.07.18 23:59 Uhr
+ 
+Literatur:
+o   Weil D. (2015): Java EE 7 – Enterprise-Anwendungsentwicklung leicht gemacht. entwickler.press (Real-World Projekt ggf. beachten)
+o   Oracle Inc.: Java Platform, Enterprise Edition (Java EE) 8: The Java EE Tutorial. Online verfügbar unter: https://javaee.github.io/tutorial/toc.html
+o   JSF Online-Buch: http://jsfatwork.irian.at/book_de/introduction.html
+o   JAX-RS 2.1: https://github.com/jax-rs
+ 
+Weitere Online Links
+o   Primefaces: https://www.primefaces.org/showcase/index.xhtml
