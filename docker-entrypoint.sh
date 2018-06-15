@@ -21,7 +21,7 @@ asadmin --user=admin --passwordfile=/tmp/glassfishpwd create-jdbc-connection-poo
 asadmin --user=admin --passwordfile=/tmp/glassfishpwd ping-connection-pool SuperCarPool
 
 # deploy
-cp /app/Hausarbeit-1.0.war /glassfish5/glassfish/domains/domain1/autodeploy/Hausarbeit.war
+cp /app/supercar-1.0.war /glassfish5/glassfish/domains/domain1/autodeploy/supercar.war
 
 asadmin --user=admin stop-domain
 rm /tmp/glassfishpwd
