@@ -13,8 +13,12 @@ import supercar.interfaces.IRepository;
  *
  * @author Maxi
  */
+
 @Stateless
 public class AccountRepository extends IRepository<Account> {
     
+    public AccountRepository() { 
+        //this.entityClass = Account.class;
+    }
     
 }

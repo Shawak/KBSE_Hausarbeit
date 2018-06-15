@@ -8,7 +8,7 @@ package supercar.interfaces;
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.util.Collection;
-import javax.enterprise.context.ApplicationScoped;
+import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -16,42 +16,20 @@ import javax.persistence.PersistenceContext;
  *
  * @author Maxi
  * @param <T>
+ * http://workingonbits.com/2011/05/05/effective-pattern-for-data-access-with-jpa/
  */
-@ApplicationScoped
+
 public abstract class IRepository<T extends IUniqueEntity> implements Serializable {
     
     @PersistenceContext(unitName="supercarPU")
     protected EntityManager em;
-    protected Class<T> type;
     
-    /*  -- Prof of concept of the following implementation
-        import java.lang.reflect.ParameterizedType;
-
-        public class HelloWorld{
-            public static void main(String[] args) {
-                new Repo().print();
-            }
-        }
-
-        abstract class IEntity { }
-        class Entity extends IEntity { }
-        class Repo extends IRepo<Entity> { }
-
-        abstract class IRepo<T extends IEntity> {
-          Class<T> type;
-          public IRepo() {
-                this.type = (Class<T>)
-                    ((ParameterizedType)getClass().getGenericSuperclass())
-                        .getActualTypeArguments()[0];
-          }
-          public void print() {	System.out.println(this.type.getName()); }
-        }
-    */
+    protected Class<T> entityClass;
     
-    public IRepository() {
-        this.type = (Class<T>)
-            ((ParameterizedType)getClass().getGenericSuperclass())
-                .getActualTypeArguments()[0];
+    @PostConstruct
+    public void init() {
+        ParameterizedType genericSuperclass = (ParameterizedType) getClass().getGenericSuperclass();
+        this.entityClass = (Class<T>) genericSuperclass.getActualTypeArguments()[1];
     }
     
     public void add(T entity) {
@@ -59,7 +37,7 @@ public abstract class IRepository<T extends IUniqueEntity> implements Serializab
     }
     
     public T get(long id) {
-        return (T)em.find(this.type, id);
+        return (T)em.find(this.entityClass, id);
     }
     
     public void remove(T entity) {
@@ -71,7 +49,7 @@ public abstract class IRepository<T extends IUniqueEntity> implements Serializab
     }
     
     public Collection<T> all() {
-        return em.createQuery("select e from " + this.type.getSimpleName() + " e").getResultList();
+        return em.createQuery("select e from " + this.entityClass.getSimpleName() + " e").getResultList();
     }
     
 }
