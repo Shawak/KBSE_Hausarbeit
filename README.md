@@ -14,7 +14,7 @@ Deploy to container and run: `docker-compose up --build`
 
 Attach to docker container: `docker exec -it supercar_app_1 /bin/sh`
 
-The website will be aviable under http://localhost/Hausarbeit
+The website will be aviable under http://localhost/supercar
 
 ## Links
 
