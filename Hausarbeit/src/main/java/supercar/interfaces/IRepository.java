@@ -11,6 +11,7 @@ import java.util.Collection;
 import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 
 /**
  *
@@ -18,7 +19,7 @@ import javax.persistence.PersistenceContext;
  * @param <T>
  * http://workingonbits.com/2011/05/05/effective-pattern-for-data-access-with-jpa/
  */
-
+@Transactional
 public abstract class IRepository<T extends IUniqueEntity> implements Serializable {
     
     @PersistenceContext(unitName="supercarPU")
