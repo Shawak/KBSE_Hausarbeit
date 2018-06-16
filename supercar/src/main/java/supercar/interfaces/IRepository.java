@@ -49,7 +49,7 @@ public abstract class IRepository<T extends IUniqueEntity> implements Serializab
         return em.merge(entity);
     }
     
-    public Collection<T> all() {
+    public Collection<T> getAll() {
         return em.createQuery("select e from " + this.entityClass.getSimpleName() + " e").getResultList();
     }
     

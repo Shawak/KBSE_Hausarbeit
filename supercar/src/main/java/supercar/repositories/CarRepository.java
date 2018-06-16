@@ -6,17 +6,16 @@
 package supercar.repositories;
 
 import javax.ejb.Stateless;
-import supercar.entities.Account;
+import supercar.entities.Car;
 import supercar.interfaces.IRepository;
 
 /**
  *
  * @author Maxi
  */
-
 @Stateless
-public class AccountRepository extends IRepository<Account> {
-    
-    public AccountRepository() { }
-    
+public class CarRepository extends IRepository<Car> {
+
+    public CarRepository() { }
+
 }

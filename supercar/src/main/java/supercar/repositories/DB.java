@@ -5,18 +5,15 @@
  */
 package supercar.repositories;
 
-import javax.ejb.Stateless;
-import supercar.entities.Account;
-import supercar.interfaces.IRepository;
+import javax.inject.Inject;
 
 /**
  *
  * @author Maxi
  */
+public class DB {
 
-@Stateless
-public class AccountRepository extends IRepository<Account> {
-    
-    public AccountRepository() { }
-    
+    @Inject public AccountRepository Accounts;
+    @Inject public CarRepository Cars;
+
 }

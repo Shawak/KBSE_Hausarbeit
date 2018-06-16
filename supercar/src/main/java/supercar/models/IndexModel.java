@@ -5,15 +5,28 @@
  */
 package supercar.models;
 
+import javax.annotation.PostConstruct;
 import javax.inject.Inject;
-import supercar.repositories.AccountRepository;
+import supercar.entities.Account;
+import supercar.enums.AccountType;
+import supercar.repositories.DB;
 
 /**
  *
  * @author Maxi
  */
 public class IndexModel {
-    
-    @Inject AccountRepository accountRepo;
-    
+
+    @Inject
+    DB DB;
+
+    public IndexModel() { }
+
+    @PostConstruct
+    public void init() {
+        if (DB.Accounts.getAll().isEmpty()) {
+            DB.Accounts.add(new Account("I am the", "admin", 0, "", "admin", "admin", "", AccountType.Administrator));
+        }
+    }
+
 }

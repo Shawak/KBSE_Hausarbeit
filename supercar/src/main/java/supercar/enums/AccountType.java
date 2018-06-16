@@ -17,13 +17,25 @@ package supercar.enums;
     
 }*/
 
-/*public enum AccountType {
+/*public class AccountType {
     
-    User(1 << 0),
+    public static final int User = 1;
+    public static final int Employee = 2;
+    public static final int Administrator = 3;
+    
+}*/
+
+public enum AccountType {
+    
+    /*User(1 << 0),
     Employee(1 << 1),
-    Administrator(1 << 2);
+    Administrator(1 << 2);*/
     
-    private int value;
+    User(1),
+    Employee(2),
+    Administrator(3);
+    
+    private final int value;
     
     public int getValue() {
         return value;
@@ -32,13 +44,5 @@ package supercar.enums;
     AccountType(int value) {
         this.value = value;
     }
-    
-}*/
 
-public class AccountType {
-    
-    public static final int User = 1;
-    public static final int Employee = 2;
-    public static final int Administrator = 3;
-    
 }

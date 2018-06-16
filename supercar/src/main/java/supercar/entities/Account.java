@@ -85,22 +85,29 @@ public class Account extends IUniqueEntity {
         this.licenseNumber = licenseNumber;
     }
 
-    public int getAccountType() {
-        return accountType;
-    }
-
-    public void setAccountType(int accountType) {
-        this.accountType = accountType;
+    public void setAccountType(AccountType accountType) {
+        this.accountType = accountType.getValue();
     }
     
     public boolean isEmployee() {
-        return accountType >= AccountType.Employee;
+        return accountType >= AccountType.Employee.getValue();
     }
     
     public boolean isAdministrator() {
-          return accountType >= AccountType.Administrator;
+          return accountType >= AccountType.Administrator.getValue();
     }
     
     public Account() { }
+    
+    public Account(String firstname, String lastname, int plz, String street, String login, String password, String licenseNumber, AccountType accountType) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.plz = plz;
+        this.street = street;
+        this.login = login;
+        this.password = password;
+        this.licenseNumber = licenseNumber;
+        this.accountType = accountType.getValue();
+    }
     
 }
