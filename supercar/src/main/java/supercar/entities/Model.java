@@ -5,15 +5,35 @@
  */
 package supercar.entities;
 
+import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import supercar.interfaces.IUniqueEntity;
+
 /**
  *
  * @author Maxi
  */
-public class Model {
+@Entity
+public class Model extends IUniqueEntity {
     
     private String name;
     private int horsepower;
     private int cubicCapacity;
+    
+    @OneToMany
+    @JoinColumn(name="Model_ID")
+    private List<Car> cars;
+
+    public List<Car> getCars() {
+        return cars;
+    }
+
+    public void setCars(List<Car> cars) {
+        this.cars = cars;
+    }
+
 
     public String getName() {
         return name;

@@ -5,7 +5,10 @@
  */
 package supercar.entities;
 
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import supercar.enums.AccountType;
 import supercar.interfaces.IUniqueEntity;
 
@@ -28,6 +31,18 @@ public class Account extends IUniqueEntity {
     private String licenseNumber; 
     
     private int accountType;
+    
+    @OneToMany
+    @JoinColumn(name="Account_ID")
+    private List<Lending> lendings;
+
+    public List<Lending> getLendings() {
+        return lendings;
+    }
+
+    public void setLendings(List<Lending> lendings) {
+        this.lendings = lendings;
+    }
 
     public String getFirstname() {
         return firstname;

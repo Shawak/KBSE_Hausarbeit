@@ -6,6 +6,7 @@
 package supercar.entities;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import supercar.interfaces.IUniqueEntity;
 
 /**
@@ -22,6 +23,17 @@ public class Lending extends IUniqueEntity {
     private long returnMileage;
     
     private String returnCommentary;
+    
+    @ManyToOne
+    private Car car;
+
+    public Car getCar() {
+        return car;
+    }
+
+    public void setCar(Car car) {
+        this.car = car;
+    }
 
     public long getRentDate() {
         return rentDate;

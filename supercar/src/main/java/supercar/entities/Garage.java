@@ -5,7 +5,11 @@
  */
 package supercar.entities;
 
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import supercar.interfaces.IUniqueEntity;
 
 /**
@@ -21,6 +25,18 @@ public class Garage extends IUniqueEntity {
     private String street;
     
     private String contactInfo;
+    
+    @OneToMany
+    @JoinColumn(name="Garage_ID")
+    private List<Repair> repairs;
+
+    public List<Repair> getRepairs() {
+        return repairs;
+    }
+
+    public void setRepairs(List<Repair> repairs) {
+        this.repairs = repairs;
+    }
 
     public String getName() {
         return name;
