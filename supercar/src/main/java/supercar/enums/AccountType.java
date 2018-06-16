@@ -5,6 +5,8 @@
  */
 package supercar.enums;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Maxi
@@ -25,7 +27,7 @@ package supercar.enums;
     
 }*/
 
-public enum AccountType {
+public enum AccountType implements Serializable {
     
     /*User(1 << 0),
     Employee(1 << 1),

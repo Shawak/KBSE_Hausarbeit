@@ -7,6 +7,7 @@ package supercar.models;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
+import javax.inject.Named;
 import supercar.entities.Account;
 import supercar.enums.AccountType;
 import supercar.repositories.DB;
@@ -15,10 +16,21 @@ import supercar.repositories.DB;
  *
  * @author Maxi
  */
+@Named("indexModel")
 public class IndexModel {
 
     @Inject
-    DB DB;
+    private DB DB;
+    
+    private String test = "Hello!";
+   
+    public String getTest() {
+        return test;
+    }
+
+    public void setTest(String test) {
+        this.test = test;
+    }
 
     public IndexModel() { }
 

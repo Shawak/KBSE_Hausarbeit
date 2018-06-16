@@ -29,8 +29,8 @@ public abstract class IRepository<T extends IUniqueEntity> implements Serializab
     
     @PostConstruct
     public void init() {
-        ParameterizedType genericSuperclass = (ParameterizedType) getClass().getGenericSuperclass();
-        this.entityClass = (Class<T>) genericSuperclass.getActualTypeArguments()[1];
+        ParameterizedType genericSuperclass = (ParameterizedType)getClass().getGenericSuperclass();
+        this.entityClass = (Class<T>)genericSuperclass.getActualTypeArguments()[0];
     }
     
     public void add(T entity) {
