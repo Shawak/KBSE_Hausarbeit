@@ -11,7 +11,6 @@ import java.util.Collection;
 import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
 /**
@@ -25,10 +24,10 @@ public abstract class IRepository<T extends IUniqueEntity> implements Serializab
     
     @PersistenceContext(unitName="supercarPU")
     protected EntityManager em;
-    
+
     protected Class<T> entityClass;
     protected String table;
-    
+
     @PostConstruct
     public void init() {
         ParameterizedType genericSuperclass = (ParameterizedType)getClass().getGenericSuperclass();
@@ -37,29 +36,31 @@ public abstract class IRepository<T extends IUniqueEntity> implements Serializab
     }
     
     public void add(T entity) {
+        System.out.print("SQL: persist " + table);
         em.persist(entity);
     }
     
     public T get(long id) {
+        System.out.print("SQL: get " + id  + " " + table);
         return (T)em.find(this.entityClass, id);
     }
     
     public void remove(T entity) {
+        System.out.print("SQL: remove " + entity.getId()  + " " + table);
         em.remove(entity);
     }
     
     public T update(T entity) {
+        System.out.print("SQL: update " + entity.getId()  + " " + table);
         return em.merge(entity);
     }
     
+    public IQuery<T> query(String sql) {
+        return new IQuery<>(em, sql, entityClass, table);
+    }
+    
     public Collection<T> getAll() {
-        return em.createQuery("select e from " + this.table + " e").getResultList();
+        return query("select e from #table e").all();
     }
-    
-    public TypedQuery<T> query(String sql) {
-        sql = sql.replace("#{table}", this.table);
-        System.out.println("SQL: " + sql);
-        return em.createQuery(sql, this.entityClass);
-    }
-    
+ 
 }

@@ -1,0 +1,68 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package supercar.interfaces;
+
+import java.util.Collection;
+import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
+import javax.persistence.TypedQuery;
+
+/**
+ *
+ * @author Maxi
+ * @param <T>
+ */
+public class IQuery<T extends IUniqueEntity> {
+
+    TypedQuery<T> query;
+    String sql;
+    String table;
+
+    public IQuery(EntityManager em, String sql, Class<T> entityClass, String table) {
+        this.sql = sql.replace("#table", table);
+        this.table = table;
+        this.query = em.createQuery(this.sql, entityClass);
+    }
+
+    public IQuery<T> put(String name, Object value) {
+        this.query.setParameter(name, value);
+        return this;
+    }
+
+    public T one() {
+        try {
+            System.out.println("SQL: " + sql);
+            return query.getSingleResult();
+        }
+        catch (NoResultException ex) {
+            System.out.println("SQL: " + ex);
+            return null;
+        }
+    }
+
+    public Collection<T> all() {
+        try {
+            System.out.println("SQL: " + sql);
+            return query.getResultList();
+        }
+        catch (NoResultException ex) {
+            System.out.println("SQL: " + ex);
+            return null;
+        }
+    }
+
+    public int execute() {
+        try {
+            System.out.println("SQL: " + sql);
+            return query.executeUpdate();
+        }
+        catch (NoResultException ex) {
+            System.out.println("SQL: " + ex);
+            return -1;
+        }
+    }
+
+ }
