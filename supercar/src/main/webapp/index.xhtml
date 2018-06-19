@@ -3,12 +3,31 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
       xmlns:p="http://primefaces.org/ui">
     <h:head>
-        <title>Facelet Title</title>
+        <title>SuperCar</title>
+        <link href="css/index.css" rel="stylesheet" type="text/css"/>
     </h:head>
     <h:body>
-        Hello from Facelets #{indexModel.test}
+        <b:container fluid="false">
+            <b:navBar fluid="true" brand-img="images/Logo.png" brand-img-style-class="image">
+                <b:navbarLinks>
+                    <b:navLink value="Cars" href="#"></b:navLink>
+                    <b:navLink value="Contact" href="#"></b:navLink>
+                    <b:navLink value="About" href="#"></b:navLink>
+                    <!--Mitarbeiter-->
+                    <b:navLink value="Rewiew" href="#"></b:navLink>
+                    <b:navLink value="Garage" href="#"></b:navLink>
+                    <b:navLink value="User" href="#"></b:navLink>
+                    <!--Admin-->
+                    <b:navLink value="Add" href="#"></b:navLink>
+                </b:navbarLinks>
+                <b:navbarLinks pull="right">
+                    <b:navLink value="Login" href="#"></b:navLink>
+                </b:navbarLinks>
+            </b:navBar>
+        </b:container>
     </h:body>
 </html>
 
