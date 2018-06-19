@@ -1,0 +1,30 @@
+Menü
+- Return (User) gibt es nicht
+- Login wird zum Usernamen nach Anmeldung
+- Werkstatt Button
+- User Button(eventuel)
+
+Wekstatt:
+- Liste von Werkstatten
+- Mittarbeiter kann Werkstatt hinzufügen und ändern
+
+Add:
+- Admin gibt wichtige Daten ein
+- 
+
+Login:
+- Benutzer kann sich anmelden und registrieren
+
+Review:
+- Alle Benutzer die noch nicht freigeschaltet sind
+- Mitarbeiter kann nutzer freischalten
+
+Contact/About:
+- Informationen über die Firma
+
+beim Ausleihen:
+- Drücken auf Rent/Rückgabe, erscheint popup und Nutzer kann Bemerkungen(Mängel) eingeben
+- 
+
+Auto:
+- Anzeige von Reperaturen für Mitarbeiten
