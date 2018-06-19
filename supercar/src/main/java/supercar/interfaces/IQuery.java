@@ -5,6 +5,7 @@
  */
 package supercar.interfaces;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -50,7 +51,7 @@ public class IQuery<T extends IUniqueEntity> {
         }
         catch (NoResultException ex) {
             System.out.println("SQL: " + ex);
-            return null;
+            return new ArrayList<T>();
         }
     }
 
