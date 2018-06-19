@@ -38,7 +38,7 @@ public class IQuery<T extends IUniqueEntity> {
             System.out.println("SQL: " + sql);
             return query.getSingleResult();
         }
-        catch (NoResultException ex) {
+        catch (Exception ex) {
             System.out.println("SQL: " + ex);
             return null;
         }
@@ -49,7 +49,7 @@ public class IQuery<T extends IUniqueEntity> {
             System.out.println("SQL: " + sql);
             return query.getResultList();
         }
-        catch (NoResultException ex) {
+        catch (Exception ex) {
             System.out.println("SQL: " + ex);
             return new ArrayList<T>();
         }
@@ -60,7 +60,7 @@ public class IQuery<T extends IUniqueEntity> {
             System.out.println("SQL: " + sql);
             return query.executeUpdate();
         }
-        catch (NoResultException ex) {
+        catch (Exception ex) {
             System.out.println("SQL: " + ex);
             return -1;
         }
