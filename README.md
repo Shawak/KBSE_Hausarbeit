@@ -1,5 +1,10 @@
 ## Docker
 
+#### Chrome Problem
+
+Because chrome does not allow saving cookies to http://localhost and java EE not changing the cookie's path, be sure to use http://127.0.0.1 instead or you won't be able to login!
+
+
 #### Requirements
 
 - docker
