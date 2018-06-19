@@ -29,6 +29,9 @@
         <session-timeout>
             30
         </session-timeout>
+        <cookie-config>
+            <path>/</path>
+        </cookie-config>
     </session-config>
     <welcome-file-list>
         <welcome-file>faces/index.xhtml</welcome-file>

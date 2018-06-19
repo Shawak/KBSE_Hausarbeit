@@ -11,6 +11,7 @@ import java.util.Collection;
 import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
 /**
@@ -26,11 +27,13 @@ public abstract class IRepository<T extends IUniqueEntity> implements Serializab
     protected EntityManager em;
     
     protected Class<T> entityClass;
+    protected String table;
     
     @PostConstruct
     public void init() {
         ParameterizedType genericSuperclass = (ParameterizedType)getClass().getGenericSuperclass();
         this.entityClass = (Class<T>)genericSuperclass.getActualTypeArguments()[0];
+        this.table = this.entityClass.getSimpleName();
     }
     
     public void add(T entity) {
@@ -50,7 +53,13 @@ public abstract class IRepository<T extends IUniqueEntity> implements Serializab
     }
     
     public Collection<T> getAll() {
-        return em.createQuery("select e from " + this.entityClass.getSimpleName() + " e").getResultList();
+        return em.createQuery("select e from " + this.table + " e").getResultList();
+    }
+    
+    public TypedQuery<T> query(String sql) {
+        sql = sql.replace("#{table}", this.table);
+        System.out.println("SQL: " + sql);
+        return em.createQuery(sql, this.entityClass);
     }
     
 }

@@ -37,7 +37,7 @@ public class IndexModel {
     @PostConstruct
     public void init() {
         if (DB.Accounts.getAll().isEmpty()) {
-            DB.Accounts.add(new Account("I am the", "admin", 0, "", "admin", "admin", "", AccountType.Administrator));
+            DB.Accounts.add(new Account("Administrator", "Administrator", 0, "", "admin", "admin", "", AccountType.Administrator, true));
         }
     }
 

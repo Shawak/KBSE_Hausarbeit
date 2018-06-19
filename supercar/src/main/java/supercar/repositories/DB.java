@@ -15,5 +15,10 @@ public class DB {
 
     @Inject public AccountRepository Accounts;
     @Inject public CarRepository Cars;
-
+    @Inject public GarageRepository Garages;
+    @Inject public LendingRepository Lendings;
+    @Inject public ManufacturerRepository Manufacturers;
+    @Inject public ModelRepository Models;
+    @Inject public RepairRepository Repairs;
+    
 }

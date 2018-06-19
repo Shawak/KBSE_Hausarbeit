@@ -31,6 +31,7 @@ public class Account extends IUniqueEntity {
     private String licenseNumber; 
     
     private int accountType;
+    private boolean activated;
     
     @OneToMany
     @JoinColumn(name="Account_ID")
@@ -100,6 +101,14 @@ public class Account extends IUniqueEntity {
         this.licenseNumber = licenseNumber;
     }
 
+    public boolean isActivated() {
+        return activated;
+    }
+
+    public void setActivated(boolean activated) {
+        this.activated = activated;
+    }
+    
     public void setAccountType(AccountType accountType) {
         this.accountType = accountType.getValue();
     }
@@ -114,7 +123,7 @@ public class Account extends IUniqueEntity {
     
     public Account() { }
     
-    public Account(String firstname, String lastname, int plz, String street, String login, String password, String licenseNumber, AccountType accountType) {
+    public Account(String firstname, String lastname, int plz, String street, String login, String password, String licenseNumber, AccountType accountType, boolean activated) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.plz = plz;
