@@ -21,10 +21,15 @@ public class LoginHandler implements Serializable {
     @Inject
     private transient DB DB;
     
-    private Account account;
+    private boolean loggedIn = false;
+    private long accountId = 0;
+    
+    public Account getAccount() {
+        return DB.Accounts.get(accountId);
+    }
     
     public boolean isLoggedIn() {
-        return account != null;
+        return loggedIn && getAccount() != null;
     }
     
     public LoginHandler() { }
@@ -35,12 +40,14 @@ public class LoginHandler implements Serializable {
             return false;
         }
         
-        account = acc;
+        loggedIn = true;
+        accountId = acc.getId();
         return true;
     }
     
     public void logout() {
-        account = null;
+        loggedIn = false;
+        accountId = 0;
     }
     
 }

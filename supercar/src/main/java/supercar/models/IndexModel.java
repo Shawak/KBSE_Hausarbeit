@@ -5,11 +5,8 @@
  */
 package supercar.models;
 
-import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.inject.Named;
-import supercar.entities.Account;
-import supercar.enums.AccountType;
 import supercar.repositories.DB;
 
 /**
@@ -21,24 +18,7 @@ public class IndexModel {
 
     @Inject
     private DB DB;
-    
-    private String test = "Hello!";
-   
-    public String getTest() {
-        return test;
-    }
-
-    public void setTest(String test) {
-        this.test = test;
-    }
 
     public IndexModel() { }
-
-    @PostConstruct
-    public void init() {
-        if (DB.Accounts.getAll().isEmpty()) {
-            DB.Accounts.add(new Account("Administrator", "Administrator", 0, "", "admin", "admin", "", AccountType.Administrator, true));
-        }
-    }
 
 }
