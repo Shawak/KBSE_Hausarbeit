@@ -8,7 +8,6 @@ package supercar.interfaces;
 import java.util.ArrayList;
 import java.util.Collection;
 import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 
 /**
@@ -20,15 +19,14 @@ public class IQuery<T extends IUniqueEntity> {
 
     TypedQuery<T> query;
     String sql;
-    String table;
 
     public IQuery(EntityManager em, String sql, Class<T> entityClass, String table) {
         this.sql = sql.replace("#table", table);
-        this.table = table;
         this.query = em.createQuery(this.sql, entityClass);
     }
 
     public IQuery<T> put(String name, Object value) {
+        this.sql = sql.replace(":" + name, "\"" + value.toString() + "\"");
         this.query.setParameter(name, value);
         return this;
     }
@@ -51,7 +49,7 @@ public class IQuery<T extends IUniqueEntity> {
         }
         catch (Exception ex) {
             System.out.println("SQL: " + ex);
-            return new ArrayList<T>();
+            return new ArrayList<>();
         }
     }
 

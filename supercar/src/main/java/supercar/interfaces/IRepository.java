@@ -41,17 +41,17 @@ public abstract class IRepository<T extends IUniqueEntity> implements Serializab
     }
     
     public T get(long id) {
-        System.out.print("SQL: get " + id  + " " + table);
+        System.out.print("SQL: get " + table  + " " + id);
         return (T)em.find(this.entityClass, id);
     }
     
     public void remove(T entity) {
-        System.out.print("SQL: remove " + entity.getId()  + " " + table);
+        System.out.print("SQL: remove " + table  + " " + entity.getId());
         em.remove(entity);
     }
     
     public T update(T entity) {
-        System.out.print("SQL: update " + entity.getId()  + " " + table);
+        System.out.print("SQL: update " + table  + " " + entity.getId());
         return em.merge(entity);
     }
     
