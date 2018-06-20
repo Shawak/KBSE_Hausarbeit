@@ -7,25 +7,21 @@ package supercar.core;
 
 import java.io.Serializable;
 import javax.enterprise.context.SessionScoped;
-import javax.inject.Inject;
 import supercar.entities.Account;
-import supercar.repositories.DB;
+import supercar.interfaces.IRepositoryAccessor;
 
 /**
  *
  * @author Maxi
  */
 @SessionScoped
-public class LoginHandler implements Serializable {
-    
-    @Inject
-    private transient DB DB;
+public class LoginHandler extends IRepositoryAccessor implements Serializable {
     
     private boolean loggedIn = false;
     private long accountId = 0;
     
     public Account getAccount() {
-        return DB.Accounts.get(accountId);
+        return Accounts.get(accountId);
     }
     
     public boolean isLoggedIn() {
@@ -35,7 +31,7 @@ public class LoginHandler implements Serializable {
     public LoginHandler() { }
     
     public boolean login(String login, String password) {
-        Account acc = DB.Accounts.getByLogin(login);
+        Account acc = Accounts.getByLogin(login);
         if (!acc.getPassword().equals(password)) {
             return false;
         }

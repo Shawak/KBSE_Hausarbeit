@@ -16,7 +16,6 @@ import supercar.interfaces.IRepository;
 @Stateless
 public class LendingRepository extends IRepository<Lending> {
 
-    public LendingRepository() {
-    }
+    public LendingRepository() { }
     
 }

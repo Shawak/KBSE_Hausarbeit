@@ -16,7 +16,6 @@ import supercar.interfaces.IRepository;
 @Stateless
 public class ManufacturerRepository extends IRepository<Manufacturer> {
 
-    public ManufacturerRepository() {
-    }
+    public ManufacturerRepository() { }
     
 }

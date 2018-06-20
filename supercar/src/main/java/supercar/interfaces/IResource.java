@@ -14,7 +14,7 @@ import supercar.core.LoginHandler;
  *
  * @author Maxi
  */
-public abstract class IResource implements Serializable {
+public abstract class IResource extends IRepositoryAccessor implements Serializable {
     
     @Inject
     protected LoginHandler loginHandler;

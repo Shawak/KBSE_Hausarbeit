@@ -16,7 +16,6 @@ import supercar.interfaces.IRepository;
 @Stateless
 public class RepairRepository extends IRepository<Repair> {
 
-    public RepairRepository() {
-    }
+    public RepairRepository() { }
     
 }

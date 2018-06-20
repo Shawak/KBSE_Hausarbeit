@@ -5,19 +5,15 @@
  */
 package supercar.models;
 
-import javax.inject.Inject;
 import javax.inject.Named;
-import supercar.repositories.DB;
+import supercar.interfaces.IRepositoryAccessor;
 
 /**
  *
  * @author Maxi
  */
 @Named("indexModel")
-public class IndexModel {
-
-    @Inject
-    private DB DB;
+public class IndexModel extends IRepositoryAccessor {
 
     public IndexModel() { }
 

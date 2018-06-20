@@ -11,27 +11,7 @@ import java.io.Serializable;
  *
  * @author Maxi
  */
-/*public class AccountType {
-    
-    public static final int User = 1 << 0;
-    public static final int Employee = 1 << 1;
-    public static final int Administrator = 1 << 2;
-    
-}*/
-
-/*public class AccountType {
-    
-    public static final int User = 1;
-    public static final int Employee = 2;
-    public static final int Administrator = 3;
-    
-}*/
-
 public enum AccountType implements Serializable {
-    
-    /*User(1 << 0),
-    Employee(1 << 1),
-    Administrator(1 << 2);*/
     
     User(1),
     Employee(2),
