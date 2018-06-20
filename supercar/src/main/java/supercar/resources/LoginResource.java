@@ -19,6 +19,7 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import supercar.core.LoginHandler;
+import supercar.interfaces.IResource;
 
 /**
  *
@@ -28,27 +29,22 @@ import supercar.core.LoginHandler;
 @Path("login")
 @Produces({MediaType.APPLICATION_JSON})
 @Consumes({MediaType.APPLICATION_JSON})
-public class LoginResource implements Serializable {
-    
-    @Inject
-    private LoginHandler loginHandler;
-    
-    private Gson gson = new Gson();
+public class LoginResource extends IResource {
     
     @GET
-    public Response test() {
+    public Response isLoggedIn() {
         boolean loggedIn = loginHandler.isLoggedIn();
         return Response.ok(gson.toJson(loggedIn)).build();
     }
     
-    @GET @Path("{login}/{password}")
-    public Response login2(@PathParam("login") String login, @PathParam("password") String password) {
+    @POST
+    public Response login(@QueryParam("login") String login, @QueryParam("password") String password) {
         boolean success = loginHandler.login(login, password);
         return Response.ok(gson.toJson(success)).build();
     }
-    
-    @POST
-    public Response login(@QueryParam("login") String login, @QueryParam("password") String password) {
+        
+    @GET @Path("{login}/{password}")
+    public Response login2(@PathParam("login") String login, @PathParam("password") String password) {
         boolean success = loginHandler.login(login, password);
         return Response.ok(gson.toJson(success)).build();
     }

@@ -45,4 +45,9 @@ public class Car extends IUniqueEntity {
     
     public Car() { }
     
+    public Car(String licensePlate, float pricePerDay) {
+        this.licensePlate = licensePlate;
+        this.pricePerDay = pricePerDay;
+    }
+    
 }

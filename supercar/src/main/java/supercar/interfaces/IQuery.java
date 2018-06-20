@@ -14,6 +14,7 @@ import javax.persistence.TypedQuery;
  *
  * @author Maxi
  * @param <T>
+ * I know this is not really an interface, but idk where to put it otherwise yet
  */
 public class IQuery<T extends IUniqueEntity> {
 

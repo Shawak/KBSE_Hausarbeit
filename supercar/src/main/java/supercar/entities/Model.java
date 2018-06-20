@@ -33,8 +33,7 @@ public class Model extends IUniqueEntity {
     public void setCars(List<Car> cars) {
         this.cars = cars;
     }
-
-
+    
     public String getName() {
         return name;
     }

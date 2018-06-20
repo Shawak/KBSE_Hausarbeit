@@ -5,6 +5,7 @@
  */
 package supercar.repositories;
 
+import java.util.Collection;
 import javax.ejb.Stateless;
 import supercar.entities.Account;
 import supercar.interfaces.IRepository;
@@ -22,6 +23,11 @@ public class AccountRepository extends IRepository<Account> {
         return query("select e from #table e where e.login = :login")
                 .put("login", login)
                 .one();
+    }
+    
+    public Collection<Account> getAllUnactivated() {
+        return query("select e from #table e where e.activated = false")
+                .all();
     }
     
 }

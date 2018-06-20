@@ -40,6 +40,10 @@ public class LoginHandler implements Serializable {
             return false;
         }
         
+        if (!acc.isActivated()) {
+            return false;
+        }
+        
         loggedIn = true;
         accountId = acc.getId();
         return true;
