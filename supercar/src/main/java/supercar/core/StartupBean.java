@@ -23,7 +23,7 @@ public class StartupBean extends IRepositoryAccessor {
     @PostConstruct
     void init() {
         if (Accounts.getAll().isEmpty()) {
-            Accounts.add(new Account("Administrator", "Administrator", 0, "", "admin", "admin", "", AccountType.Administrator, true));
+            Accounts.add(new Account("Administrator", "Administrator", 0, "", "admin", "admin", "", AccountType.Administrator));
             
             Model astra = Models.add(new Model("Astra", 0, 0));
             Model sprinter = Models.add(new Model("Sprinter", 0, 0));

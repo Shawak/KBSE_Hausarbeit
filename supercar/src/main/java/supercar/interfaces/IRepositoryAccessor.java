@@ -14,12 +14,12 @@ import supercar.repositories.*;
  */
 public abstract class IRepositoryAccessor {
     
-    @Inject public AccountRepository Accounts;
-    @Inject public CarRepository Cars;
-    @Inject public GarageRepository Garages;
-    @Inject public LendingRepository Lendings;
-    @Inject public ManufacturerRepository Manufacturers;
-    @Inject public ModelRepository Models;
-    @Inject public RepairRepository Repairs;
+    @Inject protected AccountRepository Accounts;
+    @Inject protected CarRepository Cars;
+    @Inject protected GarageRepository Garages;
+    @Inject protected LendingRepository Lendings;
+    @Inject protected ManufacturerRepository Manufacturers;
+    @Inject protected ModelRepository Models;
+    @Inject protected RepairRepository Repairs;
 
 }

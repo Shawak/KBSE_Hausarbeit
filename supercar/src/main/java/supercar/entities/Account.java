@@ -124,7 +124,7 @@ public class Account extends IUniqueEntity {
     
     public Account() { }
     
-    public Account(String firstname, String lastname, int plz, String street, String login, String password, String licenseNumber, AccountType accountType, boolean activated) {
+    public Account(String firstname, String lastname, int plz, String street, String login, String password, String licenseNumber, AccountType accountType) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.plz = plz;
@@ -133,6 +133,7 @@ public class Account extends IUniqueEntity {
         this.password = password;
         this.licenseNumber = licenseNumber;
         this.accountType = accountType.getValue();
+        this.activated = true;
     }
     
 }
