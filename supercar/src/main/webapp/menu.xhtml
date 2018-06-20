@@ -6,17 +6,17 @@
     xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
     xmlns:b="http://bootsfaces.net/ui"
     xmlns:p="http://primefaces.org/ui">
-    <b:navBar fluid="true" brand-img="images/Logo.png" brand-img-style-class="image">
-        <b:navbarLinks>
-            <b:navLink value="Cars" href="#"></b:navLink>
-            <b:navLink value="Contact" href="#"></b:navLink>
-            <b:navLink value="About" href="#"></b:navLink>
+    <b:navBar  brandHref="/supercar" fluid="true" brand-img="images/Logo.png" brand-img-style-class="image">
+        <b:navbarLinks> 
+            <b:navLink value="Cars" href="/supercar"></b:navLink>
+            <b:navLink value="Contact" href="/supercar/faces/contact.xhtml"></b:navLink>
+            <b:navLink value="About" href="/supercar/faces/about.xhtml"></b:navLink>
             <!--Mitarbeiter-->
             <b:navLink value="Rewiew" href="#"></b:navLink>
             <b:navLink value="Garage" href="#"></b:navLink>
             <b:navLink value="User" href="#"></b:navLink>
             <!--Admin-->
-            <b:navLink value="Add" href="#"></b:navLink>
+            <b:navLink value="Add" href="/supercar/faces/add_car.xhtml"></b:navLink>
         </b:navbarLinks>
         <b:navbarLinks pull="right">
             <b:navLink value="Login" href="#"></b:navLink>
