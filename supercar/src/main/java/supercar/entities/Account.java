@@ -5,6 +5,7 @@
  */
 package supercar.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -38,7 +39,7 @@ public class Account extends IUniqueEntity {
     private List<Lending> lendings;
 
     public List<Lending> getLendings() {
-        return lendings;
+        return lendings == null ? new ArrayList<>() : lendings;
     }
 
     public void setLendings(List<Lending> lendings) {

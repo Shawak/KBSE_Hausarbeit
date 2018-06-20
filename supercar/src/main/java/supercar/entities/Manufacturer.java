@@ -5,6 +5,7 @@
  */
 package supercar.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -30,7 +31,7 @@ public class Manufacturer extends IUniqueEntity {
     private List<Model> models;
 
     public List<Model> getModels() {
-        return models;
+        return models == null ? new ArrayList<>() : models;
     }
 
     public void setModels(List<Model> models) {
@@ -70,5 +71,12 @@ public class Manufacturer extends IUniqueEntity {
     }
     
     public Manufacturer() { }
+    
+    public Manufacturer(String name, int plz, String street, String contactInfo) {
+        this.name = name;
+        this.plz = plz;
+        this.street = street;
+        this.contactInfo = contactInfo;
+    }
     
 }

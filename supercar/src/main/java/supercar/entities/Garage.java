@@ -5,6 +5,7 @@
  */
 package supercar.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -31,7 +32,7 @@ public class Garage extends IUniqueEntity {
     private List<Repair> repairs;
 
     public List<Repair> getRepairs() {
-        return repairs;
+        return repairs == null ? new ArrayList<>() : repairs;
     }
 
     public void setRepairs(List<Repair> repairs) {

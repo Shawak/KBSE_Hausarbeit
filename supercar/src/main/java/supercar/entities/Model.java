@@ -5,10 +5,7 @@
  */
 package supercar.entities;
 
-import java.util.List;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import supercar.interfaces.IUniqueEntity;
 
 /**
@@ -21,18 +18,6 @@ public class Model extends IUniqueEntity {
     private String name;
     private int horsepower;
     private int cubicCapacity;
-    
-    @OneToMany
-    @JoinColumn(name="Model_ID")
-    private List<Car> cars;
-
-    public List<Car> getCars() {
-        return cars;
-    }
-
-    public void setCars(List<Car> cars) {
-        this.cars = cars;
-    }
     
     public String getName() {
         return name;
@@ -59,5 +44,11 @@ public class Model extends IUniqueEntity {
     }
     
     public Model() { }
+    
+    public Model(String name, int horsepower, int cubicCapacity) {
+        this.name = name;
+        this.horsepower = horsepower;
+        this.cubicCapacity = cubicCapacity;
+    }
     
 }

@@ -35,9 +35,10 @@ public abstract class IRepository<T extends IUniqueEntity> implements Serializab
         this.table = this.entityClass.getSimpleName();
     }
     
-    public void add(T entity) {
+    public T add(T entity) {
         System.out.print("SQL: persist " + table);
         em.persist(entity);
+        return entity;
     }
     
     public T get(long id) {
