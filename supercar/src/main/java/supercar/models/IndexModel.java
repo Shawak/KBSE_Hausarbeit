@@ -12,7 +12,7 @@ import supercar.interfaces.IRepositoryAccessor;
  *
  * @author Maxi
  */
-@Named("indexModel")
+@Named("index")
 public class IndexModel extends IRepositoryAccessor {
 
     public IndexModel() { }
