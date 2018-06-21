@@ -8,6 +8,7 @@ package supercar.core;
 import java.io.Serializable;
 import javax.enterprise.context.SessionScoped;
 import supercar.entities.Account;
+import supercar.enums.AccountType;
 import supercar.interfaces.IRepositoryAccessor;
 
 /**
@@ -25,7 +26,8 @@ public class LoginHandler extends IRepositoryAccessor implements Serializable {
     }
     
     public boolean isLoggedIn() {
-        return loggedIn && getAccount() != null;
+        Account account = Accounts.get(accountId);
+        return loggedIn && account != null && account.isActivated();
     }
     
     public LoginHandler() { }
@@ -48,6 +50,10 @@ public class LoginHandler extends IRepositoryAccessor implements Serializable {
     public void logout() {
         loggedIn = false;
         accountId = 0;
+    }
+    
+    public boolean hasAccess(AccountType accountType) {
+        return isLoggedIn() && getAccount().isAtleast(accountType);
     }
     
 }

@@ -5,11 +5,7 @@
  */
 package supercar.entities;
 
-import java.util.ArrayList;
-import java.util.List;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import supercar.interfaces.IUniqueEntity;
 
 /**
@@ -25,18 +21,6 @@ public class Manufacturer extends IUniqueEntity {
     private String street;
     
     private String contactInfo;
-
-    @OneToMany
-    @JoinColumn(name="Manufacturer_ID")
-    private List<Model> models;
-
-    public List<Model> getModels() {
-        return models == null ? new ArrayList<>() : models;
-    }
-
-    public void setModels(List<Model> models) {
-        this.models = models;
-    }
     
     public String getName() {
         return name;

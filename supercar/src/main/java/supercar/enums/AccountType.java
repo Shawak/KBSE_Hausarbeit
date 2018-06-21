@@ -26,5 +26,9 @@ public enum AccountType implements Serializable {
     AccountType(int value) {
         this.value = value;
     }
+    
+    public static AccountType fromInt(int value) {
+        return AccountType.values()[value - 1];
+    }
 
 }

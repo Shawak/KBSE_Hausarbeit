@@ -114,6 +114,14 @@ public class Account extends IUniqueEntity {
         this.accountType = accountType.getValue();
     }
     
+    public AccountType getAccountType() {
+        return AccountType.fromInt(this.accountType);
+    }
+    
+    public boolean isAtleast(AccountType accountType) {
+        return this.accountType >= accountType.getValue();
+    }
+    
     public boolean isEmployee() {
         return accountType >= AccountType.Employee.getValue();
     }

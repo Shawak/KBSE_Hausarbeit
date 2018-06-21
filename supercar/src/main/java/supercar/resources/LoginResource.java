@@ -45,4 +45,9 @@ public class LoginResource extends IResource {
         return Response.ok(gson.toJson(success)).build();
     }
     
+    @GET @Path("logout")
+    public Response logout() {
+        loginHandler.logout();
+        return Response.ok(gson.toJson("logged out")).build();
+    }
 }

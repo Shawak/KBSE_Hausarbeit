@@ -6,6 +6,7 @@
 package supercar.interfaces;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import java.io.Serializable;
 import javax.inject.Inject;
 import supercar.core.LoginHandler;
@@ -19,6 +20,6 @@ public abstract class IResource extends IRepositoryAccessor implements Serializa
     @Inject
     protected LoginHandler loginHandler;
     
-    protected Gson gson = new Gson();
+    protected Gson gson = new GsonBuilder().setPrettyPrinting().create();
     
 }

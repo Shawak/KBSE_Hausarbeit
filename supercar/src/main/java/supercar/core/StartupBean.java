@@ -22,28 +22,34 @@ public class StartupBean extends IRepositoryAccessor {
     
     @PostConstruct
     void init() {
+        for (AccountType c : AccountType.values()) {
+            System.out.println(c);
+        }
+        
+        System.out.println(AccountType.fromInt(AccountType.Administrator.getValue()));
+        
         if (Accounts.getAll().isEmpty()) {
             Accounts.add(new Account("Administrator", "Administrator", 0, "", "admin", "admin", "", AccountType.Administrator));
             
-            Model astra = Models.add(new Model("Astra", 0, 0));
-            Model sprinter = Models.add(new Model("Sprinter", 0, 0));
-            Model aventador = Models.add(new Model("Aventador", 0, 0));
-            Model gtr = Models.add(new Model("GT-R", 0, 0));
-            Model kangoo = Models.add(new Model("Kangoo", 0, 0));
-            Model caddy = Models.add(new Model("Caddy", 0, 0));
-            Model aygo = Models.add(new Model("Aygo", 0, 0));
-            Model v70 = Models.add(new Model("V70", 0, 0));
-            Model granTurismo = Models.add(new Model("GranTurismo", 0, 0));
+            Manufacturer opel = Manufacturers.add(new Manufacturer("Opel", 0, "", ""));
+            Manufacturer mercedes = Manufacturers.add(new Manufacturer("Mercedes-Benz", 0, "", ""));
+            Manufacturer lamborghini = Manufacturers.add(new Manufacturer("Lamborghini", 0, "", ""));
+            Manufacturer nissan = Manufacturers.add(new Manufacturer("Nissan", 0, "", ""));
+            Manufacturer renault = Manufacturers.add(new Manufacturer("Renault", 0, "", ""));
+            Manufacturer vw = Manufacturers.add(new Manufacturer("VW", 0, "", ""));
+            Manufacturer toyota = Manufacturers.add(new Manufacturer("Toyota", 0, "", ""));
+            Manufacturer volvo = Manufacturers.add(new Manufacturer("Volvo", 0, "", ""));
+            Manufacturer maserati = Manufacturers.add(new Manufacturer("Maserati", 0, "", ""));
             
-            Manufacturers.add(new Manufacturer("Opel", 0, "", "")).getModels().add(astra);
-            Manufacturers.add(new Manufacturer("Mercedes-Benz", 0, "", "")).getModels().add(sprinter);
-            Manufacturers.add(new Manufacturer("Lamborghini", 0, "", "")).getModels().add(aventador);
-            Manufacturers.add(new Manufacturer("Nissan", 0, "", "")).getModels().add(gtr);
-            Manufacturers.add(new Manufacturer("Renault", 0, "", "")).getModels().add(kangoo);
-            Manufacturers.add(new Manufacturer("VW", 0, "", "")).getModels().add(caddy);
-            Manufacturers.add(new Manufacturer("Toyota", 0, "", "")).getModels().add(aygo);
-            Manufacturers.add(new Manufacturer("Volvo", 0, "", "")).getModels().add(v70);
-            Manufacturers.add(new Manufacturer("Maserati", 0, "", "")).getModels().add(granTurismo);
+            Model astra = Models.add(new Model("Astra", opel, 0, 0));
+            Model sprinter = Models.add(new Model("Sprinter", mercedes, 0, 0));
+            Model aventador = Models.add(new Model("Aventador", lamborghini, 0, 0));
+            Model gtr = Models.add(new Model("GT-R", nissan, 0, 0));
+            Model kangoo = Models.add(new Model("Kangoo", renault, 0, 0));
+            Model caddy = Models.add(new Model("Caddy", vw, 0, 0));
+            Model aygo = Models.add(new Model("Aygo", toyota, 0, 0));
+            Model v70 = Models.add(new Model("V70", volvo, 0, 0));
+            Model granTurismo = Models.add(new Model("GranTurismo", maserati, 0, 0));
             
             Cars.add(new Car("OS HS 0001", 40.0f, astra));
             Cars.add(new Car("OS HS 0002", 50.0f, sprinter));

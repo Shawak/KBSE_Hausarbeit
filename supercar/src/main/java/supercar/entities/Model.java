@@ -6,6 +6,7 @@
 package supercar.entities;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import supercar.interfaces.IUniqueEntity;
 
 /**
@@ -18,6 +19,17 @@ public class Model extends IUniqueEntity {
     private String name;
     private int horsepower;
     private int cubicCapacity;
+    
+    @ManyToOne
+    private Manufacturer manufacturer;
+
+    public Manufacturer getManufacturer() {
+        return manufacturer;
+    }
+
+    public void setManufacturer(Manufacturer manufacturer) {
+        this.manufacturer = manufacturer;
+    }
     
     public String getName() {
         return name;
@@ -45,8 +57,9 @@ public class Model extends IUniqueEntity {
     
     public Model() { }
     
-    public Model(String name, int horsepower, int cubicCapacity) {
+    public Model(String name, Manufacturer manufacturer, int horsepower, int cubicCapacity) {
         this.name = name;
+        this.manufacturer = manufacturer;
         this.horsepower = horsepower;
         this.cubicCapacity = cubicCapacity;
     }
