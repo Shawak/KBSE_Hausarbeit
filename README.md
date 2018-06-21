@@ -4,6 +4,7 @@
 
 Because chrome does not allow saving cookies to http://localhost and java EE not changing the cookie's path, be sure to use http://127.0.0.1 instead or you won't be able to login!
 
+Alternativly you can also pass the jsessionid after the url like `http://localhost[/..];jsessionid=370baf0f9f652e77c10ac4d0a420`
 
 #### Requirements
 
