@@ -5,40 +5,57 @@
  */
 package supercar.models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.annotation.PostConstruct;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import supercar.entities.Manufacturer;
+import supercar.interfaces.IRepositoryAccessor;
 
 /**
  *
  * @author Patrick
  */
 @Named("manufactury")
-public class ManufacturyModel {
+@SessionScoped
+public class ManufacturyModel extends IRepositoryAccessor implements Serializable{
     
-    private List<Integer> plz;
+    private List<Integer> plz_api;
+    
     private Manufacturer manufactury;
+    
+    private List<Manufacturer> manufacturer;
+
+    public List<Manufacturer> getManufacturer() {
+        return manufacturer;
+    }
 
     public Manufacturer getManufactury() {
         return manufactury;
     }
 
-    public List<Integer> getPlz() {
-        return plz;
+    public List<Integer> getPlz_api() {
+        return plz_api;
     }
 
     public ManufacturyModel() {
         manufactury = new Manufacturer();
-        plz = new ArrayList<>();
-        plz.add(48477);
-        plz.add(48499);
-        plz.add(50000);
-        
+        plz_api = new ArrayList<>();
+        plz_api.add(48477);
+        plz_api.add(48499);
+        plz_api.add(50000);  
     }
     
+    @PostConstruct
+    public void init(){
+        manufacturer = new ArrayList<>();
+        manufacturer.addAll(Manufacturers.getAll());
+    }
     
-    
-    
+    public void add(){
+        manufacturer.add(Manufacturers.add(manufactury));
+    }
     
 }

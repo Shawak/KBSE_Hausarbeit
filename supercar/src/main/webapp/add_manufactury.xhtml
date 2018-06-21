@@ -16,18 +16,42 @@
             <ui:insert name="menu">
                 <ui:include src="menu.xhtml"></ui:include>
             </ui:insert>
-            <b:form styleClass="form_center">
-                <b:inputText id="name" value="#{manufactury.manufactury.name}" label="Manufactory"/>
-                <b:inputText id="street" value="#{manufactury.manufactury.street}" label="Street"/>
-                    <!--b:inputText id="plz" value="#" label="Post Code"/-->
-                     
-                    <b:selectOneMenu value="#" label="Post Code" id="plz">
-                        <f:selectItems value="#{manufactury.plz}" var="m" itemValue="#{m}" itemLabel="#{m}" />
-                    </b:selectOneMenu>
-                    
-                    <b:inputText id="city" value="#" label="City"/>
-                    <b:inputText id="contact" value="#{manufactury.manufactury.contactInfo}" label="Contact"/>
-            </b:form>
+            
+            
+            <b:tabView activeIndex="0">
+                <b:tab title="Manufactory">
+                    <h:form id="form_data">
+                        <b:dataTable value="#{manufactury.manufacturer}"
+                                     var="manufactury2">
+                            <b:dataTableColumn value="#{manufactury2.name}" />
+                            <b:dataTableColumn value="#{manufactory2.plz}" />
+                            <b:dataTableColumn value="#{manufactory2.contactinfo}" />
+                            <b:dataTableColumn value="#{manufactory2.street}"/>
+                        </b:dataTable>
+                    </h:form>
+                </b:tab>
+                <b:tab title="Add">
+                    <b:form styleClass="form_center" id="form">
+                        <b:inputText id="name" value="#{manufactury.manufactury.name}" label="Manufactory"/>
+                        <b:messages for="name"/>
+
+                        <b:inputText id="street" value="#{manufactury.manufactury.street}" label="Street"/>
+                        <b:messages for="street"/>
+                        
+                        <b:selectOneMenu value="#{manufactury.manufactury.plz}" label="Post Code" id="plz">
+                            <f:selectItems value="#{manufactury.plz_api}" var="m" itemValue="#{m}" itemLabel="#{m}" />
+                        </b:selectOneMenu>
+
+                        <b:inputText id="city" value="" label="City" readonly="true"/>
+                        <b:messages for="city"/>
+
+                        <b:inputText id="contact" value="#{manufactury.manufactury.contactInfo}" label="Contact"/>
+                        <b:messages for="contact"/>
+
+                        <b:commandButton value="Add" action="#{manufactury.add}" update="form"/>
+                    </b:form>
+                </b:tab>
+            </b:tabView>
         </b:container>
     </h:body>
 </html>

@@ -6,6 +6,7 @@
 package supercar.entities;
 
 import javax.persistence.Entity;
+import javax.validation.constraints.NotNull;
 import supercar.interfaces.IUniqueEntity;
 
 /**
@@ -15,11 +16,13 @@ import supercar.interfaces.IUniqueEntity;
 @Entity
 public class Manufacturer extends IUniqueEntity {
     
+    @NotNull
     private String name;
     
-    private int plz;
+    private Integer plz;
+    //@NotNull
     private String street;
-    
+    //@NotNull
     private String contactInfo;
     
     public String getName() {
@@ -30,7 +33,7 @@ public class Manufacturer extends IUniqueEntity {
         this.name = name;
     }
 
-    public int getPlz() {
+    public Integer getPlz() {
         return plz;
     }
 
