@@ -1,0 +1,18 @@
+.image{
+    height: 50px;
+    margin-top: -15px;
+}
+
+.form_center{
+    margin: 0 auto;
+    max-width: 400px;
+    padding: 15px;
+}
+
+.input_readonly{
+    background-color: #ffffff !important;
+}
+
+html{
+    overflow-y:scroll;
+}

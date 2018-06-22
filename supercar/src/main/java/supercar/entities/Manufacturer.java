@@ -6,8 +6,10 @@
 package supercar.entities;
 
 import javax.persistence.Entity;
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 import supercar.interfaces.IUniqueEntity;
+import supercar.validator.PLZ;
 
 /**
  *
@@ -19,10 +21,14 @@ public class Manufacturer extends IUniqueEntity {
     @NotNull
     private String name;
     
+    //stehen lass int ist default 0
+    @NotNull
+    @PLZ
     private Integer plz;
     
     @NotNull
     private String street;
+    
     //@NotNull
     private String contactInfo;
     
@@ -38,7 +44,7 @@ public class Manufacturer extends IUniqueEntity {
         return plz;
     }
 
-    public void setPlz(int plz) {
+    public void setPlz(Integer plz) {
         this.plz = plz;
     }
 
@@ -60,7 +66,7 @@ public class Manufacturer extends IUniqueEntity {
     
     public Manufacturer() { }
     
-    public Manufacturer(String name, int plz, String street, String contactInfo) {
+    public Manufacturer(String name, Integer plz, String street, String contactInfo) {
         this.name = name;
         this.plz = plz;
         this.street = street;

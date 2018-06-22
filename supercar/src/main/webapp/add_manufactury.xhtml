@@ -1,76 +1,57 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:b="http://bootsfaces.net/ui"
-      xmlns:p="http://primefaces.org/ui">
-    <h:head>
-        <title>SuperCar</title>
-        <link href="css/menu.css" rel="stylesheet" type="text/css"/>
-        <link href="css/form.css" rel="stylesheet" type="text/css"/>
-    </h:head>
-    <h:body>
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:b="http://bootsfaces.net/ui"
+    xmlns:p="http://primefaces.org/ui" 
+    template="template.xhtml">
+    
+    <ui:define name="body">
         
-        
-        <b:container fluid="false">
+        <b:tabView activeIndex="0">
+            <b:tab title="Manufactory">          
+                <h:form class="form_data">
+                    <br/>
+                    <b:dataTable id="data" lang="en" value="#{manufactury.manufacturer}" var="manufacturer" excel="true" csv="true" pdf="true" columnVisibility="true" copy="true" print="true">
+                        <b:dataTableColumn value="#{manufacturer.name}" />
+                        <b:dataTableColumn value="#{manufacturer.plz}" />
+                        <b:dataTableColumn value="#{manufacturer.street}"/>
+                        <b:dataTableColumn value="#{manufacturer.contactInfo}" label="Contact Info"/>
+                        <b:dataTableColumn label="Edit">
+                            <b:commandButton value="Edit" icon="edit"/>
+                        </b:dataTableColumn>
+                        <b:dataTableColumn label="Delete">
+                            <b:commandButton value="Delete" icon="trash">
+                            </b:commandButton>
+                        </b:dataTableColumn>
+                    </b:dataTable>
+                </h:form>
+            </b:tab>
             
-            
-            
-            <ui:insert name="menu">
-                <ui:include src="menu.xhtml"></ui:include>
-            </ui:insert>
-            <b:tabView activeIndex="0">
-                <b:tab title="Manufactory">
+            <b:tab title="Add">
+                <h:form class="form form_center">
+                    <b:inputText id="name" value="#{manufactury.manufactury.name}" label="Manufactory"/>
+                    <b:messages for="name"/>
+
+                    <b:inputText id="street" value="#{manufactury.manufactury.street}" label="Street"/>
+                    <b:messages for="street"/>
+
+                    <b:inputText id="plz" value="#{manufactury.manufactury.plz}" label="Post Code"/>
+                    <b:messages for="plz"/>
+
+                    <b:inputText id="city" value="" label="City" readonly="true" style-class="input_readonly"/>
+                    <b:messages for="city"/>
+
+                    <b:inputText id="contact" value="#{manufactury.manufactury.contactInfo}" label="Contact"/>
+                    <b:messages for="contact"/>
+
+                    <b:commandButton value="Add" action="#{manufactury.add}" update="@(.form) @(.form_data)"/>
                     
-                    <b:modal id="editmanufactury" title="Edit Manufactury">
-            <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-  <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
- 
-        </b:modal>
-                    <button data-target="editmanufactury" data-toggle="modal">Edit</button>
-                            
-                    <h:form class="form__data">
-                        <b:dataTable value="#{manufactury.manufacturer}" var="manufacturer" excel="true" csv="true" pdf="true" columnVisibility="true" copy="true" print="true">
-                            <b:dataTableColumn value="#{manufacturer.name}" />
-                            <b:dataTableColumn value="#{manufacturer.plz}" />
-                            <b:dataTableColumn value="#{manufacturer.street}"/>
-                            <b:dataTableColumn value="#{manufacturer.contactInfo}" />
-                            <b:dataTableColumn label="Edit">
-                                <b:button value="Edit" icon="edit" p:data-target="#editmanufactury" p:data-toggle="modal"/>
-                            </b:dataTableColumn>
-                            <b:dataTableColumn label="Delete">
-                                <b:commandButton value="Delete" icon="trash" update="@(.form_data)">
-                                </b:commandButton>
-                            </b:dataTableColumn>
-                        </b:dataTable>
-                    </h:form>
-                </b:tab>
-                <b:tab title="Add">
-                    <b:form styleClass="form_center" id="form">
-                        <b:inputText id="name" value="#{manufactury.manufactury.name}" label="Manufactory"/>
-                        <b:messages for="name"/>
-
-                        <b:inputText id="street" value="#{manufactury.manufactury.street}" label="Street"/>
-                        <b:messages for="street"/>
-                        
-                        <b:selectOneMenu value="#{manufactury.manufactury.plz}" label="Post Code" id="plz">
-                            <f:selectItems value="#{manufactury.plz_api}" var="m" itemValue="#{m}" itemLabel="#{m}" />
-                        </b:selectOneMenu>
-
-                        <b:inputText id="city" value="" label="City" readonly="true"/>
-                        <b:messages for="city"/>
-
-                        <b:inputText id="contact" value="#{manufactury.manufactury.contactInfo}" label="Contact"/>
-                        <b:messages for="contact"/>
-
-                        <b:commandButton value="Add" action="#{manufactury.add}" update="form"/>
-                    </b:form>
-                </b:tab>
-            </b:tabView>
-        </b:container>
+                    <b:messages id="result"/>
+                </h:form>
+            </b:tab>
+        </b:tabView>
         
-        
-    </h:body>
-</html>
+    </ui:define>
+</ui:composition>
