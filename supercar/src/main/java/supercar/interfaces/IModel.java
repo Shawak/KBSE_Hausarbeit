@@ -11,6 +11,6 @@ import java.io.Serializable;
  *
  * @author Maxi
  */
-public abstract class IModel extends IRepositoryAccessor implements Serializable {
+public abstract class IModel extends IRestrictableRepositoryAccessor implements Serializable {
     
 }
