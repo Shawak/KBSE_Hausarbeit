@@ -29,25 +29,25 @@ public class LoginResource extends IResource {
     
     @GET
     public Response isLoggedIn() {
-        boolean loggedIn = loginHandler.isLoggedIn();
+        boolean loggedIn = LoginHandler.isLoggedIn();
         return Response.ok(gson.toJson(loggedIn)).build();
     }
     
     @POST
     public Response login(@QueryParam("login") String login, @QueryParam("password") String password) {
-        boolean success = loginHandler.login(login, password);
+        boolean success = LoginHandler.login(login, password);
         return Response.ok(gson.toJson(success)).build();
     }
         
     @GET @Path("{login}/{password}")
     public Response login2(@PathParam("login") String login, @PathParam("password") String password) {
-        boolean success = loginHandler.login(login, password);
+        boolean success = LoginHandler.login(login, password);
         return Response.ok(gson.toJson(success)).build();
     }
     
     @GET @Path("logout")
     public Response logout() {
-        loginHandler.logout();
+        LoginHandler.logout();
         return Response.ok(gson.toJson("logged out")).build();
     }
 }

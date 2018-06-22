@@ -5,16 +5,12 @@
  */
 package supercar.interfaces;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import java.io.Serializable;
 
 /**
  *
  * @author Maxi
  */
-public abstract class IResource extends IRestrictedRepositoryAccessor implements Serializable {
-   
-    protected Gson gson = new GsonBuilder().setPrettyPrinting().create();
+public abstract class IModel extends IRepositoryAccessor implements Serializable {
     
 }
