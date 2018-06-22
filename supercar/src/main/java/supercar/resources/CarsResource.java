@@ -30,7 +30,7 @@ public class CarsResource extends IResource {
     
     @GET
     public Response get() {
-        if (!loginHandler.hasAccess(AccountType.User)) {
+        if (!LoginHandler.hasAccess(AccountType.User)) {
             return Response.status(Response.Status.FORBIDDEN).build();
         }
         

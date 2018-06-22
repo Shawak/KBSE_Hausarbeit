@@ -5,14 +5,13 @@
  */
 package supercar.models;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import supercar.entities.Manufacturer;
-import supercar.interfaces.IRepositoryAccessor;
+import supercar.interfaces.IModel;
 
 /**
  *
@@ -20,7 +19,7 @@ import supercar.interfaces.IRepositoryAccessor;
  */
 @Named("manufactury")
 @SessionScoped
-public class ManufacturyModel extends IRepositoryAccessor implements Serializable{
+public class ManufacturyModel extends IModel {
     
     private List<Integer> plz_api;
     

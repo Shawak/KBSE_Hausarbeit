@@ -6,14 +6,14 @@
 package supercar.models;
 
 import javax.inject.Named;
-import supercar.interfaces.IRepositoryAccessor;
+import supercar.interfaces.IModel;
 
 /**
  *
  * @author Maxi
  */
 @Named("index")
-public class IndexModel extends IRepositoryAccessor {
+public class IndexModel extends IModel {
 
     public IndexModel() { }
 
