@@ -13,7 +13,7 @@ import java.io.Serializable;
  *
  * @author Maxi
  */
-public abstract class IResource extends IRestrictedRepositoryAccessor implements Serializable {
+public abstract class IResource extends IRestrictableRepositoryAccessor implements Serializable {
    
     protected Gson gson = new GsonBuilder().setPrettyPrinting().create();
     
