@@ -12,21 +12,38 @@
         <link href="css/form.css" rel="stylesheet" type="text/css"/>
     </h:head>
     <h:body>
+        
+        
         <b:container fluid="false">
+            
+            
+            
             <ui:insert name="menu">
                 <ui:include src="menu.xhtml"></ui:include>
             </ui:insert>
-            
-            
             <b:tabView activeIndex="0">
                 <b:tab title="Manufactory">
-                    <h:form id="form_data">
-                        <b:dataTable value="#{manufactury.manufacturer}"
-                                     var="manufactury2">
-                            <b:dataTableColumn value="#{manufactury2.name}" />
-                            <b:dataTableColumn value="#{manufactory2.plz}" />
-                            <b:dataTableColumn value="#{manufactory2.contactinfo}" />
-                            <b:dataTableColumn value="#{manufactory2.street}"/>
+                    
+                    <b:modal id="editmanufactury" title="Edit Manufactury">
+            <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+  <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+ 
+        </b:modal>
+                    <button data-target="editmanufactury" data-toggle="modal">Edit</button>
+                            
+                    <h:form class="form__data">
+                        <b:dataTable value="#{manufactury.manufacturer}" var="manufacturer" excel="true" csv="true" pdf="true" columnVisibility="true" copy="true" print="true">
+                            <b:dataTableColumn value="#{manufacturer.name}" />
+                            <b:dataTableColumn value="#{manufacturer.plz}" />
+                            <b:dataTableColumn value="#{manufacturer.street}"/>
+                            <b:dataTableColumn value="#{manufacturer.contactInfo}" />
+                            <b:dataTableColumn label="Edit">
+                                <b:button value="Edit" icon="edit" p:data-target="#editmanufactury" p:data-toggle="modal"/>
+                            </b:dataTableColumn>
+                            <b:dataTableColumn label="Delete">
+                                <b:commandButton value="Delete" icon="trash" update="@(.form_data)">
+                                </b:commandButton>
+                            </b:dataTableColumn>
                         </b:dataTable>
                     </h:form>
                 </b:tab>
@@ -53,5 +70,7 @@
                 </b:tab>
             </b:tabView>
         </b:container>
+        
+        
     </h:body>
 </html>
