@@ -20,7 +20,8 @@ public class Manufacturer extends IUniqueEntity {
     private String name;
     
     private Integer plz;
-    //@NotNull
+    
+    @NotNull
     private String street;
     //@NotNull
     private String contactInfo;
