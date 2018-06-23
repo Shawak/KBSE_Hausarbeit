@@ -7,6 +7,7 @@ package supercar.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
 import supercar.interfaces.IUniqueEntity;
 
 /**
@@ -16,9 +17,14 @@ import supercar.interfaces.IUniqueEntity;
 @Entity
 public class Model extends IUniqueEntity {
     
+    @NotNull
     private String name;
-    private int horsepower;
-    private int cubicCapacity;
+    
+    @NotNull
+    //stehen lass int ist default 0
+    private Integer horsepower;
+    @NotNull
+    private Integer cubicCapacity;
     
     @ManyToOne
     private Manufacturer manufacturer;
@@ -39,25 +45,25 @@ public class Model extends IUniqueEntity {
         this.name = name;
     }
 
-    public int getHorsepower() {
+    public Integer getHorsepower() {
         return horsepower;
     }
 
-    public void setHorsepower(int horsepower) {
+    public void setHorsepower(Integer horsepower) {
         this.horsepower = horsepower;
     }
 
-    public int getCubicCapacity() {
+    public Integer getCubicCapacity() {
         return cubicCapacity;
     }
 
-    public void setCubicCapacity(int cubicCapacity) {
+    public void setCubicCapacity(Integer cubicCapacity) {
         this.cubicCapacity = cubicCapacity;
     }
     
     public Model() { }
     
-    public Model(String name, Manufacturer manufacturer, int horsepower, int cubicCapacity) {
+    public Model(String name, Manufacturer manufacturer, Integer horsepower, Integer cubicCapacity) {
         this.name = name;
         this.manufacturer = manufacturer;
         this.horsepower = horsepower;

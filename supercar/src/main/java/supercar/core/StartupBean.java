@@ -41,25 +41,25 @@ public class StartupBean extends IRepositoryAccessor {
             Manufacturer volvo = Manufacturers.add(new Manufacturer("Volvo", 50679, "Siegburger Straße 229", ""));
             Manufacturer maserati = Manufacturers.add(new Manufacturer("Maserati", 65201, "Stielstraße 3b", ""));
             
-            Model astra = Models.add(new Model("Astra", opel, 0, 0));
-            Model sprinter = Models.add(new Model("Sprinter", mercedes, 0, 0));
-            Model aventador = Models.add(new Model("Aventador", lamborghini, 0, 0));
-            Model gtr = Models.add(new Model("GT-R", nissan, 0, 0));
-            Model kangoo = Models.add(new Model("Kangoo", renault, 0, 0));
-            Model caddy = Models.add(new Model("Caddy", vw, 0, 0));
-            Model aygo = Models.add(new Model("Aygo", toyota, 0, 0));
-            Model v70 = Models.add(new Model("V70", volvo, 0, 0));
-            Model granTurismo = Models.add(new Model("GranTurismo", maserati, 0, 0));
+            Model astra = Models.add(new Model("Astra", opel, 1, 1));
+            Model sprinter = Models.add(new Model("Sprinter", mercedes, 1, 1));
+            Model aventador = Models.add(new Model("Aventador", lamborghini, 1, 1));
+            Model gtr = Models.add(new Model("GT-R", nissan, 1, 1));
+            Model kangoo = Models.add(new Model("Kangoo", renault, 1, 1));
+            Model caddy = Models.add(new Model("Caddy", vw, 1, 1));
+            Model aygo = Models.add(new Model("Aygo", toyota, 1, 1));
+            Model v70 = Models.add(new Model("V70", volvo, 1, 1));
+            Model granTurismo = Models.add(new Model("GranTurismo", maserati, 1, 1));
             
-            Cars.add(new Car("OS HS 0001", 40.0f, astra));
-            Cars.add(new Car("OS HS 0002", 50.0f, sprinter));
-            Cars.add(new Car("OS HS 0003", 120.0f, aventador));
-            Cars.add(new Car("OS HS 0004", 31.0f, gtr));
-            Cars.add(new Car("OS HS 0005", 60.5f, kangoo));
-            Cars.add(new Car("OS HS 0006", 42.75f, caddy));
-            Cars.add(new Car("OS HS 0007", 75.31f, aygo));
-            Cars.add(new Car("OS HS 0008", 65.7f, v70));
-            Cars.add(new Car("OS HS 0009", 21.5f, granTurismo));
+            Cars.add(new Car("OS HS 0001", 40.0f, astra, "", ""));
+            Cars.add(new Car("OS HS 0002", 50.0f, sprinter, "", ""));
+            Cars.add(new Car("OS HS 0003", 120.0f, aventador, "", ""));
+            Cars.add(new Car("OS HS 0004", 31.0f, gtr, "", ""));
+            Cars.add(new Car("OS HS 0005", 60.5f, kangoo, "", ""));
+            Cars.add(new Car("OS HS 0006", 42.75f, caddy, "", ""));
+            Cars.add(new Car("OS HS 0007", 75.31f, aygo, "", ""));
+            Cars.add(new Car("OS HS 0008", 65.7f, v70, "", ""));
+            Cars.add(new Car("OS HS 0009", 21.5f, granTurismo, "", ""));
         }
     }
     

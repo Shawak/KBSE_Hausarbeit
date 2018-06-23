@@ -19,6 +19,8 @@ public class Car extends IUniqueEntity {
     private String licensePlate;
     private float pricePerDay;
     private boolean deactivated;
+    private String picture;
+    private String color;
     
     @ManyToOne
     private Model model;
@@ -54,13 +56,33 @@ public class Car extends IUniqueEntity {
     public void setDeactivated(boolean deactivated) {
         this.deactivated = deactivated;
     }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+    
+    
     
     public Car() { }
     
-    public Car(String licensePlate, float pricePerDay, Model model) {
+    public Car(String licensePlate, float pricePerDay, Model model, String picture, String color) {
         this.licensePlate = licensePlate;
         this.pricePerDay = pricePerDay;
         this.model = model;
+        this.picture=picture;
+        this.color=color;
     }
     
 }

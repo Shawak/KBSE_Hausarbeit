@@ -8,6 +8,71 @@
     template="template.xhtml">
     
     <ui:define name="body">
+        
+        <b:modal id="amodal" title="Modal Example" styleClass="modalPseudoClass" >
+            <b:form class="form_center modal_form">
+                <b:inputText id="name" value="#{model.change_model.name}" label="Model"/>
+                <b:messages for="name"/>
+
+                <b:inputText id="hp" value="#{model.change_model.horsepower}" label="Horsepower"/>
+                <b:messages for="hp"/>
+
+                <b:inputText id="cubic" value="#{model.change_model.cubicCapacity}" label="Cubic Capacity"/>
+                <b:messages for="cubic"/>
+
+                <b:selectOneMenu id="manufactury" value="#{model.change_model.manufacturer}" label="Manufactury">
+                    <f:selectItems value="#{model.manufacturer}" var="c" itemValue="#{c}" itemLabel="#{c.name}"/>
+                </b:selectOneMenu>
+                <b:messages for="manufactury"/>
+                
+                <b:commandButton value="Close" update="@(None)" oncomplete="$('.modalPseudoClass').modal('hide')"/>
+                <b:commandButton value="Change" action="#{model.change()}" oncomplete="$('.modalPseudoClass').modal('hide')" update="@(.datatable)"/>
+                
+            </b:form>
+            
+        </b:modal>
+        
+        <b:form id="form1">
+            <b:tabView activeIndex="0">
+                <b:tab title="Manufactory">          
+                    <h:form class="form_data">
+                       
+                        <br/>
+                        <b:dataTable class="datatable" lang="en" value="#{model.models}" var="onemodel" excel="true" csv="true" pdf="true" columnVisibility="true" copy="true" print="true">
+                            <b:dataTableColumn value="#{onemodel.name}" />
+                            <b:dataTableColumn value="#{onemodel.horsepower}" />
+                            <b:dataTableColumn value="#{onemodel.cubicCapacity}"/>
+                            <b:dataTableColumn value="#{onemodel.manufacturer.name}" label="Manufactury"/>
+                            <b:dataTableColumn label="Edit">
+                                <b:commandButton value="Edit" icon="edit" update="@(.modal_form)" action="#{model.change(onemodel.id)}" oncomplete="$('.modalPseudoClass').modal()"/>
+                            </b:dataTableColumn>
+                        </b:dataTable>
+                    </h:form>
+                </b:tab>
+
+                <b:tab title="Add">
+                    <b:form id="form" class="form_center form_add">
+                        <b:inputText id="name" value="#{model.new_model.name}" label="Model"/>
+                        <b:messages for="name"/>
+
+                        <b:inputText id="hp" value="#{model.new_model.horsepower}" label="Horsepower"/>
+                        <b:messages for="hp"/>
+
+                        <b:inputText id="cubic" value="#{model.new_model.cubicCapacity}" label="Cubic Capacity"/>
+                        <b:messages for="cubic"/>
+                        
+                        <b:selectOneMenu id="manufactury" value="#{model.new_model.manufacturer}" label="Manufactury">
+                            <f:selectItems value="#{model.manufacturer}" var="c" itemValue="#{c}" itemLabel="#{c.name}"/>
+                        </b:selectOneMenu>
+                        <b:messages for="manufactury"/>
+
+                        <b:commandButton value="Add" action="#{model.add}" update="@(.datatable) @(.form_add)">
+                        </b:commandButton>
+
+                        <b:messages id="result"/>
+                    </b:form>
+                </b:tab>
+            </b:tabView>
+        </b:form>
     </ui:define>
-    
 </ui:composition>

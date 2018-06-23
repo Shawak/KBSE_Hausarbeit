@@ -6,7 +6,6 @@
 package supercar.entities;
 
 import javax.persistence.Entity;
-import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 import supercar.interfaces.IUniqueEntity;
 import supercar.validator.PLZ;
@@ -21,9 +20,9 @@ public class Manufacturer extends IUniqueEntity {
     @NotNull
     private String name;
     
-    //stehen lass int ist default 0
     @NotNull
     @PLZ
+    //stehen lass int ist default 0
     private Integer plz;
     
     @NotNull

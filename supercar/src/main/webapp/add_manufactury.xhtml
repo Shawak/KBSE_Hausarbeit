@@ -9,8 +9,8 @@
     
     <ui:define name="body">
         
-        <b:modal id="amodal" title="Modal Example" styleClass="modalPseudoClass" >
-            <b:form id="modal_form" style-class="form_center">
+        <b:modal id="amodal" title="Modal Example" class="modalPseudoClass" >
+            <b:form class="form_center modal_form">
                 <b:inputText id="name" value="#{manufactury.change_manufactury.name}" label="Manufactory"/>
                 <b:messages for="name"/>
 
@@ -26,36 +26,33 @@
                 <b:inputText id="contact" value="#{manufactury.change_manufactury.contactInfo}" label="Contact"/>
                 <b:messages for="contact"/>
                 
-                 <b:commandButton value="Close" update="@(.form_data)" oncomplete="$('.modalPseudoClass').modal('hide')"/>
-                 <b:commandButton value="Change"  actionListener="#{manufactury.change()}" oncomplete="$('.modalPseudoClass').modal('hide')" update="@(.form_data)"/>
+                <b:commandButton value="Close" update="@(None)" oncomplete="$('.modalPseudoClass').modal('hide')"/>
+                <b:commandButton value="Change" action="#{manufactury.change()}" oncomplete="$('.modalPseudoClass').modal('hide')" update="@(.datatable)"/>
                 
             </b:form>
+            
         </b:modal>
         
-        <b:form>
+        <b:form id="form1">
             <b:tabView activeIndex="0">
                 <b:tab title="Manufactory">          
                     <h:form class="form_data">
                        
                         <br/>
-                        <b:dataTable lang="en" value="#{manufactury.manufacturer}" var="manufacturer" excel="true" csv="true" pdf="true" columnVisibility="true" copy="true" print="true">
+                        <b:dataTable class="datatable" lang="en" value="#{manufactury.manufacturer}" var="manufacturer" excel="true" csv="true" pdf="true" columnVisibility="true" copy="true" print="true">
                             <b:dataTableColumn value="#{manufacturer.name}" />
                             <b:dataTableColumn value="#{manufacturer.plz}" />
                             <b:dataTableColumn value="#{manufacturer.street}"/>
                             <b:dataTableColumn value="#{manufacturer.contactInfo}" label="Contact Info"/>
                             <b:dataTableColumn label="Edit">
-                                <b:commandButton value="Edit" icon="edit" update="@(.form_data) modal_form" action="#{manufactury.change(manufacturer.id)}" oncomplete="$('.modalPseudoClass').modal()"/>
-                            </b:dataTableColumn>
-                            <b:dataTableColumn label="Delete">
-                                <b:commandButton value="Delete" icon="trash">
-                                </b:commandButton>
+                                <b:commandButton value="Edit" icon="edit" update="@(.modal_form)" action="#{manufactury.change(manufacturer.id)}" oncomplete="$('.modalPseudoClass').modal()"/>
                             </b:dataTableColumn>
                         </b:dataTable>
                     </h:form>
                 </b:tab>
 
                 <b:tab title="Add">
-                    <b:form id="form" style-class="form_center">
+                    <b:form id="form" class="form_center form_add">
                         <b:inputText id="name" value="#{manufactury.new_manufactury.name}" label="Manufactory"/>
                         <b:messages for="name"/>
 
@@ -71,7 +68,8 @@
                         <b:inputText id="contact" value="#{manufactury.new_manufactury.contactInfo}" label="Contact"/>
                         <b:messages for="contact"/>
 
-                        <b:commandButton value="Add" action="#{manufactury.add}" update="form @(.form_data)"/>
+                        <b:commandButton value="Add" action="#{manufactury.add}" update="@(.datatable) @(.form_add)">
+                        </b:commandButton>
 
                         <b:messages id="result"/>
                     </b:form>

@@ -15,62 +15,74 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import supercar.entities.Manufacturer;
+import supercar.entities.Model;
 import supercar.interfaces.IModel;
 
 /**
  *
  * @author Patrick
  */
-@Named("manufactury")
+@Named("model")
 @SessionScoped
-public class ManufacturyModel extends IModel {
+public class ModelModel extends IModel {
     
-    private Manufacturer new_manufactury;
+    private Model new_model;
     
-    private Manufacturer change_manufactury;
+    private Model change_model;
     
     private List<Manufacturer> manufacturer;
+    private List<Model> models;
+
+    public List<Model> getModels() {
+        return models;
+    }
 
     public List<Manufacturer> getManufacturer() {
         return manufacturer;
     }
     
-     public Manufacturer getNew_manufactury() {
-        return new_manufactury;
+     public Model getNew_model() {
+        return new_model;
     }
 
-    public Manufacturer getChange_manufactury() {
-        return change_manufactury;
+    public Model getChange_model() {
+        return change_model;
     }
 
-    public ManufacturyModel() {
-        new_manufactury = new Manufacturer();  
+    public ModelModel() {
+        new_model = new Model();  
     }
     
     @PostConstruct
     public void init(){
         manufacturer = new ArrayList<>();
         manufacturer.addAll(Manufacturers.getAll());
+        
+        models = new ArrayList<>();
+        models.addAll(Models.getAll());
+        
+        change_model=new Model();
+        change_model.setManufacturer(new Manufacturer());
     }
     
     public void add(){
         try {
-            manufacturer.add(Manufacturers.add(new_manufactury));
-            new_manufactury = new Manufacturer();
+            models.add(Models.add(new_model));
+            new_model = new Model();
             FacesContext.getCurrentInstance().validationFailed();
-            FacesContext.getCurrentInstance().addMessage("form:result", new FacesMessage(FacesMessage.SEVERITY_INFO,"Manufactory add!","Manufactory add!"));
+            FacesContext.getCurrentInstance().addMessage("form:result", new FacesMessage(FacesMessage.SEVERITY_INFO,"Model add!","Model add!"));
         } catch (Exception e) {
             FacesContext.getCurrentInstance().validationFailed();
-            FacesContext.getCurrentInstance().addMessage("form:result", new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error:Manufactory not add!","Error:Manufactory not add!"));
+            FacesContext.getCurrentInstance().addMessage("form:result", new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error:Model not add!","Error:Model not add!"));
         }
     }
     
     public void change(Long id){
-        change_manufactury=manufacturer.stream().filter((Manufacturer o) -> o.getId().equals(id)).findFirst().get();
+        change_model=models.stream().filter((Model o) -> o.getId().equals(id)).findFirst().get();
     }
     
     public void change(){
-        change_manufactury = Manufacturers.update(change_manufactury);        
-        manufacturer=manufacturer.stream().map((Manufacturer o) -> Objects.equals(o.getId(), change_manufactury.getId())?change_manufactury:o).collect(toList());
+        change_model = Models.update(change_model);        
+        models=models.stream().map((Model o) -> Objects.equals(o.getId(), change_model.getId())?change_model:o).collect(toList());
     }
 }
