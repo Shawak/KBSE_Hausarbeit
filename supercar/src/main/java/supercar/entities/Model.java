@@ -17,13 +17,14 @@ import supercar.interfaces.IUniqueEntity;
 @Entity
 public class Model extends IUniqueEntity {
     
-    @NotNull
+    @NotNull(message = "Model may not be empty")
     private String name;
     
-    @NotNull
+    @NotNull(message = "Horsepower may not be empty")
     //stehen lass int ist default 0
     private Integer horsepower;
-    @NotNull
+    
+    @NotNull(message = "Cubic Capacity may not be empty")
     private Integer cubicCapacity;
     
     @ManyToOne

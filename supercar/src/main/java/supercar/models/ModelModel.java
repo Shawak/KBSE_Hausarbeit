@@ -82,7 +82,15 @@ public class ModelModel extends IModel {
     }
     
     public void change(){
-        change_model = Models.update(change_model);        
-        models=models.stream().map((Model o) -> Objects.equals(o.getId(), change_model.getId())?change_model:o).collect(toList());
+        
+        try {
+            change_model = Models.update(change_model);        
+            models=models.stream().map((Model o) -> Objects.equals(o.getId(), change_model.getId())?change_model:o).collect(toList());
+            FacesContext.getCurrentInstance().validationFailed();
+            FacesContext.getCurrentInstance().addMessage("form:result2", new FacesMessage(FacesMessage.SEVERITY_INFO,"Model change!","Model change!"));
+        } catch (Exception e) {
+            FacesContext.getCurrentInstance().validationFailed();
+            FacesContext.getCurrentInstance().addMessage("form:result2", new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error:Model not change!","Error:Model not change!"));
+        }
     }
 }

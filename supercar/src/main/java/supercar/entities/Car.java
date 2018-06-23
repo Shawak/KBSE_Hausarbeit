@@ -73,8 +73,6 @@ public class Car extends IUniqueEntity {
         this.color = color;
     }
     
-    
-    
     public Car() { }
     
     public Car(String licensePlate, float pricePerDay, Model model, String picture, String color) {

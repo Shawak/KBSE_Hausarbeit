@@ -70,7 +70,15 @@ public class ManufacturyModel extends IModel {
     }
     
     public void change(){
-        change_manufactury = Manufacturers.update(change_manufactury);        
-        manufacturer=manufacturer.stream().map((Manufacturer o) -> Objects.equals(o.getId(), change_manufactury.getId())?change_manufactury:o).collect(toList());
+        try {
+            change_manufactury = Manufacturers.update(change_manufactury);        
+            manufacturer=manufacturer.stream().map((Manufacturer o) -> Objects.equals(o.getId(), change_manufactury.getId())?change_manufactury:o).collect(toList());
+            FacesContext.getCurrentInstance().validationFailed();
+            FacesContext.getCurrentInstance().addMessage("form:result2", new FacesMessage(FacesMessage.SEVERITY_INFO,"Manufactory change!","Manufactory change!"));
+        } catch (Exception e) {
+            FacesContext.getCurrentInstance().validationFailed();
+            FacesContext.getCurrentInstance().addMessage("form:result2", new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error:Manufactory not change!","Error:Manufactory not change!"));
+        }
+        
     }
 }

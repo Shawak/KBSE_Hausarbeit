@@ -17,18 +17,17 @@ import supercar.validator.PLZ;
 @Entity
 public class Manufacturer extends IUniqueEntity {
     
-    @NotNull
+    @NotNull(message = "Manufactory may not be empty")
     private String name;
     
-    @NotNull
+    @NotNull(message = "Post Code may not be empty")
     @PLZ
     //stehen lass int ist default 0
     private Integer plz;
     
-    @NotNull
+    @NotNull(message = "Street may not be empty")
     private String street;
     
-    //@NotNull
     private String contactInfo;
     
     public String getName() {

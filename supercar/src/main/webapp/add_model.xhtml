@@ -9,67 +9,58 @@
     
     <ui:define name="body">
         
-        <b:modal id="amodal" title="Modal Example" styleClass="modalPseudoClass" >
-            <b:form class="form_center modal_form">
+        <b:modal title="Modal Example" style-class="pseudoClass_modal" >
+            <b:form style-class="form_center pseudoClass_modalForm">
+                <b:messages id="result2"/>
                 <b:inputText id="name" value="#{model.change_model.name}" label="Model"/>
-                <b:messages for="name"/>
-
+                
                 <b:inputText id="hp" value="#{model.change_model.horsepower}" label="Horsepower"/>
-                <b:messages for="hp"/>
-
+                
                 <b:inputText id="cubic" value="#{model.change_model.cubicCapacity}" label="Cubic Capacity"/>
-                <b:messages for="cubic"/>
-
+                
                 <b:selectOneMenu id="manufactury" value="#{model.change_model.manufacturer}" label="Manufactury">
                     <f:selectItems value="#{model.manufacturer}" var="c" itemValue="#{c}" itemLabel="#{c.name}"/>
                 </b:selectOneMenu>
-                <b:messages for="manufactury"/>
                 
-                <b:commandButton value="Close" update="@(None)" oncomplete="$('.modalPseudoClass').modal('hide')"/>
-                <b:commandButton value="Change" action="#{model.change()}" oncomplete="$('.modalPseudoClass').modal('hide')" update="@(.datatable)"/>
-                
+                <b:commandButton value="Close" update="@(None)" oncomplete="$('.pseudoClass_modal').modal('hide')"/>
+                <b:commandButton value="Change" action="#{model.change()}" update="@(.pseudoClass_dataTable) @(.pseudoClass_modalForm)"/>               
             </b:form>
             
         </b:modal>
         
-        <b:form id="form1">
+        <b:form>
             <b:tabView activeIndex="0">
                 <b:tab title="Manufactory">          
-                    <h:form class="form_data">
+                    <h:form styleClass="form_data">
                        
                         <br/>
-                        <b:dataTable class="datatable" lang="en" value="#{model.models}" var="onemodel" excel="true" csv="true" pdf="true" columnVisibility="true" copy="true" print="true">
+                        <b:dataTable style-class="pseudoClass_dataTable" lang="en" value="#{model.models}" var="onemodel" excel="true" csv="true" pdf="true" columnVisibility="true" copy="true" print="true">
                             <b:dataTableColumn value="#{onemodel.name}" />
                             <b:dataTableColumn value="#{onemodel.horsepower}" />
                             <b:dataTableColumn value="#{onemodel.cubicCapacity}"/>
                             <b:dataTableColumn value="#{onemodel.manufacturer.name}" label="Manufactury"/>
                             <b:dataTableColumn label="Edit">
-                                <b:commandButton value="Edit" icon="edit" update="@(.modal_form)" action="#{model.change(onemodel.id)}" oncomplete="$('.modalPseudoClass').modal()"/>
+                                <b:commandButton value="Edit" icon="edit" update="@(.pseudoClass_modalForm)" action="#{model.change(onemodel.id)}" oncomplete="$('.pseudoClass_modal').modal()"/>
                             </b:dataTableColumn>
                         </b:dataTable>
                     </h:form>
                 </b:tab>
 
                 <b:tab title="Add">
-                    <b:form id="form" class="form_center form_add">
+                    <b:form style-class="form_center pseudoClass_formAdd">
+                         <b:messages id="result"/>
                         <b:inputText id="name" value="#{model.new_model.name}" label="Model"/>
-                        <b:messages for="name"/>
-
+                        
                         <b:inputText id="hp" value="#{model.new_model.horsepower}" label="Horsepower"/>
-                        <b:messages for="hp"/>
-
+                        
                         <b:inputText id="cubic" value="#{model.new_model.cubicCapacity}" label="Cubic Capacity"/>
-                        <b:messages for="cubic"/>
                         
                         <b:selectOneMenu id="manufactury" value="#{model.new_model.manufacturer}" label="Manufactury">
                             <f:selectItems value="#{model.manufacturer}" var="c" itemValue="#{c}" itemLabel="#{c.name}"/>
                         </b:selectOneMenu>
-                        <b:messages for="manufactury"/>
 
-                        <b:commandButton value="Add" action="#{model.add}" update="@(.datatable) @(.form_add)">
+                        <b:commandButton value="Add" action="#{model.add}" update="@(.pseudoClass_dataTable) @(.pseudoClass_formAdd)">
                         </b:commandButton>
-
-                        <b:messages id="result"/>
                     </b:form>
                 </b:tab>
             </b:tabView>
