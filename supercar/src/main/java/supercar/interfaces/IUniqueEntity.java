@@ -38,6 +38,10 @@ public abstract class IUniqueEntity implements Serializable {
         this.id = id;
     }
 
+    public long getVersion() {
+        return version;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;

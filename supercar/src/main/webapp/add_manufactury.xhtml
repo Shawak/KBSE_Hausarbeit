@@ -9,49 +9,74 @@
     
     <ui:define name="body">
         
-        <b:tabView activeIndex="0">
-            <b:tab title="Manufactory">          
-                <h:form class="form_data">
-                    <br/>
-                    <b:dataTable id="data" lang="en" value="#{manufactury.manufacturer}" var="manufacturer" excel="true" csv="true" pdf="true" columnVisibility="true" copy="true" print="true">
-                        <b:dataTableColumn value="#{manufacturer.name}" />
-                        <b:dataTableColumn value="#{manufacturer.plz}" />
-                        <b:dataTableColumn value="#{manufacturer.street}"/>
-                        <b:dataTableColumn value="#{manufacturer.contactInfo}" label="Contact Info"/>
-                        <b:dataTableColumn label="Edit">
-                            <b:commandButton value="Edit" icon="edit"/>
-                        </b:dataTableColumn>
-                        <b:dataTableColumn label="Delete">
-                            <b:commandButton value="Delete" icon="trash">
-                            </b:commandButton>
-                        </b:dataTableColumn>
-                    </b:dataTable>
-                </h:form>
-            </b:tab>
-            
-            <b:tab title="Add">
-                <h:form class="form form_center">
-                    <b:inputText id="name" value="#{manufactury.manufactury.name}" label="Manufactory"/>
-                    <b:messages for="name"/>
+        <b:modal id="amodal" title="Modal Example" styleClass="modalPseudoClass" >
+            <b:form id="modal_form" style-class="form_center">
+                <b:inputText id="name" value="#{manufactury.change_manufactury.name}" label="Manufactory"/>
+                <b:messages for="name"/>
 
-                    <b:inputText id="street" value="#{manufactury.manufactury.street}" label="Street"/>
-                    <b:messages for="street"/>
+                <b:inputText id="street" value="#{manufactury.change_manufactury.street}" label="Street"/>
+                <b:messages for="street"/>
 
-                    <b:inputText id="plz" value="#{manufactury.manufactury.plz}" label="Post Code"/>
-                    <b:messages for="plz"/>
+                <b:inputText id="plz" value="#{manufactury.change_manufactury.plz}" label="Post Code"/>
+                <b:messages for="plz"/>
 
-                    <b:inputText id="city" value="" label="City" readonly="true" style-class="input_readonly"/>
-                    <b:messages for="city"/>
+                <b:inputText id="city" value="" label="City" readonly="true" style-class="input_readonly"/>
+                <b:messages for="city"/>
 
-                    <b:inputText id="contact" value="#{manufactury.manufactury.contactInfo}" label="Contact"/>
-                    <b:messages for="contact"/>
-
-                    <b:commandButton value="Add" action="#{manufactury.add}" update="@(.form) @(.form_data)"/>
-                    
-                    <b:messages id="result"/>
-                </h:form>
-            </b:tab>
-        </b:tabView>
+                <b:inputText id="contact" value="#{manufactury.change_manufactury.contactInfo}" label="Contact"/>
+                <b:messages for="contact"/>
+                
+                 <b:commandButton value="Close" update="@(.form_data)" oncomplete="$('.modalPseudoClass').modal('hide')"/>
+                 <b:commandButton value="Change"  actionListener="#{manufactury.change()}" oncomplete="$('.modalPseudoClass').modal('hide')" update="@(.form_data)"/>
+                
+            </b:form>
+        </b:modal>
         
+        <b:form>
+            <b:tabView activeIndex="0">
+                <b:tab title="Manufactory">          
+                    <h:form class="form_data">
+                       
+                        <br/>
+                        <b:dataTable lang="en" value="#{manufactury.manufacturer}" var="manufacturer" excel="true" csv="true" pdf="true" columnVisibility="true" copy="true" print="true">
+                            <b:dataTableColumn value="#{manufacturer.name}" />
+                            <b:dataTableColumn value="#{manufacturer.plz}" />
+                            <b:dataTableColumn value="#{manufacturer.street}"/>
+                            <b:dataTableColumn value="#{manufacturer.contactInfo}" label="Contact Info"/>
+                            <b:dataTableColumn label="Edit">
+                                <b:commandButton value="Edit" icon="edit" update="@(.form_data) modal_form" action="#{manufactury.change(manufacturer.id)}" oncomplete="$('.modalPseudoClass').modal()"/>
+                            </b:dataTableColumn>
+                            <b:dataTableColumn label="Delete">
+                                <b:commandButton value="Delete" icon="trash">
+                                </b:commandButton>
+                            </b:dataTableColumn>
+                        </b:dataTable>
+                    </h:form>
+                </b:tab>
+
+                <b:tab title="Add">
+                    <b:form id="form" style-class="form_center">
+                        <b:inputText id="name" value="#{manufactury.new_manufactury.name}" label="Manufactory"/>
+                        <b:messages for="name"/>
+
+                        <b:inputText id="street" value="#{manufactury.new_manufactury.street}" label="Street"/>
+                        <b:messages for="street"/>
+
+                        <b:inputText id="plz" value="#{manufactury.new_manufactury.plz}" label="Post Code"/>
+                        <b:messages for="plz"/>
+
+                        <b:inputText id="city" value="" label="City" readonly="true" style-class="input_readonly"/>
+                        <b:messages for="city"/>
+
+                        <b:inputText id="contact" value="#{manufactury.new_manufactury.contactInfo}" label="Contact"/>
+                        <b:messages for="contact"/>
+
+                        <b:commandButton value="Add" action="#{manufactury.add}" update="form @(.form_data)"/>
+
+                        <b:messages id="result"/>
+                    </b:form>
+                </b:tab>
+            </b:tabView>
+        </b:form>
     </ui:define>
 </ui:composition>
