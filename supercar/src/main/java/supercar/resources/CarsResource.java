@@ -31,10 +31,10 @@ public class CarsResource extends IResource {
     @GET
     public Response get() {
         if (!LoginHandler.hasAccess(AccountType.User)) {
-            return Response.status(Response.Status.FORBIDDEN).build();
+            return Forbidden();
         }
         
-        return Response.ok(gson.toJson(Cars.getAll())).build();
+        return Ok(Cars.getAll());
     }
 
 }
