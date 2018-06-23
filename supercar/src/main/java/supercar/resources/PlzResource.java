@@ -30,7 +30,7 @@ public class PlzResource extends IResource {
     
     @GET @Path("{plz}")
     public Response get(@PathParam("plz") int plz) {
-        return Response.ok(gson.toJson(plzApi.getName(plz))).build();
+        return Ok(plzApi.getName(plz));
     }
     
 }

@@ -8,6 +8,7 @@ package supercar.interfaces;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import java.io.Serializable;
+import javax.ws.rs.core.Response;
 
 /**
  *
@@ -17,4 +18,12 @@ public abstract class IResource extends IRestrictableRepositoryAccessor implemen
    
     protected Gson gson = new GsonBuilder().setPrettyPrinting().create();
     
+    protected Response Ok(Object obj) {
+        return Response.ok(gson.toJson(obj)).build();
+    }
+    
+    protected Response Forbidden() {
+        return Response.status(Response.Status.FORBIDDEN).build();
+    }
+     
 }
