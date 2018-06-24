@@ -18,8 +18,8 @@
                 
                 <b:inputText id="cubic" value="#{model.change_model.cubicCapacity}" label="Cubic Capacity"/>
                 
-                <b:selectOneMenu id="manufactury" value="#{model.change_model.manufacturer}" label="Manufactury">
-                    <f:selectItems value="#{model.manufacturer}" var="c" itemValue="#{c}" itemLabel="#{c.name}"/>
+                <b:selectOneMenu id="manufacturer" value="#{model.change_model.manufacturer}" label="Manufactury">
+                    <f:selectItems value="#{model.manufacturers}" var="c" itemValue="#{c}" itemLabel="#{c.name}"/>
                 </b:selectOneMenu>
                 
                 <b:commandButton value="Close" update="@(None)" oncomplete="$('.pseudoClass_modal').modal('hide')"/>
@@ -55,8 +55,8 @@
                         
                         <b:inputText id="cubic" value="#{model.new_model.cubicCapacity}" label="Cubic Capacity"/>
                         
-                        <b:selectOneMenu id="manufactury" value="#{model.new_model.manufacturer}" label="Manufactury">
-                            <f:selectItems value="#{model.manufacturer}" var="c" itemValue="#{c}" itemLabel="#{c.name}"/>
+                        <b:selectOneMenu id="manufacturer" value="#{model.new_model.manufacturer}" label="Manufactury">
+                            <f:selectItems value="#{model.manufacturers}" var="c" itemValue="#{c}" itemLabel="#{c.name}"/>
                         </b:selectOneMenu>
 
                         <b:commandButton value="Add" action="#{model.add}" update="@(.pseudoClass_dataTable) @(.pseudoClass_formAdd)">

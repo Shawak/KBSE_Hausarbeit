@@ -1,0 +1,75 @@
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:b="http://bootsfaces.net/ui"
+    xmlns:p="http://primefaces.org/ui" 
+    template="template.xhtml">
+    
+    <ui:define name="body">
+        
+        <b:modal title="Change Manufactory" style-class="pseudoClass_modal" >
+            
+            <b:form style-class="form_center pseudoClass_modalForm">
+                <b:messages id="result2"/>
+                <b:inputText id="name2" value="#{manufacturer.change_manufacturer.name}" label="Manufacturer"/>
+                
+                <b:inputText id="street2" value="#{manufacturer.change_manufacturer.street}" label="Street"/>
+               
+                <b:inputText id="plz2" value="#{manufacturer.change_manufacturer.plz}" label="Post Code">
+                    <f:ajax event="keyup" render="city2" execute="@this" />
+                </b:inputText>
+                
+                <b:inputText id="city2" value="#{manufacturer.change_manufacturer.city}" label="City" readonly="true" style-class="input_readonly"/>
+                
+                <b:inputText id="contact2" value="#{manufacturer.change_manufacturer.contactInfo}" label="Contact"/>
+                
+                <b:commandButton value="Close" update="@(None)" oncomplete="$('.pseudoClass_modal').modal('hide')"/>
+                <b:commandButton value="Change" action="#{manufactury.change()}" update="@(.pseudoClass_dataTable) @(.pseudoClass_modalForm)"/>                
+            
+            </b:form>
+        </b:modal>
+        
+        <b:form>
+            <b:tabView activeIndex="0">
+                <b:tab title="Manufacturer">          
+                    <h:form styleClass="form_data">
+                       
+                        <br/>
+                        <b:dataTable style-class="pseudoClass_dataTable" lang="en" value="#{manufacturer.manufacturers}" var="onemanufacturer" excel="true" csv="true" pdf="true" columnVisibility="true" copy="true" print="true">
+                            <b:dataTableColumn value="#{onemanufacturer.name}" />
+                            <b:dataTableColumn value="#{onemanufacturer.plz}" />
+                            <b:dataTableColumn value="#{onemanufacturer.city}" />
+                            <b:dataTableColumn value="#{onemanufacturer.street}"/>
+                            <b:dataTableColumn value="#{onemanufacturer.contactInfo}" label="Contact Info"/>
+                            <b:dataTableColumn label="Edit">
+                                <b:commandButton value="Edit" icon="edit" update="@(.pseudoClass_modalForm)" action="#{manufacturer.change(onemanufacturer.id)}" oncomplete="$('.pseudoClass_modal').modal()"/>
+                            </b:dataTableColumn>
+                        </b:dataTable>
+                    </h:form>
+                </b:tab>
+
+                <b:tab title="Add">
+                    <b:form style-class="form_center pseudoClass_formAdd">
+                        <b:messages id="result"/>
+                        <b:inputText id="name" value="#{manufacturer.new_manufacturer.name}" label="Manufacturer"/>
+                        
+                        <b:inputText id="street" value="#{manufacturer.new_manufacturer.street}" label="Street"/>
+                        
+                        <b:inputText id="plz" value="#{manufacturer.new_manufacturer.plz}" label="Post Code">
+                            <f:ajax event="keyup" render="city" execute="@this" />
+                        </b:inputText>
+                        
+                        <b:inputText id="city" value="#{manufacturer.new_manufacturer.city}" label="City" readonly="true" style-class="input_readonly"/>
+                        
+                        <b:inputText id="contact" value="#{manufacturer.new_manufacturer.contactInfo}" label="Contact"/>
+                        
+                        <b:commandButton value="Add" action="#{manufacturer.add}" update="@(.pseudoClass_dataTable) @(.pseudoClass_formAdd)">
+                        </b:commandButton>
+                    </b:form>
+                </b:tab>
+            </b:tabView>
+        </b:form>
+    </ui:define>
+</ui:composition>

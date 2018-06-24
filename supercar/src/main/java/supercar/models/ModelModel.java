@@ -30,15 +30,15 @@ public class ModelModel extends IModel {
     
     private Model change_model;
     
-    private List<Manufacturer> manufacturer;
+    private List<Manufacturer> manufacturers;
     private List<Model> models;
 
     public List<Model> getModels() {
         return models;
     }
 
-    public List<Manufacturer> getManufacturer() {
-        return manufacturer;
+    public List<Manufacturer> getManufacturers() {
+        return manufacturers;
     }
     
      public Model getNew_model() {
@@ -55,8 +55,8 @@ public class ModelModel extends IModel {
     
     @PostConstruct
     public void init(){
-        manufacturer = new ArrayList<>();
-        manufacturer.addAll(Manufacturers.getAll());
+        manufacturers = new ArrayList<>();
+        manufacturers.addAll(Manufacturers.getAll());
         
         models = new ArrayList<>();
         models.addAll(Models.getAll());

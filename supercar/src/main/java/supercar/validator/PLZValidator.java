@@ -7,13 +7,16 @@ package supercar.validator;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
+import supercar.core.PlzApi;
 
 /**
  *
  * @author Patrick
  */
 public class PLZValidator implements ConstraintValidator<PLZ, Integer>{
-
+    
+    PlzApi plzapi = new PlzApi();
+    
     @Override
     public void initialize(PLZ a) {
         ConstraintValidator.super.initialize(a); //To change body of generated methods, choose Tools | Templates.
@@ -21,6 +24,10 @@ public class PLZValidator implements ConstraintValidator<PLZ, Integer>{
 
     @Override
     public boolean isValid(Integer t, ConstraintValidatorContext cvc) {
-        return String.valueOf(t).length()==5;
+        if(t ==null){
+            return false;
+        }
+        return plzapi.getName(t)!=null;
+        //return String.valueOf(t).length()==5;
     }
 }

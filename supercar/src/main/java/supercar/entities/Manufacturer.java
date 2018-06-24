@@ -6,7 +6,9 @@
 package supercar.entities;
 
 import javax.persistence.Entity;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
+import supercar.core.PlzApi;
 import supercar.interfaces.IUniqueEntity;
 import supercar.validator.PLZ;
 
@@ -20,15 +22,19 @@ public class Manufacturer extends IUniqueEntity {
     @NotNull(message = "Manufactory may not be empty")
     private String name;
     
-    @NotNull(message = "Post Code may not be empty")
     @PLZ
-    //stehen lass int ist default 0
-    private Integer plz;
+    private int plz;
     
     @NotNull(message = "Street may not be empty")
     private String street;
     
     private String contactInfo;
+    
+    //City kann einfacher angezeigt wereden; steht nicht in DB
+    @Transient
+    private String city;
+    @Transient
+    private PlzApi plzApi;
     
     public String getName() {
         return name;
@@ -38,12 +44,13 @@ public class Manufacturer extends IUniqueEntity {
         this.name = name;
     }
 
-    public Integer getPlz() {
+    public int getPlz() {
         return plz;
     }
 
-    public void setPlz(Integer plz) {
-        this.plz = plz;
+    public void setPlz(int plz) {
+        this.plz = plz; 
+       
     }
 
     public String getStreet() {
@@ -62,13 +69,25 @@ public class Manufacturer extends IUniqueEntity {
         this.contactInfo = contactInfo;
     }
     
-    public Manufacturer() { }
+    public String getCity(){
+        city= plzApi.getName(this.plz);
+        if(city == null){
+            return "";
+        }
+        city= city.substring(0, city.length() - 1).substring(1);
+        return city;
+    }
     
-    public Manufacturer(String name, Integer plz, String street, String contactInfo) {
+    public Manufacturer() {
+        plzApi=new PlzApi();
+    }
+    
+    public Manufacturer(String name, int plz, String street, String contactInfo) {
         this.name = name;
         this.plz = plz;
         this.street = street;
         this.contactInfo = contactInfo;
+        plzApi=new PlzApi();
     }
     
 }

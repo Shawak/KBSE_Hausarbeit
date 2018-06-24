@@ -22,10 +22,10 @@ public class Model extends IUniqueEntity {
     
     @NotNull(message = "Horsepower may not be empty")
     //stehen lass int ist default 0
-    private Integer horsepower;
+    private int horsepower;
     
     @NotNull(message = "Cubic Capacity may not be empty")
-    private Integer cubicCapacity;
+    private int cubicCapacity;
     
     @ManyToOne
     private Manufacturer manufacturer;
@@ -50,7 +50,7 @@ public class Model extends IUniqueEntity {
         return horsepower;
     }
 
-    public void setHorsepower(Integer horsepower) {
+    public void setHorsepower(int horsepower) {
         this.horsepower = horsepower;
     }
 
@@ -58,13 +58,12 @@ public class Model extends IUniqueEntity {
         return cubicCapacity;
     }
 
-    public void setCubicCapacity(Integer cubicCapacity) {
+    public void setCubicCapacity(int cubicCapacity) {
         this.cubicCapacity = cubicCapacity;
     }
-    
     public Model() { }
     
-    public Model(String name, Manufacturer manufacturer, Integer horsepower, Integer cubicCapacity) {
+    public Model(String name, Manufacturer manufacturer, int horsepower, int cubicCapacity) {
         this.name = name;
         this.manufacturer = manufacturer;
         this.horsepower = horsepower;

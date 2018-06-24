@@ -31,7 +31,7 @@ public class StartupBean extends IRepositoryAccessor {
         if (Accounts.getAll().isEmpty()) {
             Accounts.add(new Account("Administrator", "Administrator", 0, "", "admin", "admin", "", AccountType.Administrator));
             
-            Manufacturer opel = Manufacturers.add(new Manufacturer("Opel", 65423, "Bahnhofsplatz", ""));
+            Manufacturer opel = Manufacturers.add(new Manufacturer("Opel", 65428, "Bahnhofsplatz", ""));
             Manufacturer mercedes = Manufacturers.add(new Manufacturer("Mercedes-Benz", 70327, "Mercedesstraße 137", ""));
             Manufacturer lamborghini = Manufacturers.add(new Manufacturer("Lamborghini", 40476, "Rather Strasse 78-80", ""));
             Manufacturer nissan = Manufacturers.add(new Manufacturer("Nissan", 50321, "Renault-Nissan-Straße 6-10", ""));
