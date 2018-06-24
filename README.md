@@ -20,7 +20,7 @@ Deploy to container and run: `docker-compose up --build`
 
 Attach to docker container: `docker exec -it supercar_app_1 /bin/sh`
 
-The website will be aviable under http://localhost/supercar
+The website will be available under http://localhost/supercar
 
 ## Links
 
