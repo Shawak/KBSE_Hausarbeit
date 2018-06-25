@@ -25,16 +25,13 @@ public class Manufacturer extends IUniqueEntity {
     @PLZ
     private int plz;
     
+    //@NotNull(message = "Wrong Post Code")
+    private String city;
+    
     @NotNull(message = "Street may not be empty")
     private String street;
     
     private String contactInfo;
-    
-    //City kann einfacher angezeigt wereden; steht nicht in DB
-    @Transient
-    private String city;
-    @Transient
-    private PlzApi plzApi;
     
     public String getName() {
         return name;
@@ -68,26 +65,25 @@ public class Manufacturer extends IUniqueEntity {
     public void setContactInfo(String contactInfo) {
         this.contactInfo = contactInfo;
     }
-    
-    public String getCity(){
-        city= plzApi.getName(this.plz);
-        if(city == null){
-            return "";
-        }
-        city= city.substring(0, city.length() - 1).substring(1);
+
+    public String getCity() {
         return city;
     }
-    
-    public Manufacturer() {
-        plzApi=new PlzApi();
+
+    public void setCity(String city) {
+        this.city = city;
     }
     
-    public Manufacturer(String name, int plz, String street, String contactInfo) {
+    
+    public Manufacturer() {
+    }
+    
+    public Manufacturer(String name, int plz, String street, String contactInfo, String city) {
         this.name = name;
         this.plz = plz;
         this.street = street;
         this.contactInfo = contactInfo;
-        plzApi=new PlzApi();
+        this.city=city;
     }
     
 }

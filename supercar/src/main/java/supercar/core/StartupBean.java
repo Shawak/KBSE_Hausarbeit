@@ -31,15 +31,15 @@ public class StartupBean extends IRepositoryAccessor {
         if (Accounts.getAll().isEmpty()) {
             Accounts.add(new Account("Administrator", "Administrator", 0, "", "admin", "admin", "", AccountType.Administrator));
             
-            Manufacturer opel = Manufacturers.add(new Manufacturer("Opel", 65428, "Bahnhofsplatz", ""));
-            Manufacturer mercedes = Manufacturers.add(new Manufacturer("Mercedes-Benz", 70327, "Mercedesstraße 137", ""));
-            Manufacturer lamborghini = Manufacturers.add(new Manufacturer("Lamborghini", 40476, "Rather Strasse 78-80", ""));
-            Manufacturer nissan = Manufacturers.add(new Manufacturer("Nissan", 50321, "Renault-Nissan-Straße 6-10", ""));
-            Manufacturer renault = Manufacturers.add(new Manufacturer("Renault", 50321, "Renault-Nissan-Straße 6-10", ""));
-            Manufacturer vw = Manufacturers.add(new Manufacturer("VW", 38440, "Berliner Ring 2", ""));
-            Manufacturer toyota = Manufacturers.add(new Manufacturer("Toyota", 50858, "Toyota-Allee 2 ", ""));
-            Manufacturer volvo = Manufacturers.add(new Manufacturer("Volvo", 50679, "Siegburger Straße 229", ""));
-            Manufacturer maserati = Manufacturers.add(new Manufacturer("Maserati", 65201, "Stielstraße 3b", ""));
+            Manufacturer opel = Manufacturers.add(new Manufacturer("Opel", 65428, "Bahnhofsplatz", "", "Rüsselheim"));
+            Manufacturer mercedes = Manufacturers.add(new Manufacturer("Mercedes-Benz", 70327, "Mercedesstraße 137", "", "Stuttgart Rotenberg"));
+            Manufacturer lamborghini = Manufacturers.add(new Manufacturer("Lamborghini", 40476, "Rather Strasse 78-80", "", "Düsseldorf"));
+            Manufacturer nissan = Manufacturers.add(new Manufacturer("Nissan", 50321, "Renault-Nissan-Straße 6-10", "", "Brühl"));
+            Manufacturer renault = Manufacturers.add(new Manufacturer("Renault", 50321, "Renault-Nissan-Straße 6-10", "", "Brühl"));
+            Manufacturer vw = Manufacturers.add(new Manufacturer("VW", 38440, "Berliner Ring 2", "", "Wolfgsburg"));
+            Manufacturer toyota = Manufacturers.add(new Manufacturer("Toyota", 50858, "Toyota-Allee 2 ", "", "Köln"));
+            Manufacturer volvo = Manufacturers.add(new Manufacturer("Volvo", 50679, "Siegburger Straße 229", "", "Köln"));
+            Manufacturer maserati = Manufacturers.add(new Manufacturer("Maserati", 65201, "Stielstraße 3b", "", "Wiesbaden"));
             
             Model astra = Models.add(new Model("Astra", opel, 1, 1));
             Model sprinter = Models.add(new Model("Sprinter", mercedes, 1, 1));
