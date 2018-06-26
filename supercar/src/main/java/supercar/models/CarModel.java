@@ -15,7 +15,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
-import javax.servlet.http.Part;
+import javax.persistence.Transient;
 import org.primefaces.model.UploadedFile;
 import supercar.interfaces.IModel;
 
@@ -26,67 +26,68 @@ import supercar.interfaces.IModel;
 @Named("car")
 @SessionScoped
 public class CarModel extends IModel{
-    private UploadedFile file;
+    @Transient
+    private UploadedFile uploadFile;
     
-    
-    
-    public UploadedFile getFile() {
-        return file;
+    public UploadedFile getUploadFile() {
+        return uploadFile;
     }
  
-    public void setFile(UploadedFile file) {
-        this.file = file;
+    public void setUploadFile(UploadedFile uploadFile) {
+        this.uploadFile = uploadFile;
         
     }
-     
-    public void upload() {
-        if(file != null) {
+    
+    public void add(){
+        URL location;
+        location = CarModel.class.getProtectionDomain().getCodeSource().getLocation();
+        String path = location.getPath();
+        path = path.substring(1, path.length()-14);
+        String uniqueFile = getUniqueFileName(path+"../../../../images/", uploadFile.getFileName());
+        try{
             
-                /*System.out.println(file.getFileName());
-                byte[] contents = file.getContents();
-                try {
-                try (FileOutputStream outputStream = new FileOutputStream("../generated/jsp/supercar/test2.jpg")) {
-                outputStream.write(contents);
-                }
-                } catch (FileNotFoundException ex) {
-                Logger.getLogger(CarModel.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (IOException ex) {
-                Logger.getLogger(CarModel.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                try {
-                file.write("test3.jpg");
-                } catch (Exception ex) {
-                Logger.getLogger(CarModel.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                FacesMessage message = new FacesMessage("Succesful", file.getFileName() + " is uploaded.");
-                FacesContext.getCurrentInstance().addMessage(null, message);
-                
-                URL location;
-                location = CarModel.class.getProtectionDomain().getCodeSource().getLocation();
-                System.out.println(location.getFile());*/
-                URL location;
-                location = CarModel.class.getProtectionDomain().getCodeSource().getLocation();
-                String path = location.getPath();
-                
-                
-                System.out.println(path.substring(1, path.length() - 14));
-                
-            try {
-                
-                File t = new File(path.substring(1, path.length() - 14)+"../../../../images/output.jpg");
+            System.out.println(uniqueFile);
+            File file = new File(path+"../../../../images/"+uniqueFile);
+            if(!file.exists()){
+                file.createNewFile();
+            }
 
-                    try (FileOutputStream out = new FileOutputStream(t)) {
-                        if(!t.exists()){
-                            t.createNewFile();
-                        }
-                        out.write(file.getContents());
-                        out.flush();
-                    }
-            } catch (IOException ex) {
-                Logger.getLogger(CarModel.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (Exception ex) {
-                Logger.getLogger(CarModel.class.getName()).log(Level.SEVERE, null, ex);
-            }   
+            OutputStream outputFile;
+        
+            outputFile = new FileOutputStream(file);
+            
+            outputFile.write(uploadFile.getContents());
+            outputFile.flush();
+            outputFile.close();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(CarModel.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(CarModel.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public static String getUniqueFileName(String path, String fileName) {
+        int num = 0;
+        final String ext = getFileExtension(fileName);
+        final String name = getFileName(fileName);
+        File file = new File(path+fileName);
+        while (file.exists()) {
+            num++;
+            file = new File(path +name + "_" + num + ext);
+            
+        }
+        return file.getName();
+   }
+
+   public static String getFileExtension(final String path) {
+        if (path != null && path.lastIndexOf('.') != -1) {
+            return path.substring(path.lastIndexOf('.'));
+        }
+        return null;
+   }
+
+   public static String getFileName(String fileName) {
+        return fileName.substring(0, fileName.lastIndexOf('.'));
+   }
+     
 }
