@@ -8,6 +8,13 @@
     template="template.xhtml">
     
     <ui:define name="body">
+        <h:form enctype="multipart/form-data">
+    <p:growl id="messages" showDetail="true" />
+ 
+    <p:fileUpload value="#{car.file}" mode="simple" skinSimple="true"/>
+ 
+    <p:commandButton value="Submit" ajax="false" actionListener="#{car.upload}" disabled="false" />
+</h:form>
     </ui:define>
     
 </ui:composition>

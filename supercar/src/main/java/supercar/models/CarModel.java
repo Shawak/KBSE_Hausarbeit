@@ -86,8 +86,7 @@ public class CarModel extends IModel{
                 Logger.getLogger(CarModel.class.getName()).log(Level.SEVERE, null, ex);
             } catch (Exception ex) {
                 Logger.getLogger(CarModel.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
+            }   
         }
     }
 }
