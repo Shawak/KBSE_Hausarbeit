@@ -8,6 +8,18 @@
     template="template.xhtml">
     
     <ui:define name="body">
+        <h:form>
+            <b:dataTable lang="en" value="#{index.cars}" var="carV" border="false" style="width:100%" striped="false">
+                <b:dataTableColumn header-style-class="hidden" >
+                    <b:panel>
+                            <p:graphicImage value="images/#{carV.picture}" style="width:10%"/> 
+                            <h:outputText value="License plate: #{carV.licensePlate}" style="padding-left: 10%"/>
+                            <h:outputText value="Price/Day: #{carV.pricePerDay}" style="padding-left: 10%"/>
+                            <h:outputText value="Color: #{carV.color}" style="padding-left: 10%"/>
+                            <b:commandButton action="#{index.test(carV.id)}" look="primary" value="Details" style="float: right"/>
+                    </b:panel>
+                </b:dataTableColumn>
+            </b:dataTable>
+        </h:form>
     </ui:define>
-    
 </ui:composition>

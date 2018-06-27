@@ -5,8 +5,12 @@
  */
 package supercar.models;
 
+import java.util.Collection;
+import javax.inject.Inject;
 import javax.inject.Named;
+import supercar.entities.Car;
 import supercar.interfaces.IModel;
+import supercar.repositories.CarRepository;
 
 /**
  *
@@ -14,7 +18,17 @@ import supercar.interfaces.IModel;
  */
 @Named("index")
 public class IndexModel extends IModel {
-
+    
     public IndexModel() { }
-
+    
+    public Collection<Car> getCars()
+    {
+        return Cars.getAll();
+    }
+    
+    public String test(Long id)
+    {
+        System.out.println(id);
+       return "/supercar/faces/index.xhtml";
+    }
 }
