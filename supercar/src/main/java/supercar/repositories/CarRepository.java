@@ -5,6 +5,7 @@
  */
 package supercar.repositories;
 
+import java.util.Collection;
 import javax.ejb.Stateless;
 import supercar.entities.Car;
 import supercar.interfaces.IRepository;
@@ -18,4 +19,7 @@ public class CarRepository extends IRepository<Car> {
 
     public CarRepository() { }
 
+    public Collection<Car> getAllActive(String order) {
+        return query("select e from #table e where e.deactivated = 0 order by e."+order+"").all();
+    }
 }

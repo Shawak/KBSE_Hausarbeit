@@ -55,6 +55,9 @@ public class StartupBean extends IRepositoryAccessor {
             Cars.add(new Car("OS HS 0007", 75.31f, aygo, "Toyota_Aygo.jpg", "silver"));
             Cars.add(new Car("OS HS 0008", 65.7f, v70, "Volvo_V70.jpg", "silver"));
             Cars.add(new Car("OS HS 0009", 21.5f, granTurismo, "Maserati_Granturismo.jpg", "black"));
+            Car car = new Car("OS HS 0010", 25.5f, kangoo, "Renault_Kangoo.jpg", "galaxy-gray");
+            car.setDeactivated(true);
+            Cars.add(car);
         }
     }
     

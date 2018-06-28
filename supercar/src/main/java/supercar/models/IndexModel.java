@@ -6,6 +6,7 @@
 package supercar.models;
 
 import java.util.Collection;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import supercar.entities.Car;
@@ -17,13 +18,20 @@ import supercar.repositories.CarRepository;
  * @author Maxi
  */
 @Named("index")
+@SessionScoped
 public class IndexModel extends IModel {
     
-    public IndexModel() { }
+      private String order;
     
+    public IndexModel() { 
+        order ="licensePlate";
+    }
+  
+
     public Collection<Car> getCars()
     {
-        return Cars.getAll();
+        System.out.println(order);
+        return Cars.getAllActive(order);
     }
     
     public String test(Long id)
@@ -31,4 +39,14 @@ public class IndexModel extends IModel {
         System.out.println(id);
        return "/supercar/faces/index.xhtml";
     }
+    
+     public String getOrder() {
+        return order;
+    }
+
+    public void setOrder(String order) {
+        System.out.println("setOrder --------------------------------");
+        this.order = order;
+    }
+    
 }
