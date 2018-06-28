@@ -11,12 +11,22 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Pattern;
+import static java.util.stream.Collectors.toList;
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.persistence.Transient;
 import org.primefaces.model.UploadedFile;
+import supercar.entities.Car;
+import supercar.entities.Model;
 import supercar.interfaces.IModel;
 
 /**
@@ -26,43 +36,101 @@ import supercar.interfaces.IModel;
 @Named("car")
 @SessionScoped
 public class CarModel extends IModel{
-    @Transient
-    private UploadedFile uploadFile;
+    private UploadedFile new_uploadFile;
+    private UploadedFile change_uploadFile;
     
-    public UploadedFile getUploadFile() {
-        return uploadFile;
+    private Collection<Car> cars;
+    private Collection<Model> models;
+    
+    private Car new_car;
+    private Car change_car;
+    
+
+    public Collection<Model> getModels() {
+        return models;
+    }
+
+    public Collection<Car> getCars() {
+        return cars;
+    }
+
+    public Car getNew_car() {
+        return new_car;
+    }
+
+    public Car getChange_car() {
+        return change_car;
+    }
+    
+    public CarModel(){
+        new_car= new Car();
+    }
+    
+    @PostConstruct
+    public void init(){
+        //cars = new ArrayList<>();
+        cars = Cars.getAll();
+        models = Models.getAll();
+        change_car= new Car();
+    }
+
+    public UploadedFile getChange_uploadFile() {
+        return change_uploadFile;
+    }
+
+    public void setChange_uploadFile(UploadedFile change_uploadFile) {
+        this.change_uploadFile = change_uploadFile;
+    }
+    
+    public void deleteChangeFile(){
+        this.change_uploadFile = null;
+    }
+    
+    public UploadedFile getNew_uploadFile() {
+        return new_uploadFile;
     }
  
-    public void setUploadFile(UploadedFile uploadFile) {
-        this.uploadFile = uploadFile;
+    public void setNew_uploadFile(UploadedFile new_uploadFile) {
+        this.new_uploadFile = new_uploadFile;
         
+    }
+    
+    public void deleteNewFile(){
+        this.new_uploadFile = null;
     }
     
     public void add(){
-        URL location;
-        location = CarModel.class.getProtectionDomain().getCodeSource().getLocation();
-        String path = location.getPath();
-        path = path.substring(1, path.length()-14);
-        String uniqueFile = getUniqueFileName(path+"../../../../images/", uploadFile.getFileName());
-        try{
-            
-            System.out.println(uniqueFile);
-            File file = new File(path+"../../../../images/"+uniqueFile);
-            if(!file.exists()){
-                file.createNewFile();
-            }
+        try {
+            if(new_uploadFile !=null){
+                URL location;
+                location = CarModel.class.getProtectionDomain().getCodeSource().getLocation();
+                String path = location.getPath();
+                path = path.substring(1, path.length()-14);
+                String uniqueFile = getUniqueFileName(path+"../../../../images/", new_uploadFile.getFileName());
 
-            OutputStream outputFile;
-        
-            outputFile = new FileOutputStream(file);
-            
-            outputFile.write(uploadFile.getContents());
-            outputFile.flush();
-            outputFile.close();
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(CarModel.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(CarModel.class.getName()).log(Level.SEVERE, null, ex);
+                File file = new File(path+"../../../../images/"+uniqueFile);
+                if(!file.exists()){
+                    file.createNewFile();
+                }
+
+                OutputStream outputFile;
+
+                outputFile = new FileOutputStream(file);
+
+                outputFile.write(new_uploadFile.getContents());
+                outputFile.flush();
+                outputFile.close();
+
+                new_car.setPicture(new_uploadFile.getFileName());
+            }
+            else{
+                new_car.setPicture("");
+            }
+            cars.add(Cars.add(new_car));
+            new_car = new Car();
+            FacesContext.getCurrentInstance().addMessage("form:result", new FacesMessage(FacesMessage.SEVERITY_INFO,"Car add!","Car add!"));
+        } catch (IOException e) {
+            FacesContext.getCurrentInstance().addMessage("form:result", new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error:Car not add!","Error:Car not add!"));
         }
     }
     
@@ -89,5 +157,48 @@ public class CarModel extends IModel{
    public static String getFileName(String fileName) {
         return fileName.substring(0, fileName.lastIndexOf('.'));
    }
+   
+   public void change(Long id){
+        change_car=cars.stream().filter((Car o) -> o.getId().equals(id)).findFirst().get();
+    }
+   
+   public void change(){
+        try {
+            if(change_uploadFile!=null){
+                
+                URL location;
+                location = CarModel.class.getProtectionDomain().getCodeSource().getLocation();
+                String path = location.getPath();
+                path = path.substring(1, path.length()-14);
+                String uniqueFile = getUniqueFileName(path+"../../../../images/", change_uploadFile.getFileName());
+
+                File file = new File(path+"../../../../images/"+uniqueFile);
+                if(!file.exists()){
+                    file.createNewFile();
+                }
+
+                OutputStream outputFile;
+
+                outputFile = new FileOutputStream(file);
+
+                outputFile.write(change_uploadFile.getContents());
+                outputFile.flush();
+                outputFile.close();
+
+                change_car.setPicture(change_uploadFile.getFileName());
+            }
+            else{
+                
+                //.setPicture(change_car.getPicture());
+            }
+            
+            change_car = Cars.update(change_car);        
+            cars=cars.stream().map((Car o) -> Objects.equals(o.getId(), change_car.getId())?change_car:o).collect(toList());
+            
+            FacesContext.getCurrentInstance().addMessage("form:result2", new FacesMessage(FacesMessage.SEVERITY_INFO,"Car change!","Car change!"));
+        } catch (IOException e) {
+            FacesContext.getCurrentInstance().addMessage("form:result2", new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error:Car not change!","Error:Car not change!"));
+        }
+    }
      
 }

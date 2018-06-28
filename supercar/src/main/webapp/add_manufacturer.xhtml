@@ -34,8 +34,7 @@
         <b:form>
             <b:tabView activeIndex="0">
                 <b:tab title="Manufacturer">          
-                    <h:form styleClass="form_data">
-                       
+                    <h:form styleClass="form_data">   
                         <br/>
                         <b:dataTable style-class="pseudoClass_dataTable" lang="en" value="#{manufacturer.manufacturers}" var="onemanufacturer" excel="true" csv="true" pdf="true" columnVisibility="true" copy="true" print="true">
                             <b:dataTableColumn value="#{onemanufacturer.name}" />
@@ -54,7 +53,7 @@
                     <b:form style-class="form_center pseudoClass_formAdd">
                         <b:messages id="result"/>
                         <b:inputText id="name" value="#{manufacturer.new_manufacturer.name}" label="Manufacturer"/>
-                        <a href="add_manufacturer.xhtml"></a>
+                        
                         <b:inputText id="street" value="#{manufacturer.new_manufacturer.street}" label="Street"/>
                         
                         <b:inputText ajax="true" id="plz" value="#{manufacturer.new_manufacturer.plz}" label="Post Code">

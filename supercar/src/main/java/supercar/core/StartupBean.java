@@ -46,16 +46,16 @@ public class StartupBean extends IRepositoryAccessor {
             Model v70 = Models.add(new Model("V70", volvo, 1, 1));
             Model granTurismo = Models.add(new Model("GranTurismo", maserati, 1, 1));
             
-            Cars.add(new Car("OS HS 0001", 40.0f, astra, "Opel_Astra.jpg", "gray"));
-            Cars.add(new Car("OS HS 0002", 50.0f, sprinter, "Mercedes-Benz_Sprinter.jpg", "white"));
-            Cars.add(new Car("OS HS 0003", 120.0f, aventador, "Lamporghini_Aventador.jpg", "red"));
-            Cars.add(new Car("OS HS 0004", 31.0f, gtr, "Nissan_GT-R.jpg", "vibrand red"));
-            Cars.add(new Car("OS HS 0005", 60.5f, kangoo, "Renault_Kangoo.jpg", "galaxy-gray"));
+            Cars.add(new Car("OS HS 0001", 40.00f, astra, "Opel_Astra.jpg", "gray"));
+            Cars.add(new Car("OS HS 0002", 50.00f, sprinter, "Mercedes-Benz_Sprinter.jpg", "white"));
+            Cars.add(new Car("OS HS 0003", 120.00f, aventador, "Lamporghini_Aventador.jpg", "red"));
+            Cars.add(new Car("OS HS 0004", 31.00f, gtr, "Nissan_GT-R.jpg", "vibrand red"));
+            Cars.add(new Car("OS HS 0005", 60.50f, kangoo, "Renault_Kangoo.jpg", "galaxy-gray"));
             Cars.add(new Car("OS HS 0006", 42.75f, caddy, "VW_Kaddy.jpg", "yellow"));
             Cars.add(new Car("OS HS 0007", 75.31f, aygo, "Toyota_Aygo.jpg", "silver"));
-            Cars.add(new Car("OS HS 0008", 65.7f, v70, "Volvo_V70.jpg", "silver"));
-            Cars.add(new Car("OS HS 0009", 21.5f, granTurismo, "Maserati_Granturismo.jpg", "black"));
-            Car car = new Car("OS HS 0010", 25.5f, kangoo, "Renault_Kangoo.jpg", "galaxy-gray");
+            Cars.add(new Car("OS HS 0008", 65.70f, v70, "Volvo_V70.jpg", "silver"));
+            Cars.add(new Car("OS HS 0009", 21.50f, granTurismo, "Maserati_Granturismo.jpg", "black"));
+            Car car = new Car("OS HS 0010", 25.50f, kangoo, "Renault_Kangoo.jpg", "galaxy-gray");
             car.setDeactivated(true);
             Cars.add(car);
         }

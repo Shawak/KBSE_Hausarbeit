@@ -5,8 +5,7 @@
  */
 package supercar.models;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
 import java.util.Objects;
 import static java.util.stream.Collectors.toList;
 import javax.annotation.PostConstruct;
@@ -34,9 +33,9 @@ public class ManufacturerModel extends IModel {
     
     private String change_city;
     
-    private List<Manufacturer> manufacturers;
+    private Collection<Manufacturer> manufacturers;
     
-    private PlzApi plzApi;
+    private final PlzApi plzApi;
 
     public String getNew_city() {
         new_city= plzApi.getName(new_manufacturer.getPlz());
@@ -61,7 +60,7 @@ public class ManufacturerModel extends IModel {
         return change_city;
     }
     
-    public List<Manufacturer> getManufacturers() {
+    public Collection<Manufacturer> getManufacturers() {
         return manufacturers;
     }
     
@@ -80,8 +79,8 @@ public class ManufacturerModel extends IModel {
     
     @PostConstruct
     public void init(){
-        manufacturers = new ArrayList<>();
-        manufacturers.addAll(Manufacturers.getAll());
+        //manufacturers = new ArrayList<>();
+        manufacturers = Manufacturers.getAll();
     }
     
     public void add(){

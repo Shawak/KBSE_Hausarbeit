@@ -5,8 +5,7 @@
  */
 package supercar.models;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
 import java.util.Objects;
 import static java.util.stream.Collectors.toList;
 import javax.annotation.PostConstruct;
@@ -30,14 +29,14 @@ public class ModelModel extends IModel {
     
     private Model change_model;
     
-    private List<Manufacturer> manufacturers;
-    private List<Model> models;
+    private Collection<Manufacturer> manufacturers;
+    private Collection<Model> models;
 
-    public List<Model> getModels() {
+    public Collection<Model> getModels() {
         return models;
     }
 
-    public List<Manufacturer> getManufacturers() {
+    public Collection<Manufacturer> getManufacturers() {
         return manufacturers;
     }
     
@@ -55,11 +54,11 @@ public class ModelModel extends IModel {
     
     @PostConstruct
     public void init(){
-        manufacturers = new ArrayList<>();
-        manufacturers.addAll(Manufacturers.getAll());
+        //manufacturers = new ArrayList<>();
+        manufacturers = Manufacturers.getAll();
         
-        models = new ArrayList<>();
-        models.addAll(Models.getAll());
+        //models = new ArrayList<>();
+        models = Models.getAll();
         
         change_model=new Model();
         change_model.setManufacturer(new Manufacturer());

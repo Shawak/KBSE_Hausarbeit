@@ -8,13 +8,80 @@
     template="template.xhtml">
     
     <ui:define name="body">
-        <h:form enctype="multipart/form-data">
-            <p:growl id="messages" showDetail="true" />
- 
-            <p:fileUpload value="#{car.uploadFile}" mode="simple" skinSimple="true"/>
- 
-                <p:commandButton value="Submit" ajax="false" actionListener="#{car.add}" disabled="false" />
-        </h:form>
+        <b:modal title="Change Car" style-class="pseudoClass_modal" >
+                
+            <h:form styleClass="form_center pseudoClass_modalForm" enctype="multipart/form-data">
+                <b:messages id="result"/>
+                <b:inputText id="licese2" value="#{car.change_car.licensePlate}" label="License Plate"/>
+
+                <b:inputText id="color2" value="#{car.change_car.color}" label="Color"/>
+
+                <b:inputText type="decimal" id="price2" value="#{car.change_car.pricePerDay}" label="Price per Day"/>
+
+                <b:selectOneMenu id="model2" value="#{car.change_car.model}" label="Model">
+                    <f:selectItems value="#{car.models}" var="c" itemValue="#{c}" itemLabel="#{c.manufacturer.name} #{c.name}"/>
+                </b:selectOneMenu>
+
+                <b:inputText id="picture3" value="#{car.change_car.picture}" label="Old Picture" readonly="true" style-class="input_readonly"/>
+                
+                <p:fileUpload id="picture2" label="Picture" value="#{car.change_uploadFile}" mode="simple" sizeLimit="500000" fileLimit="1" allowTypes="/(\.|\/)(gif|jpe?g|png)$/"  skinSimple="true" update="picture2"/>
+                <p:commandButton value="Delete Picture" action="#{car.deleteChangeFile()}" update="picture2"/>
+
+                <br/>
+                <br/>
+                 <b:commandButton value="Close" update="@(None)" oncomplete="$('.pseudoClass_modal').modal('hide')"/>
+                <b:commandButton value="Change" action="#{car.change()}" update="@(.pseudoClass_dataTable) @(.pseudoClass_modalForm)"/>          
+            
+            </h:form>
+        </b:modal>
+        
+        <b:form>
+            <b:tabView activeIndex="0">
+                <b:tab title="Car">   
+                    <h:form styleClass="form_data">   
+                        <br/>
+                        <b:dataTable style-class="pseudoClass_dataTable" lang="en" value="#{car.cars}" var="onecar" excel="true" csv="true" pdf="true" columnVisibility="true" copy="true" print="true">
+                            <b:dataTableColumn value="#{onecar.licensePlate}" label="License Plate"/>
+                            <b:dataTableColumn label="Price per Day">
+                                <h:outputText value="#{onecar.pricePerDay}">
+                                    <f:convertNumber pattern="#0.00 $"/>
+                                </h:outputText>
+                            </b:dataTableColumn>
+                            <b:dataTableColumn value="#{onecar.color}" label="Color"/>
+                            <b:dataTableColumn value="#{onecar.model.name}" label="Model"/>
+                            <b:dataTableColumn value="#{onecar.model.manufacturer.name}" label="Manufacturer"/>
+                            <b:dataTableColumn value="#{onecar.picture}" label="Picture"/>
+                            <b:dataTableColumn label="Edit">
+                                <b:commandButton value="Edit" icon="edit" update="@(.pseudoClass_modalForm)" action="#{car.change(onecar.id)}" oncomplete="$('.pseudoClass_modal').modal()"/>
+                            </b:dataTableColumn>
+                        </b:dataTable>
+                    </h:form>
+                </b:tab>
+                <b:tab title="Add">
+                    <h:form styleClass="form_center pseudoClass_formAdd" enctype="multipart/form-data">
+                        <b:messages id="result"/>
+                        <b:inputText id="license" value="#{car.new_car.licensePlate}" label="License Plate"/>
+                        
+                        <b:inputText id="color" value="#{car.new_car.color}" label="Color"/>
+                        
+                        <b:inputText type="decimal" id="price" value="#{car.new_car.pricePerDay}" label="Price per Day"/>
+                       
+                        <b:selectOneMenu id="model" value="#{car.new_car.model}" label="Model">
+                            <f:selectItems value="#{car.models}" var="c" itemValue="#{c}" itemLabel="#{c.manufacturer.name} #{c.name}"/>
+                        </b:selectOneMenu>
+                        
+                        <p:fileUpload id="picture" label="Picture" value="#{car.new_uploadFile}" mode="simple" sizeLimit="500000" fileLimit="1" allowTypes="/(\.|\/)(gif|jpe?g|png)$/"  skinSimple="true" update="picture"/>
+                        <p:commandButton value="Delete Picture" action="#{car.deleteNewFile()}" update="picture"/>
+                        
+                        <br/>
+                        <br/>
+                        <b:commandButton value="Add" action="#{car.add}" update="@(.pseudoClass_dataTable) @(.pseudoClass_formAdd)">
+                        </b:commandButton>
+                    </h:form>
+                    
+                </b:tab>>
+            </b:tabView>
+        </b:form>
     </ui:define>
     
 </ui:composition>

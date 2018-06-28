@@ -14,9 +14,9 @@
                 <b:messages id="result2"/>
                 <b:inputText id="name" value="#{model.change_model.name}" label="Model"/>
                 
-                <b:inputText id="hp" value="#{model.change_model.horsepower}" label="Horsepower"/>
+                <b:inputText type="number" id="hp" value="#{model.change_model.horsepower}" label="Horsepower"/>
                 
-                <b:inputText id="cubic" value="#{model.change_model.cubicCapacity}" label="Cubic Capacity"/>
+                <b:inputText type="number" id="cubic" value="#{model.change_model.cubicCapacity}" label="Cubic Capacity"/>
                 
                 <b:selectOneMenu id="manufacturer" value="#{model.change_model.manufacturer}" label="Manufactury">
                     <f:selectItems value="#{model.manufacturers}" var="c" itemValue="#{c}" itemLabel="#{c.name}"/>
@@ -48,12 +48,12 @@
 
                 <b:tab title="Add">
                     <b:form style-class="form_center pseudoClass_formAdd">
-                         <b:messages id="result"/>
+                        <b:messages id="result"/>
                         <b:inputText id="name" value="#{model.new_model.name}" label="Model"/>
                         
-                        <b:inputText id="hp" value="#{model.new_model.horsepower}" label="Horsepower"/>
+                        <b:inputText type="number" id="hp" value="#{model.new_model.horsepower}" label="Horsepower"/>
                         
-                        <b:inputText id="cubic" value="#{model.new_model.cubicCapacity}" label="Cubic Capacity"/>
+                        <b:inputText type="number" id="cubic" value="#{model.new_model.cubicCapacity}" label="Cubic Capacity"/>
                         
                         <b:selectOneMenu id="manufacturer" value="#{model.new_model.manufacturer}" label="Manufactury">
                             <f:selectItems value="#{model.manufacturers}" var="c" itemValue="#{c}" itemLabel="#{c.name}"/>
