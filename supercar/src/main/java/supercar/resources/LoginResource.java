@@ -36,11 +36,6 @@ public class LoginResource extends IResource {
     public Response login(@QueryParam("login") String login, @QueryParam("password") String password) {
         return Ok(LoginHandler.login(login, password));
     }
-        
-    @GET @Path("{login}/{password}")
-    public Response login2(@PathParam("login") String login, @PathParam("password") String password) {
-        return Ok(LoginHandler.login(login, password));
-    }
     
     @GET @Path("logout")
     public Response logout() {

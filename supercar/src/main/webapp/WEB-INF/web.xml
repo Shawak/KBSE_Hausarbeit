@@ -36,4 +36,31 @@
     <welcome-file-list>
         <welcome-file>faces/index.xhtml</welcome-file>
     </welcome-file-list>
+
+    <!-- Filters -->
+    <filter>
+        <filter-name>user</filter-name>
+        <filter-class>supercar.filters.UserFilter</filter-class>
+    </filter>
+    <filter>
+        <filter-name>employee</filter-name>
+        <filter-class>supercar.filters.EmployeeFilter</filter-class>
+    </filter>
+    <filter>
+        <filter-name>admin</filter-name>
+        <filter-class>supercar.filters.AdministratorFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>user</filter-name>
+        <url-pattern>/faces/contact.xhtml</url-pattern>
+        <!--<url-pattern>/faces/contact.xhtml</url-pattern>-->
+    </filter-mapping>
+    <!--<filter-mapping>
+        <filter-name>employee</filter-name>
+        <url-pattern>/faces/add_manufacturer.xhtml</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>admin</filter-name>
+        <url-pattern>/faces/add_car.xhtml</url-pattern>
+    </filter-mapping>-->
 </web-app>

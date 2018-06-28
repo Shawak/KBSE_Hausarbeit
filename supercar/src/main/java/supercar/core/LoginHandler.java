@@ -5,8 +5,9 @@
  */
 package supercar.core;
 
-import java.io.Serializable;
-import javax.enterprise.context.SessionScoped;
+import javax.annotation.PostConstruct;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import supercar.entities.Account;
 import supercar.enums.AccountType;
 import supercar.interfaces.IRepositoryAccessor;
@@ -15,22 +16,28 @@ import supercar.interfaces.IRepositoryAccessor;
  *
  * @author Maxi
  */
-@SessionScoped
-public class LoginHandler extends IRepositoryAccessor implements Serializable {
+@RequestScoped
+public class LoginHandler extends IRepositoryAccessor {
     
-    private boolean loggedIn = false;
-    private long accountId = 0;
+    @Inject
+    LoginSession session;
+    
+    Account account;
     
     public Account getAccount() {
-        return Accounts.get(accountId);
+        return account;
     }
     
     public boolean isLoggedIn() {
-        Account account = Accounts.get(accountId);
-        return loggedIn && account != null && account.isActivated();
+        return session.loggedIn && account != null && account.isActivated();
     }
     
     public LoginHandler() { }
+    
+    @PostConstruct
+    void init() {
+        account = Accounts.get(session.accountId);
+    }
     
     public boolean login(String login, String password) {
         Account acc = Accounts.getByLogin(login);
@@ -42,18 +49,18 @@ public class LoginHandler extends IRepositoryAccessor implements Serializable {
             return false;
         }
         
-        loggedIn = true;
-        accountId = acc.getId();
+        session.loggedIn = true;
+        session.accountId = acc.getId();
         return true;
     }
     
     public void logout() {
-        loggedIn = false;
-        accountId = 0;
+        session.loggedIn = false;
+        session.accountId = 0;
     }
     
     public boolean hasAccess(AccountType accountType) {
-        return isLoggedIn() && getAccount().isAtleast(accountType);
+        return isLoggedIn() && account.isAtleast(accountType);
     }
     
 }

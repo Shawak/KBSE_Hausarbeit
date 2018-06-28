@@ -13,6 +13,7 @@ import java.io.Serializable;
  */
 public enum AccountType implements Serializable {
     
+    None(0),
     User(1),
     Employee(2),
     Administrator(3);

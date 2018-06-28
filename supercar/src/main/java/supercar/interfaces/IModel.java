@@ -6,6 +6,8 @@
 package supercar.interfaces;
 
 import java.io.Serializable;
+import javax.annotation.PostConstruct;
+import supercar.enums.AccountType;
 
 /**
  *
@@ -13,4 +15,14 @@ import java.io.Serializable;
  */
 public abstract class IModel extends IRestrictableRepositoryAccessor implements Serializable {
     
+    protected boolean LOGGEDIN, ISUSER, ISEMPLOYEE, ISADMIN;
+    
+    @PostConstruct
+    void init() {
+        LOGGEDIN = LoginHandler.isLoggedIn();
+        ISUSER = LoginHandler.hasAccess(AccountType.User);
+        ISEMPLOYEE = LoginHandler.hasAccess(AccountType.Employee);
+        ISADMIN = LoginHandler.hasAccess(AccountType.Administrator);
+    }
+
 }
