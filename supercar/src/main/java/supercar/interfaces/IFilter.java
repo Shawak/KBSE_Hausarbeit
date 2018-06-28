@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  *
  * @author Maxi
+ * http://www.catgovind.com/jsf/jsf-login-logout-form-authentication-example/
  */
 public abstract class IFilter extends IRestrictableRepositoryAccessor implements Filter {
     
