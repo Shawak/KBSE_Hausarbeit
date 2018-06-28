@@ -30,7 +30,6 @@ public class IndexModel extends IModel {
 
     public Collection<Car> getCars()
     {
-        System.out.println(order);
         return Cars.getAllActive(order);
     }
     
@@ -45,7 +44,6 @@ public class IndexModel extends IModel {
     }
 
     public void setOrder(String order) {
-        System.out.println("setOrder --------------------------------");
         this.order = order;
     }
     

@@ -20,6 +20,10 @@ public class CarRepository extends IRepository<Car> {
     public CarRepository() { }
 
     public Collection<Car> getAllActive(String order) {
-        return query("select e from #table e where e.deactivated = 0 order by e."+order+"").all();
+        if(order.equals("licensePlate")||order.equals("color")||order.equals("model")||order.equals("pricePerDay"))
+        {
+            return query("select e from #table e where e.deactivated = 0 order by e."+order+"").all();
+        }
+        return null;
     }
 }
