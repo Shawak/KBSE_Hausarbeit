@@ -28,7 +28,7 @@ public abstract class IFilter extends IRestrictableRepositoryAccessor implements
         if (this.filter.get()) {
             chain.doFilter(request, response);
         } else {
-            String needLoginUrl = request.getContextPath() + "/faces/need_login.xhtml";
+            String needLoginUrl = request.getContextPath() + "/faces/index.xhtml";
             response.sendRedirect(needLoginUrl);
         }
     }

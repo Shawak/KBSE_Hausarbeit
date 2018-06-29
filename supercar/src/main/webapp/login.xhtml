@@ -1,0 +1,29 @@
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:b="http://bootsfaces.net/ui"
+    xmlns:p="http://primefaces.org/ui" 
+    template="template.xhtml">
+    
+    <ui:define name="body">
+        <b:form>
+            <b:form></b:form>
+            <b:tabView activeIndex="0">
+                <b:tab title="Login">
+                    <b:form style-class="form_center pseudoClass_formLogin">
+                        <b:messages id="result" />
+                        <b:inputText id="username" value="#{login.login}" label="Username"/>
+                        <b:inputText id="password" value="#{login.password}" label="Password"/>
+                        <b:commandButton value="Login" action="#{login.login()}" update="@(.pseudoClass_formLogin) @(.pseudoClass_menu)"/>
+                    </b:form>
+                </b:tab>
+                <b:tab title="Register">
+                    
+                </b:tab>
+            </b:tabView>
+        </b:form>
+    </ui:define>
+    
+</ui:composition>

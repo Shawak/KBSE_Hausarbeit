@@ -5,8 +5,10 @@
  */
 package supercar.core;
 
+import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import supercar.entities.Account;
 import supercar.enums.AccountType;
@@ -17,7 +19,7 @@ import supercar.interfaces.IRepositoryAccessor;
  * @author Maxi
  */
 @RequestScoped
-public class LoginHandler extends IRepositoryAccessor {
+public class LoginHandler extends IRepositoryAccessor{
     
     @Inject
     LoginSession session;
@@ -29,7 +31,7 @@ public class LoginHandler extends IRepositoryAccessor {
     }
     
     public boolean isLoggedIn() {
-        return session.loggedIn && account != null && account.isActivated();
+        return session != null && session.loggedIn && account != null && account.isActivated();
     }
     
     public LoginHandler() { }
