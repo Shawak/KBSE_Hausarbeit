@@ -54,6 +54,11 @@
                             <b:dataTableColumn label="Edit">
                                 <b:commandButton value="Edit" icon="edit" update="@(.pseudoClass_modalForm)" action="#{car.change(onecar.id)}" oncomplete="$('.pseudoClass_modal').modal()"/>
                             </b:dataTableColumn>
+                            
+                            <b:dataTableColumn label="Deactivate">
+                                <b:commandButton rendered="#{not onecar.deactivated}" value="Deactivate" update="@(.pseudoClass_dataTable)" action="#{car.deactivate(onecar.id)}"/>
+                                <b:commandButton rendered="#{onecar.deactivated}" value="Activate" update="@(.pseudoClass_dataTable)" action="#{car.activate(onecar.id)}"/>
+                            </b:dataTableColumn>
                         </b:dataTable>
                     </h:form>
                 </b:tab>

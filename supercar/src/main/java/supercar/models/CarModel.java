@@ -200,5 +200,25 @@ public class CarModel extends IModel{
             FacesContext.getCurrentInstance().addMessage("form:result2", new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error:Car not change!","Error:Car not change!"));
         }
     }
+   
+   public void deactivate(long id){ 
+        if(Lendings.getLendingCarById(id)==null){  
+            //Car tmp = cars.stream().filter((Car o) -> o.getId().equals(id)).findFirst().get();
+            Car tmp = Cars.get(id);
+            tmp.setDeactivated(!tmp.isDeactivated());
+            tmp = Cars.update(tmp);
+            //cars=cars.stream().map((Car o) -> Objects.equals(o.getId(), tmp.getId())?tmp:o).collect(toList());
+            cars = Cars.getAll();
+        } 
+   }
+   
+   public void activate(long id){
+       //Car tmp = cars.stream().filter((Car o) -> o.getId().equals(id)).findFirst().get();
+       Car tmp = Cars.get(id);
+       tmp.setDeactivated(!tmp.isDeactivated());
+       tmp = Cars.update(tmp);
+       //cars=cars.stream().map((Car o) -> Objects.equals(o.getId(), tmp.getId())?tmp:o).collect(toList());
+       cars = Cars.getAll();
+   }
      
 }

@@ -95,7 +95,9 @@ public class ManufacturerModel extends IModel {
     }
     
     public void change(Long id){
-        change_manufacturer=manufacturers.stream().filter((Manufacturer o) -> o.getId().equals(id)).findFirst().get();
+        //change_manufacturer=manufacturers.stream().filter((Manufacturer o) -> o.getId().equals(id)).findFirst().get();
+        
+        change_manufacturer= Manufacturers.get(id);
         change_city= change_manufacturer.getCity();
     }
     
@@ -103,7 +105,8 @@ public class ManufacturerModel extends IModel {
         try {
             change_manufacturer.setCity(change_city);
             change_manufacturer = Manufacturers.update(change_manufacturer);        
-            manufacturers=manufacturers.stream().map((Manufacturer o) -> Objects.equals(o.getId(), change_manufacturer.getId())?change_manufacturer:o).collect(toList());
+            //manufacturers=manufacturers.stream().map((Manufacturer o) -> Objects.equals(o.getId(), change_manufacturer.getId())?change_manufacturer:o).collect(toList());
+            manufacturers = Manufacturers.getAll();
             FacesContext.getCurrentInstance().addMessage("form:result2", new FacesMessage(FacesMessage.SEVERITY_INFO,"Manufactory change!","Manufactory change!"));
         } catch (Exception e) {
             FacesContext.getCurrentInstance().addMessage("form:result2", new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error:Manufactory not change!","Error:Manufactory not change!"));
