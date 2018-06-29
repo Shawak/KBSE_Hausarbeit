@@ -16,11 +16,11 @@ import supercar.interfaces.IUniqueEntity;
 @Entity
 public class Lending extends IUniqueEntity {
     
-    private long rentDate;
-    private long returnDate;
+    private Long rentDate;
+    private Long returnDate;
     
-    private long rentMileage;
-    private long returnMileage;
+    private Long rentMileage;
+    private Long returnMileage;
     
     private String returnCommentary;
     
@@ -39,31 +39,31 @@ public class Lending extends IUniqueEntity {
         return rentDate;
     }
 
-    public void setRentDate(long rentDate) {
+    public void setRentDate(Long rentDate) {
         this.rentDate = rentDate;
     }
 
-    public long getReturnDate() {
+    public Long getReturnDate() {
         return returnDate;
     }
 
-    public void setReturnDate(long returnDate) {
+    public void setReturnDate(Long returnDate) {
         this.returnDate = returnDate;
     }
 
-    public long getRentMileage() {
+    public Long getRentMileage() {
         return rentMileage;
     }
 
-    public void setRentMileage(long rentMileage) {
+    public void setRentMileage(Long rentMileage) {
         this.rentMileage = rentMileage;
     }
 
-    public long getReturnMileage() {
+    public Long getReturnMileage() {
         return returnMileage;
     }
 
-    public void setReturnMileage(long returnMileage) {
+    public void setReturnMileage(Long returnMileage) {
         this.returnMileage = returnMileage;
     }
 

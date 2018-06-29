@@ -24,7 +24,9 @@ public class StartupBean extends IRepositoryAccessor {
     void init() {
         if (Accounts.getAll().isEmpty()) {
             Accounts.add(new Account("Administrator", "Administrator", 0, "", "admin", "admin", "", AccountType.Administrator));
-            Accounts.add(new Account("Max", "Mustermann", 0, "", "user", "user", "", AccountType.User));
+           
+            Account account = new Account("Max", "Mustermann", 0, "", "user", "user", "", AccountType.User);
+            Accounts.add(account);
             
             Manufacturer opel = Manufacturers.add(new Manufacturer("Opel", 65428, "Bahnhofsplatz", "", "Rüsselheim"));
             Manufacturer mercedes = Manufacturers.add(new Manufacturer("Mercedes-Benz", 70327, "Mercedesstraße 137", "", "Stuttgart Rotenberg"));
@@ -54,10 +56,28 @@ public class StartupBean extends IRepositoryAccessor {
             Cars.add(new Car("OS HS 0006", 42.75f, caddy, "VW_Kaddy.jpg", "yellow"));
             Cars.add(new Car("OS HS 0007", 75.31f, aygo, "Toyota_Aygo.jpg", "silver"));
             Cars.add(new Car("OS HS 0008", 65.70f, v70, "Volvo_V70.jpg", "silver"));
-            Cars.add(new Car("OS HS 0009", 21.50f, granTurismo, "Maserati_Granturismo.jpg", "black"));
-            Car car = new Car("OS HS 0010", 25.50f, kangoo, "Renault_Kangoo.jpg", "galaxy-gray");
-            car.setDeactivated(true);
+            
+            Car car = new Car("OS HS 0009", 21.50f, granTurismo, "Maserati_Granturismo.jpg", "black");
             Cars.add(car);
+           
+            Car car2 = new Car("OS HS 0010", 25.50f, kangoo, "Renault_Kangoo.jpg", "galaxy-gray");
+            car2.setDeactivated(true);
+            Cars.add(car2);
+            
+            
+            Lending lending = new Lending();
+            lending.setCar(car);
+            lending.setRentMileage(100l);
+            //22.5.18
+            lending.setRentDate(1526940000000l);
+            
+            Lendings.add(lending);
+            
+            //ohne diesen Befehl funktioniert der danach nicht
+            account = Accounts.update(account);
+            account.addLending(lending);
+            
+            Accounts.update(account);
         }
     }
     

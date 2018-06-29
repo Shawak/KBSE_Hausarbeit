@@ -130,6 +130,10 @@ public class Account extends IUniqueEntity {
           return accountType >= AccountType.Administrator.getValue();
     }
     
+    public void addLending(Lending lending){
+        this.lendings.add(lending);
+    }
+    
     public Account() { }
     
     public Account(String firstname, String lastname, int plz, String street, String login, String password, String licenseNumber, AccountType accountType) {
