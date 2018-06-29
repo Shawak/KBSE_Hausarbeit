@@ -1,25 +1,80 @@
-.image{
+html {
+    overflow-y: scroll;
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    background-image: url(/supercar/images/background.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.image {
     height: 50px;
     margin-top: -15px;
 }
 
-.form_center{
+.form_center {
     margin: 0 auto;
     max-width: 400px;
     padding: 15px;
 }
 
-.menu_border{
+.menu_border {
     border-top: 0;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
 }
 
-.input_readonly{
+.input_readonly {
     background-color: #ffffff !important;
 }
 
-html{
-    overflow-y:scroll;
+#footer {
+    color: rgb(220, 220, 220);
+    padding: 10px;
+    padding-bottom: 40px;
+    background-color: rgba(20, 20, 20, 0.8);
 }
 
+.page {
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+#page-index td {
+    padding: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+#page-index td > a {
+    text-decoration: none;
+    color: inherit;
+}
+
+#page-index td > a > .panel-group {
+    margin: 0;
+}
+
+#page-index td > a > .panel-group > .panel {
+    background-color: transparent;
+    border: 0;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+}
+
+#page-index tr:hover {
+    background-color: rgba(255, 255, 255, 0.65);
+}
+
+#page-index td img {
+    width: 100px;
+    height: 60px;
+}
+
+#page-index table {
+    width: 100% !important;
+}
