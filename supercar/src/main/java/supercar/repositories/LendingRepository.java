@@ -16,10 +16,10 @@ import supercar.interfaces.IRepository;
 @Stateless
 public class LendingRepository extends IRepository<Lending> {
 
-    public LendingRepository() { }
-    
-    
-    public Lending getLendingCarById(Long id){
+    public LendingRepository() {
+    }
+
+    public Lending getLendingCarById(Long id) {
         return query("select e from #table e where e.car.id = :id and e.returnDate IS NULL")
                 .put("id", id)
                 .one();

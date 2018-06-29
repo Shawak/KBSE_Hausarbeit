@@ -10,7 +10,6 @@ import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
-import supercar.core.LoginHandler;
 import supercar.interfaces.IModel;
 
 /**
@@ -19,19 +18,12 @@ import supercar.interfaces.IModel;
  */
 @Named("login")
 @SessionScoped
-public class LoginModel extends IModel{
-    //private LoginHandler loginHandler;
-    
+public class LoginModel extends IModel {
+
     private String login;
     private String password;
-    
-    public LoginModel(){
-        
-    }
-    
-    @PostConstruct
-    public void init(){
-        //loginHandler = new LoginHandler();
+
+    public LoginModel() {
     }
 
     public String getLogin() {
@@ -49,15 +41,14 @@ public class LoginModel extends IModel{
     public void setPassword(String password) {
         this.password = password;
     }
-    
-    public String login(){
-        if(LoginHandler.login(login, password)){
-            return "index.xhtml";
-        }
-        else{
-            FacesContext.getCurrentInstance().addMessage("form:result", new FacesMessage(FacesMessage.SEVERITY_ERROR,"Username or Password wrong","Username or Password wrong"));     
+
+    public String login() {
+        if (LoginHandler.login(login, password)) {
+            return "index.xhtml?faces-redirect=true";
+        } else {
+            FacesContext.getCurrentInstance().addMessage("form:result", new FacesMessage(FacesMessage.SEVERITY_ERROR, "Username or Password wrong", "Username or Password wrong"));
             return null;
         }
     }
-    
+
 }

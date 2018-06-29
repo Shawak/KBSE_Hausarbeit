@@ -6,8 +6,6 @@
 package supercar.models;
 
 import java.util.Collection;
-import java.util.Objects;
-import static java.util.stream.Collectors.toList;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
@@ -24,47 +22,47 @@ import supercar.interfaces.IModel;
 @Named("manufacturer")
 @SessionScoped
 public class ManufacturerModel extends IModel {
-    
+
     private Manufacturer new_manufacturer;
-    
+
     private Manufacturer change_manufacturer;
-    
+
     private String new_city;
-    
+
     private String change_city;
-    
+
     private Collection<Manufacturer> manufacturers;
-    
+
     private final PlzApi plzApi;
 
     public String getNew_city() {
-        new_city= plzApi.getName(new_manufacturer.getPlz());
-        if(new_city == null){
-            new_city="";
+        new_city = plzApi.getName(new_manufacturer.getPlz());
+        if (new_city == null) {
+            new_city = "";
             return new_city;
         }
-        new_city= new_city.substring(0, new_city.length() - 1).substring(1);
+        new_city = new_city.substring(0, new_city.length() - 1).substring(1);
         return new_city;
     }
-    
+
     public String getChange_city() {
-        if(change_manufacturer!=null){
-            change_city= plzApi.getName(change_manufacturer.getPlz());
-            if(change_city == null){
-                change_city="";
+        if (change_manufacturer != null) {
+            change_city = plzApi.getName(change_manufacturer.getPlz());
+            if (change_city == null) {
+                change_city = "";
                 return change_city;
             }
-            change_city= change_city.substring(0, change_city.length() - 1).substring(1);
+            change_city = change_city.substring(0, change_city.length() - 1).substring(1);
             return change_city;
         }
         return change_city;
     }
-    
+
     public Collection<Manufacturer> getManufacturers() {
         return manufacturers;
     }
-    
-     public Manufacturer getNew_manufacturer() {
+
+    public Manufacturer getNew_manufacturer() {
         return new_manufacturer;
     }
 
@@ -76,41 +74,41 @@ public class ManufacturerModel extends IModel {
         new_manufacturer = new Manufacturer();
         plzApi = new PlzApi();
     }
-    
+
     @PostConstruct
-    public void init(){
+    public void init() {
         //manufacturers = new ArrayList<>();
         manufacturers = Manufacturers.getAll();
     }
-    
-    public void add(){
+
+    public void add() {
         try {
             new_manufacturer.setCity(new_city);
             manufacturers.add(Manufacturers.add(new_manufacturer));
             new_manufacturer = new Manufacturer();
-            FacesContext.getCurrentInstance().addMessage("form:result", new FacesMessage(FacesMessage.SEVERITY_INFO,"Manufactory add!","Manufactory add!"));
+            FacesContext.getCurrentInstance().addMessage("form:result", new FacesMessage(FacesMessage.SEVERITY_INFO, "Manufactory add!", "Manufactory add!"));
         } catch (Exception e) {
-            FacesContext.getCurrentInstance().addMessage("form:result", new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error:Manufactory not add!","Error:Manufactory not add!"));
+            FacesContext.getCurrentInstance().addMessage("form:result", new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error:Manufactory not add!", "Error:Manufactory not add!"));
         }
     }
-    
-    public void change(Long id){
+
+    public void change(Long id) {
         //change_manufacturer=manufacturers.stream().filter((Manufacturer o) -> o.getId().equals(id)).findFirst().get();
-        
-        change_manufacturer= Manufacturers.get(id);
-        change_city= change_manufacturer.getCity();
+
+        change_manufacturer = Manufacturers.get(id);
+        change_city = change_manufacturer.getCity();
     }
-    
-    public void change(){
+
+    public void change() {
         try {
             change_manufacturer.setCity(change_city);
-            change_manufacturer = Manufacturers.update(change_manufacturer);        
+            change_manufacturer = Manufacturers.update(change_manufacturer);
             //manufacturers=manufacturers.stream().map((Manufacturer o) -> Objects.equals(o.getId(), change_manufacturer.getId())?change_manufacturer:o).collect(toList());
             manufacturers = Manufacturers.getAll();
-            FacesContext.getCurrentInstance().addMessage("form:result2", new FacesMessage(FacesMessage.SEVERITY_INFO,"Manufactory change!","Manufactory change!"));
+            FacesContext.getCurrentInstance().addMessage("form:result2", new FacesMessage(FacesMessage.SEVERITY_INFO, "Manufactory change!", "Manufactory change!"));
         } catch (Exception e) {
-            FacesContext.getCurrentInstance().addMessage("form:result2", new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error:Manufactory not change!","Error:Manufactory not change!"));
-        } 
+            FacesContext.getCurrentInstance().addMessage("form:result2", new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error:Manufactory not change!", "Error:Manufactory not change!"));
+        }
     }
-    
+
 }

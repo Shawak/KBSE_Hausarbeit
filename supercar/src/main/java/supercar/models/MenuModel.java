@@ -6,9 +6,8 @@
 package supercar.models;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.SessionScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
-import supercar.core.LoginHandler;
 import supercar.interfaces.IModel;
 
 /**
@@ -16,25 +15,16 @@ import supercar.interfaces.IModel;
  * @author Patrick
  */
 @Named("menu")
-@SessionScoped
-public class MenuModel extends IModel{
-    
-    public MenuModel(){
-        
-    }
-    
-    @PostConstruct
-    public void init(){
-    
+@RequestScoped
+public class MenuModel extends IModel {
+
+    public MenuModel() {
+
     }
 
-    public LoginHandler getLoginHandler() {
-        return LoginHandler;
+    @PostConstruct
+    public void init() {
+
     }
-    
-    public boolean isLoggedIn(){
-        System.out.println("aaa");
-        return LoginHandler.isLoggedIn();
-    }
-    
+
 }

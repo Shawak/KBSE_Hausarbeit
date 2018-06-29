@@ -19,7 +19,7 @@ import supercar.interfaces.IRepositoryAccessor;
  * @author Maxi
  */
 @RequestScoped
-public class LoginHandler extends IRepositoryAccessor{
+public class LoginHandler extends IRepositoryAccessor {
     
     @Inject
     LoginSession session;
@@ -31,7 +31,7 @@ public class LoginHandler extends IRepositoryAccessor{
     }
     
     public boolean isLoggedIn() {
-        return session != null && session.loggedIn && account != null && account.isActivated();
+        return session.loggedIn && account != null && account.isActivated();
     }
     
     public LoginHandler() { }
@@ -51,6 +51,7 @@ public class LoginHandler extends IRepositoryAccessor{
             return false;
         }
         
+        account = acc;
         session.loggedIn = true;
         session.accountId = acc.getId();
         return true;

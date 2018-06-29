@@ -20,8 +20,8 @@
             </b:dropMenu>
         </b:navbarLinks>
         <b:navbarLinks pull="right">
-            <b:navLink rendered="#{!menu.loggedIn}" value="Login" href="/supercar/faces/login.xhtml"></b:navLink>
-            <b:navLink rendered="#{menu.loggedIn}" value="#{menu.loginHandler.account.firstname} #{menu.loginHandler.account.lastname}" href="#"></b:navLink>
+            <b:navLink rendered="#{!menu.LOGGEDIN}" value="Login" href="/supercar/faces/login.xhtml"></b:navLink>
+            <b:navLink rendered="#{menu.LOGGEDIN}" value="#{menu.loginHandler.account.firstname} #{menu.loginHandler.account.lastname}" href="#"></b:navLink>
         </b:navbarLinks>
     </b:navBar>
     

@@ -7,11 +7,9 @@ package supercar.models;
 
 import java.util.Collection;
 import javax.enterprise.context.SessionScoped;
-import javax.inject.Inject;
 import javax.inject.Named;
 import supercar.entities.Car;
 import supercar.interfaces.IModel;
-import supercar.repositories.CarRepository;
 
 /**
  *
@@ -20,31 +18,28 @@ import supercar.repositories.CarRepository;
 @Named("index")
 @SessionScoped
 public class IndexModel extends IModel {
-    
-      private String order;
-    
-    public IndexModel() { 
-        order ="licensePlate";
-    }
-  
 
-    public Collection<Car> getCars()
-    {
+    private String order;
+
+    public IndexModel() {
+        order = "licensePlate";
+    }
+
+    public Collection<Car> getCars() {
         return Cars.getAllActive(order);
     }
-    
-    public String test(Long id)
-    {
+
+    public String test(Long id) {
         System.out.println(id);
-       return "/supercar/faces/index.xhtml";
+        return "/supercar/faces/index.xhtml";
     }
-    
-     public String getOrder() {
+
+    public String getOrder() {
         return order;
     }
 
     public void setOrder(String order) {
         this.order = order;
     }
-    
+
 }

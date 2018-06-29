@@ -15,5 +15,5 @@ import supercar.core.LoginHandler;
 public abstract class IRestrictableRepositoryAccessor extends IRepositoryAccessor {
     
     @Inject protected LoginHandler LoginHandler;
-    
+
 }
