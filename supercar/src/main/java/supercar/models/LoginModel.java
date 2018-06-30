@@ -10,8 +10,10 @@ import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
+import javax.validation.constraints.NotNull;
 import supercar.core.PlzApi;
 import supercar.entities.Account;
+import supercar.enums.AccountType;
 import supercar.interfaces.IModel;
 
 /**
@@ -31,7 +33,10 @@ public class LoginModel extends IModel {
 
     private String city;
 
-    private PlzApi plzApi;
+    private final PlzApi plzApi;
+
+    @NotNull(message = "licenseNumber may not be empty")
+    private String licenseNumber;
 
     public LoginModel() {
         account = new Account();
@@ -74,6 +79,14 @@ public class LoginModel extends IModel {
         this.account = account;
     }
 
+    public String getLicenseNumber() {
+        return licenseNumber;
+    }
+
+    public void setLicenseNumber(String licenseNumber) {
+        this.licenseNumber = licenseNumber;
+    }
+
     public String getCity() {
         if (account.getPlz() == null) {
             city = "";
@@ -105,6 +118,17 @@ public class LoginModel extends IModel {
         } else if (!account.getPassword().equals(password2)) {
             FacesContext.getCurrentInstance().addMessage("form:result2", new FacesMessage(FacesMessage.SEVERITY_ERROR, "\"Password\" and \"Password confirmation\" do not match!", "\"Password\" and \"Password confirmation\" do not match!"));
         } else {
+            try {
+                account.setLicenseNumber(licenseNumber);
+                account.setAccountType(AccountType.User);
+                account.setActivated(true);
+
+                account = Accounts.add(account);
+                FacesContext.getCurrentInstance().addMessage("form:result2", new FacesMessage(FacesMessage.SEVERITY_INFO, "Account add!", "Account add!"));
+            } catch (Exception e) {
+                FacesContext.getCurrentInstance().addMessage("form:result2", new FacesMessage(FacesMessage.SEVERITY_ERROR, "Account not add!", "Account not add!"));
+
+            }
         }
     }
 }

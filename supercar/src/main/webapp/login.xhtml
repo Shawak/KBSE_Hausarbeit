@@ -6,7 +6,7 @@
     xmlns:b="http://bootsfaces.net/ui"
     xmlns:p="http://primefaces.org/ui" 
     template="template.xhtml">
-    
+
     <ui:define name="body">
         <b:form>
             <b:form></b:form>
@@ -22,28 +22,29 @@
                 <b:tab title="Register">
                     <b:form style-class="form_center pseudoClass_formRegister">
                         <b:messages id="result2" />
-                        <b:inputText id="username" value="#{login.account.login}" label="Username"/>
-                        <b:inputSecret id="password" value="#{login.account.password}" label="Password"/>
-                        <b:inputSecret id="password2" value="#{login.password2}" label="Please repeat your Password"/>
-                        
+                        <b:inputText id="username2" value="#{login.account.login}" label="Username"/>
+                        <b:inputSecret id="password2" value="#{login.account.password}" label="Password"/>
+                        <b:inputSecret id="password3" value="#{login.password2}" label="Please repeat your Password"/>
+
                         <hr/>
                         <b:inputText id="firstname" value="#{login.account.firstname}" label="First Name"/>
                         <b:inputText id="lastname" value="#{login.account.lastname}" label="Surname"/>
-                        
+
                         <b:inputText id="street" value="#{login.account.street}" label="Street"/>
-                        
+
                         <b:inputText id="plz" value="#{login.account.plz}" label="Post Code">
                             <p:ajax  event="keyup" update="city"/>
                         </b:inputText>
 
                         <b:inputText id="city" value="#{login.city}" label="City" readonly="true" style-class="input_readonly"/>
-                
                         
-                        <b:commandButton value="Login" action="#{login.register()}" update="@(.pseudoClass_formRegister) @(.pseudoClass_menu)"/>
+                        <b:inputText id="license" value="#{login.licenseNumber}" label="License Number"/>
+                        
+                        <b:commandButton value="Register" action="#{login.register()}" update="@(.pseudoClass_formRegister) @(.pseudoClass_menu)"/>
                     </b:form>
                 </b:tab>
             </b:tabView>
         </b:form>
     </ui:define>
-    
+
 </ui:composition>

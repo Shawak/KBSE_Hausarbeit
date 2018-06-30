@@ -26,6 +26,7 @@ public class StartupBean extends IRepositoryAccessor {
             Accounts.add(new Account("Administrator", "Administrator", 49076, "Albrechtstr. 30", "admin", "admin", "", AccountType.Administrator, "Osnabrück"));
            
             Account account = new Account("Max", "Mustermann", 49076, "Albrechtstr. 30", "user", "user", "", AccountType.User, "Osnabrück");
+            account.setLicenseNumber("Z014AB37X95");
             Accounts.add(account);
             
             Manufacturer opel = Manufacturers.add(new Manufacturer("Opel", 65428, "Bahnhofsplatz", "", "Rüsselheim"));
