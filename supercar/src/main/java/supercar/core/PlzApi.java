@@ -19,14 +19,19 @@ public class PlzApi {
     
     protected Gson gson = new GsonBuilder().setPrettyPrinting().create();
     
-    public String getName(int plz) {
+    public String getName(int plz) throws Exception {
         String json = WebHelper.getHTML("http://api.zippopotam.us/de/" + plz);
+        if (json == null) {
+            throw new Exception("plz api seems to be down, checkout http://api.zippopotam.us/de for more information");
+        }
+        
         JsonObject obj = gson.fromJson(json, JsonObject.class);
         if (obj == null) {
-            return null;
+            return "";
         }
         
         JsonArray arr = obj.getAsJsonArray("places");
-        return arr.size() > 0 ? arr.get(0).getAsJsonObject().get("place name").toString() : null;
+        String ret = arr.size() > 0 ? arr.get(0).getAsJsonObject().get("place name").getAsString() : null;
+        return ret;
     }
 }
