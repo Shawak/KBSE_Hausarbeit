@@ -8,6 +8,7 @@ package supercar.repositories;
 import java.util.Collection;
 import javax.ejb.Stateless;
 import supercar.entities.Car;
+import supercar.entities.Lending;
 import supercar.interfaces.IRepository;
 
 /**
@@ -23,6 +24,15 @@ public class CarRepository extends IRepository<Car> {
     public Collection<Car> getAllActive(String order) {
         if (order.equals("licensePlate") || order.equals("color") || order.equals("model") || order.equals("pricePerDay")) {
             return query("select e from #table e where e.deactivated = 0 order by e." + order + "").all();
+        }
+        return null;
+    }
+    
+    public Collection<Car> getAllFree(String order, Collection<Lending> lendings){
+        //alle autos die nicht beim kunden oder in der Werkstatt sind
+        if (order.equals("licensePlate") || order.equals("color") || order.equals("model") || order.equals("pricePerDay")) {
+            return query("select e from #table e where e.deactivated = 0 and e not in (select f.car from Lending f where f.returnDate IS NULL) and e not in (select g.car from Repair g where g.repairEndDate IS NULL) order by e." + order + "")
+                    .all();
         }
         return null;
     }
