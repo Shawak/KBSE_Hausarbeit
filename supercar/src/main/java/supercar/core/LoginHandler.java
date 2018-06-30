@@ -56,6 +56,7 @@ public class LoginHandler extends IRepositoryAccessor {
     }
     
     public void logout() {
+        account = null;
         session.loggedIn = false;
         session.accountId = 0;
     }
