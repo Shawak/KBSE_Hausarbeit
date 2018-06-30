@@ -42,13 +42,7 @@ public class ManufacturerModel extends IModel {
             new_city = "";
             return new_city;
         } else {
-            try {
-                new_city = plzApi.getName(new_manufacturer.getPlz());
-            } catch (Exception ex) {
-                new_city = "";
-                Logger.getLogger(ManufacturerModel.class.getName()).log(Level.SEVERE, null, ex);
-                return new_city;
-            }
+            new_city = plzApi.getName(new_manufacturer.getPlz());
             return new_city;
         }
     }

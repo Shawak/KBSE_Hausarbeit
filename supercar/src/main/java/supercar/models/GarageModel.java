@@ -42,14 +42,7 @@ public class GarageModel extends IModel {
             new_city = "";
             return new_city;
         } else {
-            try {
-                new_city = plzApi.getName(new_garage.getPlz());
-            } catch (Exception ex) {
-                new_city = "";
-                Logger.getLogger(GarageModel.class.getName()).log(Level.SEVERE, null, ex);
-                return new_city;
-            }
-
+            new_city = plzApi.getName(new_garage.getPlz());
             return new_city;
         }
     }
@@ -60,13 +53,7 @@ public class GarageModel extends IModel {
                 change_city = "";
                 return change_city;
             } else {
-                try {
-                    change_city = plzApi.getName(change_garage.getPlz());
-                } catch (Exception ex) {
-                    change_city = "";
-                    Logger.getLogger(GarageModel.class.getName()).log(Level.SEVERE, null, ex);
-                    return change_city;
-                }
+                change_city = plzApi.getName(change_garage.getPlz());
                 return change_city;
             }
         }

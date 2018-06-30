@@ -19,10 +19,11 @@ public class PlzApi {
     
     protected Gson gson = new GsonBuilder().setPrettyPrinting().create();
     
-    public String getName(int plz) throws Exception {
+    public String getName(int plz) {
         String json = WebHelper.getHTML("http://api.zippopotam.us/de/" + plz);
         if (json == null) {
-            throw new Exception("plz api seems to be down, checkout http://api.zippopotam.us/de for more information");
+            System.out.println("ERROR: plz api seems to be down, checkout http://api.zippopotam.us/de for more information");
+            return "";
         }
         
         JsonObject obj = gson.fromJson(json, JsonObject.class);

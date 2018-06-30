@@ -94,13 +94,7 @@ public class LoginModel extends IModel {
             city = "";
             return city;
         } else {
-            try {
-                city = plzApi.getName(account.getPlz());
-            } catch (Exception ex) {
-                city = "";
-                Logger.getLogger(LoginModel.class.getName()).log(Level.SEVERE, null, ex);
-                return city;
-            }
+            city = plzApi.getName(account.getPlz());
             return city;
         }
     }
