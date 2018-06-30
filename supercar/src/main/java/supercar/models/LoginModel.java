@@ -89,16 +89,9 @@ public class LoginModel extends IModel {
 
     public String getCity() {
         if (account.getPlz() == null) {
-            city = "";
-            return city;
+            return "";
         } else {
-            city = plzApi.getName(account.getPlz());
-            if (city == null) {
-                city = "";
-                return city;
-            }
-            city = city.substring(0, city.length() - 1).substring(1);
-            return city;
+            return plzApi.getName(account.getPlz());
         }
     }
 

@@ -6,19 +6,15 @@
 package supercar.validator;
 
 import java.util.regex.Pattern;
-import javax.inject.Inject;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
-import supercar.interfaces.IRepositoryAccessor;
-import supercar.repositories.CarRepository;
 
 /**
  *
  * @author Patrick
  */
-public class LicensePlateValidator implements ConstraintValidator<LicensePlate, String>{
-   
-    
+public class LicensePlateValidator implements ConstraintValidator<LicensePlate, String> {
+
     @Override
     public void initialize(LicensePlate a) {
         ConstraintValidator.super.initialize(a); //To change body of generated methods, choose Tools | Templates.
@@ -26,7 +22,7 @@ public class LicensePlateValidator implements ConstraintValidator<LicensePlate, 
 
     @Override
     public boolean isValid(String t, ConstraintValidatorContext cvc) {
-        
-        return t!=null && Pattern.matches("[A-ZÄÖÜ]{1,3} [A-Z]{0,2} [0-9]{1,4}[H]{0,1}",t)== true && t.length()<=10;
+
+        return t != null && Pattern.matches("[A-ZÄÖÜ]{1,3} [A-Z]{0,2} [0-9]{1,4}[H]{0,1}", t) == true && t.length() <= 10;
     }
 }

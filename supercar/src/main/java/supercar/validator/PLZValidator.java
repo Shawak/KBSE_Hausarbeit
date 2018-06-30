@@ -13,10 +13,10 @@ import supercar.core.PlzApi;
  *
  * @author Patrick
  */
-public class PLZValidator implements ConstraintValidator<PLZ, Integer>{
-    
+public class PLZValidator implements ConstraintValidator<PLZ, Integer> {
+
     PlzApi plzapi = new PlzApi();
-    
+
     @Override
     public void initialize(PLZ a) {
         ConstraintValidator.super.initialize(a); //To change body of generated methods, choose Tools | Templates.
@@ -24,10 +24,10 @@ public class PLZValidator implements ConstraintValidator<PLZ, Integer>{
 
     @Override
     public boolean isValid(Integer t, ConstraintValidatorContext cvc) {
-        if(t ==null){
+        if (t == null) {
             return false;
         }
-        return plzapi.getName(t)!=null;
+        return !plzapi.getName(t).isEmpty();
         //return String.valueOf(t).length()==5;
     }
 }

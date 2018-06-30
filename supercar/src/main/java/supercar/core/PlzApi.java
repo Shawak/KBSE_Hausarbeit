@@ -23,10 +23,11 @@ public class PlzApi {
         String json = WebHelper.getHTML("http://api.zippopotam.us/de/" + plz);
         JsonObject obj = gson.fromJson(json, JsonObject.class);
         if (obj == null) {
-            return null;
+            return "";
         }
         
         JsonArray arr = obj.getAsJsonArray("places");
-        return arr.size() > 0 ? arr.get(0).getAsJsonObject().get("place name").toString() : null;
+        String ret = arr.size() > 0 ? arr.get(0).getAsJsonObject().get("place name").getAsString() : null;
+        return ret;
     }
 }
