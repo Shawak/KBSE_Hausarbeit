@@ -8,30 +8,28 @@
     template="template.xhtml">
     
     <ui:define name="body">
-        <h:panelGroup id="page-index" class="page" layout="block">
-            <h:form>
-                <b:selectOneMenu value="#{index.order}" update="@(.pseudoClass_dataTable)">
-                    <f:selectItem itemLabel="License Plate" itemValue="licensePlate" />
-                    <f:selectItem itemLabel="Price/Day" itemValue="pricePerDay" />
-                    <f:selectItem itemLabel="Color" itemValue="color" />
-                    <f:selectItem itemLabel="Model" itemValue="model" />
-                </b:selectOneMenu>
-                <b:dataTable lang="en" value="#{index.cars}" var="carV" border="false" striped="false" style-class="pseudoClass_dataTable">
-                    <b:dataTableColumn header-style-class="hidden" >
-                        <h:commandLink action="#{index.test(carV.id)}">
-                            <b:panel>
-                                <p:graphicImage value="images/#{carV.picture}" style="width:10%"/> 
-                                <h:outputText value="License plate: #{carV.licensePlate}" style="padding-left: 10%"/>
-                                <h:outputText value="#{carV.pricePerDay}" style="padding-left: 10%">
-                                <f:convertNumber pattern="Price/Day: #0.00 $"/>
-                                </h:outputText>
-                                <h:outputText value="Color: #{carV.color}" style="padding-left: 10%"/>
-                                <b:commandButton action="#{index.test(carV.id)}" look="primary" value="Details" style="float: right; margin-top: 12px"/>
-                            </b:panel>
-                        </h:commandLink>
-                    </b:dataTableColumn>
-                </b:dataTable>
-            </h:form>
-        </h:panelGroup>
+        <h:form>
+            <b:selectOneMenu value="#{index.order}" update="@(.pseudoClass_dataTable)">
+                <f:selectItem itemLabel="License Plate" itemValue="licensePlate" />
+                <f:selectItem itemLabel="Price/Day" itemValue="pricePerDay" />
+                <f:selectItem itemLabel="Color" itemValue="color" />
+                <f:selectItem itemLabel="Model" itemValue="model" />
+            </b:selectOneMenu>
+            <b:dataTable lang="en" value="#{index.cars}" var="carV" border="false" striped="false" style-class="pseudoClass_dataTable">
+                <b:dataTableColumn header-style-class="hidden" >
+                    <h:commandLink action="#{index.test(carV.id)}">
+                        <b:panel>
+                            <p:graphicImage value="images/#{carV.picture}" style="width:10%"/> 
+                            <h:outputText value="License plate: #{carV.licensePlate}" style="padding-left: 10%"/>
+                            <h:outputText value="#{carV.pricePerDay}" style="padding-left: 10%">
+                            <f:convertNumber pattern="Price/Day: #0.00 $"/>
+                            </h:outputText>
+                            <h:outputText value="Color: #{carV.color}" style="padding-left: 10%"/>
+                            <b:commandButton action="#{index.test(carV.id)}" look="primary" value="Details" style="float: right; margin-top: 12px"/>
+                        </b:panel>
+                    </h:commandLink>
+                </b:dataTableColumn>
+            </b:dataTable>
+        </h:form>
     </ui:define>
 </ui:composition>

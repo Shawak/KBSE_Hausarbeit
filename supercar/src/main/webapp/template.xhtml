@@ -15,16 +15,18 @@
             <ui:insert name="menu">
                 <ui:include src="menu.xhtml"></ui:include>
             </ui:insert>
-            <ui:insert name="body">
-
-            </ui:insert>
-            <h:panelGroup id="footer" layout="block">
-                <h:panelGrid>
-                    <h:panelGroup layout="block">
-                        &copy; 2018 HS Osnabrück - Project by Lukas Bernhold, Patrick Wiethoff &amp; Maximilian Nussbaum
-                    </h:panelGroup>
-                </h:panelGrid>
+            <h:panelGroup id="page#{view.viewId.replace('/', '-').replace('.xhtml', '')}" class="page" layout="block">
+                <ui:insert name="body">
+                    <!-- Inserted body -->
+                </ui:insert>
             </h:panelGroup>
         </b:container>
+        <h:panelGroup id="footer" layout="block">
+            <b:container fluid="false">
+                <h:panelGroup id="footer-content" layout="block">
+                    &copy; 2018 HS Osnabrück - Project by Lukas Bernhold, Patrick Wiethoff &amp; Maximilian Nussbaum
+                </h:panelGroup>
+            </b:container>
+        </h:panelGroup>
     </h:body>
 </html>
