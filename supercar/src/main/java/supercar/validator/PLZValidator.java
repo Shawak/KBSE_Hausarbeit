@@ -5,6 +5,8 @@
  */
 package supercar.validator;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 import supercar.core.PlzApi;
@@ -24,10 +26,15 @@ public class PLZValidator implements ConstraintValidator<PLZ, Integer> {
 
     @Override
     public boolean isValid(Integer t, ConstraintValidatorContext cvc) {
-        if (t == null) {
-            return false;
+        try {
+            if (t == null) {
+                return false;
+            }
+            return !plzapi.getName(t).isEmpty();
+            //return String.valueOf(t).length()==5;
+        } catch (Exception ex) {
+            Logger.getLogger(PLZValidator.class.getName()).log(Level.SEVERE, null, ex);
+            return true;
         }
-        return !plzapi.getName(t).isEmpty();
-        //return String.valueOf(t).length()==5;
     }
 }

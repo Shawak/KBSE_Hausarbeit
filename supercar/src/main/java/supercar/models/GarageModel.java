@@ -6,6 +6,8 @@
 package supercar.models;
 
 import java.util.Collection;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
@@ -36,36 +38,37 @@ public class GarageModel extends IModel {
     private final PlzApi plzApi;
 
     public String getNew_city() {
-        if(new_garage.getPlz()==null){
-            new_city="";
+        if (new_garage.getPlz() == null) {
+            new_city = "";
             return new_city;
-        }
-        else{
-            new_city = plzApi.getName(new_garage.getPlz());
-            if (new_city == null) {
+        } else {
+            try {
+                new_city = plzApi.getName(new_garage.getPlz());
+            } catch (Exception ex) {
                 new_city = "";
-                return new_city;
+                Logger.getLogger(GarageModel.class.getName()).log(Level.SEVERE, null, ex);
+                return "Post Code error";
             }
-            new_city = new_city.substring(0, new_city.length() - 1).substring(1);
+
             return new_city;
         }
     }
 
     public String getChange_city() {
         if (change_garage != null) {
-            if(change_garage.getPlz()==null){
-                change_city="";
+            if (change_garage.getPlz() == null) {
+                change_city = "";
+                return change_city;
+            } else {
+                try {
+                    change_city = plzApi.getName(change_garage.getPlz());
+                } catch (Exception ex) {
+                    change_city = "";
+                    Logger.getLogger(GarageModel.class.getName()).log(Level.SEVERE, null, ex);
+                    return "Post Code error";
+                }
                 return change_city;
             }
-            else{
-                change_city = plzApi.getName(change_garage.getPlz());
-                if (change_city == null) {
-                    change_city = "";
-                    return change_city;
-                }
-                change_city = change_city.substring(0, change_city.length() - 1).substring(1);
-                return change_city;
-            }   
         }
         return change_city;
     }

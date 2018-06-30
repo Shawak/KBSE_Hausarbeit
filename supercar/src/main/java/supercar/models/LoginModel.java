@@ -5,6 +5,8 @@
  */
 package supercar.models;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
@@ -89,9 +91,17 @@ public class LoginModel extends IModel {
 
     public String getCity() {
         if (account.getPlz() == null) {
-            return "";
+            city = "";
+            return city;
         } else {
-            return plzApi.getName(account.getPlz());
+            try {
+                city = plzApi.getName(account.getPlz());
+            } catch (Exception ex) {
+                city = "";
+                Logger.getLogger(LoginModel.class.getName()).log(Level.SEVERE, null, ex);
+                return "Post Code Error";
+            }
+            return city;
         }
     }
 
@@ -112,6 +122,7 @@ public class LoginModel extends IModel {
             FacesContext.getCurrentInstance().addMessage("form:result2", new FacesMessage(FacesMessage.SEVERITY_ERROR, "\"Password\" and \"Password confirmation\" do not match!", "\"Password\" and \"Password confirmation\" do not match!"));
         } else {
             try {
+                account.setCity(city);
                 account.setLicenseNumber(licenseNumber);
                 account.setAccountType(AccountType.User);
                 account.setActivated(true);

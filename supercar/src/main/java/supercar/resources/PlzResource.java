@@ -5,6 +5,8 @@
  */
 package supercar.resources;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -30,7 +32,12 @@ public class PlzResource extends IResource {
     
     @GET @Path("{plz}")
     public Response get(@PathParam("plz") int plz) {
-        return Ok(plzApi.getName(plz));
+        try {
+            return Ok(plzApi.getName(plz));
+        } catch (Exception ex) {
+            Logger.getLogger(PlzResource.class.getName()).log(Level.SEVERE, null, ex);
+            return Ok("Post Code Error");
+        }
     }
     
 }
