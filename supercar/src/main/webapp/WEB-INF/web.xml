@@ -52,7 +52,7 @@
     </filter>
     <filter>
         <filter-name>login</filter-name>
-        <filter-class>spercar.filters.LoginFilter</filter-class>
+        <filter-class>supercar.filters.LoginFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>user</filter-name>
@@ -70,7 +70,7 @@
         <url-pattern>/faces/add_manufacturer.xhtml</url-pattern>
     </filter-mapping>
     <filter-mapping>
-        <filter-name>login></filter-name>
+        <filter-name>login</filter-name>
         <url-pattern>/faces/login.xhtml</url-pattern>
     </filter-mapping>
 </web-app>

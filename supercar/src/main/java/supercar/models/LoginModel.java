@@ -91,7 +91,7 @@ public class LoginModel extends IModel {
 
     public String login() {
         if (LoginHandler.login(login, password)) {
-            return "index.xhtml";
+            return "index.xhtml?faces-redirect=true";
         } else {
             FacesContext.getCurrentInstance().addMessage("form:result", new FacesMessage(FacesMessage.SEVERITY_ERROR, "Username or Password wrong", "Username or Password wrong"));
             return null;
