@@ -47,7 +47,7 @@ public class ManufacturerModel extends IModel {
             } catch (Exception ex) {
                 new_city = "";
                 Logger.getLogger(ManufacturerModel.class.getName()).log(Level.SEVERE, null, ex);
-                return "Post Code Error";
+                return new_city;
             }
             return new_city;
         }
@@ -64,7 +64,7 @@ public class ManufacturerModel extends IModel {
                 } catch (Exception ex) {
                     change_city = "";
                     Logger.getLogger(ManufacturerModel.class.getName()).log(Level.SEVERE, null, ex);
-                    return "Post Code Error";
+                    return change_city;
                 }
                 if (change_city == null) {
                     change_city = "";

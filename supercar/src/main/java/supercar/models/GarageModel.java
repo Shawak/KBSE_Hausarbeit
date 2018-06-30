@@ -47,7 +47,7 @@ public class GarageModel extends IModel {
             } catch (Exception ex) {
                 new_city = "";
                 Logger.getLogger(GarageModel.class.getName()).log(Level.SEVERE, null, ex);
-                return "Post Code error";
+                return new_city;
             }
 
             return new_city;
@@ -65,7 +65,7 @@ public class GarageModel extends IModel {
                 } catch (Exception ex) {
                     change_city = "";
                     Logger.getLogger(GarageModel.class.getName()).log(Level.SEVERE, null, ex);
-                    return "Post Code error";
+                    return change_city;
                 }
                 return change_city;
             }

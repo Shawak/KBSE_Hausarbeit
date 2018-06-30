@@ -99,7 +99,7 @@ public class LoginModel extends IModel {
             } catch (Exception ex) {
                 city = "";
                 Logger.getLogger(LoginModel.class.getName()).log(Level.SEVERE, null, ex);
-                return "Post Code Error";
+                return city;
             }
             return city;
         }
