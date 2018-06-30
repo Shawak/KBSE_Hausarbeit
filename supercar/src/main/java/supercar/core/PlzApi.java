@@ -22,7 +22,6 @@ public class PlzApi {
     public String getName(int plz) {
         String json = WebHelper.getHTML("http://api.zippopotam.us/de/" + plz);
         if (json == null) {
-            System.out.println("ERROR: plz api seems to be down, checkout http://api.zippopotam.us/de for more information");
             return "";
         }
         
