@@ -1,0 +1,74 @@
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:b="http://bootsfaces.net/ui"
+    xmlns:p="http://primefaces.org/ui" 
+    template="template.xhtml">
+    
+    <ui:define name="body">
+        <b:modal title="Change Garage" style-class="pseudoClass_modal" >
+            
+            <b:form style-class="form_center pseudoClass_modalForm">
+                <b:messages id="result2"/>
+                <b:inputText id="name2" value="#{garage.change_garage.name}" label="Garage"/>
+                
+                <b:inputText id="street2" value="#{garage.change_garage.street}" label="Street"/>
+               
+                <b:inputText id="plz2" value="#{garage.change_garage.plz}" label="Post Code">
+                    <p:ajax  event="keyup" update="city2"/>
+                </b:inputText>
+                
+                <b:inputText id="city2" value="#{garage.change_city}" label="City" readonly="true" style-class="input_readonly"/>
+                
+                <b:inputText id="contact2" value="#{garage.change_garage.contactInfo}" label="Contact"/>
+                
+                <b:commandButton value="Close" update="@(None)" oncomplete="$('.pseudoClass_modal').modal('hide')"/>
+                <b:commandButton value="Change" action="#{garage.change()}" update="@(.pseudoClass_dataTable) @(.pseudoClass_modalForm)"/>                
+            
+            </b:form>
+        </b:modal>
+        
+        <b:form>
+            <b:tabView activeIndex="0">
+                <b:tab title="Garage">          
+                    <h:form styleClass="pseudoClass_formData">   
+                        <br/>
+                        <b:dataTable style-class="pseudoClass_dataTable" lang="en" value="#{garage.garages}" var="onegarage" excel="true" csv="true" pdf="true" columnVisibility="true" copy="true" print="true">
+                            <b:dataTableColumn value="#{onegarage.name}" />
+                            <b:dataTableColumn value="#{onegarage.plz}" />
+                            <b:dataTableColumn value="#{onegarage.city}" />
+                            <b:dataTableColumn value="#{onegarage.street}"/>
+                            <b:dataTableColumn value="#{onegarage.contactInfo}" label="Contact Info"/>
+                            <b:dataTableColumn label="Edit">
+                                <b:commandButton value="Edit" icon="edit" update="@(.pseudoClass_modalForm)" action="#{garage.change(onegarage.id)}" oncomplete="$('.pseudoClass_modal').modal()"/>
+                            </b:dataTableColumn>
+                        </b:dataTable>
+                    </h:form>
+                </b:tab>
+
+                <b:tab title="Add">
+                    <b:form style-class="form_center pseudoClass_formAdd">
+                        <b:messages id="result"/>
+                        <b:inputText id="name" value="#{garage.new_garage.name}" label="Garage"/>
+                        
+                        <b:inputText id="street" value="#{garage.new_garage.street}" label="Street"/>
+                        
+                        <b:inputText ajax="true" id="plz" value="#{garage.new_garage.plz}" label="Post Code">
+                            <f:ajax event="keyup" render="city" execute="@this"/>
+                        </b:inputText>
+                        
+                        <b:inputText id="city" value="#{garage.new_city}" label="City" readonly="true" style-class="input_readonly"/>
+                        
+                        <b:inputText id="contact" value="#{garage.new_garage.contactInfo}" label="Contact"/>
+                       
+                        <b:commandButton value="Add" action="#{garage.add}" update="@(.pseudoClass_dataTable) @(.pseudoClass_formAdd)">
+                        </b:commandButton>
+                    </b:form>
+                </b:tab>
+            </b:tabView>
+        </b:form>
+    </ui:define>
+    
+</ui:composition>

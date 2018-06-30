@@ -79,7 +79,10 @@ public class StartupBean extends IRepositoryAccessor {
             account.addLending(lending);
             
             Accounts.update(account);
-        }
+            
+            Garages.add(new Garage("Autowerkstatt Gah", 48431, "Frankenburgstr. 7", "Rheine", "Michael Gah"));
+        }   Garages.add(new Garage("Strecke & Hartmann", 49497, "Ibbenbürener Str. 12", "Mettingen", "Torsten Strecke"));
     }
+    
     
 }

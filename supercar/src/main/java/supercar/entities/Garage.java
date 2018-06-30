@@ -10,7 +10,9 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
 import supercar.interfaces.IUniqueEntity;
+import supercar.validator.PLZ;
 
 /**
  *
@@ -18,16 +20,20 @@ import supercar.interfaces.IUniqueEntity;
  */
 @Entity
 public class Garage extends IUniqueEntity {
-    
+
+    @NotNull(message = "Garage may not be empty")
     private String name;
-    
-    private int plz;
+
+    @PLZ
+    private Integer plz;
+    @NotNull(message = "Street may not be empty")
     private String street;
-    
+    private String city;
+
     private String contactInfo;
-    
+
     @OneToMany
-    @JoinColumn(name="Garage_ID")
+    @JoinColumn(name = "Garage_ID")
     private List<Repair> repairs;
 
     public List<Repair> getRepairs() {
@@ -46,11 +52,11 @@ public class Garage extends IUniqueEntity {
         this.name = name;
     }
 
-    public int getPlz() {
+    public Integer getPlz() {
         return plz;
     }
 
-    public void setPlz(int plz) {
+    public void setPlz(Integer plz) {
         this.plz = plz;
     }
 
@@ -62,6 +68,14 @@ public class Garage extends IUniqueEntity {
         this.street = street;
     }
 
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
     public String getContactInfo() {
         return contactInfo;
     }
@@ -69,7 +83,18 @@ public class Garage extends IUniqueEntity {
     public void setContactInfo(String contactInfo) {
         this.contactInfo = contactInfo;
     }
+
+    public Garage() {
+    }
+
+    public Garage(String name, Integer plz, String street, String city, String contactInfo) {
+        this.name = name;
+        this.plz = plz;
+        this.street = street;
+        this.city = city;
+        this.contactInfo = contactInfo;
+    }
     
-    public Garage() { }
     
+
 }
