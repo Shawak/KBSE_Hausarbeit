@@ -23,9 +23,9 @@ public class StartupBean extends IRepositoryAccessor {
     @PostConstruct
     void init() {
         if (Accounts.getAll().isEmpty()) {
-            Accounts.add(new Account("Administrator", "Administrator", 0, "", "admin", "admin", "", AccountType.Administrator));
+            Accounts.add(new Account("Administrator", "Administrator", 49076, "Albrechtstr. 30", "admin", "admin", "", AccountType.Administrator, "Osnabrück"));
            
-            Account account = new Account("Max", "Mustermann", 0, "", "user", "user", "", AccountType.User);
+            Account account = new Account("Max", "Mustermann", 49076, "Albrechtstr. 30", "user", "user", "", AccountType.User, "Osnabrück");
             Accounts.add(account);
             
             Manufacturer opel = Manufacturers.add(new Manufacturer("Opel", 65428, "Bahnhofsplatz", "", "Rüsselheim"));

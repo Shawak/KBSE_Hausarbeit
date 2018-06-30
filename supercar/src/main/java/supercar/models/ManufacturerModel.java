@@ -36,24 +36,36 @@ public class ManufacturerModel extends IModel {
     private final PlzApi plzApi;
 
     public String getNew_city() {
-        new_city = plzApi.getName(new_manufacturer.getPlz());
-        if (new_city == null) {
-            new_city = "";
+        if(new_manufacturer.getPlz()==null){
+            new_city="";
             return new_city;
         }
-        new_city = new_city.substring(0, new_city.length() - 1).substring(1);
-        return new_city;
+        else{
+            new_city = plzApi.getName(new_manufacturer.getPlz());
+            if (new_city == null) {
+                new_city = "";
+                return new_city;
+            }
+            new_city = new_city.substring(0, new_city.length() - 1).substring(1);
+            return new_city;
+        }
     }
 
     public String getChange_city() {
         if (change_manufacturer != null) {
-            change_city = plzApi.getName(change_manufacturer.getPlz());
-            if (change_city == null) {
-                change_city = "";
+            if(change_manufacturer.getPlz()==null){
+                change_city="";
                 return change_city;
             }
-            change_city = change_city.substring(0, change_city.length() - 1).substring(1);
-            return change_city;
+            else{
+                change_city = plzApi.getName(change_manufacturer.getPlz());
+                if (change_city == null) {
+                    change_city = "";
+                    return change_city;
+                }
+                change_city = change_city.substring(0, change_city.length() - 1).substring(1);
+                return change_city;
+            }   
         }
         return change_city;
     }

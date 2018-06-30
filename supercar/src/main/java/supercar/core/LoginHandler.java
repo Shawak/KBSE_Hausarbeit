@@ -5,10 +5,8 @@
  */
 package supercar.core;
 
-import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
-import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import supercar.entities.Account;
 import supercar.enums.AccountType;

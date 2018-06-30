@@ -10,8 +10,10 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
 import supercar.enums.AccountType;
 import supercar.interfaces.IUniqueEntity;
+import supercar.validator.PLZ;
 
 /**
  *
@@ -20,13 +22,20 @@ import supercar.interfaces.IUniqueEntity;
 @Entity
 public class Account extends IUniqueEntity {
 
+    @NotNull(message = "Firstname may not be empty")
     private String firstname;
+    @NotNull(message = "Lastname may not be empty")
     private String lastname;
     
-    private int plz;
+    @PLZ
+    private Integer plz;
+    @NotNull(message = "Street may not be empty")
     private String street;
+    private String city;
     
+    @NotNull(message = "Username may not be empty")
     private String login;
+    @NotNull(message = "Password may not be empty")
     private String password;
     
     private String licenseNumber; 
@@ -62,11 +71,11 @@ public class Account extends IUniqueEntity {
         this.lastname = lastname;
     }
 
-    public int getPlz() {
+    public Integer getPlz() {
         return plz;
     }
 
-    public void setPlz(int plz) {
+    public void setPlz(Integer plz) {
         this.plz = plz;
     }
 
@@ -76,6 +85,14 @@ public class Account extends IUniqueEntity {
 
     public void setStreet(String street) {
         this.street = street;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
 
     public String getLogin() {
@@ -136,7 +153,7 @@ public class Account extends IUniqueEntity {
     
     public Account() { }
     
-    public Account(String firstname, String lastname, int plz, String street, String login, String password, String licenseNumber, AccountType accountType) {
+    public Account(String firstname, String lastname, Integer plz, String street, String login, String password, String licenseNumber, AccountType accountType, String city) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.plz = plz;
@@ -146,6 +163,7 @@ public class Account extends IUniqueEntity {
         this.licenseNumber = licenseNumber;
         this.accountType = accountType.getValue();
         this.activated = true;
+        this.city = city;
     }
     
 }

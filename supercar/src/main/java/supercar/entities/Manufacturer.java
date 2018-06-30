@@ -6,9 +6,7 @@
 package supercar.entities;
 
 import javax.persistence.Entity;
-import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
-import supercar.core.PlzApi;
 import supercar.interfaces.IUniqueEntity;
 import supercar.validator.PLZ;
 
@@ -23,7 +21,7 @@ public class Manufacturer extends IUniqueEntity {
     private String name;
     
     @PLZ
-    private int plz;
+    private Integer plz;
     
     //@NotNull(message = "Wrong Post Code")
     private String city;
@@ -41,13 +39,12 @@ public class Manufacturer extends IUniqueEntity {
         this.name = name;
     }
 
-    public int getPlz() {
+    public Integer getPlz() {
         return plz;
     }
 
-    public void setPlz(int plz) {
+    public void setPlz(Integer plz) {
         this.plz = plz; 
-       
     }
 
     public String getStreet() {
@@ -74,11 +71,10 @@ public class Manufacturer extends IUniqueEntity {
         this.city = city;
     }
     
-    
     public Manufacturer() {
     }
     
-    public Manufacturer(String name, int plz, String street, String contactInfo, String city) {
+    public Manufacturer(String name, Integer plz, String street, String contactInfo, String city) {
         this.name = name;
         this.plz = plz;
         this.street = street;

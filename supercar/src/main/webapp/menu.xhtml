@@ -13,7 +13,7 @@
             <b:navLink value="Garage" href="#"></b:navLink>
             <b:navLink value="User" href="#"></b:navLink>
             <!--Admin-->
-            <b:dropMenu value="Manage">
+            <b:dropMenu rendered="#{menu.ISADMIN}" value="Manage">
                 <b:navLink value="Car" href="/supercar/faces/add_car.xhtml"></b:navLink>
                 <b:navLink value="Model" href="/supercar/faces/add_model.xhtml"></b:navLink>
                 <b:navLink value="Manufacturer" href="/supercar/faces/add_manufacturer.xhtml"></b:navLink>
