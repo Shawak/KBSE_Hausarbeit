@@ -54,6 +54,10 @@
         <filter-name>login</filter-name>
         <filter-class>supercar.filters.LoginFilter</filter-class>
     </filter>
+    <filter>
+        <filter-name>notLogin</filter-name>
+        <filter-class>supercar.filters.NotLoginFilter</filter-class>
+    </filter>
     <filter-mapping>
         <filter-name>user</filter-name>
         <url-pattern>/faces/contact.xhtml</url-pattern>
@@ -72,5 +76,9 @@
     <filter-mapping>
         <filter-name>login</filter-name>
         <url-pattern>/faces/login.xhtml</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>notLogin</filter-name>
+        <url-pattern>/faces/profile.xhtml</url-pattern>
     </filter-mapping>
 </web-app>
