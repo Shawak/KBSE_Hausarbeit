@@ -8,13 +8,19 @@
     template="template.xhtml">
     
     <ui:define name="body">
-        <h:form>
-            <b:selectOneMenu value="#{index.order}" update="@(.pseudoClass_dataTable)">
-                <f:selectItem itemLabel="License Plate" itemValue="licensePlate" />
-                <f:selectItem itemLabel="Price/Day" itemValue="pricePerDay" />
-                <f:selectItem itemLabel="Color" itemValue="color" />
-                <f:selectItem itemLabel="Model" itemValue="model" />
-            </b:selectOneMenu>
+        <b:form horizontal="true">
+            <b:formGroup>
+                <b:selectOneMenu colXs="2" labelColXs="1"  value="#{index.order}" update="@(.pseudoClass_dataTable)" label="Order by:">
+                    <f:selectItem itemLabel="License Plate" itemValue="licensePlate" />
+                    <f:selectItem itemLabel="Price/Day" itemValue="pricePerDay" />
+                    <f:selectItem itemLabel="Color" itemValue="color" />
+                    <f:selectItem itemLabel="Model" itemValue="model" />
+                </b:selectOneMenu>
+                <b:selectOneMenu colXs="2" labelColXs="1"  value="#{index.sort}" update="@(.pseudoClass_dataTable)" label="Sort:">
+                    <f:selectItem itemLabel="Ascending" itemValue="ASC" />
+                    <f:selectItem itemLabel="Descending" itemValue="DESC" />
+                </b:selectOneMenu>
+            </b:formGroup>
             <b:dataTable lang="en" value="#{index.cars}" var="carV" border="false" striped="false" style-class="pseudoClass_dataTable">
                 <b:dataTableColumn header-style-class="hidden" >
                     <h:commandLink action="#{index.test(carV.id)}">
@@ -30,6 +36,6 @@
                     </h:commandLink>
                 </b:dataTableColumn>
             </b:dataTable>
-        </h:form>
+        </b:form>
     </ui:define>
 </ui:composition>

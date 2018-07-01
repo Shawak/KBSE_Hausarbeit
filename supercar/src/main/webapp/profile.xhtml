@@ -1,0 +1,38 @@
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:b="http://bootsfaces.net/ui"
+    xmlns:p="http://primefaces.org/ui" 
+    template="template.xhtml">
+    
+    <ui:define name="body">
+        <b:form style-class="form_center pseudoClass_formRegister">
+            <b:panel title="Login data" collapsible="false">
+                <b:messages id="result2" />
+                <b:inputText id="username2" value="#{profile.account.login}" label="Username" readonly="true" style-class="input_readonly"/>
+                <b:inputSecret id="password2" value="#{profile.account.password}" label="Password"/>
+                <b:inputSecret id="password3" value="#{profile.password2}" label="Please repeat your Password"/>
+            </b:panel>
+            <hr/>
+            <b:panel title="Please insert your data" collapsible="false">
+                <b:inputText id="firstname" value="#{profile.account.firstname}" label="First Name"/>
+                <b:inputText id="lastname" value="#{profile.account.lastname}" label="Surname"/>
+
+                <b:inputText id="street" value="#{profile.account.street}" label="Street"/>
+
+                <b:inputText id="plz" value="#{profile.account.plz}" label="Post Code">
+                    <p:ajax  event="keyup" update="city"/>
+                </b:inputText>
+
+                <b:inputText id="city" value="#{profile.city}" label="City" readonly="true" style-class="input_readonly"/>
+
+                <b:inputText id="license" value="#{profile.licenseNumber}" label="License Number"/>
+
+                <b:commandButton value="Save" action="#{profile.save()}" update="@(.pseudoClass_formRegister) @(.pseudoClass_menu)"/>
+            </b:panel>
+        </b:form>
+    </ui:define>
+    
+</ui:composition>
