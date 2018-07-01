@@ -36,9 +36,17 @@ hr {
     display: block;
     height: 1px;
     border: 0;
-    border-top: 1px solid #999;
+    border-top: 1px solid #000;
     margin: 1em 0;
     padding: 0;
+}
+
+.nav-tabs > li > a {
+    margin-right: 0px;
+    line-height: 1.428571429;
+    border: 1px solid transparent;
+    border-radius: 4px 4px 0 0;
+    color: #000;
 }
 
 .nav li:hover {
@@ -98,4 +106,12 @@ hr {
 
 #page-index table {
     width: 100% !important;
+}
+
+.pagination > .active > a {
+    z-index: 3;
+    color: #fff;
+    background-color: #f04e23;
+    border-color: #f04e23;
+    cursor: default;
 }
