@@ -20,13 +20,15 @@ import supercar.interfaces.IModel;
 public class IndexModel extends IModel {
 
     private String order;
+    private String sort;
 
     public IndexModel() {
         order = "licensePlate";
+        sort = "ASC";
     }
 
     public Collection<Car> getCars() {
-        return Cars.getAllActive(order);
+        return Cars.getAllActive(order,sort);
     }
 
     public String test(Long id) {
@@ -42,4 +44,12 @@ public class IndexModel extends IModel {
         this.order = order;
     }
 
+    public String getSort() {
+        return sort;
+    }
+
+    public void setSort(String sort) {
+        this.sort = sort;
+    }
+    
 }
