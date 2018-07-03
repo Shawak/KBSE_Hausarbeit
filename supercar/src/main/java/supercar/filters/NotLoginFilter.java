@@ -14,6 +14,6 @@ import supercar.interfaces.IFilter;
 public class NotLoginFilter extends IFilter {
     
     public NotLoginFilter() {
-        this.filter = () -> LoginHandler.isLoggedIn();
+        this.filter = () -> !(LoginHandler.isLoggedIn());
     }
 }
