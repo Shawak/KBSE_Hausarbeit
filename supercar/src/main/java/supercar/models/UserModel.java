@@ -7,6 +7,7 @@ package supercar.models;
 
 import java.util.Collection;
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import supercar.entities.Account;
 import supercar.interfaces.IModel;
@@ -16,30 +17,40 @@ import supercar.interfaces.IModel;
  * @author Lukas
  */
 @Named("usermanager")
-@RequestScoped
-public class UserModel extends IModel{
-    public Collection<Account> getAll()
-    {
-        return Accounts.getAll();
+@SessionScoped
+public class UserModel extends IModel {
+
+    private boolean checkbox = false;
+
+    public boolean isCheckbox() {
+        return checkbox;
     }
-    
-    public Collection<Account> getAllUnactivated()
-    {
+
+    public void setCheckbox(boolean checkbox) {
+        this.checkbox = checkbox;
+    }
+
+    public Collection<Account> getAll() {
+        if (checkbox) {
+            return Accounts.getAllUnactivated();
+        } else {
+            return Accounts.getAll();
+        }
+    }
+
+    public Collection<Account> getAllUnactivated() {
         return Accounts.getAllUnactivated();
     }
-    
-    public void banUser(long id)
-    {
-        
+
+    public void banUser(long id) {
+        Account acc = Accounts.get(id);
+        acc.setBanned(true);
+        Accounts.update(acc);
     }
-    
-    public void unbanUser(long id)
-    {
-        
-    }
-    
-    public boolean isBanned(long id)
-    {
-        return false;
+
+    public void unbanUser(long id) {
+        Account acc = Accounts.get(id);
+        acc.setBanned(false);
+        Accounts.update(acc);
     }
 }

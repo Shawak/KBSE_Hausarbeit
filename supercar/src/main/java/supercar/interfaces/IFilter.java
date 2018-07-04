@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 public abstract class IFilter extends IRestrictableRepositoryAccessor implements Filter {
     
     protected Supplier<Boolean> filter;
+    protected String redirect = "index.xhtml";
     
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain chain) throws IOException, ServletException {
@@ -28,7 +29,7 @@ public abstract class IFilter extends IRestrictableRepositoryAccessor implements
         if (this.filter.get()) {
             chain.doFilter(request, response);
         } else {
-            String needLoginUrl = request.getContextPath() + "/faces/index.xhtml";
+            String needLoginUrl = request.getContextPath() + "/faces/" + this.redirect;
             response.sendRedirect(needLoginUrl);
         }
     }
