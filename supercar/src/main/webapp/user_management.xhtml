@@ -9,19 +9,25 @@
     
     <ui:define name="body">
         <h:form styleClass="pseudoClass_formData">   
-                        <br/>
-                        <b:dataTable style-class="pseudoClass_dataTable" lang="en" value="#{usermanager.all}" var="acc" excel="true" csv="true" pdf="true" columnVisibility="true" copy="true" print="true">
-                            <b:dataTableColumn value="#{acc.firstname}" />
-                            <b:dataTableColumn value="#{acc.lastname}" />
-                            <b:dataTableColumn value="#{acc.login}" />
-                            <b:dataTableColumn value="#{acc.licenseNumber}"/>
-                            <b:dataTableColumn value="#{acc.accountType}"/>
-                            <b:dataTableColumn label="Edit">
-                                <b:commandButton rendered="#{not usermanager.isBanned(acc.id)}" value="Ban" update="@(.pseudoClass_dataTable)" action="#{acc.banUser(acc.id)}"/>
-                                <b:commandButton rendered="#{usermanager.isBanned(acc.id)}" value="Unban" update="@(.pseudoClass_dataTable)" action="#{acc.unbanUser(acc.id)}"/>
-                            </b:dataTableColumn>
-                        </b:dataTable>
-                    </h:form>
+            <br/>
+            <p:inputSwitch value="#{usermanager.checkbox}">
+                <p:ajax event="change" update="@(.pseudoClass_dataTable)"/>
+            </p:inputSwitch>
+
+            <b:dataTable style-class="pseudoClass_dataTable" lang="en" value="#{usermanager.all}" var="acc" excel="true" csv="true" pdf="true" columnVisibility="true" copy="true" print="true">
+                <b:dataTableColumn value="#{acc.firstname}" />
+                <b:dataTableColumn value="#{acc.lastname}" />
+                <b:dataTableColumn value="#{acc.login}" />
+                <b:dataTableColumn value="#{acc.licenseNumber}"/>
+                <b:dataTableColumn value="#{acc.accountType}"/>
+                <b:dataTableColumn value="#{acc.banned}"/>
+                <b:dataTableColumn value="#{acc.activated}"/>
+                <b:dataTableColumn label="Edit">
+                    <b:commandButton rendered="#{!acc.banned}" look="danger" value="Ban" update="@(.pseudoClass_dataTable)" action="#{usermanager.banUser(acc.id)}" style="width: 80px"/>
+                    <b:commandButton rendered="#{acc.banned}" look="success" value="Unban" update="@(.pseudoClass_dataTable)" action="#{usermanager.unbanUser(acc.id)}" style="width: 80px"/>
+                </b:dataTableColumn>
+            </b:dataTable>
+        </h:form>
     </ui:define>
     
 </ui:composition>

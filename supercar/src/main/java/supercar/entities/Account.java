@@ -42,6 +42,9 @@ public class Account extends IUniqueEntity {
     
     private int accountType;
     private boolean activated;
+    private boolean banned;
+
+    
     
     @OneToMany
     @JoinColumn(name="Account_ID")
@@ -113,6 +116,14 @@ public class Account extends IUniqueEntity {
 
     public String getLicenseNumber() {
         return licenseNumber;
+    }
+    
+    public boolean isBanned() {
+        return banned;
+    }
+
+    public void setBanned(boolean banned) {
+        this.banned = banned;
     }
 
     public void setLicenseNumber(String licenseNumber) {
