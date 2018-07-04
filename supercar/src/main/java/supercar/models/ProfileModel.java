@@ -25,7 +25,6 @@ import supercar.interfaces.IModel;
 public class ProfileModel extends IModel {
 
     private Account account;
-    private PlzApi plzApi;
 
     private String city;
 
@@ -42,7 +41,6 @@ public class ProfileModel extends IModel {
     public void init(){
         account = LoginHandler.getAccount();
         licenseNumber = account.getLicenseNumber();
-        plzApi = new PlzApi();
     }
 
     public Account getAccount() {
@@ -74,7 +72,7 @@ public class ProfileModel extends IModel {
             city = "";
             return city;
         } else {
-            city = plzApi.getName(account.getPlz());
+            city = PlzApi.getName(account.getPlz());
             return city;
         }
     }

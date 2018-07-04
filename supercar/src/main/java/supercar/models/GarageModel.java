@@ -35,14 +35,12 @@ public class GarageModel extends IModel {
 
     private Collection<Garage> garages;
 
-    private final PlzApi plzApi;
-
     public String getNew_city() {
         if (new_garage.getPlz() == null) {
             new_city = "";
             return new_city;
         } else {
-            new_city = plzApi.getName(new_garage.getPlz());
+            new_city = PlzApi.getName(new_garage.getPlz());
             return new_city;
         }
     }
@@ -53,7 +51,7 @@ public class GarageModel extends IModel {
                 change_city = "";
                 return change_city;
             } else {
-                change_city = plzApi.getName(change_garage.getPlz());
+                change_city = PlzApi.getName(change_garage.getPlz());
                 return change_city;
             }
         }
@@ -74,7 +72,6 @@ public class GarageModel extends IModel {
 
     public GarageModel() {
         new_garage = new Garage();
-        plzApi = new PlzApi();
     }
 
     @PostConstruct
