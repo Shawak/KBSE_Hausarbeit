@@ -6,7 +6,9 @@
 package supercar.interfaces;
 
 import java.io.Serializable;
+import javax.inject.Inject;
 import supercar.core.LoginHandler;
+import supercar.core.PlzApi;
 import supercar.enums.AccountType;
 
 /**
@@ -15,6 +17,8 @@ import supercar.enums.AccountType;
  */
 public abstract class IModel extends IRestrictableRepositoryAccessor implements Serializable {
 
+    @Inject protected PlzApi PlzApi;
+        
     protected boolean LOGGEDIN, ISUSER, ISEMPLOYEE, ISADMIN;
 
     public boolean isLOGGEDIN() {
