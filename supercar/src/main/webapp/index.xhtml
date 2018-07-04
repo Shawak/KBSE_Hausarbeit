@@ -23,8 +23,8 @@
             </b:formGroup>
             <b:dataTable lang="en" value="#{index.cars}" var="carV" border="false" striped="false" style-class="pseudoClass_dataTable">
                 <b:dataTableColumn header-style-class="hidden" >
-                    <h:commandLink action="#{index.carDetail(carV.id)}">
-                        <b:panel>
+                    <h:commandLink action="#{index.carDetail(carV.id)}" styleClass="#{index.Free(carV.id)? '' : 'clickable'}">
+                        <b:panel styleClass="#{index.Free(carV.id)? '' : 'clickable'}">
                             <p:graphicImage value="images/#{carV.picture}" style="width:10%"/> 
                             <h:outputText value="Car: #{carV.model.manufacturer.name} #{carV.model.name}" style="padding-left: 10%"/>
                             <h:outputText value="License plate: #{carV.licensePlate}" style="padding-left: 10%"/>

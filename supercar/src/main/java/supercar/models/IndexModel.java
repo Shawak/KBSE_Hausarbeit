@@ -6,6 +6,8 @@
 package supercar.models;
 
 import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import supercar.entities.Car;
@@ -21,6 +23,8 @@ public class IndexModel extends IModel {
 
     private String order;
     private String sort;
+    
+    private List<Long> arr;
 
     public IndexModel() {
         order = "licensePlate";
@@ -28,7 +32,11 @@ public class IndexModel extends IModel {
     }
 
     public Collection<Car> getCars() {
-        return Cars.getAllFree(order,sort);
+        Collection<Car> cars = Cars.getAllFree(order,sort);
+        arr = cars.stream().map(c->c.getId()).collect(Collectors.toList());
+        cars.addAll(Cars.getCarAtLending(order, sort));
+        cars.addAll(Cars.getCarAtRepair(order, sort));
+        return cars;
     }
 
     public String carDetail(Long id) {
@@ -49,6 +57,10 @@ public class IndexModel extends IModel {
 
     public void setSort(String sort) {
         this.sort = sort;
+    }
+    
+    public boolean Free(long id){
+        return arr.stream().filter(o -> o==id).findFirst().isPresent();
     }
     
 }
