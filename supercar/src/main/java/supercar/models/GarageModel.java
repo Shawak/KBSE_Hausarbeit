@@ -6,14 +6,11 @@
 package supercar.models;
 
 import java.util.Collection;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
-import supercar.core.PlzApi;
 import supercar.entities.Garage;
 import supercar.interfaces.IModel;
 

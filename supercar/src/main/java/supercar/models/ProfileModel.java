@@ -11,7 +11,6 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.validation.constraints.NotNull;
-import supercar.core.PlzApi;
 import supercar.entities.Account;
 import supercar.enums.AccountType;
 import supercar.interfaces.IModel;

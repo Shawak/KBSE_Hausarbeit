@@ -6,9 +6,9 @@
 package supercar.core;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonArray;
+import javax.inject.Inject;
 
 /**
  *
@@ -17,7 +17,8 @@ import com.google.gson.JsonArray;
  */
 public class PlzApi {
     
-    protected Gson gson = new GsonBuilder().setPrettyPrinting().create();
+    @Inject
+    protected Gson gson;
     
     public String getName(int plz) {
         String json = WebHelper.getHTML("http://api.zippopotam.us/de/" + plz);
