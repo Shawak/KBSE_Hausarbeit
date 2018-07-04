@@ -53,4 +53,11 @@ public class UserModel extends IModel {
         acc.setBanned(false);
         Accounts.update(acc);
     }
+    
+    public void activateUser(long id)
+    {
+        Account acc = Accounts.get(id);
+        acc.setActivated(true);
+        Accounts.update(acc);
+    }
 }
