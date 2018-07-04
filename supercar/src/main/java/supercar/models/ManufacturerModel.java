@@ -35,14 +35,12 @@ public class ManufacturerModel extends IModel {
 
     private Collection<Manufacturer> manufacturers;
 
-    private final PlzApi plzApi;
-
     public String getNew_city() {
         if (new_manufacturer.getPlz() == null) {
             new_city = "";
             return new_city;
         } else {
-            new_city = plzApi.getName(new_manufacturer.getPlz());
+            new_city = PlzApi.getName(new_manufacturer.getPlz());
             return new_city;
         }
     }
@@ -54,7 +52,7 @@ public class ManufacturerModel extends IModel {
                 return change_city;
             } else {
                 try {
-                    change_city = plzApi.getName(change_manufacturer.getPlz());
+                    change_city = PlzApi.getName(change_manufacturer.getPlz());
                 } catch (Exception ex) {
                     change_city = "";
                     Logger.getLogger(ManufacturerModel.class.getName()).log(Level.SEVERE, null, ex);
@@ -85,7 +83,6 @@ public class ManufacturerModel extends IModel {
 
     public ManufacturerModel() {
         new_manufacturer = new Manufacturer();
-        plzApi = new PlzApi();
     }
 
     @PostConstruct

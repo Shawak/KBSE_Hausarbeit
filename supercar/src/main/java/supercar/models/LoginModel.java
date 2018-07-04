@@ -35,14 +35,11 @@ public class LoginModel extends IModel {
 
     private String city;
 
-    private final PlzApi plzApi;
-
     @NotNull(message = "licenseNumber may not be empty")
     private String licenseNumber;
 
     public LoginModel() {
         account = new Account();
-        plzApi = new PlzApi();
     }
 
     @PostConstruct
@@ -94,7 +91,7 @@ public class LoginModel extends IModel {
             city = "";
             return city;
         } else {
-            city = plzApi.getName(account.getPlz());
+            city = PlzApi.getName(account.getPlz());
             return city;
         }
     }
