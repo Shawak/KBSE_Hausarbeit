@@ -45,7 +45,7 @@ public class LoginHandler extends IRepositoryAccessor {
             return false;
         }
         
-        if (!acc.isActivated()) {
+        if (!acc.isActivated() || acc.isBanned()) {
             return false;
         }
         
