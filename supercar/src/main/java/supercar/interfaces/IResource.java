@@ -6,8 +6,8 @@
 package supercar.interfaces;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import java.io.Serializable;
+import javax.inject.Inject;
 import javax.ws.rs.core.Response;
 
 /**
@@ -16,7 +16,8 @@ import javax.ws.rs.core.Response;
  */
 public abstract class IResource extends IRestrictableRepositoryAccessor implements Serializable {
    
-    protected Gson gson = new GsonBuilder().setPrettyPrinting().create();
+    @Inject
+    protected Gson gson;
     
     protected Response Ok(Object obj) {
         return Response.ok(gson.toJson(obj)).build();
