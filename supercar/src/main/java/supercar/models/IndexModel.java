@@ -32,7 +32,6 @@ public class IndexModel extends IModel {
     }
 
     public String carDetail(Long id) {
-        System.out.println(id);
         return "cardetail.xhtml?id=" + id +"&faces-redirect=true";
     }
 
