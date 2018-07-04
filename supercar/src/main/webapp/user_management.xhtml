@@ -1,0 +1,27 @@
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:b="http://bootsfaces.net/ui"
+    xmlns:p="http://primefaces.org/ui" 
+    template="template.xhtml">
+    
+    <ui:define name="body">
+        <h:form styleClass="pseudoClass_formData">   
+                        <br/>
+                        <b:dataTable style-class="pseudoClass_dataTable" lang="en" value="#{usermanager.all}" var="acc" excel="true" csv="true" pdf="true" columnVisibility="true" copy="true" print="true">
+                            <b:dataTableColumn value="#{acc.firstname}" />
+                            <b:dataTableColumn value="#{acc.lastname}" />
+                            <b:dataTableColumn value="#{acc.login}" />
+                            <b:dataTableColumn value="#{acc.licenseNumber}"/>
+                            <b:dataTableColumn value="#{acc.accountType}"/>
+                            <b:dataTableColumn label="Edit">
+                                <b:commandButton rendered="#{not usermanager.isBanned(acc.id)}" value="Ban" update="@(.pseudoClass_dataTable)" action="#{acc.banUser(acc.id)}"/>
+                                <b:commandButton rendered="#{usermanager.isBanned(acc.id)}" value="Unban" update="@(.pseudoClass_dataTable)" action="#{acc.unbanUser(acc.id)}"/>
+                            </b:dataTableColumn>
+                        </b:dataTable>
+                    </h:form>
+    </ui:define>
+    
+</ui:composition>
