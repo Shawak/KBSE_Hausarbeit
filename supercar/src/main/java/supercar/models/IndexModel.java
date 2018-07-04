@@ -28,12 +28,12 @@ public class IndexModel extends IModel {
     }
 
     public Collection<Car> getCars() {
-        return Cars.getAllActive(order,sort);
+        return Cars.getAllFree(order,sort);
     }
 
-    public String test(Long id) {
+    public String carDetail(Long id) {
         System.out.println(id);
-        return "/supercar/faces/index.xhtml";
+        return "cardetail.xhtml?id=" + id +"&faces-redirect=true";
     }
 
     public String getOrder() {

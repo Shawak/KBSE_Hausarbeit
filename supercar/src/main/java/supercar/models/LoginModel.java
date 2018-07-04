@@ -5,11 +5,13 @@
  */
 package supercar.models;
 
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.validation.constraints.NotNull;
@@ -96,12 +98,20 @@ public class LoginModel extends IModel {
         }
     }
 
-    public String login() {
+    public void login() {
         if (LoginHandler.login(login, password)) {
-            return "index.xhtml?faces-redirect=true";
+            
+            ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
+            try {
+                context.redirect(context.getRequestContextPath()+"/");
+            } catch (IOException ex) {
+                Logger.getLogger(LoginModel.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            System.out.println(context.getRequestContextPath());
+            //return "index.xhtml?faces-redirect=true";
         } else {
             FacesContext.getCurrentInstance().addMessage("form:result", new FacesMessage(FacesMessage.SEVERITY_ERROR, "Username or Password wrong", "Username or Password wrong"));
-            return null;
+            //return null;
         }
     }
 

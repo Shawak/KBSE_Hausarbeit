@@ -6,9 +6,11 @@
 package supercar.models;
 
 import java.util.Map;
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
+import supercar.entities.Car;
 import supercar.interfaces.IModel;
 
 /**
@@ -17,23 +19,27 @@ import supercar.interfaces.IModel;
  */
 @Named("cardetail")
 @RequestScoped
-public class CarDetaiModel extends IModel{
+public class CarDetailModel extends IModel{
+
+    private Car car;
+
+    public CarDetailModel() {
+    }
     
-    private String id;
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public CarDetaiModel() {
-        
+    @PostConstruct
+    public void init(){
         FacesContext context = FacesContext.getCurrentInstance();
         Map<String, String> map = context.getExternalContext().getRequestParameterMap();
-        id = map.get("id");
+        long id = Long.parseLong(map.get("id"),10);
+        car = Cars.get(id);
+    }
+
+    public Car getCar() {
+        return car;
+    }
+
+    public void setCar(Car car) {
+        this.car = car;
     }
     
 }
