@@ -8,7 +8,6 @@ package supercar.resources;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
-import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -29,8 +28,7 @@ import supercar.interfaces.IResource;
 @Consumes({MediaType.APPLICATION_JSON})
 public class PlzResource extends IResource {
     
-    @Inject
-    protected PlzApi plzApi;
+    PlzApi plzApi = new PlzApi();
     
     @GET @Path("{plz}")
     public Response get(@PathParam("plz") int plz) {
