@@ -37,6 +37,9 @@ public class Lending extends IUniqueEntity {
     }
 
     public Date getRentDate() {
+        if(rentDate==null){
+            return null;
+        }
         return new Date(rentDate);
     }
 
@@ -45,6 +48,9 @@ public class Lending extends IUniqueEntity {
     }
 
     public Date getReturnDate() {
+        if( returnDate == null){
+            return null;
+        }
         return new Date(returnDate);
     }
 
@@ -86,7 +92,4 @@ public class Lending extends IUniqueEntity {
         this.returnCommentary = returnCommentary;
         this.car = car;
     }
-    
-    
-    
 }

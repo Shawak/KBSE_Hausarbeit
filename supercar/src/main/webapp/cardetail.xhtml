@@ -17,33 +17,25 @@
         
         <b:container>
         <b:column span="6">
-            <h:outputLabel for="name" value="Name: "/>
-            <h:outputLabel id="name" value="#{cardetail.car.model.manufacturer.name} #{cardetail.car.model.name}"/>
+            <h:outputLabel id="name" value="Name: #{cardetail.car.model.manufacturer.name} #{cardetail.car.model.name}"/>
             <br/>
-            <h:outputLabel for="license" value="License Plate: "/>
-            <h:outputLabel id="license" value="#{cardetail.car.licensePlate}"/>
+            <h:outputLabel id="license" value="License Plate:  #{cardetail.car.licensePlate}"/>
             <br/>
-            <h:outputLabel for="price" value="Price per Day: "/>
             <h:outputLabel id="price" value="#{cardetail.car.pricePerDay}">
-                <f:convertNumber pattern="#0.00 $"/>
+                <f:convertNumber pattern="Price per Day: #0.00 $"/>
             </h:outputLabel>
+            <br/>            
+            <h:outputLabel id="color" value="Color: #{cardetail.car.color}"/>
             <br/>
-            <h:outputLabel for="color" value="Color: "/>
-            <h:outputLabel id="color" value="#{cardetail.car.color}"/>
+            <h:outputLabel id="horsepower" value="Horsepower: #{cardetail.car.model.horsepower}"/>
             <br/>
-            <h:outputLabel for="color" value="Horsepower: "/>
-            <h:outputLabel id="color" value="#{cardetail.car.model.horsepower}"/>
-            <br/>
-            <h:outputLabel for="color" value="Cubic Capacity: "/>
-            <h:outputLabel id="color" value="#{cardetail.car.model.cubicCapacity}"/>
+            <h:outputLabel id="cubic" value="Cubic Capacity:  #{cardetail.car.model.cubicCapacity}"/>
             
             
             <br/>
             <br/>
-            
             <h:form>
-                <b:dataTable value="#{cardetail.lendings}"
-                             var="onelending">
+                <b:dataTable value="#{cardetail.lendings}" lang="en" var="onelending">
                   <b:dataTableColumn label="RentDate">
                       <h:outputText value="#{onelending.rentDate}">
                           <f:convertDateTime pattern="dd.MM.yyyy"/>

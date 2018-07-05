@@ -62,10 +62,10 @@
         <url-pattern>/faces/contact.xhtml</url-pattern>
         <!--<url-pattern>/faces/contact.xhtml</url-pattern>-->
     </filter-mapping>
-    <!--<filter-mapping>
+    <filter-mapping>
         <filter-name>employee</filter-name>
-        <url-pattern>/faces/add_manufacturer.xhtml</url-pattern>
-    </filter-mapping>-->
+        <url-pattern>/faces/user_management.xhtml</url-pattern>
+    </filter-mapping>
     <filter-mapping>
         <filter-name>admin</filter-name>
         <url-pattern>/faces/add_car.xhtml</url-pattern>
