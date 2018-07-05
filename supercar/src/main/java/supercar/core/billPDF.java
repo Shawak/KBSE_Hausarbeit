@@ -17,17 +17,14 @@ import com.itextpdf.text.pdf.PdfWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import javax.ejb.Stateless;
-import javax.inject.Inject;
-import javax.inject.Named;
 import supercar.entities.Account;
 /**
  *
  * @author Lukas
  */
 @Stateless
-public class billPDF {
+public class BillPDF {
 
     public void createPDF(String dest, Account acc) throws FileNotFoundException, DocumentException
     {
