@@ -2,7 +2,11 @@
  <ui:composition 
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-    xmlns:b="http://bootsfaces.net/ui">
+    xmlns:b="http://bootsfaces.net/ui"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:f="http://xmlns.jcp.org/jsf/core">
+     <b:form>
      <b:navBar brandHref="/supercar" fluid="true" brand-img="images/Logo.png" style-class="menu_border pseudoClass_menu" brand-img-style-class="image">
         <b:navbarLinks> 
             <b:navLink value="Cars" href="/supercar"></b:navLink>
@@ -21,8 +25,17 @@
         </b:navbarLinks>
         <b:navbarLinks pull="right">
             <b:navLink rendered="#{!menu.LOGGEDIN}" value="Login" href="/supercar/faces/login.xhtml"></b:navLink>
-            <b:navLink rendered="#{menu.LOGGEDIN}" value="#{menu.loginHandler.account.firstname} #{menu.loginHandler.account.lastname}" href="/supercar/faces/profile.xhtml"></b:navLink>
+            
+                <b:dropMenu value="#{menu.loginHandler.account.firstname} #{menu.loginHandler.account.lastname}" rendered="#{menu.LOGGEDIN}">
+                    <b:navLink value="Profil" href="/supercar/faces/profile.xhtml"></b:navLink>
+                    
+                    <b:navCommandLink action="#{menu.logout()}" value="Logout">
+                        
+                    </b:navCommandLink>
+                    
+                </b:dropMenu>
+            
         </b:navbarLinks>
     </b:navBar>
-    
+    </b:form>
 </ui:composition>

@@ -107,7 +107,6 @@ public class LoginModel extends IModel {
             } catch (IOException ex) {
                 Logger.getLogger(LoginModel.class.getName()).log(Level.SEVERE, null, ex);
             }
-            System.out.println(context.getRequestContextPath());
             //return "index.xhtml?faces-redirect=true";
         } else {
             FacesContext.getCurrentInstance().addMessage("form:result", new FacesMessage(FacesMessage.SEVERITY_ERROR, "Username or Password wrong", "Username or Password wrong"));

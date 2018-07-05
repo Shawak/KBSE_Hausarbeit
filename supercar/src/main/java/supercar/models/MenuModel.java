@@ -5,8 +5,13 @@
  */
 package supercar.models;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import supercar.interfaces.IModel;
 
@@ -25,6 +30,17 @@ public class MenuModel extends IModel {
     @PostConstruct
     public void init() {
 
+    }
+    
+    public void logout(){
+        System.out.println("logout");
+        LoginHandler.logout();
+        ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
+        try {
+            context.redirect(context.getRequestContextPath()+"/");
+        } catch (IOException ex) {
+            Logger.getLogger(LoginModel.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }
