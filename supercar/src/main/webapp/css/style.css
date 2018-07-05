@@ -125,7 +125,12 @@ hr {
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
 }
 
-.clickable{
+.not-rentable {
     cursor: not-allowed;
     pointer-events: none;
+    background-color: rgba(50, 50, 50, 0.4);
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) {
+    background-color: rgba(249, 249, 249, 0.4);
 }
