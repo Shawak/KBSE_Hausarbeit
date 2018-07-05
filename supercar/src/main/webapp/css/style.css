@@ -134,3 +134,21 @@ hr {
 .table-striped > tbody > tr:nth-of-type(odd) {
     background-color: rgba(249, 249, 249, 0.4);
 }
+
+.btn-danger {
+   background-color: rgb(240,78,35);
+   border-color: rgb(235,58,20);
+}
+
+.btn-danger:hover {
+    background-color: rgb(224,43,20);
+    border-color: rgb(200,23,10);
+}
+
+.btn-danger:active,
+.btn-danger:focus,
+.btn-danger:active:hover,
+.btn-danger:active:focus {
+    background-color: rgb(204,37,13);
+    border-color: rgb(180,17,5);
+}
