@@ -6,6 +6,7 @@
 package supercar.repositories;
 
 import javax.ejb.Stateless;
+import supercar.entities.Lending;
 import supercar.entities.Repair;
 import supercar.interfaces.IRepository;
 
@@ -17,5 +18,11 @@ import supercar.interfaces.IRepository;
 public class RepairRepository extends IRepository<Repair> {
 
     public RepairRepository() { }
+    
+    public Repair getRepairByCarid( long id){
+        return query("select e from #table e where e.car.id = :id and e.repairEndDate IS NULL")
+                .put("id", id)
+                .one();
+    }
     
 }

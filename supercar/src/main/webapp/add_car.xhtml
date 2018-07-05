@@ -35,6 +35,22 @@
             </h:form>
         </b:modal>
         
+        <b:modal title="Change Car" style-class="pseudoClass_modal2" >
+                
+            <h:form styleClass="form_center pseudoClass_modalForm" enctype="multipart/form-data">
+                
+                <b:selectOneMenu id="garage" value="#{car.garage}" label="Garage">
+                    <f:selectItems value="#{car.garages}" var="c" itemValue="#{c}" itemLabel="#{c.name}"/>
+                </b:selectOneMenu>
+                
+                <b:inputText value="#{car.description}" label="Description"/>
+                
+                <b:commandButton value="Close" update="@(None)" oncomplete="$('.pseudoClass_modal2').modal('hide')"/>
+                <b:commandButton value="to Repair" action="#{car.toRepair()}" update="@(.pseudoClass_dataTable)" oncomplete="$('.pseudoClass_modal2').modal('hide')"/>          
+            
+            </h:form>
+        </b:modal>
+        
         <b:form>
             <b:tabView activeIndex="0">
                 <b:tab title="Car">   
@@ -58,6 +74,10 @@
                             <b:dataTableColumn label="Deactivate">
                                 <b:commandButton rendered="#{not onecar.deactivated}" value="Deactivate" update="@(.pseudoClass_dataTable)" action="#{car.deactivate(onecar.id)}"/>
                                 <b:commandButton rendered="#{onecar.deactivated}" value="Activate" update="@(.pseudoClass_dataTable)" action="#{car.activate(onecar.id)}"/>
+                            </b:dataTableColumn>
+                            <b:dataTableColumn label="Repair">
+                                <b:commandButton rendered="#{not car.isRepair(onecar.id)}" value="to Repair" update="@(.pseudoClass_dataTable)" action="#{car.toRepair(onecar.id)}" oncomplete="$('.pseudoClass_modal2').modal()"/>
+                                <b:commandButton rendered="#{car.isRepair(onecar.id)}" value="back from Repair" update="@(.pseudoClass_dataTable)" action="#{car.backFromRepair(onecar.id)}"/>
                             </b:dataTableColumn>
                         </b:dataTable>
                     </h:form>

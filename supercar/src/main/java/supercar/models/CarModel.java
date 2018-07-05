@@ -10,7 +10,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.URL;
+import java.util.Calendar;
 import java.util.Collection;
+import java.util.GregorianCalendar;
 import java.util.Objects;
 import static java.util.stream.Collectors.toList;
 import javax.annotation.PostConstruct;
@@ -20,7 +22,9 @@ import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import org.primefaces.model.UploadedFile;
 import supercar.entities.Car;
+import supercar.entities.Garage;
 import supercar.entities.Model;
+import supercar.entities.Repair;
 import supercar.interfaces.IModel;
 
 /**
@@ -39,6 +43,10 @@ public class CarModel extends IModel {
 
     private Car new_car;
     private Car change_car;
+    
+    private long toRepairId;
+    private Garage garage;
+    private String description;
 
     public Collection<Model> getModels() {
         return models;
@@ -212,5 +220,63 @@ public class CarModel extends IModel {
         //cars=cars.stream().map((Car o) -> Objects.equals(o.getId(), tmp.getId())?tmp:o).collect(toList());
         cars = Cars.getAll();
     }
+    
+    public boolean isRepair(long id){
+        return Repairs.getRepairByCarid(id) != null;
+    }
+    
+    public void toRepair(long id){
+        toRepairId = id;
+    }
+    
+    public void toRepair(){
+        if (Lendings.getLendingCarById(toRepairId) == null) {
+            Repair repair =  new Repair();
+            repair.setCar(Cars.get(toRepairId));
+            repair.setDescription(description);
+            
+            Calendar c = new GregorianCalendar();
+            c.set(Calendar.HOUR_OF_DAY, 0); //anything 0 - 23
+            c.set(Calendar.MINUTE, 0);
+            c.set(Calendar.SECOND, 0);
+            
+            repair.setRepairStartDate(c.getTimeInMillis());
+            
+            Repairs.add(repair);
+            garage.addRepair(repair);
+            Garages.update(garage);
+        }
+    }
+    
+    public void backFromRepair(long id){
+        Repair repair = Repairs.getRepairByCarid(id);
+        Calendar c = new GregorianCalendar();
+        c.set(Calendar.HOUR_OF_DAY, 0); //anything 0 - 23
+        c.set(Calendar.MINUTE, 0);
+        c.set(Calendar.SECOND, 0);
+        
+        repair.setRepairEndDate(c.getTimeInMillis());
+        Repairs.update(repair);
+    }
+    
+    public Collection<Garage> getGarages(){
+        return Garages.getAll();
+    }
 
+    public Garage getGarage() {
+        return garage;
+    }
+
+    public void setGarage(Garage garage) {
+        this.garage = garage;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+    
 }

@@ -83,6 +83,10 @@ public class Garage extends IUniqueEntity {
     public void setContactInfo(String contactInfo) {
         this.contactInfo = contactInfo;
     }
+    
+    public void addRepair(Repair repair){
+        this.repairs.add(repair);
+    }
 
     public Garage() {
     }

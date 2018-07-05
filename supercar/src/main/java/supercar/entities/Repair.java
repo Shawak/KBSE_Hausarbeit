@@ -18,8 +18,8 @@ public class Repair extends IUniqueEntity {
 
     String description;
     
-    long repairStartDate;
-    long repairEndDate;
+    Long repairStartDate;
+    Long repairEndDate;
     
     @ManyToOne
     private Car car;
@@ -40,19 +40,19 @@ public class Repair extends IUniqueEntity {
         this.description = description;
     }
 
-    public long getRepairStartDate() {
+    public Long getRepairStartDate() {
         return repairStartDate;
     }
 
-    public void setRepairStartDate(long repairStartDate) {
+    public void setRepairStartDate(Long repairStartDate) {
         this.repairStartDate = repairStartDate;
     }
 
-    public long getRepairEndDate() {
+    public Long getRepairEndDate() {
         return repairEndDate;
     }
 
-    public void setRepairEndDate(long repairEndDate) {
+    public void setRepairEndDate(Long repairEndDate) {
         this.repairEndDate = repairEndDate;
     }
     

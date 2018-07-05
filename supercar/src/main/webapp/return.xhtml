@@ -1,0 +1,33 @@
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:b="http://bootsfaces.net/ui"
+    xmlns:p="http://primefaces.org/ui" 
+    template="template.xhtml">
+    
+    <ui:define name="body">
+        <h:form id="form">
+            <p:dataList value="#{return.lendings}" var="onelending" type="definition">
+                <f:facet name="header">
+                    Cars
+                </f:facet>
+                
+                <b:panel>
+                    <b:column span="4">
+                        <h:outputText value="Car: #{onelending.car.model.manufacturer.name} #{onelending.car.model.name}"/>
+                    </b:column>
+                    <b:column span="6">
+                        <h:outputText value="License plate: #{onelending.car.licensePlate}"/>
+                    </b:column>
+                    <b:column span="2">
+                        <b:commandButton value="return"></b:commandButton>
+                    </b:column>
+                </b:panel>
+            </p:dataList>
+        </h:form>
+        
+    </ui:define>
+    
+</ui:composition>

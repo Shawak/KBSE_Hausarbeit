@@ -152,3 +152,20 @@ hr {
     background-color: rgb(204,37,13);
     border-color: rgb(180,17,5);
 }
+
+.ui-datalist-item > .panel-group {
+    margin: 0;
+}
+
+.ui-datalist-item > .panel-group > .panel {
+    background-color: transparent;
+    border: 0;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+}
+
+.ui-widget-content {
+    border: 0;
+    background: transparent;
+    color: #333333;
+}
