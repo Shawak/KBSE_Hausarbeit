@@ -49,7 +49,6 @@ public class StartupBean extends IRepositoryAccessor {
             Model v70 = Models.add(new Model("V70", volvo, 1, 1));
             Model granTurismo = Models.add(new Model("GranTurismo", maserati, 1, 1));
             
-            Cars.add(new Car("OS HS 0001", 40.00f, astra, "Opel_Astra.jpg", "gray"));
             Cars.add(new Car("OS HS 0002", 50.00f, sprinter, "Mercedes-Benz_Sprinter.jpg", "white"));
             Cars.add(new Car("OS HS 0003", 120.00f, aventador, "Lamporghini_Aventador.jpg", "red"));
             Cars.add(new Car("OS HS 0004", 31.00f, gtr, "Nissan_GT-R.jpg", "vibrand red"));
@@ -65,6 +64,8 @@ public class StartupBean extends IRepositoryAccessor {
             car2.setDeactivated(true);
             Cars.add(car2);
             
+            Car car3 = new Car("OS HS 0001", 40.00f, astra, "Opel_Astra.jpg", "gray");
+            Cars.add(car3);
             
             Lending lending = new Lending();
             lending.setCar(car);
@@ -73,15 +74,23 @@ public class StartupBean extends IRepositoryAccessor {
             lending.setRentDate(1526940000000l);
             
             Lendings.add(lending);
-            
             //ohne diesen Befehl funktioniert der danach nicht
             account = Accounts.update(account);
             account.addLending(lending);
             
+            
+            Lending lending2 = new Lending(1517184000000l,1517356800000l,10l,200l,"",car3);
+            Lending lending3 = new Lending(1518220800000l,1519084800000l,205l,500l,"",car3);
+            Lendings.add(lending2);
+            Lendings.add(lending3);
+            
+            account.addLending(lending2);
+            account.addLending(lending3);
             Accounts.update(account);
             
             Garages.add(new Garage("Autowerkstatt Gah", 48431, "Frankenburgstr. 7", "Rheine", "Michael Gah"));
-        }   Garages.add(new Garage("Strecke & Hartmann", 49497, "Ibbenbürener Str. 12", "Mettingen", "Torsten Strecke"));
+            Garages.add(new Garage("Strecke & Hartmann", 49497, "Ibbenbürener Str. 12", "Mettingen", "Torsten Strecke"));
+        }   
     }
     
     

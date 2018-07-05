@@ -5,12 +5,14 @@
  */
 package supercar.models;
 
+import java.util.Collection;
 import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import supercar.entities.Car;
+import supercar.entities.Lending;
 import supercar.interfaces.IModel;
 
 /**
@@ -22,6 +24,8 @@ import supercar.interfaces.IModel;
 public class CarDetailModel extends IModel{
 
     private Car car;
+    
+    private Collection<Lending> lendings;
 
     public CarDetailModel() {
     }
@@ -32,6 +36,8 @@ public class CarDetailModel extends IModel{
         Map<String, String> map = context.getExternalContext().getRequestParameterMap();
         long id = Long.parseLong(map.get("id"),10);
         car = Cars.get(id);
+        
+        lendings = Lendings.getLendingByCarId(id);
     }
 
     public Car getCar() {
@@ -40,6 +46,14 @@ public class CarDetailModel extends IModel{
 
     public void setCar(Car car) {
         this.car = car;
+    }
+
+    public Collection<Lending> getLendings() {
+        return lendings;
+    }
+
+    public void setLendings(Collection<Lending> lendings) {
+        this.lendings = lendings;
     }
     
 }

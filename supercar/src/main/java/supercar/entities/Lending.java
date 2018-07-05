@@ -5,6 +5,7 @@
  */
 package supercar.entities;
 
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import supercar.interfaces.IUniqueEntity;
@@ -35,16 +36,16 @@ public class Lending extends IUniqueEntity {
         this.car = car;
     }
 
-    public long getRentDate() {
-        return rentDate;
+    public Date getRentDate() {
+        return new Date(rentDate);
     }
 
     public void setRentDate(Long rentDate) {
         this.rentDate = rentDate;
     }
 
-    public Long getReturnDate() {
-        return returnDate;
+    public Date getReturnDate() {
+        return new Date(returnDate);
     }
 
     public void setReturnDate(Long returnDate) {
@@ -76,5 +77,16 @@ public class Lending extends IUniqueEntity {
     }
     
     public Lending() { }
+
+    public Lending(Long rentDate, Long returnDate, Long rentMileage, Long returnMileage, String returnCommentary, Car car) {
+        this.rentDate = rentDate;
+        this.returnDate = returnDate;
+        this.rentMileage = rentMileage;
+        this.returnMileage = returnMileage;
+        this.returnCommentary = returnCommentary;
+        this.car = car;
+    }
+    
+    
     
 }

@@ -10,20 +10,47 @@
     <ui:define name="body">
         <b:container>
         <b:column span="6">
-            <h:outputLabel for="name" value="Name:"/>
+            <h:outputLabel for="name" value="Name: "/>
             <h:outputLabel id="name" value="#{cardetail.car.model.manufacturer.name} #{cardetail.car.model.name}"/>
             <br/>
-            <h:outputLabel for="license" value="License Plate:"/>
+            <h:outputLabel for="license" value="License Plate: "/>
             <h:outputLabel id="license" value="#{cardetail.car.licensePlate}"/>
             <br/>
-            <h:outputLabel for="price" value="Price per Day:"/>
-            <h:outputLabel id="price" value="#{cardetail.car.pricePerDay}"/>
+            <h:outputLabel for="price" value="Price per Day: "/>
+            <h:outputLabel id="price" value="#{cardetail.car.pricePerDay}">
+                <f:convertNumber pattern="#0.00 $"/>
+            </h:outputLabel>
             <br/>
-            <h:outputLabel for="color" value="Color"/>
+            <h:outputLabel for="color" value="Color: "/>
             <h:outputLabel id="color" value="#{cardetail.car.color}"/>
+            
+            <br/>
+            <br/>
+            
+            <h:form>
+                <b:dataTable value="#{cardetail.lendings}"
+                             var="onelending">
+                  <b:dataTableColumn label="RentDate">
+                      <h:outputText value="#{onelending.rentDate}">
+                          <f:convertDateTime pattern="dd.MM.yyyy"/>
+                      </h:outputText>
+                  </b:dataTableColumn>
+                  <b:dataTableColumn value="#{onelending.rentMileage}" />
+                  <b:dataTableColumn label="ReturnDate">
+                      <h:outputText value="#{onelending.returnDate}">
+                          <f:convertDateTime pattern="dd.MM.yyyy"/>
+                      </h:outputText>
+                  </b:dataTableColumn>
+                  <b:dataTableColumn value="#{onelending.returnMileage}" />
+                </b:dataTable>
+              </h:form>
+            
+            
         </b:column>
         <b:column span="6">
-            <b:image value="images/#{cardetail.car.picture}" width="40%"/>
+            <b:image value="images/#{cardetail.car.picture}" width="50%"/>
+            <br/>
+            <br/>
             <b:form>
             <b:commandButton value="Rent"/>
             </b:form>
