@@ -11,7 +11,7 @@ import java.net.URL;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import supercar.core.BillPDF2;
+import supercar.core.BillPDF;
 import supercar.entities.Account;
 import supercar.interfaces.IModel;
 
@@ -23,7 +23,7 @@ import supercar.interfaces.IModel;
 @SessionScoped
 public class billModel extends IModel {
     @Inject
-    BillPDF2 bill;
+    BillPDF bill;
     
     public void test() throws FileNotFoundException, DocumentException
     {
