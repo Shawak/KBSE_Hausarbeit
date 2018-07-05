@@ -30,6 +30,13 @@
             <br/>
             <h:outputLabel for="color" value="Color: "/>
             <h:outputLabel id="color" value="#{cardetail.car.color}"/>
+            <br/>
+            <h:outputLabel for="color" value="Horsepower: "/>
+            <h:outputLabel id="color" value="#{cardetail.car.model.horsepower}"/>
+            <br/>
+            <h:outputLabel for="color" value="Cubic Capacity: "/>
+            <h:outputLabel id="color" value="#{cardetail.car.model.cubicCapacity}"/>
+            
             
             <br/>
             <br/>
@@ -51,7 +58,6 @@
                   <b:dataTableColumn value="#{onelending.returnMileage}" />
                 </b:dataTable>
               </h:form>
-            
             
         </b:column>
         <b:column span="6">
