@@ -5,6 +5,7 @@
  */
 package supercar.models;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -29,6 +30,7 @@ public class IndexModel extends IModel {
     public IndexModel() {
         order = "licensePlate";
         sort = "ASC";
+        arr = new ArrayList<>();
     }
 
     public Collection<Car> getCars() {

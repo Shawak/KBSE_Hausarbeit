@@ -8,6 +8,13 @@
     template="template.xhtml">
 
     <ui:define name="body">
+        <b:modal id="modal" title="Rent Car" style-class="pseudoClass_modal" >
+            <p>The car is reserved for you.</p>
+            <p>You can pick it up from us.</p>
+            <b:button href="/supercar" value="Ok" look="primary">
+            </b:button>
+        </b:modal>
+        
         <b:container>
         <b:column span="6">
             <h:outputLabel for="name" value="Name: "/>
@@ -48,11 +55,12 @@
             
         </b:column>
         <b:column span="6">
+            
             <b:image value="images/#{cardetail.car.picture}" width="50%"/>
             <br/>
             <br/>
-            <b:form>
-            <b:commandButton value="Rent"/>
+            <b:form id="form">
+                <b:commandButton action="#{cardetail.rent()}" value="Rent" update="@(None)" oncomplete="$('.pseudoClass_modal').modal()"/>
             </b:form>
         </b:column>
         </b:container>
