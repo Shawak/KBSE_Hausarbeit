@@ -24,7 +24,7 @@ import supercar.entities.Account;
  * @author Lukas
  */
 @Stateless
-public class BillPDF {
+public class BillPdf2 {
 
     public void createPDF(String dest, Account acc) throws FileNotFoundException, DocumentException
     {
