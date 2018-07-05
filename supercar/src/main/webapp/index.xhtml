@@ -22,28 +22,26 @@
                 </b:selectOneMenu>
             </b:formGroup>
             <b:dataTable lang="en" value="#{index.cars}" var="carV" border="false" striped="false" style-class="pseudoClass_dataTable">
-                <b:dataTableColumn header-style-class="hidden" >
-                    
-                    <h:commandLink action="#{index.carDetail(carV.id)}" styleClass="#{index.Free(carV.id)? '' : 'clickable'}">
-                        <b:panel styleClass="#{index.Free(carV.id)? '' : 'clickable'}">
-                            
-                                <b:column span="2">
-                                    <b:image value="images/#{carV.picture}"/> 
-                                </b:column>
-                                <b:column span="3">
-                                    <h:outputText value="Car: #{carV.model.manufacturer.name} #{carV.model.name}"/>
-                                </b:column>
-                                <b:column span="3">
-                                    <h:outputText value="License plate: #{carV.licensePlate}"/>
-                                </b:column>
-                                <b:column span="2">
-                                    <h:outputText value="#{carV.pricePerDay}">
-                                        <f:convertNumber pattern="Price/Day: #0.00 $"/>
-                                    </h:outputText>
-                                </b:column>
-                                <b:column span="2">
-                                    <h:outputText value="Color: #{carV.color}"/>
-                                </b:column>
+                <b:dataTableColumn header-style-class="hidden" styleClass="#{index.Free(carV.id)? '' : 'not-rentable'}">
+                    <h:commandLink action="#{index.carDetail(carV.id)}">
+                        <b:panel>
+                            <b:column span="2">
+                                <b:image value="images/#{carV.picture}"/> 
+                            </b:column>
+                            <b:column span="3">
+                                <h:outputText value="Car: #{carV.model.manufacturer.name} #{carV.model.name}"/>
+                            </b:column>
+                            <b:column span="3">
+                                <h:outputText value="License plate: #{carV.licensePlate}"/>
+                            </b:column>
+                            <b:column span="2">
+                                <h:outputText value="#{carV.pricePerDay}">
+                                    <f:convertNumber pattern="Price/Day: #0.00 $"/>
+                                </h:outputText>
+                            </b:column>
+                            <b:column span="2">
+                                <h:outputText value="Color: #{carV.color}"/>
+                            </b:column>
                         </b:panel>
                     </h:commandLink>
                 </b:dataTableColumn>
