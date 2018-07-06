@@ -9,7 +9,9 @@
     
     <ui:define name="body">
         <h:form>
-            <b:commandButton value="PDF Test" action="#{bill.test()}"/>
+            <b:commandButton value="Download PDF Test">
+                <p:fileDownload value="#{bill.file}"/>
+            </b:commandButton>
         </h:form>
     </ui:define>
     
