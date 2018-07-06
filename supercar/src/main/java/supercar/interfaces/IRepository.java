@@ -60,6 +60,10 @@ public abstract class IRepository<T extends IUniqueEntity> implements Serializab
         return new IQuery<>(em, sql, entityClass, table);
     }
     
+    public<D> IQuery<D> typedQuery(String sql, Class<D> type) {
+        return new IQuery<>(em, sql, type, table);
+    }
+    
     public Collection<T> getAll() {
         return query("select e from #table e").all();
     }

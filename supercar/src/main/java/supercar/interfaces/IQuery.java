@@ -16,7 +16,7 @@ import javax.persistence.TypedQuery;
  * @param <T>
  * I know this is not really an interface, but idk where to put it otherwise yet
  */
-public class IQuery<T extends IUniqueEntity> {
+public class IQuery<T> {
 
     TypedQuery<T> query;
     String sql;
