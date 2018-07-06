@@ -13,11 +13,18 @@ import com.itextpdf.text.Font.FontFamily;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
  
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.Stateless;
+import org.primefaces.model.DefaultStreamedContent;
+import org.primefaces.model.StreamedContent;
 import supercar.entities.Account;
 /**
  *
@@ -26,13 +33,18 @@ import supercar.entities.Account;
 @Stateless
 public class BillPdf2 {
 
+    private StreamedContent files;
+    
     public void createPDF(String dest, Account acc) throws FileNotFoundException, DocumentException
     {
         File file = new File(dest);
         file.getParentFile().mkdirs();
    
         Document document = new Document();
-        PdfWriter.getInstance(document, new FileOutputStream(dest));
+        
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        
+        PdfWriter.getInstance(document, baos);
         document.open();
         Font bold = new Font(FontFamily.HELVETICA, 14, Font.BOLD);
         Font normalNormal = new Font(FontFamily.HELVETICA, 12, Font.UNDEFINED);
@@ -110,5 +122,14 @@ public class BillPdf2 {
 
         document.add(signature);
         document.close();
+        
+        try {
+            baos.writeTo(new FileOutputStream(dest));
+            baos.flush();
+            baos.close();
+        } catch (IOException ex) {
+            Logger.getLogger(BillPdf2.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       //files = new DefaultStreamedContent(new ByteArrayInputStream(baos.toByteArray()),"text/pdf", "Bill.pdf");
     }
 }
