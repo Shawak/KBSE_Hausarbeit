@@ -12,9 +12,9 @@
             <b:navLink value="Cars" href="/supercar"></b:navLink>
             <b:navLink value="Contact" href="/supercar/faces/contact.xhtml"></b:navLink>
             <b:navLink value="About" href="/supercar/faces/about.xhtml"></b:navLink>
+            <b:navLink rendered="#{menu.LOGGEDIN}" value="Return" href="/supercar/faces/return.xhtml"></b:navLink>
             <!--Mitarbeiter-->
-            <b:navLink value="Return" href="/supercar/faces/return.xhtml"></b:navLink>
-            <b:navLink value="Garage" href="/supercar/faces/add_garage.xhtml"></b:navLink>
+            <b:navLink rendered="#{menu.ISEMPLOYEE}" value="Garage" href="/supercar/faces/add_garage.xhtml"></b:navLink>
             <b:navLink rendered="#{menu.ISEMPLOYEE}" value="User" href="/supercar/faces/user_management.xhtml"></b:navLink>
             <!--Admin-->
             <b:dropMenu rendered="#{menu.ISADMIN}" value="Manage">

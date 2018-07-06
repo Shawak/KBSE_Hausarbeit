@@ -75,6 +75,8 @@
     <filter-mapping>
         <filter-name>login</filter-name>
         <url-pattern>/faces/profile.xhtml</url-pattern>
+        <url-pattern>/faces/cardetail.xhtml</url-pattern>
+        <url-pattern>/faces/return.xhtml</url-pattern>
     </filter-mapping>
     <filter-mapping>
         <filter-name>notLogin</filter-name>
