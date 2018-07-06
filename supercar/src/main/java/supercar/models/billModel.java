@@ -8,9 +8,12 @@ package supercar.models;
 import com.itextpdf.text.DocumentException;
 import java.io.FileNotFoundException;
 import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import org.primefaces.model.StreamedContent;
 import supercar.core.BillPdf2;
 import supercar.entities.Account;
 import supercar.interfaces.IModel;
@@ -32,5 +35,11 @@ public class billModel extends IModel {
         String path = location.getPath();
         Account acc = LoginHandler.getAccount();
         bill.createPDF(path+ "../../../../../../images/test.pdf", acc);
+    }
+    
+    public StreamedContent getFile(){
+      
+            return bill.createPDF("test.pdf", LoginHandler.getAccount());
+        
     }
 }

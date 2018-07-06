@@ -31,4 +31,11 @@ public class LendingRepository extends IRepository<Lending> {
                 .put("id", id)
                 .all();
     }
+    
+    public Lending getLastLendingByCarId(Long id){
+        
+        return query("select e from #table e where e.car.id = :id and e.returnMileage IS NOT NULL order by e.returnMileage desc")
+                .put("id", id)
+                .one();
+    }
 }

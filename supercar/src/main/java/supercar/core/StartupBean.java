@@ -25,7 +25,7 @@ public class StartupBean extends IRepositoryAccessor {
         if (Accounts.getAll().isEmpty()) {
             Accounts.add(new Account("Administrator", "Administrator", 49076, "Albrechtstr. 30", "admin", "admin", "", AccountType.Administrator, true, "Osnabrück"));
            
-            Account account = new Account("Max", "Mustermann", 49076, "Albrechtstr. 30", "user", "user", "", AccountType.User, false, "Osnabrück");
+            Account account = new Account("Max", "Mustermann", 49076, "Albrechtstr. 30", "user", "user", "", AccountType.User, true, "Osnabrück");
             account.setLicenseNumber("Z014AB37X95");
             Accounts.add(account);
             
@@ -69,7 +69,6 @@ public class StartupBean extends IRepositoryAccessor {
             
             Lending lending = new Lending();
             lending.setCar(car);
-            lending.setRentMileage(100l);
             //22.5.18
             lending.setRentDate(1526940000000l);
             
