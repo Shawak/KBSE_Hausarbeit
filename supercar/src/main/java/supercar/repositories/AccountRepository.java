@@ -9,7 +9,6 @@ import java.util.Collection;
 import javax.ejb.Stateless;
 import supercar.entities.Account;
 import supercar.interfaces.IRepository;
-
 /**
  *
  * @author Maxi

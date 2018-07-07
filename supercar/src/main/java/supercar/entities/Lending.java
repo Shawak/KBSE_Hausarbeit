@@ -6,6 +6,7 @@
 package supercar.entities;
 
 import java.util.Date;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import supercar.interfaces.IUniqueEntity;
@@ -24,7 +25,9 @@ public class Lending extends IUniqueEntity {
     private Long returnMileage;
     
     private String returnCommentary;
-    
+    @Column(name="ACCOUNT_ID")
+    private Long accountId;
+
     @ManyToOne
     private Car car;
 
@@ -36,10 +39,11 @@ public class Lending extends IUniqueEntity {
         this.car = car;
     }
 
-    public Date getRentDate() {
-        if(rentDate==null){
-            return null;
-        }
+    public Long getRentDate() {
+        return this.rentDate;
+    }
+    
+    public Date getRentDateAsDate() {
         return new Date(rentDate);
     }
 
@@ -47,12 +51,15 @@ public class Lending extends IUniqueEntity {
         this.rentDate = rentDate;
     }
 
-    public Date getReturnDate() {
-        if( returnDate == null){
-            return null;
-        }
+    public Long getReturnDate() {
+        return returnDate;
+    }
+    
+    public Date getReturnDateAsDate() {
         return new Date(returnDate);
     }
+    
+    
 
     public void setReturnDate(Long returnDate) {
         this.returnDate = returnDate;
@@ -80,6 +87,10 @@ public class Lending extends IUniqueEntity {
 
     public void setReturnCommentary(String returnCommentary) {
         this.returnCommentary = returnCommentary;
+    }
+    
+    public Long getAccountId() {
+        return accountId;
     }
     
     public Lending() { }

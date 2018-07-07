@@ -37,13 +37,13 @@
             <h:form>
                 <b:dataTable value="#{cardetail.lendings}" lang="en" var="onelending">
                   <b:dataTableColumn label="RentDate">
-                      <h:outputText value="#{onelending.rentDate}">
+                      <h:outputText value="#{onelending.rentDateAsDate}">
                           <f:convertDateTime pattern="dd.MM.yyyy"/>
                       </h:outputText>
                   </b:dataTableColumn>
                   <b:dataTableColumn value="#{onelending.rentMileage}" />
                   <b:dataTableColumn label="ReturnDate">
-                      <h:outputText value="#{onelending.returnDate}">
+                      <h:outputText value="#{onelending.returnDateAsDate}">
                           <f:convertDateTime pattern="dd.MM.yyyy"/>
                       </h:outputText>
                   </b:dataTableColumn>

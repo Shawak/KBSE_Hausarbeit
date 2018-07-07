@@ -11,6 +11,8 @@ import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.Font.FontFamily;
 import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.io.ByteArrayInputStream;
@@ -20,12 +22,19 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import static java.time.temporal.ChronoUnit.MILLIS;
+import static java.time.temporal.ChronoUnit.SECONDS;
+import java.time.temporal.TemporalUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
 import supercar.entities.Account;
+import supercar.entities.Lending;
 /**
  *
  * @author Lukas
@@ -35,7 +44,7 @@ public class BillPdf2 {
 
     private StreamedContent files;
     
-    public StreamedContent createPDF(String dest, Account acc)
+    public StreamedContent createPDF(String dest, Account acc, Lending lending)
     {
         try {
             //File file = new File(dest);
@@ -90,7 +99,7 @@ public class BillPdf2 {
             usageEntry.add(usageValue);
             
             Paragraph text = new Paragraph("Thanks for using our service, we appreciate every kind of feedback. If there have been any problems, please feel free to contact our customer Support. We will try to help as fast as possible. We hope that you will continue using our service in the future.", normal);
-            Paragraph signature = new Paragraph("\nKind regards\n\nDeine Mudda");
+            Paragraph signature = new Paragraph("\nKind regards\n\nBerthold Sommer");
             
             companyAdress.setSpacingBefore(-70f);
             companyAdress.setSpacingAfter(100f);
@@ -99,11 +108,32 @@ public class BillPdf2 {
             textCapital.setSpacingAfter(15f);
             text.setSpacingAfter(30f);
             
+            PdfPCell cell;
             PdfPTable table = new PdfPTable(5);
-            for(int aw = 0; aw < 10; aw++){
-                table.addCell("hi");
-                table.addCell("");
-            }
+            
+            cell = new PdfPCell(new Phrase("Car "+lending.getCar().getModel().getName()));
+            cell.setUseVariableBorders(true);
+            cell.setBorderWidth(0);
+            cell.setBorderWidthTop(3);
+            cell.setBorderWidthBottom(3);
+            table.addCell(cell);
+            
+            cell.setPhrase(new Phrase("Price/Day"+ lending.getCar().getPricePerDay()));
+            table.addCell(cell);
+            
+            Duration dur = Duration.of(lending.getReturnDate()-lending.getRentDate(), MILLIS);
+
+            cell.setPhrase(new Phrase("Duration: "+ dur.toString()));
+            table.addCell(cell);
+            
+            cell.setPhrase(new Phrase("Charged Days: "+ dur.toDays()));
+            table.addCell(cell);
+            
+            cell.setPhrase(new Phrase("Charged Days: "+ dur.toDays()));
+            table.addCell(cell);
+            
+            
+
             table.setSpacingAfter(15f);
             
             document.add(customerAdress);

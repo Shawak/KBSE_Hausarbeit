@@ -39,7 +39,7 @@ public class ReturnModel extends IModel {
 
     @PostConstruct
     public void init() {
-        lendings = LoginHandler.getAccount().getLendings().stream().filter((Lending l) -> l.getReturnDate() == null).collect(Collectors.toList());
+        lendings = LoginHandler.getAccount().getLendings().stream().filter((Lending l) -> l.getReturnDateAsDate() == null).collect(Collectors.toList());
     }
 
     public Collection<Lending> getLendings() {
@@ -82,7 +82,7 @@ public class ReturnModel extends IModel {
             }
             else{
                 Lendings.update(returnlending);
-                lendings = LoginHandler.getAccount().getLendings().stream().filter((Lending l) -> l.getReturnDate() == null).collect(Collectors.toList());
+                lendings = LoginHandler.getAccount().getLendings().stream().filter((Lending l) -> l.getReturnDateAsDate() == null).collect(Collectors.toList());
                 ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
                 try {
                     context.redirect(context.getRequestContextPath()+"/faces/return.xhtml");
@@ -101,7 +101,7 @@ public class ReturnModel extends IModel {
             }
             else{
                 Lendings.update(returnlending);
-                lendings = LoginHandler.getAccount().getLendings().stream().filter((Lending l) -> l.getReturnDate() == null).collect(Collectors.toList());
+                lendings = LoginHandler.getAccount().getLendings().stream().filter((Lending l) -> l.getReturnDateAsDate() == null).collect(Collectors.toList());
                 ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
                 try {
                     context.redirect(context.getRequestContextPath()+"/faces/return.xhtml");
