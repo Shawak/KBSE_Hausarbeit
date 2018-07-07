@@ -57,11 +57,10 @@
         <filter-name>notLogin</filter-name>
         <filter-class>supercar.filters.NotLoginFilter</filter-class>
     </filter>
-    <filter-mapping>
+    <!--filter-mapping>
         <filter-name>user</filter-name>
         <url-pattern>/faces/contact.xhtml</url-pattern>
-        <!--<url-pattern>/faces/contact.xhtml</url-pattern>-->
-    </filter-mapping>
+    </filter-mapping-->
     <filter-mapping>
         <filter-name>employee</filter-name>
         <url-pattern>/faces/user_management.xhtml</url-pattern>

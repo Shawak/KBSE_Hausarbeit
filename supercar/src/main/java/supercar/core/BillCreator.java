@@ -126,13 +126,13 @@ public class BillCreator {
             table.addCell(cell);
 
             Duration dur = Duration.of(lending.getReturnDate() - lending.getRentDate(), MILLIS);
-            long days = dur.toDays();
-            long hours = dur.minusDays(days).toHours();
+            long days = dur.toDays()+1;
+            long hours = dur.toHours() % 60;
             long minutes = dur.toMinutes() % 60;
-            cell.setPhrase(new Phrase("" + String.format("%02d", days) + ":" + String.format("%02d", hours) + ":" + String.format("%02d", minutes)));
+            cell.setPhrase(new Phrase("" + String.format("%02d", days-1) + ":" + String.format("%02d", hours) + ":" + String.format("%02d", minutes)));
             table.addCell(cell);
 
-            cell.setPhrase(new Phrase("" + dur.toDays()));
+            cell.setPhrase(new Phrase("" + days));
             table.addCell(cell);
 
             double price = (lending.getCar().getPricePerDay() * days) / 1.19;
