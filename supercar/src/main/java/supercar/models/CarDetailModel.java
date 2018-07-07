@@ -27,35 +27,33 @@ import supercar.interfaces.IModel;
  * @author Patrick
  */
 @Named("cardetail")
-@RequestScoped
-public class CarDetailModel extends IModel{
+@SessionScoped
+public class CarDetailModel extends IModel {
 
     private Car car;
-    
+
     private Collection<Lending> lendings;
 
     public CarDetailModel() {
     }
-    
-    @PostConstruct
-    public void init(){
-        try{
+
+    public void render() {
+        try {
             FacesContext context = FacesContext.getCurrentInstance();
             Map<String, String> map = context.getExternalContext().getRequestParameterMap();
-            long id = Long.parseLong(map.get("id"),10);
+            long id = Long.parseLong(map.get("id"), 10);
             System.out.println(id);
             car = Cars.get(id);
 
             lendings = Lendings.getLendingByCarId(id);
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
             try {
-                context.redirect(context.getRequestContextPath()+"/");
+                context.redirect(context.getRequestContextPath() + "/");
             } catch (IOException ex) {
                 Logger.getLogger(LoginModel.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } 
+        }
     }
 
     public Car getCar() {
@@ -73,17 +71,17 @@ public class CarDetailModel extends IModel{
     public void setLendings(Collection<Lending> lendings) {
         this.lendings = lendings;
     }
-    
-    public String rent(){
+
+    public String rent() {
         Calendar c = new GregorianCalendar();
-        
+
         Lending lending = new Lending();
         lending.setCar(car);
         lending.setRentDate(c.getTimeInMillis());
-        
+
         LoginHandler.getAccount().addLending(lending);
         Lendings.add(lending);
-        
+
         Accounts.update(LoginHandler.getAccount());
         return null;
     }
