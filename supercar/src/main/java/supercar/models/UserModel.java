@@ -6,7 +6,6 @@
 package supercar.models;
 
 import java.util.Collection;
-import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import supercar.entities.Account;
@@ -53,9 +52,8 @@ public class UserModel extends IModel {
         acc.setBanned(false);
         Accounts.update(acc);
     }
-    
-    public void activateUser(long id)
-    {
+
+    public void activateUser(long id) {
         Account acc = Accounts.get(id);
         acc.setActivated(true);
         Accounts.update(acc);

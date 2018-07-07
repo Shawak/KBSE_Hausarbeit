@@ -15,7 +15,6 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.validation.constraints.NotNull;
-import supercar.core.PlzApi;
 import supercar.entities.Account;
 import supercar.enums.AccountType;
 import supercar.interfaces.IModel;
@@ -100,10 +99,10 @@ public class LoginModel extends IModel {
 
     public void login() {
         if (LoginHandler.login(login, password)) {
-            
+
             ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
             try {
-                context.redirect(context.getRequestContextPath()+"/");
+                context.redirect(context.getRequestContextPath() + "/");
             } catch (IOException ex) {
                 Logger.getLogger(LoginModel.class.getName()).log(Level.SEVERE, null, ex);
             }

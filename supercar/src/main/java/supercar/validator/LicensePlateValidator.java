@@ -17,7 +17,7 @@ public class LicensePlateValidator implements ConstraintValidator<LicensePlate, 
 
     @Override
     public void initialize(LicensePlate a) {
-        ConstraintValidator.super.initialize(a); //To change body of generated methods, choose Tools | Templates.
+        ConstraintValidator.super.initialize(a); // To change body of generated methods, choose Tools | Templates.
     }
 
     @Override

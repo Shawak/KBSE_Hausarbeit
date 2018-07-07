@@ -19,24 +19,24 @@ import supercar.validator.LicensePlate;
  */
 @Entity
 public class Car extends IUniqueEntity {
-    
+
     @LicensePlate
     private String licensePlate;
-    
-    @NotNull(message="Price per Day may not be empty")
-    @DecimalMin(value="0.00", message = "Price per Day must be more expensive then 0.00$")
-    @Digits(integer = 99,fraction = 2, message = "Price per Day may only have 2 decimal")
+
+    @NotNull(message = "Price per Day may not be empty")
+    @DecimalMin(value = "0.00", message = "Price per Day must be more expensive then 0.00$")
+    @Digits(integer = 99, fraction = 2, message = "Price per Day may only have 2 decimal")
     private Float pricePerDay;
-    
+
     private boolean deactivated;
     private String picture;
-    
+
     @NotNull(message = "Color may not be empty")
     private String color;
-    
+
     @ManyToOne
     private Model model;
-    
+
     public String getLicensePlate() {
         return licensePlate;
     }
@@ -60,7 +60,7 @@ public class Car extends IUniqueEntity {
     public void setModel(Model model) {
         this.model = model;
     }
-    
+
     public boolean isDeactivated() {
         return deactivated;
     }
@@ -84,15 +84,16 @@ public class Car extends IUniqueEntity {
     public void setColor(String color) {
         this.color = color;
     }
-    
-    public Car() { }
-    
+
+    public Car() {
+    }
+
     public Car(String licensePlate, Float pricePerDay, Model model, String picture, String color) {
         this.licensePlate = licensePlate;
         this.pricePerDay = pricePerDay;
         this.model = model;
-        this.picture=picture;
-        this.color=color;
+        this.picture = picture;
+        this.color = color;
     }
-    
+
 }

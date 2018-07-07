@@ -43,7 +43,7 @@ public class CarModel extends IModel {
 
     private Car new_car;
     private Car change_car;
-    
+
     private long toRepairId;
     private Garage garage;
     private String description;
@@ -220,46 +220,46 @@ public class CarModel extends IModel {
         //cars=cars.stream().map((Car o) -> Objects.equals(o.getId(), tmp.getId())?tmp:o).collect(toList());
         cars = Cars.getAll();
     }
-    
-    public boolean isRepair(long id){
+
+    public boolean isRepair(long id) {
         return Repairs.getRepairByCarid(id) != null;
     }
-    
-    public void toRepair(long id){
+
+    public void toRepair(long id) {
         toRepairId = id;
     }
-    
-    public void toRepair(){
+
+    public void toRepair() {
         if (Lendings.getLendingCarById(toRepairId) == null) {
-            Repair repair =  new Repair();
+            Repair repair = new Repair();
             repair.setCar(Cars.get(toRepairId));
             repair.setDescription(description);
-            
+
             Calendar c = new GregorianCalendar();
             c.set(Calendar.HOUR_OF_DAY, 0); //anything 0 - 23
             c.set(Calendar.MINUTE, 0);
             c.set(Calendar.SECOND, 0);
-            
+
             repair.setRepairStartDate(c.getTimeInMillis());
-            
+
             Repairs.add(repair);
             garage.addRepair(repair);
             Garages.update(garage);
         }
     }
-    
-    public void backFromRepair(long id){
+
+    public void backFromRepair(long id) {
         Repair repair = Repairs.getRepairByCarid(id);
         Calendar c = new GregorianCalendar();
         c.set(Calendar.HOUR_OF_DAY, 0); //anything 0 - 23
         c.set(Calendar.MINUTE, 0);
         c.set(Calendar.SECOND, 0);
-        
+
         repair.setRepairEndDate(c.getTimeInMillis());
         Repairs.update(repair);
     }
-    
-    public Collection<Garage> getGarages(){
+
+    public Collection<Garage> getGarages() {
         return Garages.getAll();
     }
 
@@ -278,5 +278,5 @@ public class CarModel extends IModel {
     public void setDescription(String description) {
         this.description = description;
     }
-    
+
 }

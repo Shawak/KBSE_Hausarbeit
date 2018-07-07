@@ -16,16 +16,16 @@ import supercar.interfaces.IUniqueEntity;
  */
 @Entity
 public class Model extends IUniqueEntity {
-    
+
     @NotNull(message = "Model may not be empty")
     private String name;
-    
+
     @NotNull(message = "Horsepower may not be empty")
     private Integer horsepower;
-    
+
     @NotNull(message = "Cubic Capacity may not be empty")
     private Integer cubicCapacity;
-    
+
     @ManyToOne
     private Manufacturer manufacturer;
 
@@ -36,7 +36,7 @@ public class Model extends IUniqueEntity {
     public void setManufacturer(Manufacturer manufacturer) {
         this.manufacturer = manufacturer;
     }
-    
+
     public String getName() {
         return name;
     }
@@ -60,13 +60,15 @@ public class Model extends IUniqueEntity {
     public void setCubicCapacity(Integer cubicCapacity) {
         this.cubicCapacity = cubicCapacity;
     }
-    public Model() { }
-    
+
+    public Model() {
+    }
+
     public Model(String name, Manufacturer manufacturer, Integer horsepower, Integer cubicCapacity) {
         this.name = name;
         this.manufacturer = manufacturer;
         this.horsepower = horsepower;
         this.cubicCapacity = cubicCapacity;
     }
-    
+
 }

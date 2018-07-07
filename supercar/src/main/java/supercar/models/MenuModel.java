@@ -31,13 +31,13 @@ public class MenuModel extends IModel {
     public void init() {
 
     }
-    
-    public void logout(){
+
+    public void logout() {
         System.out.println("logout");
         LoginHandler.logout();
         ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
         try {
-            context.redirect(context.getRequestContextPath()+"/");
+            context.redirect(context.getRequestContextPath() + "/");
         } catch (IOException ex) {
             Logger.getLogger(LoginModel.class.getName()).log(Level.SEVERE, null, ex);
         }

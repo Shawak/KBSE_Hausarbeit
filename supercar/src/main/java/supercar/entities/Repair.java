@@ -17,10 +17,10 @@ import supercar.interfaces.IUniqueEntity;
 public class Repair extends IUniqueEntity {
 
     String description;
-    
+
     Long repairStartDate;
     Long repairEndDate;
-    
+
     @ManyToOne
     private Car car;
 
@@ -31,7 +31,7 @@ public class Repair extends IUniqueEntity {
     public void setCar(Car car) {
         this.car = car;
     }
-    
+
     public String getDescription() {
         return description;
     }
@@ -55,11 +55,12 @@ public class Repair extends IUniqueEntity {
     public void setRepairEndDate(Long repairEndDate) {
         this.repairEndDate = repairEndDate;
     }
-    
+
     public boolean isActive() {
         return repairEndDate == 0;
     }
-    
-    public Repair() { }
-    
+
+    public Repair() {
+    }
+
 }

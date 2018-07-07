@@ -16,21 +16,21 @@ import supercar.validator.PLZ;
  */
 @Entity
 public class Manufacturer extends IUniqueEntity {
-    
+
     @NotNull(message = "Manufactory may not be empty")
     private String name;
-    
+
     @PLZ
     private Integer plz;
-    
+
     //@NotNull(message = "Wrong Post Code")
     private String city;
-    
+
     @NotNull(message = "Street may not be empty")
     private String street;
-    
+
     private String contactInfo;
-    
+
     public String getName() {
         return name;
     }
@@ -44,7 +44,7 @@ public class Manufacturer extends IUniqueEntity {
     }
 
     public void setPlz(Integer plz) {
-        this.plz = plz; 
+        this.plz = plz;
     }
 
     public String getStreet() {
@@ -70,16 +70,16 @@ public class Manufacturer extends IUniqueEntity {
     public void setCity(String city) {
         this.city = city;
     }
-    
+
     public Manufacturer() {
     }
-    
-    public Manufacturer(String name, Integer plz, String street, String contactInfo, String city) {
+
+    public Manufacturer(String name, Integer plz, String city, String street, String contactInfo) {
         this.name = name;
         this.plz = plz;
+        this.city = city;
         this.street = street;
         this.contactInfo = contactInfo;
-        this.city=city;
     }
-    
+
 }

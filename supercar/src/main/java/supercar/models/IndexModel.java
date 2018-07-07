@@ -24,7 +24,7 @@ public class IndexModel extends IModel {
 
     private String order;
     private String sort;
-    
+
     private List<Long> arr;
 
     public IndexModel() {
@@ -34,15 +34,15 @@ public class IndexModel extends IModel {
     }
 
     public Collection<Car> getCars() {
-        Collection<Car> cars = Cars.getAllFree(order,sort);
-        arr = cars.stream().map(c->c.getId()).collect(Collectors.toList());
+        Collection<Car> cars = Cars.getAllFree(order, sort);
+        arr = cars.stream().map(c -> c.getId()).collect(Collectors.toList());
         cars.addAll(Cars.getCarAtLending(order, sort));
         cars.addAll(Cars.getCarAtRepair(order, sort));
         return cars;
     }
 
     public String carDetail(Long id) {
-        return "cardetail.xhtml?id=" + id +"&faces-redirect=true";
+        return "cardetail.xhtml?id=" + id + "&faces-redirect=true";
     }
 
     public String getOrder() {
@@ -60,9 +60,9 @@ public class IndexModel extends IModel {
     public void setSort(String sort) {
         this.sort = sort;
     }
-    
-    public boolean Free(long id){
-        return arr.stream().filter(o -> o==id).findFirst().isPresent();
+
+    public boolean Free(long id) {
+        return arr.stream().filter(o -> o == id).findFirst().isPresent();
     }
-    
+
 }

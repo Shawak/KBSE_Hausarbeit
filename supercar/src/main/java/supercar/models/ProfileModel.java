@@ -33,11 +33,11 @@ public class ProfileModel extends IModel {
     private String password2;
 
     public ProfileModel() {
-        
+
     }
-    
+
     @PostConstruct
-    public void init(){
+    public void init() {
         account = LoginHandler.getAccount();
         licenseNumber = account.getLicenseNumber();
     }

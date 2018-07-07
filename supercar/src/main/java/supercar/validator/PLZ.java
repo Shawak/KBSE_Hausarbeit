@@ -19,12 +19,15 @@ import javax.validation.Payload;
  *
  * @author Patrick
  */
-@Constraint( validatedBy = PLZValidator.class )
-@Target({ METHOD, FIELD, ANNOTATION_TYPE})
-@Retention( RUNTIME )
+@Constraint(validatedBy = PLZValidator.class)
+@Target({METHOD, FIELD, ANNOTATION_TYPE})
+@Retention(RUNTIME)
 @Documented
 public @interface PLZ {
+
     String message() default "Wrong Post Code";
+
     Class<?>[] groups() default {};
+
     Class<? extends Payload>[] payload() default {};
 }

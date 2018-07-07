@@ -19,12 +19,15 @@ import javax.validation.Payload;
  *
  * @author Patrick
  */
-@Constraint( validatedBy = LicensePlateValidator.class )
-@Target({ METHOD, FIELD, ANNOTATION_TYPE})
-@Retention( RUNTIME )
+@Constraint(validatedBy = LicensePlateValidator.class)
+@Target({METHOD, FIELD, ANNOTATION_TYPE})
+@Retention(RUNTIME)
 @Documented
 public @interface LicensePlate {
+
     String message() default "Wrong License Plate";
+
     Class<?>[] groups() default {};
+
     Class<? extends Payload>[] payload() default {};
 }

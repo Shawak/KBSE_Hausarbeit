@@ -17,15 +17,15 @@ import supercar.interfaces.IUniqueEntity;
  */
 @Entity
 public class Lending extends IUniqueEntity {
-    
+
     private Long rentDate;
     private Long returnDate;
-    
+
     private Long rentMileage;
     private Long returnMileage;
-    
+
     private String returnCommentary;
-    @Column(name="ACCOUNT_ID")
+    @Column(name = "ACCOUNT_ID")
     private Long accountId;
 
     @ManyToOne
@@ -42,7 +42,7 @@ public class Lending extends IUniqueEntity {
     public Long getRentDate() {
         return this.rentDate;
     }
-    
+
     public Date getRentDateAsDate() {
         if (this.rentDate == null) {
             return null;
@@ -57,13 +57,14 @@ public class Lending extends IUniqueEntity {
     public Long getReturnDate() {
         return this.returnDate;
     }
-    
+
     public Date getReturnDateAsDate() {
         if (this.returnDate == null) {
             return null;
         }
         return new Date(this.returnDate);
     }
+
     public void setReturnDate(Long returnDate) {
         this.returnDate = returnDate;
     }
@@ -91,12 +92,13 @@ public class Lending extends IUniqueEntity {
     public void setReturnCommentary(String returnCommentary) {
         this.returnCommentary = returnCommentary;
     }
-    
+
     public Long getAccountId() {
         return accountId;
     }
-    
-    public Lending() { }
+
+    public Lending() {
+    }
 
     public Lending(Long rentDate, Long returnDate, Long rentMileage, Long returnMileage, String returnCommentary, Car car) {
         this.rentDate = rentDate;

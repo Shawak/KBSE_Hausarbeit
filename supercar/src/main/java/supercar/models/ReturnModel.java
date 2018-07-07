@@ -57,51 +57,43 @@ public class ReturnModel extends IModel {
     public void setReturnlending(Lending returnlending) {
         this.returnlending = returnlending;
     }
-    
-    
-    
-    public void returnCar(long id){
+
+    public void returnCar(long id) {
         returnlending = Lendings.get(id);
-        
+
         Calendar c = new GregorianCalendar();
-        
+
         returnlending.setReturnDate(c.getTimeInMillis());
     }
-    
-    public void returnCar(){
+
+    public void returnCar() {
         Lending tmp = Lendings.getLastLendingByCarId(returnlending.getCar().getId());
-        if(tmp == null){
-            if(returnlending.getRentMileage() == null || returnlending.getRentMileage()<0){
+        if (tmp == null) {
+            if (returnlending.getRentMileage() == null || returnlending.getRentMileage() < 0) {
                 FacesContext.getCurrentInstance().addMessage("form:result2", new FacesMessage(FacesMessage.SEVERITY_ERROR, "Rent Mileage must be greather than 0!", "Rent Mileage must be greather than 0!"));
-            }
-            else if(returnlending.getReturnMileage() == null || returnlending.getReturnMileage()<returnlending.getRentMileage()){
+            } else if (returnlending.getReturnMileage() == null || returnlending.getReturnMileage() < returnlending.getRentMileage()) {
                 FacesContext.getCurrentInstance().addMessage("form:result2", new FacesMessage(FacesMessage.SEVERITY_ERROR, "Return Mileage must be greather than Rent Mileage!", "Return Mileage must be greather than Rent Mileage!"));
-            }
-            else{
+            } else {
                 Lendings.update(returnlending);
                 lendings = LoginHandler.getAccount().getLendings().stream().filter((Lending l) -> l.getReturnDateAsDate() == null).collect(Collectors.toList());
                 ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
                 try {
-                    context.redirect(context.getRequestContextPath()+"/faces/return.xhtml");
+                    context.redirect(context.getRequestContextPath() + "/faces/return.xhtml");
                 } catch (IOException ex) {
                     Logger.getLogger(LoginModel.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-        }
-        
-        else{
-            if(returnlending.getRentMileage() == null || returnlending.getRentMileage()<tmp.getReturnMileage()){
-                FacesContext.getCurrentInstance().addMessage("form:result2", new FacesMessage(FacesMessage.SEVERITY_ERROR, "Rent Mileage must be greather than "+tmp.getReturnMileage()+"!", "Rent Mileage must be greather than "+tmp.getReturnMileage()+"!"));
-            }
-            else if(returnlending.getReturnMileage() == null || returnlending.getReturnMileage()<returnlending.getRentMileage()){
+        } else {
+            if (returnlending.getRentMileage() == null || returnlending.getRentMileage() < tmp.getReturnMileage()) {
+                FacesContext.getCurrentInstance().addMessage("form:result2", new FacesMessage(FacesMessage.SEVERITY_ERROR, "Rent Mileage must be greather than " + tmp.getReturnMileage() + "!", "Rent Mileage must be greather than " + tmp.getReturnMileage() + "!"));
+            } else if (returnlending.getReturnMileage() == null || returnlending.getReturnMileage() < returnlending.getRentMileage()) {
                 FacesContext.getCurrentInstance().addMessage("form:result2", new FacesMessage(FacesMessage.SEVERITY_ERROR, "Return Mileage must be greather than Rent Mileage!", "Return Mileage must be greather than Rent Mileage!"));
-            }
-            else{
+            } else {
                 Lendings.update(returnlending);
                 lendings = LoginHandler.getAccount().getLendings().stream().filter((Lending l) -> l.getReturnDateAsDate() == null).collect(Collectors.toList());
                 ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
                 try {
-                    context.redirect(context.getRequestContextPath()+"/faces/return.xhtml");
+                    context.redirect(context.getRequestContextPath() + "/faces/return.xhtml");
                 } catch (IOException ex) {
                     Logger.getLogger(LoginModel.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -112,5 +104,5 @@ public class ReturnModel extends IModel {
     public boolean isClose() {
         return close;
     }
-    
+
 }

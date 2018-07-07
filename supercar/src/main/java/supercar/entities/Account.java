@@ -26,28 +26,26 @@ public class Account extends IUniqueEntity {
     private String firstname;
     @NotNull(message = "Lastname may not be empty")
     private String lastname;
-    
+
     @PLZ
     private Integer plz;
     @NotNull(message = "Street may not be empty")
     private String street;
     private String city;
-    
+
     @NotNull(message = "Username may not be empty")
     private String login;
     @NotNull(message = "Password may not be empty")
     private String password;
-    
-    private String licenseNumber; 
-    
+
+    private String licenseNumber;
+
     private int accountType;
     private boolean activated;
     private boolean banned;
 
-    
-    
     @OneToMany
-    @JoinColumn(name="Account_ID")
+    @JoinColumn(name = "Account_ID")
     private List<Lending> lendings;
 
     public List<Lending> getLendings() {
@@ -117,7 +115,7 @@ public class Account extends IUniqueEntity {
     public String getLicenseNumber() {
         return licenseNumber;
     }
-    
+
     public boolean isBanned() {
         return banned;
     }
@@ -137,44 +135,45 @@ public class Account extends IUniqueEntity {
     public void setActivated(boolean activated) {
         this.activated = activated;
     }
-    
+
     public void setAccountType(AccountType accountType) {
         this.accountType = accountType.getValue();
     }
-    
+
     public AccountType getAccountType() {
         return AccountType.fromInt(this.accountType);
     }
-    
+
     public boolean isAtleast(AccountType accountType) {
         return this.accountType >= accountType.getValue();
     }
-    
+
     public boolean isEmployee() {
         return accountType >= AccountType.Employee.getValue();
     }
-    
+
     public boolean isAdministrator() {
-          return accountType >= AccountType.Administrator.getValue();
+        return accountType >= AccountType.Administrator.getValue();
     }
-    
-    public void addLending(Lending lending){
+
+    public void addLending(Lending lending) {
         this.lendings.add(lending);
     }
-    
-    public Account() { }
-    
-    public Account(String firstname, String lastname, Integer plz, String street, String login, String password, String licenseNumber, AccountType accountType, boolean activated, String city) {
+
+    public Account() {
+    }
+
+    public Account(String firstname, String lastname, Integer plz, String city, String street, String login, String password, String licenseNumber, AccountType accountType, boolean activated) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.plz = plz;
+        this.city = city;
         this.street = street;
         this.login = login;
         this.password = password;
         this.licenseNumber = licenseNumber;
         this.accountType = accountType.getValue();
         this.activated = activated;
-        this.city = city;
     }
-    
+
 }

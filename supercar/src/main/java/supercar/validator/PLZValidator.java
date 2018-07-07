@@ -21,7 +21,7 @@ public class PLZValidator implements ConstraintValidator<PLZ, Integer> {
 
     @Override
     public void initialize(PLZ a) {
-        ConstraintValidator.super.initialize(a); //To change body of generated methods, choose Tools | Templates.
+        ConstraintValidator.super.initialize(a); // To change body of generated methods, choose Tools | Templates.
     }
 
     @Override

@@ -91,14 +91,12 @@ public class Garage extends IUniqueEntity {
     public Garage() {
     }
 
-    public Garage(String name, Integer plz, String street, String city, String contactInfo) {
+    public Garage(String name, Integer plz, String city, String street, String contactInfo) {
         this.name = name;
         this.plz = plz;
-        this.street = street;
         this.city = city;
+        this.street = street;
         this.contactInfo = contactInfo;
     }
-    
-    
 
 }
