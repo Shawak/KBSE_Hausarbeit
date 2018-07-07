@@ -15,6 +15,7 @@
                     <b:form style-class="form_center pseudoClass_formLogin">
                         <b:messages id="result" />
                         <b:inputText id="username" value="#{login.login}" label="Username"/>
+                        <p:focus for="username"/>
                         <b:inputSecret id="password" value="#{login.password}" label="Password"/>
                         <b:commandButton value="Login" action="#{login.login()}" update="@(.pseudoClass_formLogin) @(.pseudoClass_menu)"/>
                     </b:form>
