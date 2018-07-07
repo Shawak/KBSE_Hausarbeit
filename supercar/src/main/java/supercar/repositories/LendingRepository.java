@@ -25,22 +25,20 @@ public class LendingRepository extends IRepository<Lending> {
                 .put("id", id)
                 .one();
     }
-    
+
     public Collection<Lending> getLendingByCarId(Long id) {
         return query("select e from #table e where e.car.id = :id order by e.rentMileage ASC")
                 .put("id", id)
                 .all();
     }
-    
-    public Lending getLastLendingByCarId(Long id){
-        
+
+    public Lending getLastLendingByCarId(Long id) {
         return query("select e from #table e where e.car.id = :id and e.returnMileage IS NOT NULL order by e.returnMileage desc")
                 .put("id", id)
                 .one();
     }
-    
-    public Long getAccountIdFromLendingId(Long id)
-    {
-        return (Long)em.createNativeQuery("select ACCOUNT_ID from LENDING where ID = "+id).getSingleResult();
+
+    public Long getAccountIdFromLendingId(Long id) {
+        return (Long) em.createNativeQuery("select ACCOUNT_ID from LENDING where ID = " + id).getSingleResult();
     }
 }
