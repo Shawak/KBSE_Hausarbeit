@@ -36,7 +36,9 @@ public class LoginHandler extends IRepositoryAccessor {
     
     @PostConstruct
     void init() {
-        account = Accounts.get(session.accountId);
+        if (session.loggedIn) {
+            account = Accounts.get(session.accountId);
+        }
     }
     
     public boolean login(String login, String password) {
