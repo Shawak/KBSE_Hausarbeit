@@ -26,7 +26,7 @@ import supercar.interfaces.IModel;
 @Named("bill")
 @RequestScoped
 public class BillModel extends IModel {
-    
+
     private Collection<Lending> lendings;
 
     public Collection<Lending> getLendings() {
@@ -38,15 +38,7 @@ public class BillModel extends IModel {
         lendings = LoginHandler.getAccount().getLendings().stream().filter((Lending l) -> l.getReturnDate() != null).collect(Collectors.toList());
     }
 
-    public void test() throws FileNotFoundException, DocumentException {
-        URL location;
-        location = BillModel.class.getProtectionDomain().getCodeSource().getLocation();
-        String path = location.getPath();
-        Account acc = LoginHandler.getAccount();
-        //bill.createPDF(path+ "../../../../../../images/test.pdf", acc, 5);
-    }
-
     public StreamedContent pdfGetFile(long id) {
-        return BillCreator.createPDF("Rechnung" + String.format("%08d", id) + ".pdf", Accounts.get(Lendings.testQuery(id)), Lendings.get(id));
+        return BillCreator.createPDF("Rechnung" + String.format("%08d", id) + ".pdf", Accounts.get(Lendings.getAccountIdFromLendingId(id)), Lendings.get(id));
     }
 }
