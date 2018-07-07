@@ -11,7 +11,6 @@
         <b:navbarLinks> 
             <b:navLink value="Cars" href="/supercar"></b:navLink>
             <b:navLink value="Contact" href="/supercar/faces/contact.xhtml"></b:navLink>
-            <b:navLink value="About" href="/supercar/faces/about.xhtml"></b:navLink>
             <b:navLink rendered="#{menu.LOGGEDIN}" value="Return" href="/supercar/faces/return.xhtml"></b:navLink>
             <!--Mitarbeiter-->
             <b:navLink rendered="#{menu.ISEMPLOYEE}" value="Garage" href="/supercar/faces/add_garage.xhtml"></b:navLink>
@@ -28,7 +27,7 @@
             
                 <b:dropMenu value="#{menu.loginHandler.account.firstname} #{menu.loginHandler.account.lastname}" rendered="#{menu.LOGGEDIN}">
                     <b:navLink value="Profil" href="/supercar/faces/profile.xhtml"></b:navLink>
-                    <b:navLink value="Bills" href="/supercar/fces/bills.xhtml"></b:navLink>
+                    <b:navLink value="Bills" href="/supercar/faces/bills.xhtml"></b:navLink>
                     <b:navCommandLink action="#{menu.logout()}" value="Logout">
                         
                     </b:navCommandLink>
