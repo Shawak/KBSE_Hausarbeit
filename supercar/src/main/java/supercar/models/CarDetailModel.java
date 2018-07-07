@@ -13,6 +13,7 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
+import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
@@ -26,7 +27,7 @@ import supercar.interfaces.IModel;
  * @author Patrick
  */
 @Named("cardetail")
-@SessionScoped
+@RequestScoped
 public class CarDetailModel extends IModel{
 
     private Car car;
@@ -42,6 +43,7 @@ public class CarDetailModel extends IModel{
             FacesContext context = FacesContext.getCurrentInstance();
             Map<String, String> map = context.getExternalContext().getRequestParameterMap();
             long id = Long.parseLong(map.get("id"),10);
+            System.out.println(id);
             car = Cars.get(id);
 
             lendings = Lendings.getLendingByCarId(id);
