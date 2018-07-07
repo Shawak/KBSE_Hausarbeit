@@ -33,7 +33,6 @@ public class MenuModel extends IModel {
     }
 
     public void logout() {
-        System.out.println("logout");
         LoginHandler.logout();
         ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
         try {

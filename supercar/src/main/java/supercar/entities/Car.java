@@ -24,7 +24,7 @@ public class Car extends IUniqueEntity {
     private String licensePlate;
 
     @NotNull(message = "Price per Day may not be empty")
-    @DecimalMin(value = "0.00", message = "Price per Day must be more expensive then 0.00$")
+    @DecimalMin(value = "0.00", message = "Price per Day must be more expensive then $0.00")
     @Digits(integer = 99, fraction = 2, message = "Price per Day may only have 2 decimal")
     private Float pricePerDay;
 

@@ -42,9 +42,7 @@ public class CarDetailModel extends IModel {
             FacesContext context = FacesContext.getCurrentInstance();
             Map<String, String> map = context.getExternalContext().getRequestParameterMap();
             long id = Long.parseLong(map.get("id"), 10);
-            System.out.println(id);
             car = Cars.get(id);
-
             lendings = Lendings.getLendingByCarId(id);
         } catch (Exception e) {
             ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();

@@ -11,6 +11,7 @@ import java.net.URL;
 import java.util.Collection;
 import java.util.stream.Collectors;
 import javax.annotation.PostConstruct;
+import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -25,11 +26,9 @@ import supercar.interfaces.IModel;
  * @author Lukas
  */
 @Named("bill")
-@SessionScoped
+@RequestScoped
 public class BillModel extends IModel {
-
-    @Inject
-    BillCreator bill;
+    
     private Collection<Lending> lendings;
 
     public Collection<Lending> getLendings() {
@@ -50,6 +49,6 @@ public class BillModel extends IModel {
     }
 
     public StreamedContent pdfGetFile(long id) {
-        return bill.createPDF("Rechnung" + String.format("%08d", id) + ".pdf", Accounts.get(Lendings.testQuery(id)), Lendings.get(id));
+        return BillCreator.createPDF("Rechnung" + String.format("%08d", id) + ".pdf", Accounts.get(Lendings.testQuery(id)), Lendings.get(id));
     }
 }

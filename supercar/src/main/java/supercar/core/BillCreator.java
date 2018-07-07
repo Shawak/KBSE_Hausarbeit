@@ -33,7 +33,7 @@ import supercar.entities.Lending;
  */
 public class BillCreator {
 
-    public StreamedContent createPDF(String dest, Account acc, Lending lending) {
+    public static StreamedContent createPDF(String dest, Account acc, Lending lending) {
         try {
 
             Document document = new Document();
