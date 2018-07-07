@@ -59,7 +59,6 @@
     </filter>
     <filter-mapping>
         <filter-name>user</filter-name>
-        <url-pattern>/faces/contact.xhtml</url-pattern>
         <!--<url-pattern>/faces/contact.xhtml</url-pattern>-->
     </filter-mapping>
     <filter-mapping>
