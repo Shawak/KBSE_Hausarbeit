@@ -60,7 +60,7 @@
                             <b:dataTableColumn value="#{onecar.licensePlate}" label="License Plate"/>
                             <b:dataTableColumn label="Price per Day">
                                 <h:outputText value="#{onecar.pricePerDay}">
-                                    <f:convertNumber pattern="#0.00 $"/>
+                                    <f:convertNumber pattern="$#0.00"/>
                                 </h:outputText>
                             </b:dataTableColumn>
                             <b:dataTableColumn value="#{onecar.color}" label="Color"/>
