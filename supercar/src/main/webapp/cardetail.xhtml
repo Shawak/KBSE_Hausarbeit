@@ -22,7 +22,7 @@
             <h:outputLabel id="license" value="License Plate:  #{cardetail.car.licensePlate}"/>
             <br/>
             <h:outputLabel id="price" value="#{cardetail.car.pricePerDay}">
-                <f:convertNumber pattern="Price per Day: #0.00 $"/>
+                <f:convertNumber pattern="Price per Day: $#0.00"/>
             </h:outputLabel>
             <br/>            
             <h:outputLabel id="color" value="Color: #{cardetail.car.color}"/>
