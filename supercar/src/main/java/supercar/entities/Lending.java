@@ -44,7 +44,10 @@ public class Lending extends IUniqueEntity {
     }
     
     public Date getRentDateAsDate() {
-        return new Date(rentDate);
+        if (this.rentDate == null) {
+            return null;
+        }
+        return new Date(this.rentDate);
     }
 
     public void setRentDate(Long rentDate) {
@@ -52,15 +55,15 @@ public class Lending extends IUniqueEntity {
     }
 
     public Long getReturnDate() {
-        return returnDate;
+        return this.returnDate;
     }
     
     public Date getReturnDateAsDate() {
-        return new Date(returnDate);
+        if (this.returnDate == null) {
+            return null;
+        }
+        return new Date(this.returnDate);
     }
-    
-    
-
     public void setReturnDate(Long returnDate) {
         this.returnDate = returnDate;
     }
