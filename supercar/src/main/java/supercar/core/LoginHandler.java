@@ -43,7 +43,7 @@ public class LoginHandler extends IRepositoryAccessor {
     
     public boolean login(String login, String password) {
         Account acc = Accounts.getByLogin(login);
-        if (!acc.getPassword().equals(password)) {
+        if (acc == null || !acc.getPassword().equals(password)) {
             return false;
         }
         
