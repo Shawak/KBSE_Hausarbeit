@@ -6,7 +6,6 @@
 package supercar.repositories;
 
 import javax.ejb.Stateless;
-import supercar.entities.Lending;
 import supercar.entities.Repair;
 import supercar.interfaces.IRepository;
 

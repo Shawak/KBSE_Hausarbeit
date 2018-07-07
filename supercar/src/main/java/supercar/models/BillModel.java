@@ -12,8 +12,6 @@ import java.util.Collection;
 import java.util.stream.Collectors;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
-import javax.enterprise.context.SessionScoped;
-import javax.inject.Inject;
 import javax.inject.Named;
 import org.primefaces.model.StreamedContent;
 import supercar.core.BillCreator;
