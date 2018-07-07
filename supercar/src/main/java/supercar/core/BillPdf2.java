@@ -18,16 +18,8 @@ import com.itextpdf.text.pdf.PdfWriter;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
  
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.time.Duration;
-import java.time.LocalDate;
-import java.time.ZoneId;
 import static java.time.temporal.ChronoUnit.MILLIS;
-import static java.time.temporal.ChronoUnit.SECONDS;
-import java.time.temporal.TemporalUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
@@ -42,13 +34,9 @@ import supercar.entities.Lending;
 @Stateless
 public class BillPdf2 {
 
-    private StreamedContent files;
-    
     public StreamedContent createPDF(String dest, Account acc, Lending lending)
     {
         try {
-            //File file = new File(dest);
-            //file.getParentFile().mkdirs();
             
             Document document = new Document();
             
@@ -59,14 +47,12 @@ public class BillPdf2 {
             Font bold = new Font(FontFamily.HELVETICA, 14, Font.BOLD);
             Font normalNormal = new Font(FontFamily.HELVETICA, 12, Font.UNDEFINED);
             Font normal = new Font(FontFamily.HELVETICA, 12, Font.NORMAL);
+            Font boldS = new Font(FontFamily.HELVETICA, 12, Font.BOLD);
             
             Paragraph customerAdress = new Paragraph(""+acc.getFirstname()+" "+acc.getLastname()+"\n"+acc.getCity()+"\n"+acc.getPlz().toString()+"\n"+acc.getStreet());
             Paragraph companyAdress = new Paragraph("Supercar Confederation\nAlbrechtstraße 30\n49076 Osnabrück\nTel: 1-888-447-5594");
-            Paragraph textCapital = new Paragraph("Invoice", bold);
-            
-            Paragraph transferText = new Paragraph("Please transfer the amount of money to the following bank account.", normal);
-            transferText.setSpacingBefore(10f);
-            transferText.setSpacingAfter(20f);
+            Paragraph textCapital = new Paragraph("Invoice "+ String.format("%08d", lending.getId()), bold);
+
             
             Chunk accountOwner = new Chunk("Account Owner: ", bold);
             Chunk accountOwnerValue = new Chunk("Supercar Confederation", normalNormal);
@@ -93,7 +79,7 @@ public class BillPdf2 {
             BICEntry.add(BICValue);
             
             Chunk usage = new Chunk("Usage: ", bold);
-            Chunk usageValue = new Chunk("hierkommtwathhin", normalNormal);
+            Chunk usageValue = new Chunk(""+ String.format("%08d", lending.getId()), normalNormal);
             Paragraph usageEntry = new Paragraph(usage);
             usageEntry.setFont(normal);
             usageEntry.add(usageValue);
@@ -111,29 +97,89 @@ public class BillPdf2 {
             PdfPCell cell;
             PdfPTable table = new PdfPTable(5);
             
-            cell = new PdfPCell(new Phrase("Car "+lending.getCar().getModel().getName()));
+            cell = new PdfPCell(new Phrase("License Plate", boldS));
+            cell.setFixedHeight(25f);
             cell.setUseVariableBorders(true);
             cell.setBorderWidth(0);
-            cell.setBorderWidthTop(3);
-            cell.setBorderWidthBottom(3);
             table.addCell(cell);
             
-            cell.setPhrase(new Phrase("Price/Day"+ lending.getCar().getPricePerDay()));
+            cell = new PdfPCell(new Phrase("Price/Day", boldS));
+            cell.setBorderWidth(0);
+            table.addCell(cell);
+            
+            cell = new PdfPCell(new Phrase("Duration (DD:HH:MM): ", boldS));
+            cell.setBorderWidth(0);
+            table.addCell(cell);
+            
+            cell = new PdfPCell(new Phrase("Charged Days: ", boldS));
+            cell.setBorderWidth(0);
+            table.addCell(cell);
+            
+            cell = new PdfPCell(new Phrase("Price: ", boldS));
+            cell.setBorderWidth(0);
+            table.addCell(cell);
+            
+            cell.setPhrase(new Phrase(""+lending.getCar().getLicensePlate()));
+            cell.setFixedHeight(25f);
+            cell.setBorderWidthTop(2);
+            cell.setBorderWidthBottom(2);
+            table.addCell(cell);
+            
+            cell.setPhrase(new Phrase("$"+ String.format("%.2f", lending.getCar().getPricePerDay())));
             table.addCell(cell);
             
             Duration dur = Duration.of(lending.getReturnDate()-lending.getRentDate(), MILLIS);
-
-            cell.setPhrase(new Phrase("Duration: "+ dur.toString()));
+            long days = dur.toDays();
+            long hours = dur.minusDays(days).toHours();
+            long minutes = dur.toMinutes()%60;       
+            cell.setPhrase(new Phrase(""+String.format("%02d",days)+":"+String.format("%02d",hours)+":"+String.format("%02d",minutes)));
             table.addCell(cell);
             
-            cell.setPhrase(new Phrase("Charged Days: "+ dur.toDays()));
+            cell.setPhrase(new Phrase(""+ dur.toDays()));
             table.addCell(cell);
             
-            cell.setPhrase(new Phrase("Charged Days: "+ dur.toDays()));
+            double price =(lending.getCar().getPricePerDay()*days)/1.19;
+            cell.setPhrase(new Phrase("$"+ String.format("%.2f",(double)Math.round(price*100)/100)));
+            table.addCell(cell);
+            
+            cell.setPhrase(new Phrase(""));
+            cell.setBorder(0);
+            table.addCell(cell);
+            table.addCell(cell);
+            
+            cell.setPhrase(new Phrase("MWST"));
+            table.addCell(cell);
+            
+            cell.setPhrase(new Phrase("19%"));
+            table.addCell(cell);
+            
+            cell.setPhrase(new Phrase("$"+String.format("%.2f",(double)Math.round(price*0.19*100)/100)));
+            table.addCell(cell);
+            
+            cell.setPhrase(new Phrase(""));
+            cell.setBorderWidthTop(2);
+            table.addCell(cell);
+            table.addCell(cell);
+            table.addCell(cell);
+            
+            cell.setPhrase(new Phrase("Summe"));
+            table.addCell(cell);
+            
+            cell.setPhrase(new Phrase("$"+String.format("%.2f", price*1.19)));
             table.addCell(cell);
             
             
-
+            Chunk partOne = new Chunk("Please transfer ", normalNormal);
+            Chunk partTwo = new Chunk("$"+String.format("%.2f", price*1.19), bold);
+            Chunk partThree = new Chunk(" to the following bank account:", normalNormal);
+            //Paragraph transferText = new Paragraph("Please transfer $"+String.format("%.2f", price*1.19)+" to the following bank account:", normal);
+            Paragraph transferText = new Paragraph(partOne);
+            transferText.add(partTwo);
+            transferText.add(partThree);
+            transferText.setFont(normal);
+            transferText.setSpacingBefore(10f);
+            transferText.setSpacingAfter(20f);
+            
             table.setSpacingAfter(15f);
             
             document.add(customerAdress);
@@ -154,13 +200,6 @@ public class BillPdf2 {
             document.add(signature);
             document.close();
             
-            /*try {
-            baos.writeTo(new FileOutputStream(dest));
-            baos.flush();
-            baos.close();
-            } catch (IOException ex) {
-            Logger.getLogger(BillPdf2.class.getName()).log(Level.SEVERE, null, ex);
-            }*/
             return new DefaultStreamedContent(new ByteArrayInputStream(baos.toByteArray()),"text/pdf", dest);
         } catch (DocumentException ex) {
             Logger.getLogger(BillPdf2.class.getName()).log(Level.SEVERE, null, ex);

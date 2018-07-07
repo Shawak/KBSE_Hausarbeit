@@ -52,6 +52,6 @@ public class billModel extends IModel {
     }
     
     public StreamedContent pdfGetFile(long id){
-            return bill.createPDF("test.pdf", LoginHandler.getAccount(), Lendings.get(id));
+            return bill.createPDF("test.pdf", Accounts.get(Lendings.testQuery(id)), Lendings.get(id));
     }
 }

@@ -5,6 +5,7 @@
  */
 package supercar.core;
 
+import java.util.Locale;
 import javax.annotation.PostConstruct;
 import javax.ejb.Startup;
 import javax.ejb.Singleton;
@@ -22,6 +23,8 @@ public class StartupBean extends IRepositoryAccessor {
     
     @PostConstruct
     void init() {
+        Locale.setDefault(Locale.US);
+        
         if (Accounts.getAll().isEmpty()) {
             Accounts.add(new Account("Administrator", "Administrator", 49076, "Albrechtstr. 30", "admin", "admin", "", AccountType.Administrator, true, "Osnabrück"));
            
