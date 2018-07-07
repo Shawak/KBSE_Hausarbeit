@@ -78,10 +78,16 @@ public class GarageModel extends IModel {
 
     public void add() {
         try {
-            new_garage.setCity(new_city);
-            garages.add(Garages.add(new_garage));
-            new_garage = new Garage();
-            FacesContext.getCurrentInstance().addMessage("form:result", new FacesMessage(FacesMessage.SEVERITY_INFO, "Garage add!", "Garage add!"));
+            if(PlzApi.getName(new_garage.getPlz()).isEmpty()){
+                FacesContext.getCurrentInstance().addMessage("form:result", new FacesMessage(FacesMessage.SEVERITY_ERROR, "Wrong Post Code!", "Wrong Post Code!"));
+            }
+            else{
+                new_garage.setCity(new_city);
+                garages.add(Garages.add(new_garage));
+                new_garage = new Garage();
+                FacesContext.getCurrentInstance().addMessage("form:result", new FacesMessage(FacesMessage.SEVERITY_INFO, "Garage add!", "Garage add!"));    
+            }
+            
         } catch (Exception e) {
             FacesContext.getCurrentInstance().addMessage("form:result", new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error:Garage not add!", "Error:Garage not add!"));
         }
@@ -94,6 +100,9 @@ public class GarageModel extends IModel {
 
     public void change() {
         try {
+            if(PlzApi.getName(change_garage.getPlz()).isEmpty()){
+                FacesContext.getCurrentInstance().addMessage("form:result2", new FacesMessage(FacesMessage.SEVERITY_ERROR, "Wrong Post Code!", "Wrong Post Code!"));
+            }
             change_garage.setCity(change_city);
             change_garage = Garages.update(change_garage);
             garages = Garages.getAll();

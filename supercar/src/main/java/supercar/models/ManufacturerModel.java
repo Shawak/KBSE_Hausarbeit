@@ -92,6 +92,9 @@ public class ManufacturerModel extends IModel {
 
     public void add() {
         try {
+            if (PlzApi.getName(new_manufacturer.getPlz()).isEmpty()) {
+                FacesContext.getCurrentInstance().addMessage("form:result", new FacesMessage(FacesMessage.SEVERITY_ERROR, "Wrong Post Code!", "Wrong Post Code!"));
+            }
             new_manufacturer.setCity(new_city);
             manufacturers.add(Manufacturers.add(new_manufacturer));
             new_manufacturer = new Manufacturer();
@@ -110,6 +113,9 @@ public class ManufacturerModel extends IModel {
 
     public void change() {
         try {
+            if (PlzApi.getName(change_manufacturer.getPlz()).isEmpty()) {
+                FacesContext.getCurrentInstance().addMessage("form:result2", new FacesMessage(FacesMessage.SEVERITY_ERROR, "Wrong Post Code!", "Wrong Post Code!"));
+            }
             change_manufacturer.setCity(change_city);
             change_manufacturer = Manufacturers.update(change_manufacturer);
             //manufacturers=manufacturers.stream().map((Manufacturer o) -> Objects.equals(o.getId(), change_manufacturer.getId())?change_manufacturer:o).collect(toList());

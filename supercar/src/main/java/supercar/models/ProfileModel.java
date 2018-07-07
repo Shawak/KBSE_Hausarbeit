@@ -79,6 +79,8 @@ public class ProfileModel extends IModel {
     public void save() {
         if (!account.getPassword().equals(password2)) {
             FacesContext.getCurrentInstance().addMessage("form:result2", new FacesMessage(FacesMessage.SEVERITY_ERROR, "\"Password\" and \"Password confirmation\" do not match!", "\"Password\" and \"Password confirmation\" do not match!"));
+        } else if (PlzApi.getName(account.getPlz()).isEmpty()) {
+            FacesContext.getCurrentInstance().addMessage("form:result2", new FacesMessage(FacesMessage.SEVERITY_ERROR, "Wrong Post Code!", "Wrong Post Code!"));
         } else {
             try {
                 account.setCity(city);

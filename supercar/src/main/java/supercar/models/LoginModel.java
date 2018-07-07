@@ -119,12 +119,14 @@ public class LoginModel extends IModel {
             FacesContext.getCurrentInstance().addMessage("form:result2", new FacesMessage(FacesMessage.SEVERITY_ERROR, "Username already in use!", "Username already in use!"));
         } else if (!account.getPassword().equals(password2)) {
             FacesContext.getCurrentInstance().addMessage("form:result2", new FacesMessage(FacesMessage.SEVERITY_ERROR, "\"Password\" and \"Password confirmation\" do not match!", "\"Password\" and \"Password confirmation\" do not match!"));
+        } else if (PlzApi.getName(account.getPlz()).isEmpty()) {
+            FacesContext.getCurrentInstance().addMessage("form:result2", new FacesMessage(FacesMessage.SEVERITY_ERROR, "Wrong Post Code!", "Wrong Post Code!"));
         } else {
             try {
                 account.setCity(city);
                 account.setLicenseNumber(licenseNumber);
                 account.setAccountType(AccountType.User);
-                account.setActivated(true);
+                account.setActivated(false);
 
                 account = Accounts.add(account);
                 FacesContext.getCurrentInstance().addMessage("form:result2", new FacesMessage(FacesMessage.SEVERITY_INFO, "Account add!", "Account add!"));

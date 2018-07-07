@@ -26,15 +26,6 @@ public class PLZValidator implements ConstraintValidator<PLZ, Integer> {
 
     @Override
     public boolean isValid(Integer t, ConstraintValidatorContext cvc) {
-        try {
-            if (t == null) {
-                return false;
-            }
-            return !plzapi.getName(t).isEmpty();
-            //return String.valueOf(t).length()==5;
-        } catch (Exception ex) {
-            Logger.getLogger(PLZValidator.class.getName()).log(Level.SEVERE, null, ex);
-            return true;
-        }
+            return String.valueOf(t).length()==5;
     }
 }
