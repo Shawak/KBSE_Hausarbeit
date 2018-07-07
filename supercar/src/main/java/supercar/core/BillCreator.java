@@ -22,7 +22,6 @@ import java.time.Duration;
 import static java.time.temporal.ChronoUnit.MILLIS;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.ejb.Stateless;
 import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
 import supercar.entities.Account;
