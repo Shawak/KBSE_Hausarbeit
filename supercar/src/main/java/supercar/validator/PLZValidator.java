@@ -26,6 +26,6 @@ public class PLZValidator implements ConstraintValidator<PLZ, Integer> {
 
     @Override
     public boolean isValid(Integer t, ConstraintValidatorContext cvc) {
-            return String.valueOf(t).length()==5;
+        return String.valueOf(t).length() == 5;
     }
 }
