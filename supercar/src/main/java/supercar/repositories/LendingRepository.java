@@ -38,4 +38,9 @@ public class LendingRepository extends IRepository<Lending> {
                 .put("id", id)
                 .one();
     }
+    
+    public Long testQuery(Long id)
+    {
+        return (Long)em.createNativeQuery("select ACCOUNT_ID from LENDING where ID = :id", Long.class).setParameter("id", id).getSingleResult();
+    }
 }

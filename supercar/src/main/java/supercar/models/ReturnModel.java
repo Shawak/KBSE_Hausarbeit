@@ -39,7 +39,7 @@ public class ReturnModel extends IModel {
 
     @PostConstruct
     public void init() {
-        lendings = LoginHandler.getAccount().getLendings().stream().filter((Lending l) -> l.getReturnDate() == null).collect(Collectors.toList());
+        lendings = LoginHandler.getAccount().getLendings().stream().filter((Lending l) -> l.getReturnDateAsDate() == null).collect(Collectors.toList());
     }
 
     public Collection<Lending> getLendings() {
@@ -64,9 +64,6 @@ public class ReturnModel extends IModel {
         returnlending = Lendings.get(id);
         
         Calendar c = new GregorianCalendar();
-        c.set(Calendar.HOUR_OF_DAY, 0); //anything 0 - 23
-        c.set(Calendar.MINUTE, 0);
-        c.set(Calendar.SECOND, 0);
         
         returnlending.setReturnDate(c.getTimeInMillis());
     }
@@ -82,7 +79,7 @@ public class ReturnModel extends IModel {
             }
             else{
                 Lendings.update(returnlending);
-                lendings = LoginHandler.getAccount().getLendings().stream().filter((Lending l) -> l.getReturnDate() == null).collect(Collectors.toList());
+                lendings = LoginHandler.getAccount().getLendings().stream().filter((Lending l) -> l.getReturnDateAsDate() == null).collect(Collectors.toList());
                 ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
                 try {
                     context.redirect(context.getRequestContextPath()+"/faces/return.xhtml");
@@ -101,7 +98,7 @@ public class ReturnModel extends IModel {
             }
             else{
                 Lendings.update(returnlending);
-                lendings = LoginHandler.getAccount().getLendings().stream().filter((Lending l) -> l.getReturnDate() == null).collect(Collectors.toList());
+                lendings = LoginHandler.getAccount().getLendings().stream().filter((Lending l) -> l.getReturnDateAsDate() == null).collect(Collectors.toList());
                 ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
                 try {
                     context.redirect(context.getRequestContextPath()+"/faces/return.xhtml");

@@ -8,10 +8,29 @@
     template="template.xhtml">
     
     <ui:define name="body">
-        <h:form>
-            <b:commandButton value="Download PDF Test">
-                <p:fileDownload value="#{bill.file}"/>
-            </b:commandButton>
+        <h:form id="form">
+            <p:dataList value="#{bill.lendings}" var="billing" type="definition" styleClass="pseudoClass_dataTable">
+                <f:facet name="header">
+                    Bills
+                </f:facet>
+                
+                <b:panel>
+                    <b:column span="3">
+                        <h:outputText value="Bill ID: #{billing.id}"/>
+                    </b:column>
+                    <b:column span="3">
+                        <h:outputText value="Car: #{billing.car.model.manufacturer.name} #{billing.car.model.name}"/>
+                    </b:column>
+                    <b:column span="4">
+                        <h:outputText value="License plate: #{billing.car.licensePlate}"/>
+                    </b:column>
+                    <b:column span="2">
+                        <b:commandButton value="Download Bill">
+                            <p:fileDownload value="#{bill.pdfGetFile(billing.id)}"/>
+                        </b:commandButton>
+                    </b:column>
+                </b:panel>
+            </p:dataList>
         </h:form>
     </ui:define>
     
