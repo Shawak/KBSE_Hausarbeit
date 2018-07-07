@@ -74,9 +74,6 @@ public class CarDetailModel extends IModel{
     
     public String rent(){
         Calendar c = new GregorianCalendar();
-        c.set(Calendar.HOUR_OF_DAY, 0); //anything 0 - 23
-        c.set(Calendar.MINUTE, 0);
-        c.set(Calendar.SECOND, 0);
         
         Lending lending = new Lending();
         lending.setCar(car);
