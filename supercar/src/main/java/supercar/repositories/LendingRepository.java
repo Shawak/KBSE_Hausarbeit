@@ -41,6 +41,6 @@ public class LendingRepository extends IRepository<Lending> {
     
     public Long testQuery(Long id)
     {
-        return (Long)em.createNativeQuery("select ACCOUNT_ID from LENDING where ID = :id", Long.class).setParameter("id", id).getSingleResult();
+        return (Long)em.createNativeQuery("select ACCOUNT_ID from LENDING where ID = "+id).getSingleResult();
     }
 }
