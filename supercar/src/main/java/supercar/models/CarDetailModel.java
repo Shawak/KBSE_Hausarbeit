@@ -70,7 +70,7 @@ public class CarDetailModel extends IModel {
         this.lendings = lendings;
     }
 
-    public String rent() {
+    public void rent() {
         Calendar c = new GregorianCalendar();
 
         Lending lending = new Lending();
@@ -81,6 +81,5 @@ public class CarDetailModel extends IModel {
         Lendings.add(lending);
 
         Accounts.update(LoginHandler.getAccount());
-        return null;
     }
 }
