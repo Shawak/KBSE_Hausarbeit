@@ -36,7 +36,6 @@ public class CarDetailModel extends IModel {
     }
 
     public Car getCar() {
-
         try {
             FacesContext context = FacesContext.getCurrentInstance();
             Map<String, String> map = context.getExternalContext().getRequestParameterMap();
