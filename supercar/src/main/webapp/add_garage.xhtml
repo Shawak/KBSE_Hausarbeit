@@ -6,30 +6,30 @@
     xmlns:b="http://bootsfaces.net/ui"
     xmlns:p="http://primefaces.org/ui" 
     template="template.xhtml">
-    
+
     <ui:define name="body">
         <b:modal title="Change Garage" style-class="pseudoClass_modal" >
-            
+
             <b:form style-class="form_center pseudoClass_modalForm">
                 <b:messages id="result2"/>
                 <b:inputText id="name2" value="#{garage.change_garage.name}" label="Garage"/>
-                
+
                 <b:inputText id="street2" value="#{garage.change_garage.street}" label="Street"/>
-               
+
                 <b:inputText id="plz2" value="#{garage.change_garage.plz}" label="Post Code">
                     <p:ajax  event="keyup" update="city2"/>
                 </b:inputText>
-                
+
                 <b:inputText id="city2" value="#{garage.change_city}" label="City" readonly="true" style-class="input_readonly"/>
-                
+
                 <b:inputText id="contact2" value="#{garage.change_garage.contactInfo}" label="Contact"/>
-                
+
                 <b:commandButton value="Close" update="@(None)" oncomplete="$('.pseudoClass_modal').modal('hide')"/>
                 <b:commandButton value="Change" action="#{garage.change()}" update="@(.pseudoClass_dataTable) @(.pseudoClass_modalForm)"/>                
-            
+
             </b:form>
         </b:modal>
-        
+
         <b:form>
             <b:tabView activeIndex="0">
                 <b:tab title="Garage">          
@@ -52,17 +52,17 @@
                     <b:form style-class="form_center pseudoClass_formAdd">
                         <b:messages id="result"/>
                         <b:inputText id="name" value="#{garage.new_garage.name}" label="Garage"/>
-                        
+
                         <b:inputText id="street" value="#{garage.new_garage.street}" label="Street"/>
-                        
+
                         <b:inputText ajax="true" id="plz" value="#{garage.new_garage.plz}" label="Post Code">
                             <f:ajax event="keyup" render="city" execute="@this"/>
                         </b:inputText>
-                        
+
                         <b:inputText id="city" value="#{garage.new_city}" label="City" readonly="true" style-class="input_readonly"/>
-                        
+
                         <b:inputText id="contact" value="#{garage.new_garage.contactInfo}" label="Contact"/>
-                       
+
                         <b:commandButton value="Add" action="#{garage.add}" update="@(.pseudoClass_dataTable) @(.pseudoClass_formAdd)">
                         </b:commandButton>
                     </b:form>
@@ -70,5 +70,5 @@
             </b:tabView>
         </b:form>
     </ui:define>
-    
+
 </ui:composition>

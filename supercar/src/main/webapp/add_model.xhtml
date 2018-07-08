@@ -6,32 +6,30 @@
     xmlns:b="http://bootsfaces.net/ui"
     xmlns:p="http://primefaces.org/ui" 
     template="template.xhtml">
-    
+
     <ui:define name="body">
         <b:modal title="Change Model" style-class="pseudoClass_modal" >
             <b:form style-class="form_center pseudoClass_modalForm">
                 <b:messages id="result2"/>
                 <b:inputText id="name" value="#{model.change_model.name}" label="Model"/>
-                
+
                 <b:inputText type="number" id="hp" value="#{model.change_model.horsepower}" label="Horsepower"/>
-                
+
                 <b:inputText type="number" id="cubic" value="#{model.change_model.cubicCapacity}" label="Cubic Capacity"/>
-                
+
                 <b:selectOneMenu id="manufacturer" value="#{model.change_model.manufacturer}" label="Manufactury">
                     <f:selectItems value="#{model.manufacturers}" var="c" itemValue="#{c}" itemLabel="#{c.name}"/>
                 </b:selectOneMenu>
-                
+
                 <b:commandButton value="Close" update="@(None)" oncomplete="$('.pseudoClass_modal').modal('hide')"/>
                 <b:commandButton value="Change" action="#{model.change()}" update="@(.pseudoClass_dataTable) @(.pseudoClass_modalForm)"/>               
             </b:form>
-            
         </b:modal>
-        
+
         <b:form>
             <b:tabView activeIndex="0">
                 <b:tab title="Model">          
                     <h:form styleClass="pseudoClass_formData">
-                       
                         <br/>
                         <b:dataTable style-class="pseudoClass_dataTable" lang="en" value="#{model.models}" var="onemodel" excel="true" csv="true" pdf="true" columnVisibility="true" copy="true" print="true">
                             <b:dataTableColumn value="#{onemodel.name}" />
@@ -49,11 +47,11 @@
                     <b:form style-class="form_center pseudoClass_formAdd">
                         <b:messages id="result"/>
                         <b:inputText id="name" value="#{model.new_model.name}" label="Model"/>
-                        
+
                         <b:inputText type="number" id="hp" value="#{model.new_model.horsepower}" label="Horsepower"/>
-                        
+
                         <b:inputText type="number" id="cubic" value="#{model.new_model.cubicCapacity}" label="Cubic Capacity"/>
-                        
+
                         <b:selectOneMenu id="manufacturer" value="#{model.new_model.manufacturer}" label="Manufactury">
                             <f:selectItems value="#{model.manufacturers}" var="c" itemValue="#{c}" itemLabel="#{c.name}"/>
                         </b:selectOneMenu>

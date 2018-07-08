@@ -6,10 +6,9 @@
     xmlns:b="http://bootsfaces.net/ui"
     xmlns:p="http://primefaces.org/ui" 
     template="template.xhtml">
-    
+
     <ui:define name="body">
         <b:modal title="Return Car" style-class="pseudoClass_modal" >
-            
             <b:form style-class="form_center pseudoClass_modalForm">
                 <b:messages id="result2"/>
                 <h:outputLabel value="Return Car #{return.returnlending.car.model.manufacturer.name} #{return.returnlending.car.model.name}"/>
@@ -17,34 +16,33 @@
                 <h:outputLabel value="Rent Date"/>
                 <br/>
                 <h:outputText value="#{return.returnlending.rentDate}">
-                          <f:convertDateTime pattern="dd.MM.yyyy"/>
+                    <f:convertDateTime pattern="dd.MM.yyyy"/>
                 </h:outputText>
                 <br/>
                 <h:outputLabel value="Return Date"/>
                 <br/>
                 <h:outputText value="#{return.returnlending.returnDate}">
-                          <f:convertDateTime pattern="dd.MM.yyyy"/>
+                    <f:convertDateTime pattern="dd.MM.yyyy"/>
                 </h:outputText>
-                
+
                 <b:inputText type="Decimal" id="rentmileage" value="#{return.returnlending.rentMileage}" label="Rent Mileage"/>
-                
+
                 <b:inputText type="Decimal" id="returnmileage" value="#{return.returnlending.returnMileage}" label="Return Mileage"/>
-               
+
                 <b:inputText id="commentary" value="#{return.returnlending.returnCommentary}" label="Commentary"/>
-               
+
                 <b:commandButton value="Close" update="@(None)" oncomplete="$('.pseudoClass_modal').modal('hide')"/>
                 <b:commandButton value="Return" action="#{return.returnCar()}" update="@(.pseudoClass_dataTable) @(.pseudoClass_modalForm)">
                 </b:commandButton>
-            
             </b:form>
         </b:modal>
-        
+
         <h:form id="form">
             <p:dataList value="#{return.lendings}" var="onelending" type="definition" styleClass="pseudoClass_dataTable">
                 <f:facet name="header">
                     Cars
                 </f:facet>
-                
+
                 <b:panel>
                     <b:column span="4">
                         <h:outputText value="Car: #{onelending.car.model.manufacturer.name} #{onelending.car.model.name}"/>
@@ -58,7 +56,6 @@
                 </b:panel>
             </p:dataList>
         </h:form>
-        
     </ui:define>
-    
+
 </ui:composition>

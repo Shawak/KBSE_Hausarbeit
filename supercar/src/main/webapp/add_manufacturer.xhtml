@@ -6,31 +6,30 @@
     xmlns:b="http://bootsfaces.net/ui"
     xmlns:p="http://primefaces.org/ui" 
     template="template.xhtml">
-    
+
     <ui:define name="body">
-        
+
         <b:modal title="Change Manufactory" style-class="pseudoClass_modal" >
-            
+
             <b:form style-class="form_center pseudoClass_modalForm">
                 <b:messages id="result2"/>
                 <b:inputText id="name2" value="#{manufacturer.change_manufacturer.name}" label="Manufacturer"/>
-                
+
                 <b:inputText id="street2" value="#{manufacturer.change_manufacturer.street}" label="Street"/>
-               
+
                 <b:inputText id="plz2" value="#{manufacturer.change_manufacturer.plz}" label="Post Code">
                     <p:ajax  event="keyup" update="city2"/>
                 </b:inputText>
-                
+
                 <b:inputText id="city2" value="#{manufacturer.change_city}" label="City" readonly="true" style-class="input_readonly"/>
-                
+
                 <b:inputText id="contact2" value="#{manufacturer.change_manufacturer.contactInfo}" label="Contact"/>
-                
+
                 <b:commandButton value="Close" update="@(None)" oncomplete="$('.pseudoClass_modal').modal('hide')"/>
                 <b:commandButton value="Change" action="#{manufacturer.change()}" update="@(.pseudoClass_dataTable) @(.pseudoClass_modalForm)"/>                
-            
             </b:form>
         </b:modal>
-        
+
         <b:form>
             <b:tabView activeIndex="0">
                 <b:tab title="Manufacturer">          
@@ -53,17 +52,17 @@
                     <b:form style-class="form_center pseudoClass_formAdd">
                         <b:messages id="result"/>
                         <b:inputText id="name" value="#{manufacturer.new_manufacturer.name}" label="Manufacturer"/>
-                        
+
                         <b:inputText id="street" value="#{manufacturer.new_manufacturer.street}" label="Street"/>
-                        
+
                         <b:inputText ajax="true" id="plz" value="#{manufacturer.new_manufacturer.plz}" label="Post Code">
                             <f:ajax event="keyup" render="city" execute="@this"/>
                         </b:inputText>
-                        
+
                         <b:inputText id="city" value="#{manufacturer.new_city}" label="City" readonly="true" style-class="input_readonly"/>
-                        
+
                         <b:inputText id="contact" value="#{manufacturer.new_manufacturer.contactInfo}" label="Contact"/>
-                       
+
                         <b:commandButton value="Add" action="#{manufacturer.add}" update="@(.pseudoClass_dataTable) @(.pseudoClass_formAdd)">
                         </b:commandButton>
                     </b:form>

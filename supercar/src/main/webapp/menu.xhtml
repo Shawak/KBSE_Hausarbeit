@@ -1,40 +1,36 @@
 <?xml version='1.0' encoding='UTF-8' ?>
- <ui:composition 
+<ui:composition 
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
     xmlns:b="http://bootsfaces.net/ui"
     xmlns:h="http://xmlns.jcp.org/jsf/html"
     xmlns:p="http://primefaces.org/ui"
     xmlns:f="http://xmlns.jcp.org/jsf/core">
-     <b:form>
-     <b:navBar brandHref="/supercar" fluid="true" brand-img="images/Logo.png" style-class="menu_border pseudoClass_menu" brand-img-style-class="image">
-        <b:navbarLinks> 
-            <b:navLink value="Cars" href="/supercar"></b:navLink>
-            <b:navLink value="Contact" href="/supercar/faces/contact.xhtml"></b:navLink>
-            <b:navLink rendered="#{menu.LOGGEDIN}" value="Return" href="/supercar/faces/return.xhtml"></b:navLink>
-            <!--Mitarbeiter-->
-            <b:navLink rendered="#{menu.ISEMPLOYEE}" value="Garage" href="/supercar/faces/add_garage.xhtml"></b:navLink>
-            <b:navLink rendered="#{menu.ISEMPLOYEE}" value="User" href="/supercar/faces/user_management.xhtml"></b:navLink>
-            <!--Admin-->
-            <b:dropMenu rendered="#{menu.ISADMIN}" value="Manage">
-                <b:navLink value="Car" href="/supercar/faces/add_car.xhtml"></b:navLink>
-                <b:navLink value="Model" href="/supercar/faces/add_model.xhtml"></b:navLink>
-                <b:navLink value="Manufacturer" href="/supercar/faces/add_manufacturer.xhtml"></b:navLink>
-            </b:dropMenu>
-        </b:navbarLinks>
-        <b:navbarLinks pull="right">
-            <b:navLink rendered="#{!menu.LOGGEDIN}" value="Login" href="/supercar/faces/login.xhtml"></b:navLink>
-            
+    <b:form>
+        <b:navBar brandHref="/supercar" fluid="true" brand-img="images/Logo.png" style-class="menu_border pseudoClass_menu" brand-img-style-class="image">
+            <b:navbarLinks> 
+                <b:navLink value="Cars" href="/supercar"></b:navLink>
+                <b:navLink value="Contact" href="/supercar/faces/contact.xhtml"></b:navLink>
+                <b:navLink rendered="#{menu.LOGGEDIN}" value="Return" href="/supercar/faces/return.xhtml"></b:navLink>
+                <!--Mitarbeiter-->
+                <b:navLink rendered="#{menu.ISEMPLOYEE}" value="Garage" href="/supercar/faces/add_garage.xhtml"></b:navLink>
+                <b:navLink rendered="#{menu.ISEMPLOYEE}" value="User" href="/supercar/faces/user_management.xhtml"></b:navLink>
+                <!--Admin-->
+                <b:dropMenu rendered="#{menu.ISADMIN}" value="Manage">
+                    <b:navLink value="Car" href="/supercar/faces/add_car.xhtml"></b:navLink>
+                    <b:navLink value="Model" href="/supercar/faces/add_model.xhtml"></b:navLink>
+                    <b:navLink value="Manufacturer" href="/supercar/faces/add_manufacturer.xhtml"></b:navLink>
+                </b:dropMenu>
+            </b:navbarLinks>
+            <b:navbarLinks pull="right">
+                <b:navLink rendered="#{!menu.LOGGEDIN}" value="Login" href="/supercar/faces/login.xhtml"></b:navLink>
                 <b:dropMenu value="#{menu.loginHandler.account.firstname} #{menu.loginHandler.account.lastname}" rendered="#{menu.LOGGEDIN}">
                     <b:navLink value="Profil" href="/supercar/faces/profile.xhtml"></b:navLink>
                     <b:navLink value="Bills" href="/supercar/faces/bills.xhtml"></b:navLink>
                     <b:navCommandLink action="#{menu.logout()}" value="Logout">
-                        
                     </b:navCommandLink>
-                    
                 </b:dropMenu>
-            
-        </b:navbarLinks>
-    </b:navBar>
+            </b:navbarLinks>
+        </b:navBar>
     </b:form>
 </ui:composition>

@@ -8,60 +8,56 @@
     template="template.xhtml">
 
     <ui:define name="body">
-        
         <b:modal id="modal" title="Rent Car" style-class="pseudoClass_modal" >
             <p>The car is reserved for you.</p>
             <p>You can pick it up from us.</p>
             <b:button href="/supercar" value="Ok" look="primary">
             </b:button>
         </b:modal>
-        
+
         <b:container>
-        <b:column span="6">
-            <h:outputLabel id="name" value="Name: #{cardetail.car.model.manufacturer.name} #{cardetail.car.model.name}"/>
-            <br/>
-            <h:outputLabel id="license" value="License Plate:  #{cardetail.car.licensePlate}"/>
-            <br/>
-            <h:outputLabel id="price" value="#{cardetail.car.pricePerDay}">
-                <f:convertNumber pattern="Price per Day: $#0.00"/>
-            </h:outputLabel>
-            <br/>            
-            <h:outputLabel id="color" value="Color: #{cardetail.car.color}"/>
-            <br/>
-            <h:outputLabel id="horsepower" value="Horsepower: #{cardetail.car.model.horsepower}"/>
-            <br/>
-            <h:outputLabel id="cubic" value="Cubic Capacity:  #{cardetail.car.model.cubicCapacity}"/>
-            
-            
-            <br/>
-            <br/>
-            <h:form>
-                <b:dataTable value="#{cardetail.lendings}" lang="en" var="onelending">
-                  <b:dataTableColumn label="RentDate">
-                      <h:outputText value="#{onelending.rentDateAsDate}">
-                          <f:convertDateTime pattern="dd.MM.yyyy"/>
-                      </h:outputText>
-                  </b:dataTableColumn>
-                  <b:dataTableColumn value="#{onelending.rentMileage}" />
-                  <b:dataTableColumn label="ReturnDate">
-                      <h:outputText value="#{onelending.returnDateAsDate}">
-                          <f:convertDateTime pattern="dd.MM.yyyy"/>
-                      </h:outputText>
-                  </b:dataTableColumn>
-                  <b:dataTableColumn value="#{onelending.returnMileage}" />
-                </b:dataTable>
-              </h:form>
-            
-        </b:column>
-        <b:column span="6">
-            
-            <b:image value="images/#{cardetail.car.picture}" width="50%"/>
-            <br/>
-            <br/>
-            <b:form styleClass="pseudoClass_form" id="form">
-                <b:commandButton action="#{cardetail.rent()}" value="Rent" update="@(None)" oncomplete="$('.pseudoClass_modal').modal()"/>
-            </b:form>
-        </b:column>
+            <b:column span="6">
+                <h:outputLabel id="name" value="Name: #{cardetail.car.model.manufacturer.name} #{cardetail.car.model.name}"/>
+                <br/>
+                <h:outputLabel id="license" value="License Plate:  #{cardetail.car.licensePlate}"/>
+                <br/>
+                <h:outputLabel id="price" value="#{cardetail.car.pricePerDay}">
+                    <f:convertNumber pattern="Price per Day: $#0.00"/>
+                </h:outputLabel>
+                <br/>            
+                <h:outputLabel id="color" value="Color: #{cardetail.car.color}"/>
+                <br/>
+                <h:outputLabel id="horsepower" value="Horsepower: #{cardetail.car.model.horsepower}"/>
+                <br/>
+                <h:outputLabel id="cubic" value="Cubic Capacity:  #{cardetail.car.model.cubicCapacity}"/>
+
+                <br/>
+                <br/>
+                <h:form>
+                    <b:dataTable value="#{cardetail.lendings}" lang="en" var="onelending">
+                        <b:dataTableColumn label="RentDate">
+                            <h:outputText value="#{onelending.rentDateAsDate}">
+                                <f:convertDateTime pattern="dd.MM.yyyy"/>
+                            </h:outputText>
+                        </b:dataTableColumn>
+                        <b:dataTableColumn value="#{onelending.rentMileage}" />
+                        <b:dataTableColumn label="ReturnDate">
+                            <h:outputText value="#{onelending.returnDateAsDate}">
+                                <f:convertDateTime pattern="dd.MM.yyyy"/>
+                            </h:outputText>
+                        </b:dataTableColumn>
+                        <b:dataTableColumn value="#{onelending.returnMileage}" />
+                    </b:dataTable>
+                </h:form>
+            </b:column>
+            <b:column span="6">
+                <b:image value="images/#{cardetail.car.picture}" width="50%"/>
+                <br/>
+                <br/>
+                <b:form styleClass="pseudoClass_form" id="form">
+                    <b:commandButton action="#{cardetail.rent()}" value="Rent" update="@(None)" oncomplete="$('.pseudoClass_modal').modal()"/>
+                </b:form>
+            </b:column>
         </b:container>
     </ui:define>
 
