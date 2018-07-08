@@ -23,7 +23,6 @@ public class Manufacturer extends IUniqueEntity {
     @PLZ
     private Integer plz;
 
-    //@NotNull(message = "Wrong Post Code")
     private String city;
 
     @NotNull(message = "Street may not be empty")
