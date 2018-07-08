@@ -35,25 +35,8 @@ public class CarDetailModel extends IModel {
     public CarDetailModel() {
     }
 
-    public void render() {
-        try {
-            FacesContext context = FacesContext.getCurrentInstance();
-            Map<String, String> map = context.getExternalContext().getRequestParameterMap();
-            long id = Long.parseLong(map.get("id"), 10);
-            car = Cars.get(id);
-            lendings = Lendings.getLendingByCarId(id);
-        } catch (Exception e) {
-            ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
-            try {
-                context.redirect(context.getRequestContextPath() + "/");
-            } catch (IOException ex) {
-                Logger.getLogger(LoginModel.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-    }
-
     public Car getCar() {
-        
+
         try {
             FacesContext context = FacesContext.getCurrentInstance();
             Map<String, String> map = context.getExternalContext().getRequestParameterMap();
