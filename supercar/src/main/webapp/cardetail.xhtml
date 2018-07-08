@@ -8,9 +8,9 @@
     template="template.xhtml">
 
     <ui:define name="body">
-        <f:metadata>
-          <f:event type="preRenderView" listener="#{cardetail.render}"/>
-        </f:metadata>
+        <!--f:metadata>
+          <f:event type="preRenderView" listener=""/>
+        </f:metadata-->
         
         <b:modal id="modal" title="Rent Car" style-class="pseudoClass_modal" >
             <p>The car is reserved for you.</p>
@@ -61,7 +61,7 @@
             <b:image value="images/#{cardetail.car.picture}" width="50%"/>
             <br/>
             <br/>
-            <b:form id="form">
+            <b:form styleClass="pseudoClass_form" id="form">
                 <b:commandButton action="#{cardetail.rent()}" value="Rent" update="@(None)" oncomplete="$('.pseudoClass_modal').modal()"/>
             </b:form>
         </b:column>
