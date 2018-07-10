@@ -31,7 +31,7 @@
 
                 <b:inputText id="commentary" value="#{return.returnlending.returnCommentary}" label="Commentary"/>
 
-                <b:commandButton value="Close" update="@(None)" oncomplete="$('.pseudoClass_modal').modal('hide')"/>
+                <!--b:commandButton value="Close" update="@(None)" oncomplete="$('.pseudoClass_modal').modal('hide')"/-->
                 <b:commandButton value="Return" action="#{return.returnCar()}" update="@(.pseudoClass_dataTable) @(.pseudoClass_modalForm)">
                 </b:commandButton>
             </b:form>

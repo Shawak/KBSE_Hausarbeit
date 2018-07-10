@@ -136,8 +136,8 @@ hr {
 }
 
 .btn-danger {
-   background-color: rgb(240,78,35);
-   border-color: rgb(235,58,20);
+    background-color: rgb(240,78,35);
+    border-color: rgb(235,58,20);
 }
 
 .btn-danger:hover {
@@ -168,4 +168,10 @@ hr {
     border: 0;
     background: transparent;
     color: #333333;
+}
+
+#page-cardetail .modal-dialog {
+    position: relative;
+    margin: auto;
+    width: 210px;
 }
