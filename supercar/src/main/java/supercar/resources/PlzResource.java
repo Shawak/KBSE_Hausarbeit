@@ -17,7 +17,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import supercar.core.PlzApi;
-import supercar.interfaces.IResource;
+import supercar.abstracts.IResource;
 
 /**
  *

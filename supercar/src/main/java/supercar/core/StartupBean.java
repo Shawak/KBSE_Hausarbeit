@@ -11,7 +11,7 @@ import javax.ejb.Startup;
 import javax.ejb.Singleton;
 import supercar.entities.*;
 import supercar.enums.AccountType;
-import supercar.interfaces.IRepositoryAccessor;
+import supercar.abstracts.IRepositoryAccessor;
 
 /**
  *

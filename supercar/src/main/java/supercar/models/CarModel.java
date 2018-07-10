@@ -25,7 +25,7 @@ import supercar.entities.Car;
 import supercar.entities.Garage;
 import supercar.entities.Model;
 import supercar.entities.Repair;
-import supercar.interfaces.IModel;
+import supercar.abstracts.IModel;
 
 /**
  *

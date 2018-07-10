@@ -10,7 +10,7 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
-import supercar.interfaces.IUniqueEntity;
+import supercar.abstracts.IUniqueEntity;
 import supercar.validator.LicensePlate;
 
 /**

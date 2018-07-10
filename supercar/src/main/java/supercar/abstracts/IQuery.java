@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package supercar.interfaces;
+package supercar.abstracts;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -14,7 +14,7 @@ import javax.persistence.TypedQuery;
  *
  * @author Maxi
  * @param <T>
- * I know this is not really an interface, but idk where to put it otherwise yet
+ * I know this is not really abstract, but idk where to put it otherwise yet
  */
 public class IQuery<T extends IUniqueEntity> {
 

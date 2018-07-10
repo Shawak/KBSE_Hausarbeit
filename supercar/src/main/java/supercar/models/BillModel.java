@@ -17,7 +17,7 @@ import org.primefaces.model.StreamedContent;
 import supercar.core.BillCreator;
 import supercar.entities.Account;
 import supercar.entities.Lending;
-import supercar.interfaces.IModel;
+import supercar.abstracts.IModel;
 
 /**
  *

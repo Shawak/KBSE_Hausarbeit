@@ -18,7 +18,7 @@ import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import supercar.entities.Car;
 import supercar.entities.Lending;
-import supercar.interfaces.IModel;
+import supercar.abstracts.IModel;
 
 /**
  *

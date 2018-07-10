@@ -10,7 +10,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import supercar.entities.Account;
 import supercar.enums.AccountType;
-import supercar.interfaces.IRepositoryAccessor;
+import supercar.abstracts.IRepositoryAccessor;
 
 /**
  *

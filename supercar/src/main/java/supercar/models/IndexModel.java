@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import supercar.entities.Car;
-import supercar.interfaces.IModel;
+import supercar.abstracts.IModel;
 
 /**
  *

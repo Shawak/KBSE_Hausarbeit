@@ -5,7 +5,7 @@
  */
 package supercar.filters;
 
-import supercar.interfaces.IFilter;
+import supercar.abstracts.IFilter;
 
 /**
  *

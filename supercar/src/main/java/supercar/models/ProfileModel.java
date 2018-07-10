@@ -13,7 +13,7 @@ import javax.inject.Named;
 import javax.validation.constraints.NotNull;
 import supercar.entities.Account;
 import supercar.enums.AccountType;
-import supercar.interfaces.IModel;
+import supercar.abstracts.IModel;
 
 /**
  *

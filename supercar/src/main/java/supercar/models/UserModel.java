@@ -9,7 +9,7 @@ import java.util.Collection;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import supercar.entities.Account;
-import supercar.interfaces.IModel;
+import supercar.abstracts.IModel;
 
 /**
  *

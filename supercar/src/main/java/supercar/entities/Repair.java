@@ -7,7 +7,7 @@ package supercar.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import supercar.interfaces.IUniqueEntity;
+import supercar.abstracts.IUniqueEntity;
 
 /**
  *

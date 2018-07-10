@@ -6,7 +6,7 @@
 package supercar.filters;
 
 import supercar.enums.AccountType;
-import supercar.interfaces.IFilter;
+import supercar.abstracts.IFilter;
 
 /**
  *

@@ -7,7 +7,7 @@ package supercar.entities;
 
 import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
-import supercar.interfaces.IUniqueEntity;
+import supercar.abstracts.IUniqueEntity;
 import supercar.validator.PLZ;
 
 /**

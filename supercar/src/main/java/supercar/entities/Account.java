@@ -12,7 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import supercar.enums.AccountType;
-import supercar.interfaces.IUniqueEntity;
+import supercar.abstracts.IUniqueEntity;
 import supercar.validator.PLZ;
 
 /**

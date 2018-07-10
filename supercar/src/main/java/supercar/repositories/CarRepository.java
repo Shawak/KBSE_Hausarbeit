@@ -8,7 +8,7 @@ package supercar.repositories;
 import java.util.Collection;
 import javax.ejb.Stateless;
 import supercar.entities.Car;
-import supercar.interfaces.IRepository;
+import supercar.abstracts.IRepository;
 
 /**
  *
