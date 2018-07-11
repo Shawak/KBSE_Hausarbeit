@@ -25,20 +25,22 @@ import supercar.abstracts.IResource;
 @Produces({MediaType.APPLICATION_JSON})
 @Consumes({MediaType.APPLICATION_JSON})
 public class LoginResource extends IResource {
-    
+
     @GET
     public Response isLoggedIn() {
         return Ok(LoginHandler.isLoggedIn());
     }
-    
+
     @POST
     public Response login(@QueryParam("login") String login, @QueryParam("password") String password) {
         return Ok(LoginHandler.login(login, password));
     }
-    
-    @GET @Path("logout")
+
+    @GET
+    @Path("logout")
     public Response logout() {
         LoginHandler.logout();
         return Ok("logged out");
     }
+
 }

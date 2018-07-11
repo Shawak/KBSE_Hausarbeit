@@ -15,15 +15,23 @@ import javax.ws.rs.core.Response;
  * @author Maxi
  */
 public abstract class IResource extends IRestrictableRepositoryAccessor implements Serializable {
-   
+
     private Gson gson = new GsonBuilder().setPrettyPrinting().create();
-    
+
+    protected Response Ok() {
+        return Response.ok().build();
+    }
+
     protected Response Ok(Object obj) {
         return Response.ok(gson.toJson(obj)).build();
     }
-    
+
     protected Response Forbidden() {
         return Response.status(Response.Status.FORBIDDEN).build();
     }
-     
+
+    protected Response BadRequest() {
+        return Response.status(Response.Status.BAD_REQUEST).build();
+    }
+
 }

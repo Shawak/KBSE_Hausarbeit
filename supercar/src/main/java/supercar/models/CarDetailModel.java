@@ -68,6 +68,10 @@ public class CarDetailModel extends IModel {
     public void rent() {
         Calendar c = new GregorianCalendar();
 
+        if (Lendings.getLendingByCarId(car.getId()) != null) {
+            return;
+        }
+
         Lending lending = new Lending();
         lending.setCar(car);
         lending.setRentDate(c.getTimeInMillis());

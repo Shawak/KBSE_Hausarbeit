@@ -28,11 +28,12 @@ import supercar.abstracts.IResource;
 @Produces({MediaType.APPLICATION_JSON})
 @Consumes({MediaType.APPLICATION_JSON})
 public class PlzResource extends IResource {
-    
+
     @Inject
     PlzApi PlzApi;
-    
-    @GET @Path("{plz}")
+
+    @GET
+    @Path("{plz}")
     public Response get(@PathParam("plz") int plz) {
         try {
             return Ok(PlzApi.getName(plz));
@@ -41,5 +42,5 @@ public class PlzResource extends IResource {
             return Ok("Post Code Error");
         }
     }
-    
+
 }
