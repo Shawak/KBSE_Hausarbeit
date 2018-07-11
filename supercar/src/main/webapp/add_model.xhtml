@@ -21,7 +21,6 @@
                     <f:selectItems value="#{model.manufacturers}" var="c" itemValue="#{c}" itemLabel="#{c.name}"/>
                 </b:selectOneMenu>
 
-                <b:commandButton value="Close" update="@(None)" oncomplete="$('.pseudoClass_modal').modal('hide')"/>
                 <b:commandButton value="Change" action="#{model.change()}" update="@(.pseudoClass_dataTable) @(.pseudoClass_modalForm)"/>               
             </b:form>
         </b:modal>

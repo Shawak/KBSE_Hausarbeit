@@ -29,7 +29,6 @@
 
                 <br/>
                 <br/>
-                <b:commandButton value="Close" update="@(None)" oncomplete="$('.pseudoClass_modal').modal('hide')"/>
                 <b:commandButton value="Change" action="#{car.change()}" update="@(.pseudoClass_dataTable) @(.pseudoClass_modalForm)"/>          
 
             </h:form>
@@ -45,7 +44,6 @@
 
                 <b:inputText value="#{car.description}" label="Description"/>
 
-                <b:commandButton value="Close" update="@(None)" oncomplete="$('.pseudoClass_modal2').modal('hide')"/>
                 <b:commandButton value="to Repair" action="#{car.toRepair()}" update="@(.pseudoClass_dataTable)" oncomplete="$('.pseudoClass_modal2').modal('hide')"/>          
 
             </h:form>

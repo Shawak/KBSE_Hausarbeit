@@ -25,7 +25,6 @@
 
                 <b:inputText id="contact2" value="#{manufacturer.change_manufacturer.contactInfo}" label="Contact"/>
 
-                <b:commandButton value="Close" update="@(None)" oncomplete="$('.pseudoClass_modal').modal('hide')"/>
                 <b:commandButton value="Change" action="#{manufacturer.change()}" update="@(.pseudoClass_dataTable) @(.pseudoClass_modalForm)"/>                
             </b:form>
         </b:modal>

@@ -24,7 +24,6 @@
 
                 <b:inputText id="contact2" value="#{garage.change_garage.contactInfo}" label="Contact"/>
 
-                <b:commandButton value="Close" update="@(None)" oncomplete="$('.pseudoClass_modal').modal('hide')"/>
                 <b:commandButton value="Change" action="#{garage.change()}" update="@(.pseudoClass_dataTable) @(.pseudoClass_modalForm)"/>                
 
             </b:form>
