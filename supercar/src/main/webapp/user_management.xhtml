@@ -10,7 +10,8 @@
     <ui:define name="body">
         <h:form styleClass="pseudoClass_formData">   
             <br/>
-            <p:inputSwitch value="#{usermanager.checkbox}">
+            <p:outputLabel value="Not Verified" for="switch"/>
+            <p:inputSwitch value="#{usermanager.checkbox}" id="switch">
                 <p:ajax event="change" update="@(.pseudoClass_dataTable)"/>
             </p:inputSwitch>
 
