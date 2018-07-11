@@ -24,7 +24,7 @@
                 <b:dataTableColumn value="#{acc.banned}"/>
                 <b:dataTableColumn value="#{acc.activated}"/>
                 <b:dataTableColumn label="Edit">
-                    <b:commandButton rendered="#{!acc.banned}" look="danger" value="Ban" update="@(.pseudoClass_dataTable)" action="#{usermanager.banUser(acc.id)}" style="width: 80px"/>
+                    <b:commandButton rendered="#{!acc.banned}" look="danger" value="Ban" disabled="#{usermanager.isSameUser(acc.id)}" update="@(.pseudoClass_dataTable)" action="#{usermanager.banUser(acc.id)}" style="width: 80px"/>
                     <b:commandButton rendered="#{acc.banned}" look="success" value="Unban" update="@(.pseudoClass_dataTable)" action="#{usermanager.unbanUser(acc.id)}" style="width: 80px"/>
                     <b:commandButton rendered="#{!acc.activated}" look="info" value="Verify" update="@(.pseudoClass_dataTable)" action="#{usermanager.activateUser(acc.id)}" style="width: 80px"/>
                 </b:dataTableColumn>

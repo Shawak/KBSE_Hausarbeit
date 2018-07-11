@@ -60,8 +60,6 @@ public class UserModel extends IModel {
     }
     
     public boolean isSameUser(long id){
-        if(Accounts.get(id).equals(LoginHandler.getAccount()))
-            return true;
-        return false;
+        return Accounts.get(id).equals(LoginHandler.getAccount());
     }
 }
