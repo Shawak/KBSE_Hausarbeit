@@ -202,7 +202,7 @@ public class CarModel extends IModel {
     }
 
     public void deactivate(long id) {
-        if (Lendings.getLendingCarById(id) == null) {
+        if (Lendings.getLendingByCarId(id) == null) {
             //Car tmp = cars.stream().filter((Car o) -> o.getId().equals(id)).findFirst().get();
             Car tmp = Cars.get(id);
             tmp.setDeactivated(!tmp.isDeactivated());
@@ -230,7 +230,7 @@ public class CarModel extends IModel {
     }
 
     public void toRepair() {
-        if (Lendings.getLendingCarById(toRepairId) == null) {
+        if (Lendings.getLendingByCarId(toRepairId) == null) {
             Repair repair = new Repair();
             repair.setCar(Cars.get(toRepairId));
             repair.setDescription(description);

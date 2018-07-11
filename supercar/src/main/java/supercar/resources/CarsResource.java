@@ -18,8 +18,8 @@ import supercar.abstracts.IResource;
 
 /**
  *
- * @author Maxi
- * Optional Jax-RS Parameter (Probably don't include this cuz it's not worth the effort):
+ * @author Maxi Optional Jax-RS Parameter (Probably don't include this cuz it's
+ * not worth the effort):
  * https://stackoverflow.com/questions/32765804/optional-params-in-rest-api-request-using-jersey-2-21/32778643#32778643
  */
 @RequestScoped
@@ -27,36 +27,40 @@ import supercar.abstracts.IResource;
 @Produces({MediaType.APPLICATION_JSON})
 @Consumes({MediaType.APPLICATION_JSON})
 public class CarsResource extends IResource {
-    
+
     @GET
     public Response get() {
         return Ok(Cars.getAll());
     }
-    
-    @GET @Path("free/{order}/{sort}")
+
+    @GET
+    @Path("free/{order}/{sort}")
     public Response getFree(@PathParam("order") String order, @PathParam("sort") String sort) {
         if (!LoginHandler.hasAccess(AccountType.User)) {
             return Forbidden();
         }
-        
+
         return Ok(Cars.getAllFree(order, sort));
     }
 
-    @GET @Path("repairs/{order}/{sort}")
+    @GET
+    @Path("repairs/{order}/{sort}")
     public Response getRepairs(@PathParam("order") String order, @PathParam("sort") String sort) {
         if (!LoginHandler.hasAccess(AccountType.User)) {
             return Forbidden();
         }
-        
+
         return Ok(Cars.getCarAtRepair(order, sort));
     }
-    
-    @GET @Path("lendings/{order}/{sort}")
+
+    @GET
+    @Path("lendings/{order}/{sort}")
     public Response getLendings(@PathParam("order") String order, @PathParam("sort") String sort) {
         if (!LoginHandler.hasAccess(AccountType.User)) {
             return Forbidden();
         }
-        
+
         return Ok(Cars.getCarAtLending(order, sort));
     }
+
 }
