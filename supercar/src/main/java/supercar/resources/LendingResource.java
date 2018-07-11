@@ -18,6 +18,7 @@ import javax.ws.rs.core.Response;
 import supercar.abstracts.IResource;
 import supercar.entities.Car;
 import supercar.entities.Lending;
+import supercar.enums.AccountType;
 
 /**
  *
@@ -33,12 +34,16 @@ public class LendingResource extends IResource {
     @GET
     @Path("rent/{id}")
     public Response rent(@PathParam("id") Long id) {
-        Car car = Cars.get(id);
-        if (car == null) {
+        if (!LoginHandler.hasAccess(AccountType.User)) {
+            return Forbidden();
+        }
+
+        if (id == null) {
             return BadRequest();
         }
 
-        if (Lendings.getLendingByCarId(id) != null) {
+        Car car = Cars.get(id);
+        if (car == null || Lendings.getLendingByCarId(id) != null) {
             return BadRequest();
         }
 
