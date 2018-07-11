@@ -70,7 +70,7 @@ public class CarDetailModel extends IModel {
 
         Lending lending = new Lending();
         lending.setCar(car);
-        lending.setRentDate(c.getTimeInMillis());
+        lending.setRentDate(c.getTimeInMillis()/1000);
 
         LoginHandler.getAccount().addLending(lending);
         Lendings.add(lending);

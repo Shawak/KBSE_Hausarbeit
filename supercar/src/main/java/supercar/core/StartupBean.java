@@ -73,16 +73,16 @@ public class StartupBean extends IRepositoryAccessor {
             Lending lending = new Lending();
             lending.setCar(car);
             // 22.5.18
-            lending.setRentDate(1526940000000l);
+            lending.setRentDate(1526940000l);
 
             Lendings.add(lending);
             // ohne diesen Befehl funktioniert der danach nicht
             account = Accounts.update(account);
             account.addLending(lending);
 
-            Lending lending2 = new Lending(1517184000000l, 1517356800000l, 10l, 200l, "", car3);
+            Lending lending2 = new Lending(1517184000l, 1517356800l, 10l, 200l, "", car3);
             // Lending lending3 = new Lending(1518220800000l,1519084800000l,205l,500l,"",car3);
-            Lending lending3 = new Lending(1518220800000l, null, null, null, "", car3);
+            Lending lending3 = new Lending(1518220800l, null, null, null, "", car3);
             Lendings.add(lending2);
             Lendings.add(lending3);
 

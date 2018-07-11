@@ -20,6 +20,7 @@ import java.io.ByteArrayOutputStream;
 
 import java.time.Duration;
 import static java.time.temporal.ChronoUnit.MILLIS;
+import static java.time.temporal.ChronoUnit.SECONDS;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.primefaces.model.DefaultStreamedContent;
@@ -125,7 +126,7 @@ public class BillCreator {
             cell.setPhrase(new Phrase("$" + String.format("%.2f", lending.getCar().getPricePerDay())));
             table.addCell(cell);
 
-            Duration dur = Duration.of(lending.getReturnDate() - lending.getRentDate(), MILLIS);
+            Duration dur = Duration.of(lending.getReturnDate() - lending.getRentDate(), SECONDS);
             long days = dur.toDays();
             long hours = dur.toHours() % 24;
             

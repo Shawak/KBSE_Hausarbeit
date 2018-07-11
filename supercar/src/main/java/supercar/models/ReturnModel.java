@@ -63,7 +63,7 @@ public class ReturnModel extends IModel {
 
         Calendar c = new GregorianCalendar();
 
-        returnlending.setReturnDate(c.getTimeInMillis());
+        returnlending.setReturnDate(c.getTimeInMillis()/1000);
     }
 
     public void returnCar() {
