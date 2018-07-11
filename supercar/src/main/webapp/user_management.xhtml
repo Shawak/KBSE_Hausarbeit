@@ -11,6 +11,7 @@
         <h:form styleClass="pseudoClass_formData">   
             <br/>
             <p:outputLabel value="Not Verified" for="switch"/>
+            <br/>
             <p:inputSwitch value="#{usermanager.checkbox}" id="switch">
                 <p:ajax event="change" update="@(.pseudoClass_dataTable)"/>
             </p:inputSwitch>
