@@ -47,7 +47,7 @@ public class Lending extends IUniqueEntity {
         if (this.rentDate == null) {
             return null;
         }
-        return new Date(this.rentDate);
+        return new Date((this.rentDate*1000));
     }
 
     public void setRentDate(Long rentDate) {
@@ -62,7 +62,7 @@ public class Lending extends IUniqueEntity {
         if (this.returnDate == null) {
             return null;
         }
-        return new Date(this.returnDate);
+        return new Date((this.returnDate*1000));
     }
 
     public void setReturnDate(Long returnDate) {

@@ -15,13 +15,13 @@
                 <br/>
                 <h:outputLabel value="Rent Date"/>
                 <br/>
-                <h:outputText value="#{return.returnlending.rentDate}">
+                <h:outputText value="#{return.returnlending.rentDate*1000}">
                     <f:convertDateTime pattern="dd.MM.yyyy"/>
                 </h:outputText>
                 <br/>
                 <h:outputLabel value="Return Date"/>
                 <br/>
-                <h:outputText value="#{return.returnlending.returnDate}">
+                <h:outputText value="#{return.returnlending.returnDate*1000}">
                     <f:convertDateTime pattern="dd.MM.yyyy"/>
                 </h:outputText>
 
