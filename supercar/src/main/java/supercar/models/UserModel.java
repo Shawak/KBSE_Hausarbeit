@@ -58,4 +58,10 @@ public class UserModel extends IModel {
         acc.setActivated(true);
         Accounts.update(acc);
     }
+    
+    public boolean isSameUser(long id){
+        if(Accounts.get(id).equals(LoginHandler.getAccount()))
+            return true;
+        return false;
+    }
 }
