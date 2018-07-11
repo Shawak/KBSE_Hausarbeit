@@ -57,7 +57,7 @@ public class CarDetailModel extends IModel {
     }
 
     public Collection<Lending> getLendings() {
-        lendings = Lendings.getLendingByCarId(car.getId());
+        lendings = Lendings.getLendingsByCarId(car.getId());
         return lendings;
     }
 

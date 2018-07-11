@@ -20,13 +20,13 @@ public class LendingRepository extends IRepository<Lending> {
     public LendingRepository() {
     }
 
-    public Lending getLendingCarById(Long id) {
+    public Lending getLendingByCarId(Long id) {
         return query("select e from #table e where e.car.id = :id and e.returnDate IS NULL")
                 .put("id", id)
                 .one();
     }
 
-    public Collection<Lending> getLendingByCarId(Long id) {
+    public Collection<Lending> getLendingsByCarId(Long id) {
         return query("select e from #table e where e.car.id = :id order by e.rentMileage ASC")
                 .put("id", id)
                 .all();
