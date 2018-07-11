@@ -134,7 +134,7 @@ public class BillCreator {
             cell.setPhrase(new Phrase("" + String.format("%02d", days) + ":" + String.format("%02d", hours) + ":" + String.format("%02d", minutes)));
             table.addCell(cell);
 
-            if(days >0 && hours >0){
+            if(days >0 && (hours >0 || minutes >0)){
                 days+=1;
             }
             else if(days == 0){
