@@ -25,7 +25,7 @@ import javax.validation.Payload;
 @Documented
 public @interface LicensePlate {
 
-    String message() default "Wrong License Plate";
+    String message() default "Wrong License Plate Pattern(DE OS 000H)";
 
     Class<?>[] groups() default {};
 

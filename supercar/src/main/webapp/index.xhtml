@@ -29,18 +29,22 @@
                                 <b:image value="images/#{carV.picture}"/> 
                             </b:column>
                             <b:column span="3">
-                                <h:outputText value="Car: #{carV.model.manufacturer.name} #{carV.model.name}"/>
+                                <h:outputLabel for="car" value="Car:"/>
+                                <h:outputText id="car" value=" #{carV.model.manufacturer.name} #{carV.model.name}"/>
                             </b:column>
                             <b:column span="3">
-                                <h:outputText value="License plate: #{carV.licensePlate}"/>
+                                <h:outputLabel for="license" value="License plate:"/>
+                                <h:outputText id="license" value=" #{carV.licensePlate}"/>
                             </b:column>
                             <b:column span="2">
-                                <h:outputText value="#{carV.pricePerDay}">
-                                    <f:convertNumber pattern="Price/Day: $#0.00"/>
+                                <h:outputLabel for="price" value="Price/Day:"/>
+                                <h:outputText id="price" value="#{carV.pricePerDay}">
+                                    <f:convertNumber pattern=" $#0.00"/>
                                 </h:outputText>
                             </b:column>
                             <b:column span="2">
-                                <h:outputText value="Color: #{carV.color}"/>
+                                <h:outputLabel for="color" value="Color:"/>
+                                <h:outputText id="color" value=" #{carV.color}"/>
                             </b:column>
                         </b:panel>
                     </h:commandLink>

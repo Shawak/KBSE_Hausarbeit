@@ -17,24 +17,30 @@
 
         <b:container>
             <b:column span="6">
-                <h:outputLabel id="name" value="Name: #{cardetail.car.model.manufacturer.name} #{cardetail.car.model.name}"/>
+                <h:outputLabel for="name" value="Name:"/>
+                <h:outputText id="name" value=" #{cardetail.car.model.manufacturer.name} #{cardetail.car.model.name}"/>
                 <br/>
-                <h:outputLabel id="license" value="License Plate:  #{cardetail.car.licensePlate}"/>
+                <h:outputLabel for="license" value="Licens Plate:"/>
+                <h:outputText id="license" value=" #{cardetail.car.licensePlate}"/>
                 <br/>
-                <h:outputLabel id="price" value="#{cardetail.car.pricePerDay}">
-                    <f:convertNumber pattern="Price per Day: $#0.00"/>
-                </h:outputLabel>
-                <br/>            
-                <h:outputLabel id="color" value="Color: #{cardetail.car.color}"/>
+                <h:outputLabel for="price" value="Prioce per Day:"/>
+                <h:outputText id="price" value="#{cardetail.car.pricePerDay}">
+                    <f:convertNumber pattern=" $#0.00"/>
+                </h:outputText>
+                <br/>    
+                <h:outputLabel for="color" value="Color:"/>
+                <h:outputText id="color" value=" #{cardetail.car.color}"/>
                 <br/>
-                <h:outputLabel id="horsepower" value="Horsepower: #{cardetail.car.model.horsepower}"/>
+                <h:outputLabel for="horsepower" value="Horsepower:"/>
+                <h:outputText id="horsepower" value=" #{cardetail.car.model.horsepower}"/>
                 <br/>
-                <h:outputLabel id="cubic" value="Cubic Capacity:  #{cardetail.car.model.cubicCapacity}"/>
+                <h:outputLabel for="cubic" value="Cubic Capacity:"/>
+                <h:outputText id="cubic" value=" #{cardetail.car.model.cubicCapacity}"/>
 
                 <br/>
                 <br/>
                 <h:form>
-                    <b:dataTable value="#{cardetail.lendings}" lang="en" var="onelending">
+                    <b:dataTable value="#{cardetail.lendings}" lang="en" var="onelending" responsive="true">
                         <b:dataTableColumn label="RentDate">
                             <h:outputText value="#{onelending.rentDateAsDate}">
                                 <f:convertDateTime pattern="dd.MM.yyyy"/>
