@@ -8,7 +8,7 @@
     template="template.xhtml">
 
     <ui:define name="body">
-        <b:modal id="modal" title="Rent Car" style-class="pseudoClass_modal" closable="false" close-on-escape="false" backdrop="false">
+        <b:modal title="Rent Car" style-class="pseudoClass_modal" closable="false" close-on-escape="false" backdrop="false">
             <p>The car is reserved for you.</p>
             <p>You can pick it up from us.</p>
             <b:button href="/supercar" value="Ok">
@@ -59,7 +59,7 @@
             <b:column span="6">
                 <b:image value="images/#{cardetail.car.picture}" width="50%"/>
                 <br/>
-                <br/>
+                <br/>                    
                 <b:form styleClass="pseudoClass_form" id="form">
                     <b:commandButton action="#{cardetail.rent()}" value="Rent" update="@(None)" oncomplete="$('.pseudoClass_modal').modal()"/>
                 </b:form>

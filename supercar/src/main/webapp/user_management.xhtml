@@ -16,7 +16,7 @@
                 <p:ajax event="change" update="@(.pseudoClass_dataTable)"/>
             </p:inputSwitch>
 
-            <b:dataTable style-class="pseudoClass_dataTable" lang="en" value="#{usermanager.all}" var="acc" excel="true" csv="true" pdf="true" columnVisibility="true" copy="true" print="true">
+            <b:dataTable style-class="pseudoClass_dataTable" lang="en" value="#{usermanager.all}" var="acc" excel="true" csv="true" pdf="true" columnVisibility="true" copy="true" print="true" responsive="true">
                 <b:dataTableColumn value="#{acc.firstname}" />
                 <b:dataTableColumn value="#{acc.lastname}" />
                 <b:dataTableColumn value="#{acc.login}" />
