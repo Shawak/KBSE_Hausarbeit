@@ -79,8 +79,6 @@
         <url-pattern>/faces/return.xhtml</url-pattern>
         <url-pattern>/faces/bills.xhtml</url-pattern>
     </filter-mapping>
-<<<<<<< HEAD
-=======
     <filter-mapping>
         <filter-name>notLogin</filter-name>
         <url-pattern>/faces/login.xhtml</url-pattern>
@@ -89,5 +87,4 @@
         <exception-type>javax.faces.application.ViewExpiredException</exception-type>
         <location>/faces/expired.xhtml</location>
     </error-page>
->>>>>>> 57c2740fc24c04c6580f2a7790233597bf3dd0a6
 </web-app>

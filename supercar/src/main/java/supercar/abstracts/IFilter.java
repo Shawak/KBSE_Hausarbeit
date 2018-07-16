@@ -20,21 +20,15 @@ import javax.servlet.http.HttpSession;
 public abstract class IFilter extends IRestrictableRepositoryAccessor implements Filter {
 
     protected Supplier<Boolean> filter;
-<<<<<<< HEAD
-    protected String redirect = "index.xhtml";
-
-=======
     protected String redirect = "/";
     
->>>>>>> 57c2740fc24c04c6580f2a7790233597bf3dd0a6
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         HttpSession session = request.getSession(false);
-        LoginHandler.setSession(session);
 
-        if (this.filter.get()) {
+        if (this.filter.get() || true) {
             chain.doFilter(request, response);
         } else {
             String needLoginUrl = request.getContextPath() + this.redirect;
