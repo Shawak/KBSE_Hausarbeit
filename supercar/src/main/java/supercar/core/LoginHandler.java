@@ -15,8 +15,7 @@ import supercar.abstracts.IRepositoryAccessor;
 
 /**
  *
- * @author Maxi
- * TODO: probably add getRequestMap() to cache the account and
+ * @author Maxi TODO: probably add getRequestMap() to cache the account and
  * prevent multiple authentication checks on the same request
  */
 @SessionScoped
@@ -45,7 +44,7 @@ public class LoginHandler extends IRepositoryAccessor implements Serializable {
         if (!acc.isActivated() || acc.isBanned()) {
             return false;
         }
-        
+
         loggedIn = true;
         accountId = acc.getId();
         
@@ -56,7 +55,6 @@ public class LoginHandler extends IRepositoryAccessor implements Serializable {
     }
 
     public void logout() {
-        
         loggedIn = false;
         accountId = 0;
         SessionHandler.removeSession(accountId);
