@@ -15,6 +15,6 @@ public class LoginFilter extends IFilter {
 
     public LoginFilter() {
         this.filter = () -> LoginHandler.isLoggedIn();
-        this.redirect = "login.xhtml";
+        this.redirect = "/faces/login.xhtml";
     }
 }

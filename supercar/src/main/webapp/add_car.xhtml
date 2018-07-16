@@ -54,7 +54,7 @@
                 <b:tab title="Car">   
                     <h:form styleClass="pseudoClass_formData">   
                         <br/>
-                        <b:dataTable style-class="pseudoClass_dataTable" lang="en" value="#{car.cars}" var="onecar" excel="true" csv="true" pdf="true" columnVisibility="true" copy="true" print="true">
+                        <b:dataTable style="none" style-class="pseudoClass_dataTable" lang="en" value="#{car.cars}" var="onecar" excel="true" csv="true" pdf="true" columnVisibility="true" copy="true" print="true" responsive="true">
                             <b:dataTableColumn value="#{onecar.licensePlate}" label="License Plate"/>
                             <b:dataTableColumn label="Price per Day">
                                 <h:outputText value="#{onecar.pricePerDay}">
@@ -93,7 +93,7 @@
                             <f:selectItems value="#{car.models}" var="c" itemValue="#{c}" itemLabel="#{c.manufacturer.name} #{c.name}"/>
                         </b:selectOneMenu>
 
-                        <p:fileUpload id="picture" label="Picture" value="#{car.new_uploadFile}" mode="simple" sizeLimit="500000" fileLimit="1" allowTypes="/(\.|\/)(gif|jpe?g|png)$/"  skinSimple="true" update="picture"/>
+                        <p:fileUpload id="picture" label="Picture" value="#{car.new_uploadFile}" mode="simple" sizeLimit="5000000" fileLimit="1" allowTypes="/(\.|\/)(gif|jpe?g|png)$/"  skinSimple="true" update="picture"/>
                         <p:commandButton value="Delete Picture" action="#{car.deleteNewFile()}" update="picture"/>
 
                         <br/>

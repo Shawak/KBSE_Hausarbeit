@@ -175,3 +175,7 @@ hr {
     margin: auto;
     width: 210px;
 }
+
+.error {
+    background-image: none;
+}

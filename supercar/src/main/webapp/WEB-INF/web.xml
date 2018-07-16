@@ -64,6 +64,7 @@
     <filter-mapping>
         <filter-name>employee</filter-name>
         <url-pattern>/faces/user_management.xhtml</url-pattern>
+        <url-pattern>/faces/add_garage.xhtml</url-pattern>
     </filter-mapping>
     <filter-mapping>
         <filter-name>admin</filter-name>
@@ -78,4 +79,15 @@
         <url-pattern>/faces/return.xhtml</url-pattern>
         <url-pattern>/faces/bills.xhtml</url-pattern>
     </filter-mapping>
+<<<<<<< HEAD
+=======
+    <filter-mapping>
+        <filter-name>notLogin</filter-name>
+        <url-pattern>/faces/login.xhtml</url-pattern>
+    </filter-mapping>
+    <error-page>
+        <exception-type>javax.faces.application.ViewExpiredException</exception-type>
+        <location>/faces/expired.xhtml</location>
+    </error-page>
+>>>>>>> 57c2740fc24c04c6580f2a7790233597bf3dd0a6
 </web-app>
