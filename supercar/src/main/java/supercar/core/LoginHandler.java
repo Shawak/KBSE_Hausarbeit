@@ -54,18 +54,19 @@ public class LoginHandler extends IRepositoryAccessor implements Serializable {
             return false;
         }
 
-        HttpSession sessionObj = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
-        SessionHandler.put(acc.getId(), sessionObj);
-
         loggedIn = true;
         accountId = acc.getId();
+        
+        HttpSession sessionObj = (HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+        
+        SessionHandler.put(accountId, sessionObj);
         return true;
     }
 
     public void logout() {
-        SessionHandler.deleteSession(accountId);
         loggedIn = false;
         accountId = 0;
+        SessionHandler.removeSession(accountId);
     }
 
     public boolean hasAccess(AccountType accountType) {
