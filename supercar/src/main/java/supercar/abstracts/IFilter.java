@@ -21,14 +21,13 @@ public abstract class IFilter extends IRestrictableRepositoryAccessor implements
 
     protected Supplier<Boolean> filter;
     protected String redirect = "/";
-    
+
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
-        HttpSession session = request.getSession(false);
 
-        if (this.filter.get() || true) {
+        if (this.filter.get()) {
             chain.doFilter(request, response);
         } else {
             String needLoginUrl = request.getContextPath() + this.redirect;
