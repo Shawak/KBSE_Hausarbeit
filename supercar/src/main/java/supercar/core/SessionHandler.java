@@ -26,17 +26,15 @@ public class SessionHandler {
             session.invalidate();
         }
     }
-    
-     public static void removeSession(Long id){
-        HttpSession session =logins.get(id);
-        if(session!=null){
-            logins.remove(id); 
+
+    public static void removeSession(Long id) {
+        HttpSession session = logins.get(id);
+        if (session != null) {
+            logins.remove(id);
         }
     }
-    
-    public static void put(Long id, HttpSession session){
-        HttpSession session_old =logins.get(id);
-        
+
+    public static void put(Long id, HttpSession session) {
         logins.put(id, session);
     }
 

@@ -29,7 +29,7 @@ public class LoginHandler extends IRepositoryAccessor implements Serializable {
     HashMap<Long, Long> cache;
 
     public Account getAccount() {
-        if (account == null || (new GregorianCalendar().getTimeInMillis() - cache.getOrDefault(accountId, (long)0) >= 100)) {
+        if (account == null || (new GregorianCalendar().getTimeInMillis() - cache.getOrDefault(accountId, (long) 0) >= 100)) {
             account = loggedIn ? Accounts.get(accountId) : null;
             cache.put(accountId, new GregorianCalendar().getTimeInMillis());
         }
@@ -56,10 +56,10 @@ public class LoginHandler extends IRepositoryAccessor implements Serializable {
 
         loggedIn = true;
         accountId = acc.getId();
-        
-        HttpSession sessionObj = (HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(false);
-        
+
+        HttpSession sessionObj = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
         SessionHandler.put(accountId, sessionObj);
+
         return true;
     }
 
