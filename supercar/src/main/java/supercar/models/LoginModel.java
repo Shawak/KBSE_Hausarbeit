@@ -99,6 +99,8 @@ public class LoginModel extends IModel {
 
     public void login() {
         if (LoginHandler.login(login, password)) {
+            login = "";
+            password = "";
 
             ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
             try {

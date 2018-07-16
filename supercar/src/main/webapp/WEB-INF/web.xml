@@ -78,8 +78,4 @@
         <url-pattern>/faces/return.xhtml</url-pattern>
         <url-pattern>/faces/bills.xhtml</url-pattern>
     </filter-mapping>
-    <filter-mapping>
-        <filter-name>notLogin</filter-name>
-        <url-pattern>/faces/login.xhtml</url-pattern>
-    </filter-mapping>
 </web-app>

@@ -10,6 +10,7 @@ import java.util.function.Supplier;
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -17,15 +18,17 @@ import javax.servlet.http.HttpServletResponse;
  * http://www.catgovind.com/jsf/jsf-login-logout-form-authentication-example/
  */
 public abstract class IFilter extends IRestrictableRepositoryAccessor implements Filter {
-    
+
     protected Supplier<Boolean> filter;
     protected String redirect = "index.xhtml";
-    
+
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain chain) throws IOException, ServletException {
-        HttpServletRequest request = (HttpServletRequest)servletRequest;
-        HttpServletResponse response = (HttpServletResponse)servletResponse;
-        
+        HttpServletRequest request = (HttpServletRequest) servletRequest;
+        HttpServletResponse response = (HttpServletResponse) servletResponse;
+        HttpSession session = request.getSession(false);
+        LoginHandler.setSession(session);
+
         if (this.filter.get()) {
             chain.doFilter(request, response);
         } else {
@@ -33,5 +36,5 @@ public abstract class IFilter extends IRestrictableRepositoryAccessor implements
             response.sendRedirect(needLoginUrl);
         }
     }
-    
+
 }
