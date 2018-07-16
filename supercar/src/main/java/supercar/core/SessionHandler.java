@@ -16,23 +16,24 @@ import javax.servlet.http.HttpSession;
  */
 @ApplicationScoped
 public class SessionHandler {
+
     private static final Map<Long, HttpSession> logins = new ConcurrentHashMap<>();
-    
-    public static void deleteSession(Long id){
-        HttpSession session =logins.get(id);
-        if(session!=null){
-            logins.remove(id); 
+
+    public static void deleteSession(Long id) {
+        HttpSession session = logins.get(id);
+        if (session != null) {
+            logins.remove(id);
             session.invalidate();
         }
     }
-    
-    public static void put(Long id, HttpSession session){
-        HttpSession session_old =logins.get(id);
-        if(session_old!=null){
-            logins.remove(id); 
+
+    public static void put(Long id, HttpSession session) {
+        HttpSession session_old = logins.get(id);
+        if (session_old != null) {
+            logins.remove(id);
             session_old.invalidate();
         }
         logins.put(id, session);
     }
-    
+
 }
