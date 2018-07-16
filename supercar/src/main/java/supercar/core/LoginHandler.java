@@ -6,6 +6,8 @@
 package supercar.core;
 
 import java.io.Serializable;
+import java.util.GregorianCalendar;
+import java.util.HashMap;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
@@ -15,8 +17,7 @@ import supercar.abstracts.IRepositoryAccessor;
 
 /**
  *
- * @author Maxi TODO: probably add getRequestMap() to cache the account and
- * prevent multiple authentication checks on the same request
+ * @author Maxi
  */
 @SessionScoped
 public class LoginHandler extends IRepositoryAccessor implements Serializable {
@@ -24,8 +25,15 @@ public class LoginHandler extends IRepositoryAccessor implements Serializable {
     boolean loggedIn;
     long accountId;
 
+    Account account;
+    HashMap<Long, Long> cache;
+
     public Account getAccount() {
-        return loggedIn ? Accounts.get(accountId) : null;
+        if (account == null || (new GregorianCalendar().getTimeInMillis() - cache.getOrDefault(accountId, (long)0) >= 100)) {
+            account = loggedIn ? Accounts.get(accountId) : null;
+            cache.put(accountId, new GregorianCalendar().getTimeInMillis());
+        }
+        return account;
     }
 
     public boolean isLoggedIn() {
@@ -33,6 +41,7 @@ public class LoginHandler extends IRepositoryAccessor implements Serializable {
     }
 
     public LoginHandler() {
+        cache = new HashMap<>();
     }
 
     public boolean login(String login, String password) {
