@@ -19,6 +19,7 @@ import javax.inject.Named;
 import supercar.entities.Car;
 import supercar.entities.Lending;
 import supercar.abstracts.IModel;
+import supercar.entities.Account;
 
 /**
  *
@@ -76,9 +77,10 @@ public class CarDetailModel extends IModel {
         lending.setCar(car);
         lending.setRentDate(c.getTimeInMillis()/1000);
 
-        LoginHandler.getAccount().addLending(lending);
+        Account tmp = LoginHandler.getAccount();
+        tmp.addLending(lending);
         Lendings.add(lending);
 
-        Accounts.update(LoginHandler.getAccount());
+        Accounts.update(tmp);
     }
 }

@@ -43,6 +43,7 @@ public class ProfileModel extends IModel {
     }
 
     public Account getAccount() {
+        account = LoginHandler.getAccount();
         return account;
     }
 
