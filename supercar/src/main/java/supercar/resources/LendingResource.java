@@ -22,8 +22,8 @@ import supercar.enums.AccountType;
 
 /**
  *
- * @author Maxi Optional Jax-RS Parameter (Probably don't include this cuz it's
- * not worth the effort):
+ * @author Maximilian Nussbaum Optional Jax-RS Parameter (Probably don't include
+ * this cuz it's not worth the effort):
  */
 @RequestScoped
 @Path("lendings")

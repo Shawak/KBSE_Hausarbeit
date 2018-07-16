@@ -17,7 +17,7 @@ import supercar.abstracts.IModel;
 
 /**
  *
- * @author Patrick
+ * @author Patrick Wiethoff
  */
 @Named("menu")
 @RequestScoped

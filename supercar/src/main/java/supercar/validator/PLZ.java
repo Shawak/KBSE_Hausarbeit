@@ -17,7 +17,7 @@ import javax.validation.Payload;
 
 /**
  *
- * @author Patrick
+ * @author Patrick Wiethoff
  */
 @Constraint(validatedBy = PLZValidator.class)
 @Target({METHOD, FIELD, ANNOTATION_TYPE})

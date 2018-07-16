@@ -21,7 +21,7 @@ import supercar.abstracts.IModel;
 
 /**
  *
- * @author Patrick
+ * @author Patrick Wiethoff
  */
 @Named("login")
 @SessionScoped

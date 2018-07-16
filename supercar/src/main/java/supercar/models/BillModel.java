@@ -5,9 +5,6 @@
  */
 package supercar.models;
 
-import com.itextpdf.text.DocumentException;
-import java.io.FileNotFoundException;
-import java.net.URL;
 import java.util.Collection;
 import java.util.stream.Collectors;
 import javax.annotation.PostConstruct;
@@ -15,13 +12,12 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import org.primefaces.model.StreamedContent;
 import supercar.core.BillCreator;
-import supercar.entities.Account;
 import supercar.entities.Lending;
 import supercar.abstracts.IModel;
 
 /**
  *
- * @author Lukas
+ * @author Lukas Bernhold
  */
 @Named("bill")
 @RequestScoped

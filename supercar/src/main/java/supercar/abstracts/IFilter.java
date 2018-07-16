@@ -10,11 +10,10 @@ import java.util.function.Supplier;
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Maxi
+ * @author Maximilian Nussbaum
  * http://www.catgovind.com/jsf/jsf-login-logout-form-authentication-example/
  */
 public abstract class IFilter extends IRestrictableRepositoryAccessor implements Filter {

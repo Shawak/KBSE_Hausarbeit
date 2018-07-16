@@ -10,10 +10,11 @@ import supercar.core.LoginHandler;
 
 /**
  *
- * @author Maxi
+ * @author Maximilian Nussbaum
  */
 public abstract class IRestrictableRepositoryAccessor extends IRepositoryAccessor {
-    
-    @Inject protected LoginHandler LoginHandler;
+
+    @Inject
+    protected LoginHandler LoginHandler;
 
 }

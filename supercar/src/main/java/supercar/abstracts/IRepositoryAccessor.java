@@ -10,16 +10,23 @@ import supercar.repositories.*;
 
 /**
  *
- * @author Maxi
+ * @author Maximilian Nussbaum
  */
 public abstract class IRepositoryAccessor {
-    
-    @Inject protected AccountRepository Accounts;
-    @Inject protected CarRepository Cars;
-    @Inject protected GarageRepository Garages;
-    @Inject protected LendingRepository Lendings;
-    @Inject protected ManufacturerRepository Manufacturers;
-    @Inject protected ModelRepository Models;
-    @Inject protected RepairRepository Repairs;
+
+    @Inject
+    protected AccountRepository Accounts;
+    @Inject
+    protected CarRepository Cars;
+    @Inject
+    protected GarageRepository Garages;
+    @Inject
+    protected LendingRepository Lendings;
+    @Inject
+    protected ManufacturerRepository Manufacturers;
+    @Inject
+    protected ModelRepository Models;
+    @Inject
+    protected RepairRepository Repairs;
 
 }

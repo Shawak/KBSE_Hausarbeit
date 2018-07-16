@@ -23,7 +23,7 @@ import supercar.entities.Account;
 
 /**
  *
- * @author Patrick
+ * @author Lukas Bernhold, Patrick Wiethoff
  */
 @Named("cardetail")
 @SessionScoped
@@ -66,7 +66,7 @@ public class CarDetailModel extends IModel {
         this.lendings = lendings;
     }
 
-    public void rent() {        
+    public void rent() {
         Calendar c = new GregorianCalendar();
 
         if (Lendings.getLendingByCarId(car.getId()) != null) {
@@ -75,7 +75,7 @@ public class CarDetailModel extends IModel {
 
         Lending lending = new Lending();
         lending.setCar(car);
-        lending.setRentDate(c.getTimeInMillis()/1000);
+        lending.setRentDate(c.getTimeInMillis() / 1000);
 
         Account tmp = LoginHandler.getAccount();
         tmp.addLending(lending);

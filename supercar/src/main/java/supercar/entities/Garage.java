@@ -16,7 +16,7 @@ import supercar.validator.PLZ;
 
 /**
  *
- * @author Maxi
+ * @author Lukas Bernhold, Maximilian Nussbaum, Patrick Wiethoff
  */
 @Entity
 public class Garage extends IUniqueEntity {
@@ -83,8 +83,8 @@ public class Garage extends IUniqueEntity {
     public void setContactInfo(String contactInfo) {
         this.contactInfo = contactInfo;
     }
-    
-    public void addRepair(Repair repair){
+
+    public void addRepair(Repair repair) {
         this.repairs.add(repair);
     }
 

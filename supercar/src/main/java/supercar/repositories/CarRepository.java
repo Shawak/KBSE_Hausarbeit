@@ -12,7 +12,7 @@ import supercar.abstracts.IRepository;
 
 /**
  *
- * @author Maxi
+ * @author Lukas Bernhold
  */
 @Stateless
 public class CarRepository extends IRepository<Car> {

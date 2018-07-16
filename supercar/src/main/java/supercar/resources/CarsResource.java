@@ -18,9 +18,8 @@ import supercar.abstracts.IResource;
 
 /**
  *
- * @author Maxi Optional Jax-RS Parameter (Probably don't include this cuz it's
- * not worth the effort):
- * https://stackoverflow.com/questions/32765804/optional-params-in-rest-api-request-using-jersey-2-21/32778643#32778643
+ * @author Maximilian Nussbaum Optional Jax-RS Parameter (Probably don't include
+ * this cuz it's not worth the effort):
  */
 @RequestScoped
 @Path("cars")

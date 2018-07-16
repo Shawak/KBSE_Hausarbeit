@@ -17,7 +17,7 @@ import supercar.abstracts.IModel;
 
 /**
  *
- * @author Patrick
+ * @author Lukas Bernhold, Patrick Wiethoff
  */
 @Named("model")
 @SessionScoped

@@ -18,7 +18,7 @@ import supercar.abstracts.IResource;
 
 /**
  *
- * @author Maxi
+ * @author Maximilian Nussbaum
  */
 @RequestScoped
 @Path("login")

@@ -18,7 +18,7 @@ import supercar.abstracts.IModel;
 
 /**
  *
- * @author Patrick
+ * @author Lukas Bernhold, Patrick Wiethoff
  */
 @Named("manufacturer")
 @SessionScoped
@@ -86,7 +86,6 @@ public class ManufacturerModel extends IModel {
 
     @PostConstruct
     public void init() {
-        //manufacturers = new ArrayList<>();
         manufacturers = Manufacturers.getAll();
     }
 
@@ -105,8 +104,6 @@ public class ManufacturerModel extends IModel {
     }
 
     public void change(Long id) {
-        //change_manufacturer=manufacturers.stream().filter((Manufacturer o) -> o.getId().equals(id)).findFirst().get();
-
         change_manufacturer = Manufacturers.get(id);
         change_city = change_manufacturer.getCity();
     }
@@ -118,7 +115,6 @@ public class ManufacturerModel extends IModel {
             }
             change_manufacturer.setCity(change_city);
             change_manufacturer = Manufacturers.update(change_manufacturer);
-            //manufacturers=manufacturers.stream().map((Manufacturer o) -> Objects.equals(o.getId(), change_manufacturer.getId())?change_manufacturer:o).collect(toList());
             manufacturers = Manufacturers.getAll();
             FacesContext.getCurrentInstance().addMessage("form:result2", new FacesMessage(FacesMessage.SEVERITY_INFO, "Manufactory change!", "Manufactory change!"));
         } catch (Exception e) {

@@ -15,7 +15,7 @@ import supercar.validator.LicensePlate;
 
 /**
  *
- * @author Maxi
+ * @author Lukas Bernhold, Maximilian Nussbaum, Patrick Wiethoff
  */
 @Entity
 public class Car extends IUniqueEntity {

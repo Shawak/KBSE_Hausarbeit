@@ -11,11 +11,12 @@ import supercar.abstracts.IRepository;
 
 /**
  *
- * @author Lukas
+ * @author Lukas Bernhold
  */
 @Stateless
 public class ModelRepository extends IRepository<Model> {
 
-    public ModelRepository() { }
-    
+    public ModelRepository() {
+    }
+
 }

@@ -12,9 +12,8 @@ import javax.persistence.TypedQuery;
 
 /**
  *
- * @author Maxi
+ * @author Maximilian Nussbaum
  * @param <T>
- * I know this is not really abstract, but idk where to put it otherwise yet
  */
 public class IQuery<T extends IUniqueEntity> {
 
@@ -36,8 +35,7 @@ public class IQuery<T extends IUniqueEntity> {
         try {
             System.out.println("SQL: " + sql);
             return query.getSingleResult();
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             System.out.println("SQL: " + ex);
             return null;
         }
@@ -47,8 +45,7 @@ public class IQuery<T extends IUniqueEntity> {
         try {
             System.out.println("SQL: " + sql);
             return query.getResultList();
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             System.out.println("SQL: " + ex);
             return new ArrayList<>();
         }
@@ -58,11 +55,10 @@ public class IQuery<T extends IUniqueEntity> {
         try {
             System.out.println("SQL: " + sql);
             return query.executeUpdate();
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             System.out.println("SQL: " + ex);
             return -1;
         }
     }
 
- }
+}

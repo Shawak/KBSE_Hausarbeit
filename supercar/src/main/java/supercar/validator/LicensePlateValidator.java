@@ -11,7 +11,7 @@ import javax.validation.ConstraintValidatorContext;
 
 /**
  *
- * @author Patrick
+ * @author Patrick Wiethoff
  */
 public class LicensePlateValidator implements ConstraintValidator<LicensePlate, String> {
 

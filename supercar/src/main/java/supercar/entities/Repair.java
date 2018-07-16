@@ -11,7 +11,7 @@ import supercar.abstracts.IUniqueEntity;
 
 /**
  *
- * @author Maxi
+ * @author Lukas Bernhold, Maximilian Nussbaum, Patrick Wiethoff
  */
 @Entity
 public class Repair extends IUniqueEntity {

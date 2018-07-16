@@ -30,7 +30,7 @@ import supercar.entities.Lending;
 
 /**
  *
- * @author Lukas
+ * @author Lukas Bernhold
  */
 public class BillCreator {
 
@@ -129,16 +129,15 @@ public class BillCreator {
             Duration dur = Duration.of(lending.getReturnDate() - lending.getRentDate(), SECONDS);
             long days = dur.toDays();
             long hours = dur.toHours() % 24;
-            
+
             long minutes = dur.toMinutes() % 60;
             cell.setPhrase(new Phrase("" + String.format("%02d", days) + ":" + String.format("%02d", hours) + ":" + String.format("%02d", minutes)));
             table.addCell(cell);
 
-            if(days >0 && (hours >0 || minutes >0)){
-                days+=1;
-            }
-            else if(days == 0){
-                days =1;
+            if (days > 0 && (hours > 0 || minutes > 0)) {
+                days += 1;
+            } else if (days == 0) {
+                days = 1;
             }
             cell.setPhrase(new Phrase("" + days));
             table.addCell(cell);

@@ -13,13 +13,13 @@ import supercar.enums.AccountType;
 
 /**
  *
- * @author Maxi
+ * @author Maximilian Nussbaum
  */
 public abstract class IModel extends IRestrictableRepositoryAccessor implements Serializable {
 
     @Inject
     protected transient PlzApi PlzApi;
-     
+
     protected boolean LOGGEDIN, ISUSER, ISEMPLOYEE, ISADMIN;
 
     public boolean isLOGGEDIN() {

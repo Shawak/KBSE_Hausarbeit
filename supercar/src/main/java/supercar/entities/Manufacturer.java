@@ -12,7 +12,7 @@ import supercar.validator.PLZ;
 
 /**
  *
- * @author Maxi
+ * @author Lukas Bernhold, Maximilian Nussbaum, Patrick Wiethoff
  */
 @Entity
 public class Manufacturer extends IUniqueEntity {

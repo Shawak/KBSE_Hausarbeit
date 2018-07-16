@@ -9,24 +9,26 @@ import java.util.Collection;
 import javax.ejb.Stateless;
 import supercar.entities.Account;
 import supercar.abstracts.IRepository;
+
 /**
  *
- * @author Maxi
+ * @author Maximilian Nussbaum
  */
 @Stateless
 public class AccountRepository extends IRepository<Account> {
-    
-    public AccountRepository() { }
-    
+
+    public AccountRepository() {
+    }
+
     public Account getByLogin(String login) {
         return query("select e from #table e where e.login = :login")
                 .put("login", login)
                 .one();
     }
-    
+
     public Collection<Account> getAllUnactivated() {
         return query("select e from #table e where e.activated = false")
                 .all();
     }
-    
+
 }

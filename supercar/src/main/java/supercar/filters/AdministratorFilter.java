@@ -10,12 +10,12 @@ import supercar.abstracts.IFilter;
 
 /**
  *
- * @author Maxi
+ * @author Maximilian Nussbaum
  */
 public class AdministratorFilter extends IFilter {
-    
+
     public AdministratorFilter() {
         this.filter = () -> LoginHandler.hasAccess(AccountType.Administrator);
     }
-    
+
 }

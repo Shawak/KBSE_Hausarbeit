@@ -9,7 +9,7 @@ import supercar.abstracts.IFilter;
 
 /**
  *
- * @author Patrick
+ * @author Patrick Wiethoff
  */
 public class NotLoginFilter extends IFilter {
 

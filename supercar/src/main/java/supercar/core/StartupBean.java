@@ -15,7 +15,7 @@ import supercar.abstracts.IRepositoryAccessor;
 
 /**
  *
- * @author Maxi
+ * @author Lukas Bernhold, Maximilian Nussbaum
  */
 @Startup
 @Singleton

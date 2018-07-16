@@ -11,17 +11,18 @@ import supercar.abstracts.IRepository;
 
 /**
  *
- * @author Lukas
+ * @author Lukas Bernhold
  */
 @Stateless
 public class RepairRepository extends IRepository<Repair> {
 
-    public RepairRepository() { }
-    
-    public Repair getRepairByCarid( long id){
+    public RepairRepository() {
+    }
+
+    public Repair getRepairByCarid(long id) {
         return query("select e from #table e where e.car.id = :id and e.repairEndDate IS NULL")
                 .put("id", id)
                 .one();
     }
-    
+
 }

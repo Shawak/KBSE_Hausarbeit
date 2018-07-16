@@ -23,7 +23,7 @@ import supercar.abstracts.IModel;
 
 /**
  *
- * @author Patrick
+ * @author Lukas Bernhold, Patrick Wiethoff
  */
 @Named("return")
 @SessionScoped
@@ -63,7 +63,7 @@ public class ReturnModel extends IModel {
 
         Calendar c = new GregorianCalendar();
 
-        returnlending.setReturnDate(c.getTimeInMillis()/1000);
+        returnlending.setReturnDate(c.getTimeInMillis() / 1000);
     }
 
     public void returnCar() {

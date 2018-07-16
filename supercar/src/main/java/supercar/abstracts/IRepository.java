@@ -15,14 +15,13 @@ import javax.transaction.Transactional;
 
 /**
  *
- * @author Maxi
+ * @author Maximilian Nussbaum
  * @param <T>
- * http://workingonbits.com/2011/05/05/effective-pattern-for-data-access-with-jpa/
  */
 @Transactional
 public abstract class IRepository<T extends IUniqueEntity> implements Serializable {
-    
-    @PersistenceContext(unitName="supercarPU")
+
+    @PersistenceContext(unitName = "supercarPU")
     protected EntityManager em;
 
     protected Class<T> entityClass;
@@ -30,38 +29,38 @@ public abstract class IRepository<T extends IUniqueEntity> implements Serializab
 
     @PostConstruct
     public void init() {
-        ParameterizedType genericSuperclass = (ParameterizedType)getClass().getGenericSuperclass();
-        this.entityClass = (Class<T>)genericSuperclass.getActualTypeArguments()[0];
+        ParameterizedType genericSuperclass = (ParameterizedType) getClass().getGenericSuperclass();
+        this.entityClass = (Class<T>) genericSuperclass.getActualTypeArguments()[0];
         this.table = this.entityClass.getSimpleName();
     }
-    
+
     public T add(T entity) {
         System.out.print("SQL: persist " + table);
         em.persist(entity);
         return entity;
     }
-    
+
     public T get(long id) {
-        System.out.print("SQL: get " + table  + " " + id);
-        return (T)em.find(this.entityClass, id);
+        System.out.print("SQL: get " + table + " " + id);
+        return (T) em.find(this.entityClass, id);
     }
-    
+
     public void remove(T entity) {
-        System.out.print("SQL: remove " + table  + " " + entity.getId());
+        System.out.print("SQL: remove " + table + " " + entity.getId());
         em.remove(entity);
     }
-    
+
     public T update(T entity) {
-        System.out.print("SQL: update " + table  + " " + entity.getId());
+        System.out.print("SQL: update " + table + " " + entity.getId());
         return em.merge(entity);
     }
-    
+
     public IQuery<T> query(String sql) {
         return new IQuery<>(em, sql, entityClass, table);
     }
-    
+
     public Collection<T> getAll() {
         return query("select e from #table e").all();
     }
- 
+
 }

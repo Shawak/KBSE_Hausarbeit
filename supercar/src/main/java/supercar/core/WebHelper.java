@@ -13,11 +13,11 @@ import java.net.URL;
 
 /**
  *
- * @author Maxi
+ * @author Maximilian Nussbaum
  */
 public class WebHelper {
-    
-     public static String getHTML(String urlToRead) {
+
+    public static String getHTML(String urlToRead) {
         try {
             StringBuilder result = new StringBuilder();
             URL url = new URL(urlToRead);
@@ -26,15 +26,15 @@ public class WebHelper {
             BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
             String line;
             while ((line = rd.readLine()) != null) {
-               result.append(line);
+                result.append(line);
             }
             rd.close();
             return result.toString();
         } catch (FileNotFoundException ex) {
         } catch (Exception ex) {
-           System.out.println(ex);
+            System.out.println(ex);
         }
         return null;
-   }
-     
+    }
+
 }

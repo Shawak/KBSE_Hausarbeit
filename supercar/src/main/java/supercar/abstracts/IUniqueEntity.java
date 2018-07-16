@@ -16,7 +16,7 @@ import javax.persistence.Version;
 
 /**
  *
- * @author Maxi
+ * @author Maximilian Nussbaum
  */
 @MappedSuperclass
 @Access(AccessType.FIELD)
@@ -26,7 +26,7 @@ public abstract class IUniqueEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
+
     @Version
     private long version;
 
@@ -66,5 +66,5 @@ public abstract class IUniqueEntity implements Serializable {
     public String toString() {
         return this.getClass().getName() + "[ id=" + id + " ]";
     }
-    
+
 }

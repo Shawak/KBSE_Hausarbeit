@@ -29,7 +29,7 @@ import supercar.abstracts.IModel;
 
 /**
  *
- * @author Patrick
+ * @author Lukas Bernhold, Patrick Wiethoff
  */
 @Named("car")
 @SessionScoped
@@ -240,7 +240,7 @@ public class CarModel extends IModel {
             c.set(Calendar.MINUTE, 0);
             c.set(Calendar.SECOND, 0);
 
-            repair.setRepairStartDate(c.getTimeInMillis()/1000);
+            repair.setRepairStartDate(c.getTimeInMillis() / 1000);
 
             Repairs.add(repair);
             garage.addRepair(repair);
@@ -255,7 +255,7 @@ public class CarModel extends IModel {
         c.set(Calendar.MINUTE, 0);
         c.set(Calendar.SECOND, 0);
 
-        repair.setRepairEndDate(c.getTimeInMillis()/1000);
+        repair.setRepairEndDate(c.getTimeInMillis() / 1000);
         Repairs.update(repair);
     }
 

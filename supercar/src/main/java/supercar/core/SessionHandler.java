@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Patrick
+ * @author Patrick Wiethoff
  */
 @ApplicationScoped
 public class SessionHandler {

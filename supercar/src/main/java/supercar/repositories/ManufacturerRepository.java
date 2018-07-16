@@ -11,11 +11,12 @@ import supercar.abstracts.IRepository;
 
 /**
  *
- * @author Lukas
+ * @author Lukas Bernhold
  */
 @Stateless
 public class ManufacturerRepository extends IRepository<Manufacturer> {
 
-    public ManufacturerRepository() { }
-    
+    public ManufacturerRepository() {
+    }
+
 }

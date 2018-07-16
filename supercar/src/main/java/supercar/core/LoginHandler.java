@@ -17,7 +17,7 @@ import supercar.abstracts.IRepositoryAccessor;
 
 /**
  *
- * @author Maxi
+ * @author Maximilian Nussbaum
  */
 @SessionScoped
 public class LoginHandler extends IRepositoryAccessor implements Serializable {

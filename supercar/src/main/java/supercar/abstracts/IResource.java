@@ -12,7 +12,7 @@ import javax.ws.rs.core.Response;
 
 /**
  *
- * @author Maxi
+ * @author Maximilian Nussbaum
  */
 public abstract class IResource extends IRestrictableRepositoryAccessor implements Serializable {
 

@@ -10,11 +10,12 @@ import javax.ws.rs.core.Application;
 
 /**
  *
- * @author Maxi
+ * @author Maximilian Nussbaum
  */
 @ApplicationPath("resources")
 public class JAXRSConfiguration extends Application {
 
-    public JAXRSConfiguration() { }
+    public JAXRSConfiguration() {
+    }
 
 }

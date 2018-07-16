@@ -14,7 +14,7 @@ import supercar.core.SessionHandler;
 
 /**
  *
- * @author Lukas
+ * @author Lukas Bernhold
  */
 @Named("usermanager")
 @SessionScoped

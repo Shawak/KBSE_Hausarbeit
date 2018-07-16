@@ -5,15 +5,13 @@
  */
 package supercar.validator;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 import supercar.core.PlzApi;
 
 /**
  *
- * @author Patrick
+ * @author Patrick Wiethoff
  */
 public class PLZValidator implements ConstraintValidator<PLZ, Integer> {
 
