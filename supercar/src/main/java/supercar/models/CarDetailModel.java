@@ -65,7 +65,7 @@ public class CarDetailModel extends IModel {
         this.lendings = lendings;
     }
 
-    public void rent() {
+    public void rent() {        
         Calendar c = new GregorianCalendar();
 
         if (Lendings.getLendingByCarId(car.getId()) != null) {

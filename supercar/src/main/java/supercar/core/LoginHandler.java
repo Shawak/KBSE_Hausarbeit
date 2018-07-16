@@ -7,6 +7,8 @@ package supercar.core;
 
 import java.io.Serializable;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 import supercar.entities.Account;
 import supercar.enums.AccountType;
 import supercar.abstracts.IRepositoryAccessor;
@@ -43,6 +45,9 @@ public class LoginHandler extends IRepositoryAccessor implements Serializable {
         if (!acc.isActivated() || acc.isBanned()) {
             return false;
         }
+        HttpSession sessionObj = (HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+        
+        SessionHandler.put(acc.getId(), sessionObj);
 
         loggedIn = true;
         accountId = acc.getId();
@@ -50,6 +55,8 @@ public class LoginHandler extends IRepositoryAccessor implements Serializable {
     }
 
     public void logout() {
+        
+        SessionHandler.deleteSession(accountId);
         loggedIn = false;
         accountId = 0;
     }

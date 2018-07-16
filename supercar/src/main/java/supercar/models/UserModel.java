@@ -10,6 +10,7 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import supercar.entities.Account;
 import supercar.abstracts.IModel;
+import supercar.core.SessionHandler;
 
 /**
  *
@@ -42,6 +43,8 @@ public class UserModel extends IModel {
     }
 
     public void banUser(long id) {
+        SessionHandler.deleteSession(id);
+
         Account acc = Accounts.get(id);
         acc.setBanned(true);
         Accounts.update(acc);
@@ -58,8 +61,8 @@ public class UserModel extends IModel {
         acc.setActivated(true);
         Accounts.update(acc);
     }
-    
-    public boolean isSameUser(long id){
+
+    public boolean isSameUser(long id) {
         return Accounts.get(id).equals(LoginHandler.getAccount());
     }
 }
