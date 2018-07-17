@@ -16,7 +16,7 @@ import supercar.abstracts.IModel;
 
 /**
  *
- * @author Maxi
+ * @author Lukas Bernhold, Maximilian Nussbaum
  */
 @Named("index")
 @SessionScoped
