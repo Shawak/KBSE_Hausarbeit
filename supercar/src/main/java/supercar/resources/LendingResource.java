@@ -22,8 +22,7 @@ import supercar.enums.AccountType;
 
 /**
  *
- * @author Maximilian Nussbaum Optional Jax-RS Parameter (Probably don't include
- * this cuz it's not worth the effort):
+ * @author Maximilian Nussbaum
  */
 @RequestScoped
 @Path("lendings")
@@ -51,7 +50,7 @@ public class LendingResource extends IResource {
 
         Lending lending = new Lending();
         lending.setCar(car);
-        lending.setRentDate(c.getTimeInMillis());
+        lending.setRentDate(c.getTimeInMillis() / 1000);
 
         LoginHandler.getAccount().addLending(lending);
         Lendings.add(lending);
