@@ -25,6 +25,10 @@ public abstract class IResource extends IRestrictableRepositoryAccessor implemen
     protected Response Ok(Object obj) {
         return Response.ok(gson.toJson(obj)).build();
     }
+    
+    protected Response Error(String error) {
+        return Response.ok(gson.toJson(new ErrorResponse(error))).build();
+    }
 
     protected Response Forbidden() {
         return Response.status(Response.Status.FORBIDDEN).build();
@@ -32,6 +36,15 @@ public abstract class IResource extends IRestrictableRepositoryAccessor implemen
 
     protected Response BadRequest() {
         return Response.status(Response.Status.BAD_REQUEST).build();
+    }
+    
+    class ErrorResponse {
+        
+        String error;
+        
+        public ErrorResponse(String error) {
+            this.error = error;
+        }
     }
 
 }

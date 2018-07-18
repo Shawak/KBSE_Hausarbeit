@@ -70,7 +70,7 @@ public class ReturnModel extends IModel {
         Lending tmp = Lendings.getLastLendingByCarId(returnlending.getCar().getId());
         if (tmp == null) {
             if (returnlending.getRentMileage() == null || returnlending.getRentMileage() < 0) {
-                FacesContext.getCurrentInstance().addMessage("form:result2", new FacesMessage(FacesMessage.SEVERITY_ERROR, "Rent Mileage must be greather than 0!", "Rent Mileage must be greather than 0!"));
+                FacesContext.getCurrentInstance().addMessage("form:result2", new FacesMessage(FacesMessage.SEVERITY_ERROR, "Rent Mileage must be greather than or atleast 0!", "Rent Mileage must be greather than or atleast 0!"));
             } else if (returnlending.getReturnMileage() == null || returnlending.getReturnMileage() < returnlending.getRentMileage()) {
                 FacesContext.getCurrentInstance().addMessage("form:result2", new FacesMessage(FacesMessage.SEVERITY_ERROR, "Return Mileage must be greather than Rent Mileage!", "Return Mileage must be greather than Rent Mileage!"));
             } else {

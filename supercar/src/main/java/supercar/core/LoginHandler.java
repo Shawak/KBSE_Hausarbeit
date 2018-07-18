@@ -56,9 +56,13 @@ public class LoginHandler extends IRepositoryAccessor implements Serializable {
 
         loggedIn = true;
         accountId = acc.getId();
-
-        HttpSession sessionObj = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
-        SessionHandler.put(accountId, sessionObj);
+        try {
+            HttpSession sessionObj = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+            SessionHandler.put(accountId, sessionObj);
+        }
+        catch(Exception ex) {
+            
+        }
 
         return true;
     }
@@ -66,7 +70,12 @@ public class LoginHandler extends IRepositoryAccessor implements Serializable {
     public void logout() {
         loggedIn = false;
         accountId = 0;
-        SessionHandler.removeSession(accountId);
+        try {
+            SessionHandler.removeSession(accountId);
+        }
+        catch(Exception ex) {
+            
+        }
     }
 
     public boolean hasAccess(AccountType accountType) {
