@@ -1,20 +1,13 @@
 ## Docker
 
-#### Chrome Problem
-
-Because chrome does not allow saving cookies to http://localhost and java EE not changing the cookie's path, be sure to use http://127.0.0.1 instead or you won't be able to login!
-
-Alternativly you can also pass the jsessionid after the url like `http://localhost[/..];jsessionid=<token>`
-
 #### Requirements
 
-- docker
-- docker-compose
+- docker (+ docker-compose)
 
 
 #### How-To
 
-Be sure to build the projet first, the container can't build the .war itself right now.
+Be sure to build the project first, the container can't build the .war itself right now.
 
 Deploy to container and run: `docker-compose up --build`
 
