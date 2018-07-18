@@ -27,7 +27,8 @@ public class StartupBean extends IRepositoryAccessor {
 
         if (Accounts.getAll().isEmpty()) {
             Accounts.add(new Account("Administrator", "Administrator", 49076, "Osnabrück", "Albrechtstr. 30", "admin", "admin", "", AccountType.Administrator, true));
-
+            Accounts.add(new Account("Employee", "Employee", 49076, "Osnabrück", "Albrechtstr. 30", "employee", "employee", "", AccountType.Employee, true));
+            
             Account account = new Account("Max", "Mustermann", 49076, "Osnabrück", "Albrechtstr. 30", "user", "user", "", AccountType.User, true);
             account.setLicenseNumber("Z014AB37X95");
             Accounts.add(account);
