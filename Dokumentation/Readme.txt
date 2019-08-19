@@ -74,6 +74,6 @@ Bills:
     - Herunterladen von Rechnungen
 
 Authoren:
-Lukas Bernhold, 740592, lukas.bernhold@hs-osnabrueck.de
-Maximilian Nussbaum, 732386, maximilian.nussbaum@hs-osnabrueck.de
-Patrick Wiethoff, 738195, patrick.wiethoff@hs-osnabrueck.de
+Lukas Bernhold, 740592, lukas.bernhold`(at)`hs-osnabrueck.de
+Maximilian Nussbaum, 732386, maximilian.nussbaum`(at)`hs-osnabrueck.de
+Patrick Wiethoff, 738195, patrick.wiethoff`(at)`hs-osnabrueck.de
